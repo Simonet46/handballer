@@ -149,9 +149,12 @@ def main():
             failed += 1
 
     # Sólo tocamos los escudos que administra este script. Los que vienen de
-    # otra fuente (p. ej. el tracker de FeMeBal) se respetan tal cual.
+    # una fuente oficial (el tracker de FeMeBal) mandan siempre: son el escudo
+    # que el club usa de verdad y no arrastran dudas de licencia.
     for league in leagues:
         for team in league["teams"]:
+            if team.get("crest") and team.get("crest_source") != "wikipedia":
+                continue
             entry = manifest.get(team["id"])
             if entry:
                 team["crest"] = entry["file"]

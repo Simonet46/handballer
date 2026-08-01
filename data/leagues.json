@@ -2580,7 +2580,7 @@
     "league": "swe-handbollsligan",
     "tier": 1,
     "strength": 4,
-    "crest": "/assets/crests/ifk-kristianstad.svg",
+    "crest": "assets/crests/ifk-kristianstad.svg",
     "crest_source": "wikipedia",
     "wiki": "en:IFK Kristianstad"
    },
@@ -2671,7 +2671,7 @@
     "league": "swe-handbollsligan",
     "tier": 1,
     "strength": 3,
-    "crest": "/assets/crests/hk-malmo.svg",
+    "crest": "assets/crests/hk-malmo.svg",
     "crest_source": "wikipedia",
     "wiki": "en:HK Malmö"
    },
@@ -2723,7 +2723,7 @@
     "league": "swe-handbollsligan",
     "tier": 1,
     "strength": 2,
-    "crest": "/assets/crests/ov-helsingborg.svg",
+    "crest": "assets/crests/ov-helsingborg.svg",
     "crest_source": "wikipedia",
     "wiki": "en:OV Helsingborg"
    },
@@ -4388,8 +4388,8 @@
     "league": "arg-liga-honor",
     "tier": 1,
     "strength": 2,
-    "crest": "/assets/crests/argentinos-juniors.png",
-    "crest_source": "wikipedia",
+    "crest": "assets/crests/femebal-00000354.png",
+    "crest_source": "femebal",
     "wiki": null
    },
    {
@@ -4401,7 +4401,7 @@
     "league": "arg-liga-honor",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/femebal-00000362.jpg",
+    "crest": "assets/crests/femebal-00000362.png",
     "crest_source": "femebal",
     "wiki": null
    },
@@ -4440,7 +4440,7 @@
     "league": "arg-liga-honor",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/femebal-00000375.jpg",
+    "crest": "assets/crests/femebal-00000375.png",
     "crest_source": "femebal",
     "wiki": null
    },
@@ -4479,8 +4479,8 @@
     "league": "arg-liga-honor",
     "tier": 1,
     "strength": 3,
-    "crest": "/assets/crests/ferro-carril-oeste.png",
-    "crest_source": "wikipedia",
+    "crest": "assets/crests/femebal-00000335.png",
+    "crest_source": "femebal",
     "wiki": null
    },
    {
@@ -4518,7 +4518,7 @@
     "league": "arg-liga-honor",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/femebal-00000415.jpg",
+    "crest": "assets/crests/femebal-00000415.png",
     "crest_source": "femebal",
     "wiki": null
    },
@@ -4623,7 +4623,7 @@
     "league": "arg-liga-honor-plata",
     "tier": 2,
     "strength": 2,
-    "crest": "assets/crests/femebal-00000428.jpg",
+    "crest": "assets/crests/femebal-00000428.png",
     "crest_source": "femebal",
     "wiki": null
    },
@@ -4636,7 +4636,7 @@
     "league": "arg-liga-honor-plata",
     "tier": 2,
     "strength": 2,
-    "crest": "assets/crests/femebal-00000394.jpg",
+    "crest": "assets/crests/femebal-00000394.png",
     "crest_source": "femebal",
     "wiki": null
    },
@@ -4701,8 +4701,8 @@
     "league": "arg-liga-honor-plata",
     "tier": 2,
     "strength": 2,
-    "crest": "/assets/crests/defensa-y-justicia.svg",
-    "crest_source": "wikipedia",
+    "crest": "assets/crests/femebal-00000378.png",
+    "crest_source": "femebal",
     "wiki": null
    },
    {
@@ -4727,7 +4727,7 @@
     "league": "arg-liga-honor-plata",
     "tier": 2,
     "strength": 2,
-    "crest": "assets/crests/femebal-00000404.jpg",
+    "crest": "assets/crests/femebal-00000404.png",
     "crest_source": "femebal",
     "wiki": null
    },
@@ -4740,7 +4740,7 @@
     "league": "arg-liga-honor-plata",
     "tier": 2,
     "strength": 2,
-    "crest": "assets/crests/femebal-00000421.jpg",
+    "crest": "assets/crests/femebal-00000421.png",
     "crest_source": "femebal",
     "wiki": null
    }
@@ -4780,7 +4780,7 @@
     "league": "arg-primera",
     "tier": 3,
     "strength": 1,
-    "crest": "assets/crests/femebal-00000419.jpg",
+    "crest": "assets/crests/femebal-00000419.png",
     "crest_source": "femebal",
     "wiki": null
    },
@@ -4806,7 +4806,7 @@
     "league": "arg-primera",
     "tier": 3,
     "strength": 1,
-    "crest": "assets/crests/femebal-00000342.jpeg",
+    "crest": "assets/crests/femebal-00000342.png",
     "crest_source": "femebal",
     "wiki": null
    },
@@ -4819,7 +4819,7 @@
     "league": "arg-primera",
     "tier": 3,
     "strength": 1,
-    "crest": "assets/crests/femebal-00000407.jpg",
+    "crest": "assets/crests/femebal-00000407.png",
     "crest_source": "femebal",
     "wiki": null
    },
@@ -4832,8 +4832,8 @@
     "league": "arg-primera",
     "tier": 3,
     "strength": 1,
-    "crest": "/assets/crests/racing-club.png",
-    "crest_source": "wikipedia",
+    "crest": "assets/crests/femebal-00000411.png",
+    "crest_source": "femebal",
     "wiki": null
    },
    {
@@ -4845,7 +4845,7 @@
     "league": "arg-primera",
     "tier": 3,
     "strength": 1,
-    "crest": "assets/crests/femebal-00000624.jpg",
+    "crest": "assets/crests/femebal-00000624.png",
     "crest_source": "femebal",
     "wiki": null
    },
@@ -4884,7 +4884,7 @@
     "league": "arg-primera",
     "tier": 3,
     "strength": 1,
-    "crest": "assets/crests/femebal-00000420.jpg",
+    "crest": "assets/crests/femebal-00000420.png",
     "crest_source": "femebal",
     "wiki": null
    },
@@ -4897,7 +4897,7 @@
     "league": "arg-primera",
     "tier": 3,
     "strength": 1,
-    "crest": "assets/crests/femebal-00000430.jpg",
+    "crest": "assets/crests/femebal-00000430.png",
     "crest_source": "femebal",
     "wiki": null
    },
@@ -4936,7 +4936,7 @@
     "league": "arg-primera",
     "tier": 3,
     "strength": 1,
-    "crest": "assets/crests/femebal-00000533.jpg",
+    "crest": "assets/crests/femebal-00000533.png",
     "crest_source": "femebal",
     "wiki": null
    },
@@ -4949,7 +4949,7 @@
     "league": "arg-primera",
     "tier": 3,
     "strength": 1,
-    "crest": "assets/crests/femebal-00000519.jpg",
+    "crest": "assets/crests/femebal-00000519.png",
     "crest_source": "femebal",
     "wiki": null
    },
@@ -4962,7 +4962,7 @@
     "league": "arg-primera",
     "tier": 3,
     "strength": 1,
-    "crest": "assets/crests/femebal-00000593.jpg",
+    "crest": "assets/crests/femebal-00000593.png",
     "crest_source": "femebal",
     "wiki": null
    },
@@ -4975,7 +4975,7 @@
     "league": "arg-primera",
     "tier": 3,
     "strength": 1,
-    "crest": "assets/crests/femebal-00000390.jpg",
+    "crest": "assets/crests/femebal-00000390.png",
     "crest_source": "femebal",
     "wiki": null
    },
@@ -5001,7 +5001,7 @@
     "league": "arg-primera",
     "tier": 3,
     "strength": 1,
-    "crest": "assets/crests/femebal-00000399.jpg",
+    "crest": "assets/crests/femebal-00000399.png",
     "crest_source": "femebal",
     "wiki": null
    },
@@ -5014,7 +5014,7 @@
     "league": "arg-primera",
     "tier": 3,
     "strength": 1,
-    "crest": "assets/crests/femebal-00000401.jpg",
+    "crest": "assets/crests/femebal-00000401.png",
     "crest_source": "femebal",
     "wiki": null
    },
@@ -5027,7 +5027,7 @@
     "league": "arg-primera",
     "tier": 3,
     "strength": 1,
-    "crest": "assets/crests/femebal-00000400.jpg",
+    "crest": "assets/crests/femebal-00000400.png",
     "crest_source": "femebal",
     "wiki": null
    },
@@ -5053,7 +5053,7 @@
     "league": "arg-primera",
     "tier": 3,
     "strength": 1,
-    "crest": "assets/crests/femebal-00000425.jpg",
+    "crest": "assets/crests/femebal-00000425.png",
     "crest_source": "femebal",
     "wiki": null
    },

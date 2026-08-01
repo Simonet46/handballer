@@ -28,7 +28,7 @@
   "source": "https://upload.wikimedia.org/wikipedia/commons/2/20/Alings%C3%A5s_HK_league_positions.png"
  },
  "argentinos-juniors": {
-  "file": "/assets/crests/argentinos-juniors.png",
+  "file": "assets/crests/argentinos-juniors.png",
   "source": "https://upload.wikimedia.org/wikipedia/commons/7/75/EscudoAAAJ.png"
  },
  "asv-hamm-westfalen": {
@@ -48,7 +48,7 @@
   "source": "https://upload.wikimedia.org/wikipedia/fr/e/e4/Logo_du_Cesson-Rennes_M%C3%A9tropole_HB.png"
  },
  "chacarita-juniors": {
-  "file": "/assets/crests/chacarita-juniors.svg",
+  "file": "assets/crests/chacarita-juniors.svg",
   "source": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Escudo_del_Club_Atl%C3%A9tico_Chacarita_Juniors.svg"
  },
  "chambery-savoie-mont-blanc": {
@@ -56,27 +56,27 @@
   "source": "https://upload.wikimedia.org/wikipedia/fr/e/e4/Chamb%C3%A9ry_Savoie_Mont-Blanc_handball_logo.svg"
  },
  "club-atletico-all-boys": {
-  "file": "/assets/crests/club-atletico-all-boys.svg",
+  "file": "assets/crests/club-atletico-all-boys.svg",
   "source": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Escudo_del_Club_Atl%C3%A9tico_All_Boys.svg"
  },
  "club-atletico-atlanta": {
-  "file": "/assets/crests/club-atletico-atlanta.png",
+  "file": "assets/crests/club-atletico-atlanta.png",
   "source": "https://upload.wikimedia.org/wikipedia/commons/8/87/Escudoatlanta.png"
  },
  "club-atletico-huracan": {
-  "file": "/assets/crests/club-atletico-huracan.svg",
+  "file": "assets/crests/club-atletico-huracan.svg",
   "source": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Emblema_oficial_del_Club_Atl%C3%A9tico_Hurac%C3%A1n.svg"
  },
  "club-atletico-lanus": {
-  "file": "/assets/crests/club-atletico-lanus.svg",
+  "file": "assets/crests/club-atletico-lanus.svg",
   "source": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Escudo_de_Lan%C3%BAs_%28sin_estrellas%29.svg"
  },
  "comunicaciones": {
-  "file": "/assets/crests/comunicaciones.png",
+  "file": "assets/crests/comunicaciones.png",
   "source": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Club_comunicaciones_ba_logo.png"
  },
  "defensa-y-justicia": {
-  "file": "/assets/crests/defensa-y-justicia.svg",
+  "file": "assets/crests/defensa-y-justicia.svg",
   "source": "https://upload.wikimedia.org/wikipedia/commons/7/70/Escudo_del_Club_Social_y_Deportivo_Defensa_y_Justicia.svg"
  },
  "dijon-metropole-handball": {
@@ -112,7 +112,7 @@
   "source": "https://upload.wikimedia.org/wikipedia/it/7/7f/FC_Porto_Logo.svg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
  },
  "ferro-carril-oeste": {
-  "file": "/assets/crests/ferro-carril-oeste.png",
+  "file": "assets/crests/ferro-carril-oeste.png",
   "source": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Escudo-oficial-fco.png"
  },
  "fh-hafnarfjordur": {
@@ -168,7 +168,7 @@
   "source": "https://upload.wikimedia.org/wikipedia/commons/c/c6/HC_Oppenweiler-Backnang_Logo.svg"
  },
  "hk-malmo": {
-  "file": "/assets/crests/hk-malmo.svg",
+  "file": "assets/crests/hk-malmo.svg",
   "source": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Handbollsligan_logo.svg",
   "bytes": 13183
  },
@@ -193,7 +193,7 @@
   "source": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Handball_Sport_Verein_Hamburg.png"
  },
  "ifk-kristianstad": {
-  "file": "/assets/crests/ifk-kristianstad.svg",
+  "file": "assets/crests/ifk-kristianstad.svg",
   "source": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Handbollsligan_logo.svg",
   "bytes": 13183
  },
@@ -230,7 +230,7 @@
   "source": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Kit_shorts_jomafootballwhitelogo.png"
  },
  "ov-helsingborg": {
-  "file": "/assets/crests/ov-helsingborg.svg",
+  "file": "assets/crests/ov-helsingborg.svg",
   "source": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Handbollsligan_logo.svg",
   "bytes": 13183
  },
@@ -247,7 +247,7 @@
   "source": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Pler_logo.svg"
  },
  "racing-club": {
-  "file": "/assets/crests/racing-club.png",
+  "file": "assets/crests/racing-club.png",
   "source": "https://upload.wikimedia.org/wikipedia/commons/4/4d/EscudosRacing.png"
  },
  "redbergslids-ik": {
@@ -283,11 +283,11 @@
   "source": "https://upload.wikimedia.org/wikipedia/commons/4/41/RTV_1879_Basel_Logo.svg"
  },
  "sag-villa-ballester": {
-  "file": "/assets/crests/sag-villa-ballester.png",
+  "file": "assets/crests/sag-villa-ballester.png",
   "source": "https://upload.wikimedia.org/wikipedia/commons/1/15/LOGO_SAGVB_NORMAL_PNG.png"
  },
  "san-lorenzo-de-almagro": {
-  "file": "/assets/crests/san-lorenzo-de-almagro.svg",
+  "file": "assets/crests/san-lorenzo-de-almagro.svg",
   "source": "https://upload.wikimedia.org/wikipedia/commons/7/77/Escudo_del_Club_Atl%C3%A9tico_San_Lorenzo_de_Almagro.svg"
  },
  "sc-dhfk-leipzig": {
@@ -383,7 +383,7 @@
   "source": "https://upload.wikimedia.org/wikipedia/fr/5/5c/USAM_N%C3%AEmes_Gard_logo.svg"
  },
  "velez-sarsfield": {
-  "file": "/assets/crests/velez-sarsfield.svg",
+  "file": "assets/crests/velez-sarsfield.svg",
   "source": "https://upload.wikimedia.org/wikipedia/commons/2/21/Escudo_del_Club_Atl%C3%A9tico_V%C3%A9lez_Sarsfield.svg"
  },
  "vfl-fredenbeck": {
@@ -423,7 +423,7 @@
   "source": "https://upload.wikimedia.org/wikipedia/commons/1/19/Fjellhammer_Idrettslag.svg"
  },
  "general-lamadrid": {
-  "file": "/assets/crests/general-lamadrid.svg",
+  "file": "assets/crests/general-lamadrid.svg",
   "source": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Club_Atl%C3%A9tico_General_Lamadrid.svg",
   "bytes": 5994
  },
@@ -501,17 +501,14 @@
  },
  "fh-hafnarfjor-ur": {
   "file": "assets/crests/fh-hafnarfjor-ur.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/4/49/Logo_FH_Hafnarfj%C3%B6rdur.svg",
-  "bytes": 14035
+  "source": "https://upload.wikimedia.org/wikipedia/commons/4/49/Logo_FH_Hafnarfj%C3%B6rdur.svg"
  },
  "orlen-wis-a-p-ock": {
   "file": "assets/crests/orlen-wis-a-p-ock.png",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Kit_shorts_jomafootballwhitelogo.png",
-  "bytes": 724
+  "source": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Kit_shorts_jomafootballwhitelogo.png"
  },
  "slask-wroc-aw": {
   "file": "assets/crests/slask-wroc-aw.png",
-  "source": "https://upload.wikimedia.org/wikipedia/en/3/3f/%C5%9Al%C4%85sk_Wroc%C5%82aw_handball_crest.png",
-  "bytes": 84018
+  "source": "https://upload.wikimedia.org/wikipedia/en/3/3f/%C5%9Al%C4%85sk_Wroc%C5%82aw_handball_crest.png"
  }
 }
