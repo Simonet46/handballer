@@ -749,10 +749,10 @@ const addAward = (state, season, key, params, name, weight) =>
 // ---------------------------------------------------------------------------
 
 const VERDICTS = [
-  { min: 1550, key: "inmortal", title: "Inmortal del handball", line: "Una era lleva tu nombre. Los números dejaron de ser creíbles hace rato." },
-  { min: 1250, key: "icono", title: "Ícono mundial", line: "Finales grandes, títulos y una carrera que pasó por encima de un solo escudo." },
-  { min: 900, key: "leyenda", title: "Leyenda de club", line: "Una generación entera aprendió el juego mirándote a vos." },
-  { min: 450, key: "idolo", title: "Ídolo de tribuna", line: "No hizo falta ser perfecto. Te ganaste cantitos, cicatrices y cariño para siempre." },
+  { min: 1180, key: "inmortal", title: "Inmortal del handball", line: "Una era lleva tu nombre. Los números dejaron de ser creíbles hace rato." },
+  { min: 860, key: "icono", title: "Ícono mundial", line: "Finales grandes, títulos y una carrera que pasó por encima de un solo escudo." },
+  { min: 660, key: "leyenda", title: "Leyenda de club", line: "Una generación entera aprendió el juego mirándote a vos." },
+  { min: 420, key: "idolo", title: "Ídolo de tribuna", line: "No hizo falta ser perfecto. Te ganaste cantitos, cicatrices y cariño para siempre." },
   { min: 0, key: "trotamundos", title: "Trotamundos", line: "Cada camiseta fue un capítulo. El camino terminó siendo la historia." }
 ];
 
