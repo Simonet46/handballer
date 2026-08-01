@@ -1,0 +1,251 @@
+[
+ {
+  "code": "FRA",
+  "name": "Francia",
+  "flag": "🇫🇷",
+  "confederation": "EHF",
+  "startable": true,
+  "domestic_cup": "Coupe de France",
+  "pyramid": [
+   "fra-starligue",
+   "fra-proligue",
+   "fra-nationale-1"
+  ]
+ },
+ {
+  "code": "GER",
+  "name": "Alemania",
+  "flag": "🇩🇪",
+  "confederation": "EHF",
+  "startable": true,
+  "domestic_cup": "DHB-Pokal",
+  "pyramid": [
+   "ger-hbl",
+   "ger-2hbl",
+   "ger-3liga"
+  ]
+ },
+ {
+  "code": "ARG",
+  "name": "Argentina",
+  "flag": "🇦🇷",
+  "confederation": "PATHF",
+  "startable": true,
+  "domestic_cup": "Copa Argentina",
+  "pyramid": [
+   "arg-liga-honor",
+   "arg-liga-honor-plata",
+   "arg-primera"
+  ]
+ },
+ {
+  "code": "ESP",
+  "name": "España",
+  "flag": "🇪🇸",
+  "confederation": "EHF",
+  "startable": false,
+  "domestic_cup": "Copa del Rey",
+  "pyramid": [
+   "esp-asobal",
+   "esp-plata"
+  ]
+ },
+ {
+  "code": "DEN",
+  "name": "Dinamarca",
+  "flag": "🇩🇰",
+  "confederation": "EHF",
+  "startable": false,
+  "domestic_cup": "Santander Cup",
+  "pyramid": [
+   "den-handboldligaen"
+  ]
+ },
+ {
+  "code": "HUN",
+  "name": "Hungría",
+  "flag": "🇭🇺",
+  "confederation": "EHF",
+  "startable": false,
+  "domestic_cup": "Magyar Kupa",
+  "pyramid": [
+   "hun-nbi"
+  ]
+ },
+ {
+  "code": "POL",
+  "name": "Polonia",
+  "flag": "🇵🇱",
+  "confederation": "EHF",
+  "startable": false,
+  "domestic_cup": "Puchar Polski",
+  "pyramid": [
+   "pol-superliga"
+  ]
+ },
+ {
+  "code": "POR",
+  "name": "Portugal",
+  "flag": "🇵🇹",
+  "confederation": "EHF",
+  "startable": false,
+  "domestic_cup": "Taca de Portugal",
+  "pyramid": [
+   "por-andebol-1"
+  ]
+ },
+ {
+  "code": "SWE",
+  "name": "Suecia",
+  "flag": "🇸🇪",
+  "confederation": "EHF",
+  "startable": false,
+  "domestic_cup": "Svenska Cupen",
+  "pyramid": [
+   "swe-handbollsligan"
+  ]
+ },
+ {
+  "code": "NOR",
+  "name": "Noruega",
+  "flag": "🇳🇴",
+  "confederation": "EHF",
+  "startable": false,
+  "domestic_cup": "NM Cupen",
+  "pyramid": [
+   "nor-ligaen"
+  ]
+ },
+ {
+  "code": "ROU",
+  "name": "Rumanía",
+  "flag": "🇷🇴",
+  "confederation": "EHF",
+  "startable": false,
+  "domestic_cup": "Cupa Romaniei",
+  "pyramid": [
+   "rou-liga-nationala"
+  ]
+ },
+ {
+  "code": "SLO",
+  "name": "Eslovenia",
+  "flag": "🇸🇮",
+  "confederation": "EHF",
+  "startable": false,
+  "domestic_cup": "Pokal Slovenije",
+  "pyramid": [
+   "slo-liga-nlb"
+  ]
+ },
+ {
+  "code": "CRO",
+  "name": "Croacia",
+  "flag": "🇭🇷",
+  "confederation": "EHF",
+  "startable": false,
+  "domestic_cup": "Hrvatski kup",
+  "pyramid": [
+   "cro-premijer-liga"
+  ]
+ },
+ {
+  "code": "MKD",
+  "name": "Macedonia del Norte",
+  "flag": "🇲🇰",
+  "confederation": "EHF",
+  "startable": false,
+  "domestic_cup": "Kup na Makedonija",
+  "pyramid": [
+   "mkd-super-liga"
+  ]
+ },
+ {
+  "code": "SUI",
+  "name": "Suiza",
+  "flag": "🇨🇭",
+  "confederation": "EHF",
+  "startable": false,
+  "domestic_cup": "Schweizer Cup",
+  "pyramid": [
+   "sui-qhl"
+  ]
+ },
+ {
+  "code": "AUT",
+  "name": "Austria",
+  "flag": "🇦🇹",
+  "confederation": "EHF",
+  "startable": false,
+  "domestic_cup": "OHB-Cup",
+  "pyramid": [
+   "aut-hla"
+  ]
+ },
+ {
+  "code": "ISL",
+  "name": "Islandia",
+  "flag": "🇮🇸",
+  "confederation": "EHF",
+  "startable": false,
+  "domestic_cup": "Coca-Cola bikarinn",
+  "pyramid": [
+   "isl-urvalsdeild"
+  ]
+ },
+ {
+  "code": "QAT",
+  "name": "Qatar",
+  "flag": "🇶🇦",
+  "confederation": "AHF",
+  "startable": false,
+  "domestic_cup": "Emir Cup",
+  "pyramid": [
+   "qat-league"
+  ]
+ },
+ {
+  "code": "EGY",
+  "name": "Egipto",
+  "flag": "🇪🇬",
+  "confederation": "CAHB",
+  "startable": false,
+  "domestic_cup": "Copa de Egipto",
+  "pyramid": [
+   "egy-league"
+  ]
+ },
+ {
+  "code": "TUN",
+  "name": "Túnez",
+  "flag": "🇹🇳",
+  "confederation": "CAHB",
+  "startable": false,
+  "domestic_cup": "Coupe de Tunisie",
+  "pyramid": [
+   "tun-nationale-a"
+  ]
+ },
+ {
+  "code": "BRA",
+  "name": "Brasil",
+  "flag": "🇧🇷",
+  "confederation": "PATHF",
+  "startable": false,
+  "domestic_cup": "Copa Brasil",
+  "pyramid": [
+   "bra-liga-nacional"
+  ]
+ },
+ {
+  "code": "JPN",
+  "name": "Japón",
+  "flag": "🇯🇵",
+  "confederation": "AHF",
+  "startable": false,
+  "domestic_cup": "All Japan Handball Championship",
+  "pyramid": [
+   "jpn-league-h"
+  ]
+ }
+]

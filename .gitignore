@@ -1,0 +1,6 @@
+# Caché de las APIs (Wikipedia, FeMeBal). Se regenera solo y pesa de más.
+scripts/cache/
+scripts/__pycache__/
+
+.DS_Store
+node_modules/

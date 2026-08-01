@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<base href="./">
+<title>HANDBALLER · Simulá tu carrera de handball</title>
+<meta name="description" content="Creá un handbolista, tomá las decisiones difíciles y mirá hasta dónde llega. Una carrera entera en dos minutos. Gratis, sin registro.">
+<meta name="theme-color" content="#0b0f14">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23e8552f'/%3E%3Cpath d='M16 2v28M2 16h28M6 6l20 20M26 6L6 26' stroke='%230b0f14' stroke-width='2'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="HANDBALLER · Simulá tu carrera de handball">
+<meta property="og:description" content="Creá un handbolista, tomá las decisiones difíciles y mirá hasta dónde llega. Una carrera entera en dos minutos. Gratis, sin registro.">
+<meta property="og:image" content="./assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="es" href="./">
+<link rel="alternate" hreflang="fr" href="fr/">
+<link rel="alternate" hreflang="de" href="de/">
+<link rel="alternate" hreflang="x-default" href="./">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+
+  <nav class="locales"><a href="./" hreflang="es" aria-current="page">ES</a><a href="fr/" hreflang="fr">FR</a><a href="de/" hreflang="de">DE</a></nav>
+
+  <!-- ------------------------------------------------ 1. crear jugador -->
+  <section id="setup">
+    <header class="hero">
+      <h1>HANDBALLER</h1>
+      <p class="tagline">Una carrera de handball entera en dos minutos</p>
+      <p class="intro">Elegí de dónde salís, tomá cada decisión y descubrí si terminás siendo leyenda de tu club o trotamundos.</p>
+    </header>
+
+    <div class="setup-grid">
+      <div class="preview">
+        <div class="shirt">
+          <span class="shirt-number" id="preview-number">7</span>
+        </div>
+        <p class="preview-name"><span id="preview-flag"></span> <span id="preview-name"></span></p>
+        <p class="preview-position" id="preview-position"></p>
+      </div>
+
+      <form class="setup-form" autocomplete="off" onsubmit="return false">
+        <label class="field">
+          <span>Apellido</span>
+          <input id="lastName" type="text" maxlength="16" placeholder="TU APELLIDO" inputmode="text">
+        </label>
+        <label class="field field-narrow">
+          <span>Dorsal</span>
+          <input id="number" type="number" min="1" max="99" value="7" inputmode="numeric">
+        </label>
+
+        <fieldset><legend>Mano hábil</legend><div class="chips" data-group="hand" id="hand-options"></div></fieldset>
+        <fieldset><legend>País</legend><div class="chips" data-group="country" id="country-options"></div></fieldset>
+        <fieldset><legend>Puesto</legend><div class="chips" data-group="position" id="position-options"></div></fieldset>
+        <fieldset><legend>Ritmo</legend><div class="chips chips-stack" data-group="pace" id="pace-options"></div></fieldset>
+
+        <button id="start" class="cta" type="button">Empezar la carrera</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------ 2. la carrera -->
+  <section id="career" hidden>
+    <div class="hud">
+      <div class="hud-player">
+        <span class="hud-number" id="hud-number"></span>
+        <div>
+          <p class="hud-name"><span id="hud-flag"></span> <span id="hud-name"></span></p>
+          <p class="hud-position" id="hud-position"></p>
+        </div>
+      </div>
+      <div class="hud-club">
+        <p class="hud-club-name" id="hud-club"></p>
+        <p class="hud-league" id="hud-league"></p>
+      </div>
+      <dl class="hud-stats">
+        <div><dt>Edad</dt><dd id="hud-age"></dd></div>
+        <div><dt>VAL</dt><dd id="hud-rating"></dd></div>
+        <div><dt>Rol</dt><dd id="hud-role"></dd></div>
+        <div><dt id="hud-stat-1-label"></dt><dd id="hud-stat-1"></dd></div>
+        <div><dt id="hud-stat-2-label"></dt><dd id="hud-stat-2"></dd></div>
+        <div><dt id="hud-stat-3-label"></dt><dd id="hud-stat-3"></dd></div>
+      </dl>
+      <div class="progress" id="progress"><span class="progress-label" id="season-label"></span></div>
+    </div>
+
+    <div class="recap" id="recap" hidden></div>
+
+    <article class="decision">
+      <p class="decision-eyebrow" id="decision-eyebrow"></p>
+      <h2 id="decision-title"></h2>
+      <p class="decision-body" id="decision-body"></p>
+      <div class="options" id="decision-options"></div>
+    </article>
+  </section>
+
+  <!-- ------------------------------------------------ 3. resultado -->
+  <section id="result" hidden>
+    <div class="verdict">
+      <h2 id="verdict-title"></h2>
+      <p id="verdict-line"></p>
+      <p class="result-name" id="result-name"></p>
+      <p class="result-meta" id="result-meta"></p>
+    </div>
+
+    <div class="result-stats" id="result-stats"></div>
+
+    <div class="result-score">
+      <span>Puntaje</span>
+      <strong id="result-score"></strong>
+    </div>
+
+    <h3>Tu carrera</h3>
+    <ol class="timeline" id="timeline"></ol>
+
+    <h3>Vitrina</h3>
+    <ul class="honours" id="honours"></ul>
+
+    <div class="actions">
+      <button id="share" class="cta" type="button">Compartir</button>
+      <button id="play-again" class="ghost" type="button">Jugar de nuevo</button>
+      <p class="feedback" id="share-feedback" hidden></p>
+    </div>
+
+    <canvas id="share-canvas" class="share-canvas" aria-label="Compartir"></canvas>
+  </section>
+
+  <footer class="disclaimer">
+    <p>Juego no oficial y gratuito. Sin relación con la IHF, la EHF ni con los clubes mencionados.</p>
+  </footer>
+</div>
+
+<script type="module" src="src/ui.js"></script>
+</body>
+</html>

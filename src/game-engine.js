@@ -1,0 +1,830 @@
+/**
+ * Motor de carrera de handball. Lógica pura: no toca el DOM.
+ *
+ *   const carrera = createCareer({ apellido, dorsal, pais, posicion, ritmo });
+ *   advanceCareer(carrera, choiceId, rng);   // hasta carrera.ended === true
+ *
+ * Escrito de cero para handball: el deporte cambia las métricas (goles por
+ * partido en vez de por temporada, % de tiro, atajadas, exclusiones de 2'),
+ * la curva de edad (los pivotes y arqueros rinden hasta los 40) y el mapa de
+ * mercado (Argentina -> Brasil/Península -> Francia/Alemania).
+ */
+
+// ---------------------------------------------------------------------------
+// Configuración del deporte
+// ---------------------------------------------------------------------------
+
+export const POSITIONS = [
+  { code: "GK", name: "Arquero", line: "GK", goalRate: 0.02, assistRate: 0.05, keeper: true },
+  { code: "LW", name: "Extremo izquierdo", line: "ALA", goalRate: 3.1, assistRate: 0.9 },
+  { code: "LB", name: "Lateral izquierdo", line: "LAT", goalRate: 3.6, assistRate: 2.1 },
+  { code: "CB", name: "Central", line: "CEN", goalRate: 2.2, assistRate: 5.4 },
+  { code: "RB", name: "Lateral derecho", line: "LAT", goalRate: 3.6, assistRate: 2.1 },
+  { code: "RW", name: "Extremo derecho", line: "ALA", goalRate: 3.1, assistRate: 0.9 },
+  { code: "PV", name: "Pivote", line: "PIV", goalRate: 2.8, assistRate: 1.2 }
+];
+
+export const PACES = [
+  { value: 1, name: "Intenso", detail: "Una decisión por temporada", scoreFactor: 0.75 },
+  { value: 2, name: "Normal", detail: "Una decisión cada 2 temporadas", scoreFactor: 1 },
+  { value: 3, name: "Exprés", detail: "Una decisión cada 3 temporadas", scoreFactor: 1.05 }
+];
+
+export const SQUAD_ROLES = [
+  { key: "juvenil", share: 0.42, minutesMin: 12, minutesMax: 26 },
+  { key: "rotacion", share: 0.68, minutesMin: 22, minutesMax: 38 },
+  { key: "titular", share: 0.86, minutesMin: 38, minutesMax: 50 },
+  { key: "franquicia", share: 0.95, minutesMin: 46, minutesMax: 58 }
+];
+
+const START_AGE = 17;
+const RETIREMENT_AGE = 38;
+const START_SEASON = 2026;
+const MATCHES_PER_SEASON = 34;
+
+// Embudo geográfico: a dónde puede fichar un jugador según su edad y de dónde es.
+// En handball la ruta real de un sudamericano es liga local -> Península/Brasil ->
+// Francia/Alemania. La de un francés o alemán es su propia primera división.
+const MARKET_STEPS = [
+  { maxAge: 19, scope: "domestic" },
+  { maxAge: 22, scope: "regional" },
+  { maxAge: 99, scope: "world" }
+];
+
+const REGION_BY_CONFEDERATION = {
+  EHF: ["EHF"],
+  PATHF: ["PATHF", "EHF"],
+  AHF: ["AHF", "EHF"],
+  CAHB: ["CAHB", "EHF"],
+  OCHF: ["OCHF", "EHF"]
+};
+
+// ---------------------------------------------------------------------------
+// Utilidades
+// ---------------------------------------------------------------------------
+
+const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+const round = (value) => Math.max(0, Math.round(value));
+
+export function createRng(seed) {
+  let value = Number(seed) || 1;
+  value %= 2147483647;
+  if (value <= 0) value += 2147483646;
+  return () => {
+    value = (value * 16807) % 2147483647;
+    return (value - 1) / 2147483646;
+  };
+}
+
+export function dailyChallengeId(date = new Date()) {
+  return date.toISOString().slice(0, 10);
+}
+
+export function dailyChallengeSeed(challengeId) {
+  let hash = 2166136261;
+  for (const character of `handball:${challengeId}`) {
+    hash ^= character.codePointAt(0);
+    hash = Math.imul(hash, 16777619);
+  }
+  return hash >>> 0 || 1;
+}
+
+const pick = (list, rng) => list[Math.floor(rng() * list.length)];
+const between = (min, max, rng) => min + Math.floor(rng() * (max - min + 1));
+
+function sampleUnique(list, count, rng) {
+  const pool = [...list];
+  const out = [];
+  while (pool.length && out.length < count) {
+    out.push(pool.splice(Math.floor(rng() * pool.length), 1)[0]);
+  }
+  return out;
+}
+
+function noisy(expected, rng, spread = 0.3) {
+  return round(expected * (1 - spread + rng() * spread * 2) + rng());
+}
+
+// ---------------------------------------------------------------------------
+// Universo (se inyecta desde data/leagues.json)
+// ---------------------------------------------------------------------------
+
+let CLUBS = [];
+let LEAGUES = [];
+let COUNTRIES = [];
+
+/** Carga el dataset generado por scripts/build_dataset.py. */
+export function loadUniverse({ leagues, countries }) {
+  LEAGUES = leagues;
+  COUNTRIES = countries;
+  CLUBS = leagues.flatMap((league) =>
+    league.teams.map((team) => ({
+      ...team,
+      leagueName: league.name,
+      confederation: league.confederation,
+      countryName: league.country_name
+    }))
+  );
+  return { clubs: CLUBS.length, leagues: LEAGUES.length };
+}
+
+export const startableCountries = () => COUNTRIES.filter((country) => country.startable);
+
+const countryOf = (code) => COUNTRIES.find((c) => c.code === code) || COUNTRIES[0];
+const positionOf = (code) => POSITIONS.find((p) => p.code === code) || POSITIONS[3];
+const clubLabel = (club) => `${club.leagueName} · ${club.countryName}`;
+
+// ---------------------------------------------------------------------------
+// Mercado
+// ---------------------------------------------------------------------------
+
+/** Fuerza de club a la que puede aspirar el jugador según su valoración. */
+function targetStrength(state) {
+  return clamp(Math.round((state.rating - 46) / 9) + 1, 1, 5);
+}
+
+function marketScope(state) {
+  return MARKET_STEPS.find((step) => state.age <= step.maxAge).scope;
+}
+
+function candidatePool(state, { minStrength, maxStrength }) {
+  const home = countryOf(state.player.country);
+  const scope = marketScope(state);
+  const regions = REGION_BY_CONFEDERATION[home.confederation] || ["EHF"];
+
+  for (let widen = 0; widen <= 4; widen += 1) {
+    const low = clamp(minStrength - widen, 1, 5);
+    const high = clamp(maxStrength + widen, 1, 5);
+    const pool = CLUBS.filter((club) => {
+      if (club.id === state.club.id) return false;
+      if (club.strength < low || club.strength > high) return false;
+      if (scope === "domestic") return club.country === home.code;
+      if (scope === "regional") return regions.includes(club.confederation);
+      return true;
+    });
+    if (pool.length >= 4) return pool;
+  }
+  return CLUBS.filter((club) => club.id !== state.club.id);
+}
+
+export function transferOffers(state, rng, count = 2, farewell = false) {
+  const level = targetStrength(state);
+  const pool = candidatePool(state, {
+    minStrength: clamp(level - (farewell ? 2 : 1), 1, 5),
+    maxStrength: clamp(level + (state.age < 23 ? 0 : 1), 1, 5)
+  });
+  return sampleUnique(pool, count, rng);
+}
+
+export function projectSquadRole(state, club = state.club) {
+  if (!club || club.freeAgent) return SQUAD_ROLES[0];
+  if (club.id === state.club?.id && state.roleOverride?.seasonsLeft > 0) {
+    return SQUAD_ROLES.find((role) => role.key === state.roleOverride.key) || SQUAD_ROLES[0];
+  }
+  const benchmark = 46 + club.strength * 7.5;
+  const score = state.rating + state.form * 0.8 + clamp(state.loyalty, 0, 10) * 0.08 - benchmark;
+  if (score < -5 || (state.age <= 19 && score < 0)) return SQUAD_ROLES[0];
+  if (score < 1) return SQUAD_ROLES[1];
+  if (score < 7) return SQUAD_ROLES[2];
+  return SQUAD_ROLES[3];
+}
+
+export function contractLength(state) {
+  return Math.min(Math.max(2, state.pace * 2), Math.max(1, RETIREMENT_AGE - state.age));
+}
+
+function clubChoice(state, club, action, index) {
+  const role = projectSquadRole(state, club);
+  const effects = {
+    firmar: { fame: 1, loyalty: -1 },
+    seguir: { loyalty: 3, form: 1 },
+    renovar: { loyalty: 4, form: 1 },
+    libre: { fame: 1, loyalty: -3, form: 1 },
+    cedido: { potential: 2, form: 2 }
+  }[action] || {};
+
+  return {
+    id: `${action}-${club.id}-${index}`,
+    kind: "club",
+    action,
+    label: club.name,
+    detail: clubLabel(club),
+    club,
+    projectedRole: role.key,
+    contractYears: action === "cedido" ? 0 : contractLength(state),
+    effects
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Eventos narrativos propios del handball
+// ---------------------------------------------------------------------------
+
+export const SPECIAL_EVENTS = [
+  {
+    id: "doble-turno",
+    minAge: 18, maxAge: 27,
+    eyebrow: "Gimnasio",
+    title: "El preparador te ofrece doble turno",
+    body: "Podés ganar el kilo de músculo que te falta para aguantar el contacto en seis metros, o llegar fundido al fin de semana.",
+    choices: [
+      { id: "doble", label: "Doble turno", detail: "Más fuerza, menos frescura", effects: { rating: 3, potential: 2, fitness: -4 } },
+      { id: "cuidarse", label: "Cuidar el cuerpo", detail: "La temporada es larga", effects: { fitness: 5, form: 1, loyalty: 1 } }
+    ]
+  },
+  {
+    id: "competencia-puesto",
+    minAge: 20, maxAge: 34,
+    eyebrow: "Oficina del entrenador",
+    title: "El club fichó a otro para tu puesto",
+    body: "Un internacional llega a pelearte el lugar. Podés quedarte a ganártelo o aceptar la oferta que apareció.",
+    choices: [
+      { id: "pelear", label: "Pelear el puesto", detail: "50 % titular · 50 % rotación", effects: { rating: 2, form: 1, loyalty: 2, fitness: -2 } },
+      { id: "salir", label: "Aceptar la oferta", detail: "Camiseta nueva, minutos seguros", offerExit: true, effects: { fame: 1, loyalty: -2, form: 2 } }
+    ]
+  },
+  {
+    id: "rotura-ligamento",
+    minAge: 21, maxAge: 34,
+    eyebrow: "Quirófano",
+    title: "Cruzado anterior",
+    body: "La lesión que todo handbolista teme. Ocho meses afuera y una decisión sobre cómo volver.",
+    choices: [
+      { id: "rehab-completa", label: "Rehabilitación completa", detail: "-3 VAL · mucho menos riesgo después", effects: { rating: -3, fitness: 14, risk: -4 } },
+      { id: "volver-antes", label: "Volver antes de tiempo", detail: "Recuperás el puesto · la rodilla queda marcada", effects: { form: 2, fame: 1, fitness: -8, risk: 4 } }
+    ]
+  },
+  {
+    id: "hombro-lanzador",
+    minAge: 22, maxAge: 36,
+    eyebrow: "Kinesiología",
+    title: "El hombro de lanzar dice basta",
+    body: "Tendinitis crónica. Podés infiltrarte y seguir jugando o parar y perder el ritmo.",
+    choices: [
+      { id: "parar", label: "Parar y tratarlo", detail: "Perdés ritmo · protegés el brazo", effects: { fitness: 9, form: -2, risk: -2 } },
+      { id: "infiltrarse", label: "Infiltrarse y jugar", detail: "No perdés el puesto · pagás después", effects: { form: 2, fitness: -6, risk: 3, fame: 1 } }
+    ]
+  },
+  {
+    id: "siete-metros",
+    minAge: 19, maxAge: 36,
+    eyebrow: "Últimos segundos",
+    title: "Siete metros para ganar la serie",
+    body: "El estadio de pie. El entrenador te busca con la mirada.",
+    choices: [
+      { id: "tirar", label: "Agarrar la pelota", detail: "Gloria o silbatina", effects: { fame: 3, form: 2, risk: 1 } },
+      { id: "ceder", label: "Dejárselo al capitán", detail: "Sin riesgo, sin historia", effects: { loyalty: 2, form: -1 } }
+    ]
+  },
+  {
+    id: "seleccion",
+    minAge: 19, maxAge: 35,
+    eyebrow: "Ventana internacional",
+    title: "Te citan justo antes del clásico",
+    body: "Cruzar el Atlántico para dos amistosos, con el técnico del club pidiéndote que no vayas.",
+    choices: [
+      { id: "ir", label: "Ir a la selección", detail: "El seleccionado primero", effects: { nationalBoost: 4, fame: 2, fitness: -5 } },
+      { id: "quedarse", label: "Quedarte en el club", detail: "Cuidás el puesto que te paga", effects: { form: 3, fitness: 4, nationalBoost: -2 } }
+    ]
+  },
+  {
+    id: "defensa-6-0",
+    minAge: 20, maxAge: 33,
+    eyebrow: "Pizarrón",
+    title: "Te quieren de central de la 6-0",
+    body: "Aprender a defender adentro te da minutos que hoy no tenés, pero te saca del ataque.",
+    choices: [
+      { id: "aprender", label: "Aprender el rol", detail: "Más caminos · menos protagonismo", effects: { rating: 2, potential: 2, form: -1 } },
+      { id: "atacar", label: "Seguir siendo atacante", detail: "Tu juego, tu riesgo", effects: { form: 2, loyalty: -1 } }
+    ]
+  },
+  {
+    id: "cesion",
+    minAge: 18, maxAge: 23,
+    eyebrow: "Plan de desarrollo",
+    title: "Una cesión para jugar de verdad",
+    body: "Un año en un club más chico, jugando los 60 minutos, y volvés.",
+    choices: [
+      { id: "aceptar-cesion", label: "Aceptar la cesión", detail: "Una temporada de minutos", loanOffer: true, effects: { potential: 2, form: 2, loyalty: 1 } },
+      { id: "quedarse-pelear", label: "Quedarte a pelearla", detail: "Banco, pero en el club grande", effects: { form: 1, loyalty: 2, fitness: -1 } }
+    ]
+  },
+  {
+    id: "roja-directa",
+    minAge: 19, maxAge: 35,
+    eyebrow: "Comité de disciplina",
+    title: "Roja directa y expediente",
+    body: "Un impacto en la cabeza en contraataque. La federación pide explicaciones.",
+    choices: [
+      { id: "disculparse", label: "Pedir disculpas públicas", detail: "Bajás la sanción · perdés carácter", effects: { fame: -1, loyalty: 2, risk: -1 } },
+      { id: "bancarsela", label: "Bancártela", detail: "El vestuario te respeta · tres fechas afuera", effects: { fame: 2, form: -2, risk: 1 } }
+    ]
+  },
+  {
+    id: "crisis-club",
+    minAge: 21, maxAge: 36,
+    eyebrow: "Vestuario",
+    title: "El club no paga hace tres meses",
+    body: "Podés encabezar el reclamo del plantel o mirar para otro lado y jugar.",
+    choices: [
+      { id: "encabezar", label: "Encabezar el reclamo", detail: "Te respetan · te marcan", effects: { loyalty: 3, fame: 1, fitness: -3, risk: 1 } },
+      { id: "jugar", label: "Sólo jugar", detail: "Guardás energía · perdés peso", effects: { fitness: 3, form: 1, loyalty: -2 } }
+    ]
+  },
+  {
+    id: "capitania",
+    minAge: 25, maxAge: 35,
+    eyebrow: "Antes del sorteo",
+    title: "Te ofrecen la cinta",
+    body: "Ser capitán te da voz en el club y la culpa de cada noche mala.",
+    choices: [
+      { id: "aceptar-cinta", label: "Ponerte la cinta", detail: "Liderás · cargás", effects: { loyalty: 4, fame: 2, fitness: -3 } },
+      { id: "sin-cinta", label: "Seguir sin cinta", detail: "Cuidás tu juego", effects: { form: 2, fitness: 3, loyalty: -1 } }
+    ]
+  },
+  {
+    id: "volver-a-casa",
+    minAge: 30, maxAge: 37,
+    eyebrow: "Un llamado desde casa",
+    title: "Tu club de origen quiere tus últimos años",
+    body: "Volver a la liga donde empezaste, o exprimir el último contrato grande en Europa.",
+    choices: [
+      { id: "volver", label: "Volver a casa", detail: "Cerrar el círculo", homeOffer: true, effects: { fame: 1, loyalty: 4, form: 1 } },
+      { id: "seguir-afuera", label: "Seguir afuera", detail: "El nivel más alto hasta el final", effects: { rating: 1, fame: 2, loyalty: -2 } }
+    ]
+  },
+  {
+    id: "mentor",
+    minAge: 31, maxAge: 37,
+    eyebrow: "Últimos capítulos",
+    title: "Un pibe de 18 te pide consejos",
+    body: "Es el que va a ocupar tu lugar. Podés enseñarle todo o hacérselo ganar.",
+    choices: [
+      { id: "ensenar", label: "Enseñarle todo", detail: "Legado más allá de los números", effects: { loyalty: 4, fame: 2, rating: -1, fitness: 2 } },
+      { id: "que-lo-gane", label: "Que se lo gane", detail: "Un último pico egoísta", effects: { rating: 2, form: 3, loyalty: -2, risk: 1 } }
+    ]
+  }
+];
+
+// ---------------------------------------------------------------------------
+// Ciclo de vida de la carrera
+// ---------------------------------------------------------------------------
+
+export function createCareer(profile, rng = Math.random) {
+  const country = countryOf(profile.country);
+  const position = positionOf(profile.position);
+  const pace = PACES.some((p) => p.value === Number(profile.pace)) ? Number(profile.pace) : 2;
+
+  return {
+    id: `${Date.now().toString(36)}-${between(1000, 9999, rng)}`,
+    player: {
+      lastName: String(profile.lastName || "PIBE").trim().slice(0, 16).toUpperCase() || "PIBE",
+      number: clamp(Number(profile.number) || 7, 1, 99),
+      hand: profile.hand === "Zurda" ? "Zurda" : "Diestra",
+      country: country.code,
+      countryName: country.name,
+      flag: country.flag,
+      position: position.code,
+      positionName: position.name
+    },
+    pace,
+    age: START_AGE,
+    retirementAge: RETIREMENT_AGE,
+    seasonYear: START_SEASON,
+    club: { id: "free-agent", name: "Sin club", strength: 1, freeAgent: true, country: country.code },
+    firstClub: null,
+    rating: 50,
+    potential: between(76, 93, rng),
+    maxRating: 50,
+    fitness: 84,
+    form: 0,
+    fame: 0,
+    loyalty: 0,
+    risk: 0,
+    nationalBoost: 0,
+    contractYears: 0,
+    roleOverride: null,
+    loan: null,
+    squadRole: "juvenil",
+    timeline: [],
+    decisions: [],
+    trophies: [],
+    awards: [],
+    totals: {
+      seasons: 0, matches: 0, goals: 0, assists: 0, shots: 0,
+      saves: 0, shotsFaced: 0, twoMinutes: 0, redCards: 0,
+      caps: 0, nationalGoals: 0, transfers: 0, loans: 0
+    },
+    pendingEvent: null,
+    latestBlock: [],
+    ended: false,
+    verdict: null,
+    score: 0
+  };
+}
+
+function academyOffers(state, rng) {
+  const home = countryOf(state.player.country);
+  const pool = CLUBS.filter((club) => club.country === home.code && club.strength <= 3);
+  const offers = sampleUnique(pool.length >= 3 ? pool : CLUBS.filter((c) => c.strength <= 2), 3, rng);
+  return {
+    id: "inferiores",
+    kind: "club-offer",
+    eyebrow: "Inferiores",
+    title: "¿Dónde empieza tu carrera?",
+    body: "Tres clubes te quieren en su plantel juvenil. Elegí de dónde salís.",
+    choices: offers.map((club, index) => clubChoice(state, club, "firmar", index))
+  };
+}
+
+function marketEvent(state, rng) {
+  const offers = transferOffers(state, rng, 2);
+  return {
+    id: `mercado-${state.decisions.length}`,
+    kind: "club-offer",
+    eyebrow: "Mercado de pases",
+    title: "Elegí tu próximo club",
+    body: "Llegaron ofertas después de tu última temporada. Aceptá una o quedate.",
+    choices: [
+      ...offers.map((club, index) => clubChoice(state, club, "firmar", index)),
+      clubChoice(state, state.club, "seguir", 2)
+    ]
+  };
+}
+
+function contractExpiryEvent(state, rng) {
+  const offers = transferOffers(state, rng, 2);
+  return {
+    id: `contrato-${state.decisions.length}`,
+    kind: "contract-offer",
+    eyebrow: "Fin de contrato",
+    title: "Se te vence el contrato",
+    body: "Renovar con el club que te conoce, o salir libre a otro proyecto.",
+    choices: [
+      clubChoice(state, state.club, "renovar", 0),
+      ...offers.map((club, index) => clubChoice(state, club, "libre", index + 1))
+    ]
+  };
+}
+
+function finalCycleEvent(state, rng) {
+  const offers = transferOffers(state, rng, 2, true);
+  return {
+    id: "ultimo-contrato",
+    kind: "club-offer",
+    eyebrow: "Último contrato",
+    title: "Una decisión más",
+    body: "Dos clubes quieren tu experiencia. Firmá un último capítulo o retirate ahora.",
+    choices: [
+      ...offers.map((club, index) => clubChoice(state, club, "firmar", index)),
+      { id: "retirarse", kind: "retire", action: "retire", label: "Retirarte", detail: "Colgar las zapatillas", effects: { retireNow: true } }
+    ]
+  };
+}
+
+function loanDestination(state, rng) {
+  const pool = CLUBS.filter((club) => club.id !== state.club.id && club.strength < state.club.strength);
+  const home = countryOf(state.player.country);
+  const domestic = pool.filter((club) => club.country === home.code);
+  return pick(domestic.length ? domestic : pool.length ? pool : CLUBS, rng);
+}
+
+function chooseSpecialEvent(state, rng) {
+  const home = countryOf(state.player.country);
+  const available = SPECIAL_EVENTS.filter(
+    (event) =>
+      state.age >= event.minAge && state.age <= event.maxAge &&
+      (event.id !== "cesion" || state.club.strength >= 2) &&
+      (event.id !== "volver-a-casa" || state.club.country !== home.code)
+  );
+  if (!available.length) return marketEvent(state, rng);
+
+  const recent = state.decisions.slice(-4).map((d) => d.eventId);
+  const fresh = available.filter((event) => !recent.includes(event.id));
+  const event = structuredClone(pick(fresh.length ? fresh : available, rng));
+  event.kind = "career-event";
+
+  const fill = (predicate, club, id) => {
+    const choice = event.choices.find(predicate);
+    if (!choice || !club) return;
+    Object.assign(choice, clubChoice(state, club, id === "aceptar-cesion" ? "cedido" : "firmar", 0), {
+      id,
+      effects: choice.effects,
+      ...(id === "aceptar-cesion" ? { loanOffer: true } : {})
+    });
+  };
+
+  fill((c) => c.loanOffer, loanDestination(state, rng), "aceptar-cesion");
+  fill((c) => c.offerExit, transferOffers(state, rng, 1)[0], "salir");
+  fill(
+    (c) => c.homeOffer,
+    pick(CLUBS.filter((club) => club.country === home.code && club.id !== state.club.id), rng),
+    "volver"
+  );
+  return event;
+}
+
+function chooseNextEvent(state, rng) {
+  if (state.age >= state.retirementAge - state.pace) return finalCycleEvent(state, rng);
+  if (state.firstClub && state.contractYears <= 0) return contractExpiryEvent(state, rng);
+  const index = state.decisions.length;
+  return index > 0 && index % 2 === 0 ? chooseSpecialEvent(state, rng) : marketEvent(state, rng);
+}
+
+function applyChoice(state, choice, event, rng) {
+  const outcome =
+    event.id === "competencia-puesto" && choice.id === "pelear"
+      ? (rng() < 0.5 ? "titular" : "rotacion")
+      : null;
+  if (outcome) state.roleOverride = { key: outcome, seasonsLeft: state.pace };
+
+  const effects = choice.effects || {};
+  state.rating = clamp(state.rating + (effects.rating || 0), 46, 99);
+  state.potential = clamp(state.potential + (effects.potential || 0), state.rating, 99);
+  state.fitness = clamp(state.fitness + (effects.fitness || 0), 35, 100);
+  state.form = clamp(state.form + (effects.form || 0), -6, 8);
+  state.fame = clamp(state.fame + (effects.fame || 0), -5, 50);
+  state.loyalty = clamp(state.loyalty + (effects.loyalty || 0), -20, 50);
+  state.risk = clamp(state.risk + (effects.risk || 0), 0, 10);
+  state.nationalBoost = clamp(state.nationalBoost + (effects.nationalBoost || 0), 0, 14);
+
+  if (choice.club) {
+    const destination = { ...choice.club };
+    if (choice.action === "cedido") {
+      state.loan = { parentClub: { ...state.club }, seasonsLeft: 1 };
+      state.totals.loans += 1;
+    } else if (!state.firstClub) {
+      state.firstClub = { ...destination };
+    } else if (destination.id !== state.club.id) {
+      state.totals.transfers += 1;
+    }
+    state.club = destination;
+    if (choice.contractYears) state.contractYears = choice.contractYears;
+  }
+
+  if (effects.retireNow) state.retireNow = true;
+
+  state.decisions.push({
+    age: state.age,
+    year: state.seasonYear,
+    kind: event.kind,
+    eventId: event.id,
+    event: event.title,
+    choiceId: choice.id,
+    choice: choice.label,
+    club: choice.club?.name || null,
+    ...(outcome ? { outcome } : {})
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Simulación de temporada
+// ---------------------------------------------------------------------------
+
+function ratingCurve(state, rng) {
+  const { age } = state;
+  if (age <= 23) return Math.max(0, (state.potential - state.rating) * (0.16 + rng() * 0.07));
+  if (age <= 29) return rng() < 0.75 ? 0.4 + rng() * 1.5 : -rng() * 0.6;
+  if (age <= 32) return (rng() - 0.55) * 1.3;
+  return -(0.4 + rng() * (age - 31) * 0.3);
+}
+
+function simulateSeason(state, rng) {
+  const position = positionOf(state.player.position);
+  const role = projectSquadRole(state);
+  const { age, seasonYear: year } = state;
+
+  let change = ratingCurve(state, rng) + state.form * 0.08;
+  const injuryChance = clamp(0.05 + state.risk * 0.02 + (100 - state.fitness) * 0.002, 0.03, 0.34);
+  const injured = rng() < injuryChance;
+  if (injured) {
+    change -= 0.5 + rng() * 1.8;
+    state.fitness -= between(6, 16, rng);
+  }
+  state.rating = clamp(Math.round((state.rating + change) * 10) / 10, 46, state.potential);
+  state.maxRating = Math.max(state.maxRating, state.rating);
+
+  const availability = injured ? 0.5 + rng() * 0.25 : 0.85 + rng() * 0.15;
+  const selection = clamp(role.share + state.form * 0.014 + state.loyalty * 0.0015, 0.3, 1);
+  const matches = round(MATCHES_PER_SEASON * availability * selection);
+  const minutes = round(matches * between(role.minutesMin, role.minutesMax, rng));
+
+  const performance = clamp(
+    (state.rating - 50) / 36 + state.form * 0.025 + state.club.strength * 0.03,
+    0.35, 1.3
+  );
+
+  const keeper = Boolean(position.keeper);
+  const goals = keeper ? 0 : noisy(matches * position.goalRate * performance, rng);
+  const assists = noisy(matches * position.assistRate * performance, rng, 0.35);
+  const shots = keeper ? 0 : round(goals / clamp(0.5 + performance * 0.16, 0.42, 0.72));
+  const shotsFaced = keeper ? round(matches * between(24, 32, rng)) : 0;
+  const savePct = keeper ? clamp(0.24 + (state.rating - 50) * 0.0055 + state.club.strength * 0.006, 0.22, 0.42) : 0;
+  const saves = keeper ? round(shotsFaced * savePct) : 0;
+  const twoMinutes = round(matches * (position.line === "PIV" || position.line === "LAT" ? 0.34 : 0.16) * (0.7 + rng() * 0.6));
+  const redCards = rng() < 0.06 + state.risk * 0.012 ? 1 : 0;
+
+  const season = {
+    year, age,
+    club: state.club.name,
+    clubId: state.club.id,
+    league: state.club.leagueName,
+    country: state.club.countryName,
+    strength: state.club.strength,
+    rating: Math.round(state.rating),
+    role: role.key,
+    loan: Boolean(state.loan),
+    matches, minutes, goals, assists, shots, saves, shotsFaced,
+    savePct: keeper ? Math.round(savePct * 100) : null,
+    shotPct: shots ? Math.round((goals / shots) * 100) : null,
+    twoMinutes, redCards, injured,
+    honours: []
+  };
+
+  // --- títulos de club --------------------------------------------------
+  const titleChance = clamp(
+    0.02 + state.club.strength * 0.04 + Math.max(0, state.rating - 72) * 0.006, 0.03, 0.4
+  );
+  if (rng() < titleChance) addTrophy(state, season, "league", { league: state.club.leagueName },
+      state.club.leagueName, 26 + state.club.strength * 4);
+  if (rng() < titleChance * 0.6) addTrophy(state, season, "cup", { country: state.club.country },
+      `Copa de ${state.club.countryName}`, 18);
+  if (state.club.strength >= 4 && rng() < titleChance * 0.4) {
+    addTrophy(state, season, "champions", {}, "EHF Champions League", 70);
+  } else if (state.club.strength === 3 && rng() < titleChance * 0.3) {
+    addTrophy(state, season, "european-league", {}, "EHF European League", 34);
+  }
+
+  // --- selección --------------------------------------------------------
+  const nationalQuality = state.rating + state.nationalBoost + state.fame * 0.08;
+  let caps = 0;
+  let nationalGoals = 0;
+  if (nationalQuality >= 68 && rng() < clamp((nationalQuality - 64) / 28, 0.1, 0.94)) {
+    caps = between(4, 14, rng);
+    nationalGoals = keeper ? 0 : noisy(caps * position.goalRate * 0.8, rng, 0.5);
+    if (year % 2 === 1 && nationalQuality >= 80 && rng() < 0.06 + (nationalQuality - 79) * 0.008) {
+      addTrophy(state, season, "worlds", {}, "Campeonato Mundial IHF", 130);
+    }
+    if (year % 4 === 0 && nationalQuality >= 84 && rng() < 0.05) {
+      addTrophy(state, season, "olympics", {}, "Juegos Olímpicos", 150);
+    }
+    if (year % 2 === 0 && nationalQuality >= 76 && rng() < 0.09) {
+      const confederation = countryOf(state.player.country).confederation;
+      addTrophy(state, season, confederation === "EHF" ? "euro" : "continental", {},
+        confederation === "EHF" ? "EHF Euro" : "Campeonato continental", 55);
+    }
+  }
+
+  // --- premios individuales --------------------------------------------
+  const awardScore = keeper
+    ? state.rating + (season.savePct || 0) * 1.4 + season.honours.length * 12
+    : state.rating + goals * 0.4 + assists * 0.5 + season.honours.length * 12;
+  // El premio al mejor del mundo se gana una vez cada muchos años: cada uno que
+  // ya tenés hace mucho menos probable el siguiente. Sin esto, un jugador de 92
+  // se lo lleva casi todas las temporadas y la vitrina pierde sentido.
+  const alreadyBest = state.awards.filter((award) => award.key === "ihf-player").length;
+  const bestChance = clamp((awardScore - 110) / 90, 0.06, 0.6) / (1 + alreadyBest * 2.4);
+  if (awardScore >= 128 && rng() < bestChance) {
+    addAward(state, season, "ihf-player", {}, "Mejor jugador del mundo IHF", 95);
+  } else if (!keeper && goals >= 150 && rng() < 0.3) {
+    addAward(state, season, "top-scorer", {}, "Máximo goleador de la liga", 40);
+  } else if (rng() < 0.12 && state.rating >= 80) {
+    addAward(state, season, "all-star", {}, "Equipo ideal del torneo", 30);
+  }
+
+  // --- acumulados -------------------------------------------------------
+  const totals = state.totals;
+  totals.seasons += 1;
+  totals.matches += matches;
+  totals.goals += goals;
+  totals.assists += assists;
+  totals.shots += shots;
+  totals.saves += saves;
+  totals.shotsFaced += shotsFaced;
+  totals.twoMinutes += twoMinutes;
+  totals.redCards += redCards;
+  totals.caps += caps;
+  totals.nationalGoals += nationalGoals;
+
+  state.squadRole = role.key;
+  state.timeline.push(season);
+
+  if (state.roleOverride && --state.roleOverride.seasonsLeft <= 0) state.roleOverride = null;
+  if (state.loan && --state.loan.seasonsLeft <= 0) {
+    state.club = { ...state.loan.parentClub };
+    state.loan = null;
+    state.form = clamp(state.form + 1, -5, 7);
+  }
+  if (state.contractYears > 0) state.contractYears -= 1;
+
+  state.form = clamp(state.form + (performance > 0.9 ? 1 : -1) + (rng() < 0.35 ? 1 : 0), -5, 7);
+  state.fitness = clamp(state.fitness + between(1, 6, rng) - (injured ? 3 : 0), 35, 100);
+  state.nationalBoost = Math.max(0, state.nationalBoost - 1);
+  state.age += 1;
+  state.seasonYear += 1;
+
+  return season;
+}
+
+/**
+ * Los honores se guardan como clave + parámetros, no como texto: la capa de
+ * i18n los traduce. `name` queda como respaldo en español por si falta la
+ * traducción.
+ */
+function addHonour(list, state, season, key, params, name, weight) {
+  const item = { key, params, name, weight, year: season.year, age: season.age, club: season.club };
+  state[list].push(item);
+  season.honours.push({ key, params, name });
+  return item;
+}
+
+const addTrophy = (state, season, key, params, name, weight) =>
+  addHonour("trophies", state, season, key, params, name, weight);
+
+const addAward = (state, season, key, params, name, weight) =>
+  addHonour("awards", state, season, key, params, name, weight);
+
+// ---------------------------------------------------------------------------
+// Cierre
+// ---------------------------------------------------------------------------
+
+const VERDICTS = [
+  { min: 1550, key: "inmortal", title: "Inmortal del handball", line: "Una era lleva tu nombre. Los números dejaron de ser creíbles hace rato." },
+  { min: 1250, key: "icono", title: "Ícono mundial", line: "Finales grandes, títulos y una carrera que pasó por encima de un solo escudo." },
+  { min: 900, key: "leyenda", title: "Leyenda de club", line: "Una generación entera aprendió el juego mirándote a vos." },
+  { min: 450, key: "idolo", title: "Ídolo de tribuna", line: "No hizo falta ser perfecto. Te ganaste cantitos, cicatrices y cariño para siempre." },
+  { min: 0, key: "trotamundos", title: "Trotamundos", line: "Cada camiseta fue un capítulo. El camino terminó siendo la historia." }
+];
+
+function finishCareer(state) {
+  const keeper = positionOf(state.player.position).keeper;
+  const trophyWeight = state.trophies.reduce((sum, item) => sum + item.weight, 0);
+  const awardWeight = state.awards.reduce((sum, item) => sum + item.weight, 0);
+  const production = keeper
+    ? state.totals.saves * 0.06
+    : state.totals.goals * 0.05 + state.totals.assists * 0.045 + state.totals.nationalGoals * 0.35;
+  const paceFactor = PACES.find((p) => p.value === state.pace).scoreFactor;
+
+  state.score = round(
+    (state.totals.matches * 0.12 + production + state.totals.caps * 0.4 +
+      trophyWeight * 0.55 + awardWeight * 0.65 + state.maxRating * 1.5 +
+      Math.max(0, state.loyalty) + state.fame * 0.8) * paceFactor
+  );
+  state.verdict = VERDICTS.find((verdict) => state.score >= verdict.min);
+  state.ended = true;
+  state.pendingEvent = null;
+}
+
+export function advanceCareer(state, choiceId = null, rng = Math.random) {
+  if (state.ended) return state;
+
+  if (!state.pendingEvent && !state.firstClub) {
+    state.pendingEvent = academyOffers(state, rng);
+    return state;
+  }
+
+  if (state.pendingEvent) {
+    const choice = state.pendingEvent.choices.find((entry) => entry.id === choiceId);
+    if (!choice) throw new Error("Hace falta una decisión válida.");
+    applyChoice(state, choice, state.pendingEvent, rng);
+    state.pendingEvent = null;
+    if (state.retireNow) {
+      finishCareer(state);
+      return state;
+    }
+  }
+
+  state.latestBlock = [];
+  for (let index = 0; index < state.pace && state.age < state.retirementAge; index += 1) {
+    state.latestBlock.push(simulateSeason(state, rng));
+  }
+
+  if (state.age >= state.retirementAge) finishCareer(state);
+  else state.pendingEvent = chooseNextEvent(state, rng);
+
+  return state;
+}
+
+export function careerProgress(state) {
+  return clamp(state.totals.seasons / (RETIREMENT_AGE - START_AGE), 0, 1);
+}
+
+export const MAJOR_TROPHIES = ["worlds", "olympics", "champions"];
+
+export function shareText(state) {
+  if (!state.ended) return "";
+  const keeper = positionOf(state.player.position).keeper;
+  const major = state.trophies.filter((item) =>
+    ["worlds", "olympics", "champions"].includes(item.key)
+  ).length;
+
+  return [
+    `${state.player.flag} ${state.player.lastName} — ${state.verdict.title}`,
+    keeper
+      ? `${state.totals.matches} partidos · ${state.totals.saves} atajadas`
+      : `${state.totals.matches} partidos · ${state.totals.goals} goles · ${state.totals.assists} asistencias`,
+    `${major} títulos grandes · Pico ${Math.round(state.maxRating)} VAL · ${state.totals.caps} caps`,
+    `Puntaje: ${state.score}`,
+    "¿Podés armar una carrera mejor?"
+  ].join("\n");
+}

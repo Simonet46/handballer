@@ -1,0 +1,52 @@
+[
+ {
+  "code": "GK",
+  "name": "Arquero",
+  "line": "GK",
+  "goal_rate": 0.02,
+  "assist_rate": 0.04,
+  "save_based": true
+ },
+ {
+  "code": "LW",
+  "name": "Extremo izquierdo",
+  "line": "ALA",
+  "goal_rate": 3.1,
+  "assist_rate": 0.9
+ },
+ {
+  "code": "LB",
+  "name": "Lateral izquierdo",
+  "line": "LAT",
+  "goal_rate": 3.6,
+  "assist_rate": 2.1
+ },
+ {
+  "code": "CB",
+  "name": "Central",
+  "line": "CEN",
+  "goal_rate": 2.2,
+  "assist_rate": 5.4
+ },
+ {
+  "code": "RB",
+  "name": "Lateral derecho",
+  "line": "LAT",
+  "goal_rate": 3.6,
+  "assist_rate": 2.1
+ },
+ {
+  "code": "RW",
+  "name": "Extremo derecho",
+  "line": "ALA",
+  "goal_rate": 3.1,
+  "assist_rate": 0.9
+ },
+ {
+  "code": "PV",
+  "name": "Pivote",
+  "line": "PIV",
+  "goal_rate": 2.8,
+  "assist_rate": 1.2
+ }
+]

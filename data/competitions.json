@@ -1,0 +1,68 @@
+{
+ "world": {
+  "id": "ihf-world-championship",
+  "name": "Campeonato Mundial IHF",
+  "weight": 130,
+  "cycle": "impar"
+ },
+ "olympics": {
+  "id": "olympic-games",
+  "name": "Juegos Olimpicos",
+  "weight": 150,
+  "cycle": "4-anios"
+ },
+ "confederations": {
+  "EHF": {
+   "region": "Europa",
+   "continental_primary": "EHF Champions League",
+   "continental_secondary": "EHF European League",
+   "national": "EHF Euro"
+  },
+  "PATHF": {
+   "region": "America",
+   "continental_primary": "Copa Panamericana de Clubes",
+   "continental_secondary": "Sudamericano de Clubes",
+   "national": "Campeonato Panamericano"
+  },
+  "AHF": {
+   "region": "Asia",
+   "continental_primary": "Asian Club League Championship",
+   "continental_secondary": null,
+   "national": "Campeonato Asiatico"
+  },
+  "CAHB": {
+   "region": "Africa",
+   "continental_primary": "African Handball Champions League",
+   "continental_secondary": null,
+   "national": "Campeonato Africano (CAN)"
+  },
+  "OCHF": {
+   "region": "Oceania",
+   "continental_primary": null,
+   "continental_secondary": null,
+   "national": "Oceania Handball Nations Cup"
+  }
+ },
+ "awards": [
+  {
+   "id": "ihf-world-player",
+   "name": "Mejor jugador del mundo IHF",
+   "weight": 95
+  },
+  {
+   "id": "all-star-team",
+   "name": "Equipo ideal del torneo",
+   "weight": 45
+  },
+  {
+   "id": "top-scorer",
+   "name": "Maximo goleador",
+   "weight": 40
+  },
+  {
+   "id": "best-defender",
+   "name": "Mejor defensor",
+   "weight": 35
+  }
+ ]
+}
