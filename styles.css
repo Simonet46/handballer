@@ -160,6 +160,50 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
   position: relative; font-size: 12px; font-weight: 700; letter-spacing: .08em;
 }
 
+/* ---------------------------------------------- qué pasó tras la decisión */
+.transition {
+  margin-top: 18px; padding: 18px 16px 12px; border-radius: var(--radius);
+  background: linear-gradient(160deg, var(--ink-3), var(--ink-2));
+  border: 1px solid var(--faint); cursor: pointer;
+  animation: transition-in .28s ease-out both;
+}
+.transition-years {
+  font-size: 11px; font-weight: 800; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+}
+.transition-hint {
+  font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(244, 241, 234, .32); text-align: center; margin-top: 12px;
+}
+
+.beat {
+  display: flex; align-items: center; gap: 12px;
+  padding: 9px 12px; border-radius: 12px; margin-bottom: 6px;
+  background: rgba(244, 241, 234, .05);
+  /* Aparecen escalonados: se lee como una secuencia, no como una lista. */
+  animation: beat-in .34s cubic-bezier(.18, .9, .3, 1.2) both;
+  animation-delay: calc(var(--i) * .16s + .12s);
+}
+.beat-icon { font-size: 22px; line-height: 1; width: 26px; text-align: center; }
+.beat-text { font-size: 15px; font-weight: 600; }
+.beat-good  { background: rgba(74, 222, 128, .12); color: #a7f3c0; }
+.beat-up    { background: rgba(74, 222, 128, .16); color: #a7f3c0; }
+.beat-trophy{ background: rgba(240, 192, 44, .14); color: #f7d874; }
+.beat-bad   { background: rgba(232, 85, 47, .16); color: #ffb59e; }
+.beat-down  { background: rgba(232, 85, 47, .16); color: #ffb59e; }
+.beat-move  { background: rgba(244, 241, 234, .08); }
+.beat-big .beat-text { font-size: 17px; font-weight: 800; }
+.beat-big .beat-icon { font-size: 28px; }
+
+@keyframes transition-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes beat-in {
+  from { opacity: 0; transform: translateX(-14px) scale(.96); }
+  to   { opacity: 1; transform: none; }
+}
+
 .recap { margin-top: 16px; display: grid; gap: 6px; }
 .recap h3 {
   font-size: 11px; letter-spacing: .12em; text-transform: uppercase;

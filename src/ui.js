@@ -276,18 +276,154 @@ function renderDecision() {
   }
 }
 
+
+// ---------------------------------------------------------------------------
+// Transición entre decisiones: qué te pasó por haber elegido eso
+// ---------------------------------------------------------------------------
+
+const ROLE_RANK = { juvenil: 0, rotacion: 1, titular: 2, franquicia: 3 };
+
+/** Foto del estado justo antes de simular, para poder comparar después. */
+function snapshot() {
+  return {
+    clubId: career.club.id,
+    prestige: career.club.prestige ?? 3,
+    rating: career.rating,
+    role: ROLE_RANK[career.squadRole] ?? 0,
+    caps: career.totals.caps,
+    position: career.player.position,
+    year: career.seasonYear,
+  };
+}
+
+/**
+ * Traduce el bloque de temporadas recién simulado a una lista corta de cosas
+ * que pasaron. Es el feedback de la decisión: sin esto, elegir era apretar un
+ * botón y ver números cambiar sin saber por qué.
+ */
+function summarize(before) {
+  const block = career.latestBlock || [];
+  if (!block.length) return [];
+  const beats = [];
+
+  // Cambio de club, y si eso fue subir o bajar de categoría.
+  if (career.club.id !== before.clubId && !career.club.freeAgent) {
+    const now = career.club.prestige ?? 3;
+    const kind = now > before.prestige ? "up" : now < before.prestige ? "down" : "move";
+    beats.push({
+      kind,
+      icon: kind === "up" ? "⬆" : kind === "down" ? "⬇" : "✈",
+      text: t(`beats.${kind}`, { club: career.club.name, league: career.club.leagueName }),
+    });
+  }
+
+  for (const season of block) {
+    for (const honour of season.honours) {
+      const major = ["worlds", "olympics", "champions"].includes(honour.key);
+      beats.push({
+        kind: "trophy",
+        icon: major ? "🏆" : honour.key === "ihf-player" ? "🥇" : "🏅",
+        text: `${honourName(t, honour)} · ${season.year}`,
+        big: major,
+      });
+    }
+    if (season.scandal) {
+      beats.push({ kind: "bad", icon: "⚠", text: t(`scandals.${season.scandal}`), big: true });
+    }
+    if (season.injured) {
+      beats.push({ kind: "bad", icon: "🚑", text: t("beats.injured", { year: season.year }) });
+    }
+    if (season.swap) {
+      beats.push({
+        kind: season.swap === "encajo" ? "good" : "bad",
+        icon: "🔁",
+        text: t(`swap.${season.swap}`),
+      });
+    }
+  }
+
+  const rating = Math.round(career.rating - before.rating);
+  if (rating !== 0) {
+    beats.push({
+      kind: rating > 0 ? "good" : "bad",
+      icon: rating > 0 ? "📈" : "📉",
+      text: t(rating > 0 ? "beats.better" : "beats.worse", { n: Math.abs(rating) }),
+    });
+  }
+
+  const role = ROLE_RANK[career.squadRole] ?? 0;
+  if (role > before.role) {
+    beats.push({ kind: "good", icon: "⭐", text: t("beats.role", { role: t(`roles.${career.squadRole}`) }) });
+  }
+
+  const caps = career.totals.caps - before.caps;
+  if (caps > 0 && before.caps === 0) {
+    beats.push({ kind: "good", icon: "🌍", text: t("beats.debut"), big: true });
+  }
+
+  // Cinco es lo que se lee de un vistazo. Lo grande manda.
+  return beats.sort((a, b) => (b.big ? 1 : 0) - (a.big ? 1 : 0)).slice(0, 5);
+}
+
+let transitionTimer = null;
+
+function showTransition(before, done) {
+  const beats = summarize(before);
+  const box = el("transition");
+  if (!beats.length) {
+    done();
+    return;
+  }
+
+  const block = career.latestBlock;
+  const span = block.length > 1
+    ? `${block[0].year}–${block.at(-1).year}`
+    : `${block[0].year}`;
+
+  box.innerHTML =
+    `<p class="transition-years">${span}</p>` +
+    beats.map((beat, index) =>
+      `<div class="beat beat-${beat.kind}${beat.big ? " beat-big" : ""}" style="--i:${index}">
+         <span class="beat-icon">${beat.icon}</span>
+         <span class="beat-text">${beat.text}</span>
+       </div>`).join("") +
+    `<p class="transition-hint">${t("beats.tap")}</p>`;
+
+  // Mientras se cuenta lo que pasó, la decisión ya contestada y el resumen
+  // viejo se van: si no, quedan en pantalla y confunden.
+  el("recap").hidden = true;
+  document.querySelector(".decision").hidden = true;
+  box.hidden = false;
+  box.scrollIntoView({ behavior: "smooth", block: "center" });
+
+  const finish = () => {
+    clearTimeout(transitionTimer);
+    box.removeEventListener("click", finish);
+    box.hidden = true;
+    document.querySelector(".decision").hidden = false;
+    done();
+  };
+  box.addEventListener("click", finish);
+  transitionTimer = setTimeout(finish, 1400 + beats.length * 420);
+}
+
 function choose(choiceId) {
   if (busy) return;
   busy = true;
+  const before = snapshot();
   advanceCareer(career, choiceId, rng);
-  busy = false;
-  if (career.ended) {
-    show("result");
-    renderResult();
-  } else {
-    renderCareer();
-    view.career.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
+
+  showTransition(before, () => {
+    busy = false;
+    if (career.ended) {
+      show("result");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      renderResult();
+    } else {
+      renderCareer();
+      view.career.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
 }
 
 // ---------------------------------------------------------------------------
