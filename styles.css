@@ -230,6 +230,19 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
   text-transform: uppercase; color: var(--muted);
 }
 
+.result-climb {
+  display: grid; grid-template-columns: 1fr auto; gap: 2px 12px;
+  align-items: baseline; margin-top: 12px; padding: 14px 18px;
+  border-radius: var(--radius); background: rgba(240, 192, 44, .12);
+  border: 1px solid rgba(240, 192, 44, .3);
+}
+.result-climb span {
+  font-size: 12px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--gold);
+}
+.result-climb strong { font-size: 24px; font-weight: 800; color: var(--gold); }
+.result-climb em { grid-column: 1 / -1; font-style: normal; font-size: 14px; color: var(--muted); }
+
 .result-score {
   display: flex; justify-content: space-between; align-items: center;
   background: var(--accent); color: var(--ink); border-radius: var(--radius);

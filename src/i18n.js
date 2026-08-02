@@ -302,6 +302,11 @@ const es = {
     encajo: "Se adaptó al puesto nuevo",
     "no-encajo": "No terminó de encajar en el puesto nuevo",
   },
+  climb: {
+    label: "El salto",
+    line: "De {from} a {to}",
+    none: "Empezaste arriba y te quedaste arriba.",
+  },
   scandals: {
     doping: "Sancionado por dopaje",
     apuestas: "Investigado por filtrar información",
@@ -602,6 +607,11 @@ const fr = {
     encajo: "Il s'est adapté au nouveau poste",
     "no-encajo": "Il ne s'est jamais adapté au nouveau poste",
   },
+  climb: {
+    label: "La montée",
+    line: "De {from} à {to}",
+    none: "Tu as commencé en haut et tu y es resté.",
+  },
   scandals: {
     doping: "Suspendu pour dopage",
     apuestas: "Mis en cause pour fuite d'informations",
@@ -901,6 +911,11 @@ const de = {
   swap: {
     encajo: "Hat sich auf der neuen Position zurechtgefunden",
     "no-encajo": "Ist auf der neuen Position nie angekommen",
+  },
+  climb: {
+    label: "Der Aufstieg",
+    line: "Von {from} bis {to}",
+    none: "Du hast oben angefangen und bist oben geblieben.",
   },
   scandals: {
     doping: "Wegen Dopings gesperrt",

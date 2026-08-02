@@ -305,6 +305,18 @@ function renderResult() {
     `${t(`positions.${career.player.position}`)} · ${totals.seasons} ${t("ui.season").toLowerCase()}s`;
   el("result-score").textContent = career.score;
 
+  // El salto es el componente más grande del puntaje, así que se cuenta aparte.
+  const climbBox = el("result-climb");
+  const detail = career.climbDetail || {};
+  if (career.climb > 0 && detail.from && detail.to) {
+    climbBox.hidden = false;
+    climbBox.innerHTML = `<span>${t("climb.label")}</span>` +
+      `<strong>+${career.climb}</strong>` +
+      `<em>${t("climb.line", { from: detail.from, to: detail.to })}</em>`;
+  } else {
+    climbBox.hidden = true;
+  }
+
   const stats = [
     [t("ui.matches"), totals.matches],
     keeper ? [t("ui.saves"), totals.saves] : [t("ui.goals"), totals.goals],

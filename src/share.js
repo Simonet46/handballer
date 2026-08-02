@@ -22,6 +22,9 @@ export function shareLines(career, t) {
       ? `${t("share.matches", { n: totals.matches })} · ${t("share.savesLine", { saves: totals.saves })}`
       : `${t("share.matches", { n: totals.matches })} · ${t("share.goalsLine", { goals: totals.goals, assists: totals.assists })}`,
     `${t("share.major", { n: major })} · ${t("share.peak", { n: Math.round(career.maxRating) })} · ${t("share.caps", { n: totals.caps })}`,
+    ...(career.climb > 0 && career.climbDetail?.from
+      ? [`${t("climb.label")}: ${t("climb.line", career.climbDetail)} (+${career.climb})`]
+      : []),
     `${t("ui.score")}: ${career.score}`,
     t("share.line"),
   ];

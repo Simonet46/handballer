@@ -14,20 +14,22 @@
 // Configuración del deporte
 // ---------------------------------------------------------------------------
 
+// `scoreFactor` sólo afecta al puntaje final, no a la simulación: iguala la
+// producción entre puestos que generan volúmenes muy distintos.
 export const POSITIONS = [
-  { code: "GK", name: "Arquero", line: "GK", goalRate: 0.02, assistRate: 0.05, keeper: true },
-  { code: "LW", name: "Extremo izquierdo", line: "ALA", goalRate: 3.1, assistRate: 0.9 },
-  { code: "LB", name: "Lateral izquierdo", line: "LAT", goalRate: 3.6, assistRate: 2.1 },
-  { code: "CB", name: "Central", line: "CEN", goalRate: 2.2, assistRate: 5.4 },
-  { code: "RB", name: "Lateral derecho", line: "LAT", goalRate: 3.6, assistRate: 2.1 },
-  { code: "RW", name: "Extremo derecho", line: "ALA", goalRate: 3.1, assistRate: 0.9 },
-  { code: "PV", name: "Pivote", line: "PIV", goalRate: 2.8, assistRate: 1.2 }
+  { code: "GK", name: "Arquero", line: "GK", goalRate: 0.02, assistRate: 0.05, keeper: true, scoreFactor: 0.5 },
+  { code: "LW", name: "Extremo izquierdo", line: "ALA", goalRate: 3.1, assistRate: 0.9, scoreFactor: 1.1 },
+  { code: "LB", name: "Lateral izquierdo", line: "LAT", goalRate: 3.6, assistRate: 2.1, scoreFactor: 0.62 },
+  { code: "CB", name: "Central", line: "CEN", goalRate: 2.2, assistRate: 5.4, scoreFactor: 0.41 },
+  { code: "RB", name: "Lateral derecho", line: "LAT", goalRate: 3.6, assistRate: 2.1, scoreFactor: 0.62 },
+  { code: "RW", name: "Extremo derecho", line: "ALA", goalRate: 3.1, assistRate: 0.9, scoreFactor: 1.1 },
+  { code: "PV", name: "Pivote", line: "PIV", goalRate: 2.8, assistRate: 1.2, scoreFactor: 1.11 }
 ];
 
 export const PACES = [
-  { value: 1, name: "Intenso", detail: "Una decisión por temporada", scoreFactor: 0.75 },
+  { value: 1, name: "Intenso", detail: "Una decisión por temporada", scoreFactor: 0.84 },
   { value: 2, name: "Normal", detail: "Una decisión cada 2 temporadas", scoreFactor: 1 },
-  { value: 3, name: "Exprés", detail: "Una decisión cada 3 temporadas", scoreFactor: 1.05 }
+  { value: 3, name: "Exprés", detail: "Una decisión cada 3 temporadas", scoreFactor: 1.14 }
 ];
 
 export const SQUAD_ROLES = [
@@ -46,6 +48,21 @@ const AMATEUR_MATCHES = 22;
 // Quedarse en una liga amateur pasada cierta edad te baja el techo: ya no
 // aprendés lo que sólo se aprende entrenando todos los días.
 const AMATEUR_CEILING_AGE = 25;
+
+// Pesos base de los títulos domésticos, que se multiplican por el prestigio de
+// la liga (1 a 5). Una liga de las tres grandes vale 45; el amateur argentino, 9.
+const LEAGUE_TITLE_WEIGHT = 9;
+const CUP_WEIGHT = 4;
+
+// Desde qué prestigio de liga te empieza a ver el seleccionador. En Argentina
+// o en la segunda de España no te llaman: hay que estar en una primera seria.
+const NATIONAL_TEAM_PRESTIGE = 3;
+
+// Cuánto vale cada escalón de prestigio que subiste desde tu primer club.
+// Salir del ascenso argentino y terminar en la Starligue son cuatro escalones.
+const CLIMB_WEIGHT = 42;
+// Cuántas temporadas hay que haber jugado abajo para cobrar el salto entero.
+const CLIMB_MIN_SEASONS = 5;
 
 // Embudo geográfico: a dónde puede fichar un jugador según su edad y de dónde es.
 // En handball la ruta real de un sudamericano es liga local -> Península/Brasil ->
@@ -129,6 +146,7 @@ export function loadUniverse({ leagues, countries }) {
       confederation: league.confederation,
       countryName: league.country_name,
       amateur: Boolean(league.amateur),
+      prestige: league.prestige ?? 3,
       // Filial de un club grande: el "B" o "II". Es la puerta de entrada
       // típica del sudamericano que llega a Europa sin nombre.
       reserve: /\s(?:B|C|II)$/.test(team.name)
@@ -598,6 +616,9 @@ export function createCareer(profile, rng = Math.random) {
     loan: null,
     flags: {},
     scandals: [],
+    startPrestige: null,
+    peakPrestige: 0,
+    seasonsLow: 0,
     ceilingDropped: false,
     squadRole: "juvenil",
     timeline: [],
@@ -847,6 +868,7 @@ function applyChoice(state, choice, event, rng) {
       state.totals.loans += 1;
     } else if (!state.firstClub) {
       state.firstClub = { ...destination };
+      state.startPrestige = destination.prestige ?? 3;
     } else if (destination.id !== state.club.id) {
       state.totals.transfers += 1;
     }
@@ -882,8 +904,16 @@ function ratingCurve(state, rng) {
   const { age } = state;
   // Jugar amateur cuesta caro: entrenás de noche, después de laburar, con
   // menos cuerpo técnico y menos partidos exigentes. Se nota en la curva.
-  const amateur = state.club.amateur ? 0.65 : 1;
-  if (age <= 23) return Math.max(0, (state.potential - state.rating) * (0.16 + rng() * 0.07) * amateur);
+  // Y el club donde te formás importa: en un grande entrenás todos los días
+  // con internacionales y con cuerpo técnico de verdad. Sin esto, arrancar a
+  // propósito en la liga más chica era plata gratis por el bono de salto.
+  //
+  // Los dos castigos no se acumulan: el amateur ya es el piso.
+  const academy = state.club.amateur ? 0.72 : 0.82 + (state.club.prestige ?? 3) * 0.06;
+  const amateur = state.club.amateur ? 0.85 : 1;
+  if (age <= 23) {
+    return Math.max(0, (state.potential - state.rating) * (0.16 + rng() * 0.07) * academy);
+  }
   if (age <= 29) return (rng() < 0.75 ? 0.4 + rng() * 1.5 : -rng() * 0.6) * amateur;
   if (age <= 32) return (rng() - 0.55) * 1.3;
   return -(0.4 + rng() * (age - 31) * 0.3);
@@ -935,6 +965,7 @@ function simulateSeason(state, rng) {
     league: state.club.leagueName,
     country: state.club.countryName,
     strength: state.club.strength,
+    prestige: state.club.prestige ?? 3,
     rating: Math.round(state.rating),
     role: role.key,
     loan: Boolean(state.loan),
@@ -965,7 +996,8 @@ function simulateSeason(state, rng) {
   const nationalQuality = state.rating + state.nationalBoost + state.fame * 0.08;
   let caps = 0;
   let nationalGoals = 0;
-  if (nationalQuality >= 68 && rng() < clamp((nationalQuality - 64) / 28, 0.1, 0.94)) {
+  const scouted = (state.club.prestige ?? 3) >= NATIONAL_TEAM_PRESTIGE;
+  if (scouted && nationalQuality >= 68 && rng() < clamp((nationalQuality - 64) / 28, 0.1, 0.94)) {
     caps = between(4, 14, rng);
     nationalGoals = keeper ? 0 : noisy(caps * position.goalRate * 0.8, rng, 0.5);
     if (year % 2 === 1 && nationalQuality >= 80 && rng() < 0.06 + (nationalQuality - 79) * 0.008) {
@@ -1031,6 +1063,8 @@ function simulateSeason(state, rng) {
   totals.nationalGoals += nationalGoals;
 
   state.squadRole = role.key;
+  state.peakPrestige = Math.max(state.peakPrestige, state.club.prestige ?? 1);
+  if ((state.club.prestige ?? 1) <= (state.startPrestige ?? 3)) state.seasonsLow += 1;
   state.timeline.push(season);
 
   if (state.roleOverride && --state.roleOverride.seasonsLeft <= 0) state.roleOverride = null;
@@ -1073,26 +1107,50 @@ const addAward = (state, season, key, params, name, weight) =>
 // ---------------------------------------------------------------------------
 
 const VERDICTS = [
-  { min: 1060, key: "inmortal", title: "Inmortal del handball", line: "Una era lleva tu nombre. Los números dejaron de ser creíbles hace rato." },
-  { min: 820, key: "icono", title: "Ícono mundial", line: "Finales grandes, títulos y una carrera que pasó por encima de un solo escudo." },
-  { min: 620, key: "leyenda", title: "Leyenda de club", line: "Una generación entera aprendió el juego mirándote a vos." },
-  { min: 400, key: "idolo", title: "Ídolo de tribuna", line: "No hizo falta ser perfecto. Te ganaste cantitos, cicatrices y cariño para siempre." },
+  { min: 1170, key: "inmortal", title: "Inmortal del handball", line: "Una era lleva tu nombre. Los números dejaron de ser creíbles hace rato." },
+  { min: 925, key: "icono", title: "Ícono mundial", line: "Finales grandes, títulos y una carrera que pasó por encima de un solo escudo." },
+  { min: 695, key: "leyenda", title: "Leyenda de club", line: "Una generación entera aprendió el juego mirándote a vos." },
+  { min: 470, key: "idolo", title: "Ídolo de tribuna", line: "No hizo falta ser perfecto. Te ganaste cantitos, cicatrices y cariño para siempre." },
   { min: 0, key: "trotamundos", title: "Trotamundos", line: "Cada camiseta fue un capítulo. El camino terminó siendo la historia." }
 ];
 
 function finishCareer(state) {
-  const keeper = positionOf(state.player.position).keeper;
+  const position = positionOf(state.player.position);
   const trophyWeight = state.trophies.reduce((sum, item) => sum + item.weight, 0);
   const awardWeight = state.awards.reduce((sum, item) => sum + item.weight, 0);
-  const production = keeper
+
+  // La producción se normaliza por puesto: un arquero hace 5.000 atajadas y un
+  // pivote 700 goles, así que sin corregir elegir arquero era la mejor jugada
+  // del juego. Los factores están calibrados para que los siete puestos den
+  // medias parecidas, con un matiz a favor del arquero y el central.
+  const raw = position.keeper
     ? state.totals.saves * 0.06
-    : state.totals.goals * 0.05 + state.totals.assists * 0.045 + state.totals.nationalGoals * 0.35;
+    : state.totals.goals * 0.05 + state.totals.assists * 0.045;
+  const production = raw * position.scoreFactor + state.totals.nationalGoals * 0.5;
+
+  // Lo que más pesa: de dónde saliste y hasta dónde llegaste. Un argentino que
+  // arranca en el ascenso y termina jugando la Champions hizo el viaje entero.
+  //
+  // Pero el salto se cobra por haber estado abajo de verdad, no por pasar un
+  // año a propósito en una liga chica para cobrar el bono: sin esto, arrancar
+  // en la peor oferta de la academia valía casi 100 puntos gratis.
+  const steps = Math.max(0, state.peakPrestige - (state.startPrestige ?? 3));
+  const paidDues = Math.min(1, state.seasonsLow / CLIMB_MIN_SEASONS);
+  const climb = round(steps * CLIMB_WEIGHT * paidDues);
+
   const paceFactor = PACES.find((p) => p.value === state.pace).scoreFactor;
 
+  state.climb = climb;
+  state.climbDetail = {
+    from: state.firstClub?.leagueName || null,
+    to: state.timeline.reduce((best, season) =>
+      (season.prestige ?? 0) > (best.prestige ?? 0) ? season : best, {}).league || null,
+    steps,
+  };
   state.score = round(
-    (state.totals.matches * 0.12 + production + state.totals.caps * 0.4 +
-      trophyWeight * 0.55 + awardWeight * 0.65 + state.maxRating * 1.5 +
-      Math.max(0, state.loyalty) + state.fame * 0.8) * paceFactor
+    (state.totals.matches * 0.12 + production + state.totals.caps * 0.9 +
+      trophyWeight * 0.55 + awardWeight * 0.65 + state.maxRating * 1.1 +
+      climb + Math.max(0, state.loyalty) + state.fame * 0.8) * paceFactor
   );
   state.verdict = VERDICTS.find((verdict) => state.score >= verdict.min);
   state.ended = true;

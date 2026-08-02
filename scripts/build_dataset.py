@@ -90,6 +90,31 @@ def femebal_leagues():
     return out, crests, payload["season"]
 
 
+# Cuánto vale competir en cada liga. Manda tres cosas: los títulos que dan,
+# si desde ahí te llama tu selección, y cuánto suma haber llegado hasta ahí.
+#   5  las tres grandes de Europa
+#   4  primeras divisiones fuertes
+#   3  el resto de las primeras europeas
+#   2  segundas divisiones
+#   1  terceras y el amateur argentino
+PRESTIGE = {
+    "fra-starligue": 5, "ger-hbl": 5, "esp-asobal": 5,
+    "den-handboldligaen": 4, "hun-nbi": 4, "pol-superliga": 4,
+    "fra-proligue": 2, "ger-2hbl": 2, "esp-plata": 2,
+    "ger-3liga": 1, "esp-primera": 1,
+    "arg-liga-honor": 1, "arg-liga-honor-plata": 1, "arg-primera": 1,
+}
+DEFAULT_PRESTIGE = 3
+
+
+def prestige_of(league_id, tier, country):
+    if league_id in PRESTIGE:
+        return PRESTIGE[league_id]
+    if country == "ARG":
+        return 1
+    return {1: DEFAULT_PRESTIGE, 2: 2}.get(tier, 1)
+
+
 def build():
     leagues = []
     seen_team_ids = set()
@@ -131,6 +156,7 @@ def build():
             "country_name": country["name"],
             "confederation": country["conf"],
             "tier": entry["tier"],
+            "prestige": prestige_of(entry["id"], entry["tier"], entry["country"]),
             "startable": bool(country.get("startable")) and entry["tier"] >= 1,
             "domestic_cup": country.get("cup"),
             "super_cup": country.get("supercup"),

@@ -236,7 +236,8 @@
     "crest_source": "ehf",
     "wiki": null
    }
-  ]
+  ],
+  "prestige": 5
  },
  {
   "id": "fra-proligue",
@@ -447,7 +448,8 @@
     "crest_source": "league",
     "wiki": "fr:Union sportive de Saintes handball"
    }
-  ]
+  ],
+  "prestige": 2
  },
  {
   "id": "ger-hbl",
@@ -714,7 +716,8 @@
     "crest_source": "league",
     "wiki": "de:GWD Minden"
    }
-  ]
+  ],
+  "prestige": 5
  },
  {
   "id": "ger-2hbl",
@@ -967,7 +970,8 @@
     "crest_source": "wikipedia",
     "wiki": "de:HC Oppenweiler/Backnang"
    }
-  ]
+  ],
+  "prestige": 2
  },
  {
   "id": "ger-3liga",
@@ -1234,7 +1238,8 @@
     "crest_source": "league",
     "wiki": null
    }
-  ]
+  ],
+  "prestige": 1
  },
  {
   "id": "esp-asobal",
@@ -1473,7 +1478,8 @@
     "crest_source": "league",
     "wiki": null
    }
-  ]
+  ],
+  "prestige": 5
  },
  {
   "id": "esp-plata",
@@ -1586,7 +1592,8 @@
     "crest_source": "ehf",
     "wiki": null
    }
-  ]
+  ],
+  "prestige": 2
  },
  {
   "id": "esp-primera",
@@ -1685,7 +1692,8 @@
     "crest_source": "ehf",
     "wiki": null
    }
-  ]
+  ],
+  "prestige": 1
  },
  {
   "id": "den-handboldligaen",
@@ -1896,7 +1904,8 @@
     "crest_source": "ehf",
     "wiki": null
    }
-  ]
+  ],
+  "prestige": 4
  },
  {
   "id": "hun-nbi",
@@ -2107,7 +2116,8 @@
     "crest_source": "ehf",
     "wiki": null
    }
-  ]
+  ],
+  "prestige": 4
  },
  {
   "id": "pol-superliga",
@@ -2318,7 +2328,8 @@
     "crest_source": "ehf",
     "wiki": null
    }
-  ]
+  ],
+  "prestige": 4
  },
  {
   "id": "por-andebol-1",
@@ -2459,7 +2470,8 @@
     "crest_source": "ehf",
     "wiki": null
    }
-  ]
+  ],
+  "prestige": 3
  },
  {
   "id": "swe-handbollsligan",
@@ -2670,7 +2682,8 @@
     "crest_source": "ehf",
     "wiki": null
    }
-  ]
+  ],
+  "prestige": 3
  },
  {
   "id": "nor-ligaen",
@@ -2853,7 +2866,8 @@
     "crest_source": "ehf",
     "wiki": null
    }
-  ]
+  ],
+  "prestige": 3
  },
  {
   "id": "rou-liga-nationala",
@@ -3008,7 +3022,8 @@
     "crest_source": "ehf",
     "wiki": null
    }
-  ]
+  ],
+  "prestige": 3
  },
  {
   "id": "slo-liga-nlb",
@@ -3135,7 +3150,8 @@
     "crest_source": "ehf",
     "wiki": null
    }
-  ]
+  ],
+  "prestige": 3
  },
  {
   "id": "cro-premijer-liga",
@@ -3262,7 +3278,8 @@
     "crest_source": "ehf",
     "wiki": null
    }
-  ]
+  ],
+  "prestige": 3
  },
  {
   "id": "mkd-super-liga",
@@ -3361,7 +3378,8 @@
     "crest_source": "ehf",
     "wiki": null
    }
-  ]
+  ],
+  "prestige": 3
  },
  {
   "id": "sui-qhl",
@@ -3502,7 +3520,8 @@
     "crest_source": "wikipedia",
     "wiki": "de:RTV 1879 Basel"
    }
-  ]
+  ],
+  "prestige": 3
  },
  {
   "id": "aut-hla",
@@ -3657,7 +3676,8 @@
     "crest_source": "ehf",
     "wiki": null
    }
-  ]
+  ],
+  "prestige": 3
  },
  {
   "id": "isl-urvalsdeild",
@@ -3812,7 +3832,8 @@
     "crest_source": "ehf",
     "wiki": null
    }
-  ]
+  ],
+  "prestige": 3
  },
  {
   "id": "qat-league",
@@ -3911,7 +3932,8 @@
     "crest_source": "wikipedia",
     "wiki": "en:Al-Gharafa SC"
    }
-  ]
+  ],
+  "prestige": 3
  },
  {
   "id": "arg-liga-honor",
@@ -4150,7 +4172,8 @@
     "crest_source": "femebal",
     "wiki": null
    }
-  ]
+  ],
+  "prestige": 1
  },
  {
   "id": "arg-liga-honor-plata",
@@ -4333,7 +4356,8 @@
     "crest_source": "femebal",
     "wiki": null
    }
-  ]
+  ],
+  "prestige": 1
  },
  {
   "id": "arg-primera",
@@ -4684,6 +4708,7 @@
     "crest_source": "femebal",
     "wiki": null
    }
-  ]
+  ],
+  "prestige": 1
  }
 ]
