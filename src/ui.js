@@ -141,9 +141,9 @@ function renderCareer() {
   el("hud-flag").textContent = player.flag;
 
   const club = career.club;
-  el("hud-club").textContent = club.freeAgent ? t("ui.freeAgent") : club.name;
+  el("hud-club").textContent = club.freeAgent ? t("ui.freeAgent") : `${club.flag || ""} ${club.name}`.trim();
   el("hud-league").textContent = club.freeAgent ? "" : `${club.leagueName} · ${club.countryName}`;
-  el("hud-age").textContent = `${career.age} ${t("ui.years")}`;
+  el("hud-age").textContent = career.age;
   el("hud-rating").textContent = Math.round(career.rating);
   el("hud-role").textContent = t(`roles.${career.squadRole}`);
 
@@ -180,6 +180,7 @@ function renderLastBlock() {
       <span class="recap-club">${season.club}</span>
       <span class="recap-stat">${season.matches} ${t("ui.matches")}</span>
       <span class="recap-stat">${keeper ? `${season.saves} ${t("ui.saves")}` : `${season.goals} ${t("ui.goals")}`}</span>
+      ${season.scandal ? `<span class="tag tag-bad">⚠ ${t(`scandals.${season.scandal}`)}</span>` : ""}
       ${season.injured ? `<span class="tag tag-warn">${t("ui.injured")}</span>` : ""}
       ${season.loan ? `<span class="tag">${t("ui.loan")}</span>` : ""}
       ${season.honours.map((h) => `<span class="tag tag-gold">🏆 ${honourName(t, h)}</span>`).join("")}
@@ -205,12 +206,25 @@ function marketKey(event) {
 
 function choiceCopy(event, choice) {
   const custom = t(`events.${event.id}.choices.${choice.id}`);
-  if (custom && typeof custom === "object") return custom;
+  if (custom && typeof custom === "object") {
+    // Las opciones de club dentro de un evento narrativo muestran a quién vas.
+    if (choice.club) {
+      return {
+        ...custom,
+        label: `${choice.club.flag || ""} ${custom.label}`.trim(),
+        detail: `${choice.club.name} · ${custom.detail}`,
+        role: t(`roles.${choice.projectedRole}`),
+      };
+    }
+    return custom;
+  }
   if (choice.action === "retire") return t("market.retire");
   if (choice.club) {
+    const club = choice.club;
     return {
-      label: choice.label,
-      detail: `${t(`market.actions.${choice.action}`) || ""} · ${choice.detail}`,
+      label: `${club.flag || ""} ${choice.label}`.trim(),
+      detail: [t(`market.actions.${choice.action}`), club.leagueName, club.countryName]
+        .filter(Boolean).join(" · "),
       role: t(`roles.${choice.projectedRole}`),
     };
   }
@@ -321,8 +335,8 @@ function renderResult() {
     const years = stint.from === stint.to ? stint.from : `${stint.from}–${stint.to}`;
     return `<li>
       <img src="${crestSrc(club)}" alt="" class="timeline-crest" loading="lazy">
-      <span class="timeline-club">${stint.club}</span>
-      <span class="timeline-league">${stint.league}</span>
+      <span class="timeline-club">${club.flag || ""} ${stint.club}</span>
+      <span class="timeline-league">${stint.league} · ${stint.country}</span>
       <span class="timeline-years">${years}</span>
       ${stint.honours.length ? `<span class="timeline-honours">${stint.honours.map(() => "🏆").join("")}</span>` : ""}
     </li>`;

@@ -43,11 +43,12 @@
   "name": "España",
   "flag": "🇪🇸",
   "confederation": "EHF",
-  "startable": false,
+  "startable": true,
   "domestic_cup": "Copa del Rey",
   "pyramid": [
    "esp-asobal",
-   "esp-plata"
+   "esp-plata",
+   "esp-primera"
   ]
  },
  {

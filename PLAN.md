@@ -34,10 +34,11 @@ node scripts/smoke-test.mjs 600
 | 🇫🇷 Francia | Starligue (16) | Proligue (15) | Nationale 1 (12) |
 | 🇩🇪 Alemania | Handball-Bundesliga (18) | 2. Bundesliga (18) | 3. Liga (24) |
 | 🇦🇷 Argentina | Liga de Honor (16) | Liga de Honor Plata (12) | 1ª División (24) |
+| 🇪🇸 España | Liga ASOBAL (16) | División de Honor Plata (14) | Primera División (12) |
 
 **Argentina sale del padrón oficial de FeMeBal 2025, con el escudo real de los 52 clubes.**
 
-Más 20 ligas destino: ASOBAL y Plata, Dinamarca, Hungría, Polonia, Portugal,
+Más 19 ligas destino: ASOBAL y Plata, Dinamarca, Hungría, Polonia, Portugal,
 Suecia, Noruega, Rumania, Eslovenia, Croacia, Macedonia, Suiza, Austria,
 Islandia, Qatar, Egipto, Túnez, Brasil, Japón.
 

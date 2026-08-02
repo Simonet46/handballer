@@ -153,7 +153,8 @@ def main():
     # que el club usa de verdad y no arrastran dudas de licencia.
     for league in leagues:
         for team in league["teams"]:
-            if team.get("crest") and team.get("crest_source") != "wikipedia":
+            # Wikipedia es la última opción: no pisa a una liga oficial.
+            if team.get("crest") and team.get("crest_source") not in (None, "wikipedia"):
                 continue
             entry = manifest.get(team["id"])
             if entry:

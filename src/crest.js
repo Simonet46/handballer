@@ -53,12 +53,18 @@ export function monogramCrest(club, size = 96) {
 }
 
 /**
- * Qué escudos reales se muestran. Sólo los que vienen de una fuente oficial y
- * pública (hoy: el Tournament Tracker de FeMeBal). El resto va con monograma:
- * se ve consistente y no hay ningún reclamo de marca posible.
- * Ver docs/LICENCIAS.md — para mostrar todos, agregá "wikipedia" al set.
+ * Qué escudos reales se muestran.
+ *
+ *   league  → la web oficial de la liga (LNH, HBL, ASOBAL)
+ *   femebal → el Tournament Tracker de la federación metropolitana
+ *   ehf     → la API pública de la Federación Europea
+ *   wikipedia → último recurso
+ *
+ * Los tres primeros son la federación o la liga publicando el escudo que el
+ * propio club le dio. Para apagar todos de golpe, dejá el set vacío: el juego
+ * sigue funcionando con monogramas. Ver docs/LICENCIAS.md.
  */
-export const ALLOWED_CREST_SOURCES = new Set(["femebal"]);
+export const ALLOWED_CREST_SOURCES = new Set(["league", "femebal", "ehf", "wikipedia"]);
 
 /** Ruta del escudo del club, con monograma de reserva. */
 export function crestSrc(club) {

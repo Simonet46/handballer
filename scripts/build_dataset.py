@@ -116,6 +116,7 @@ def build():
                 "short_name": short_name(name),
                 "abbreviation": abbreviation(name),
                 "country": entry["country"],
+                "flag": country["flag"],
                 "league": entry["id"],
                 "tier": entry["tier"],
                 "strength": strength,
@@ -133,6 +134,8 @@ def build():
             "startable": bool(country.get("startable")) and entry["tier"] >= 1,
             "domestic_cup": country.get("cup"),
             "super_cup": country.get("supercup"),
+            # En Argentina el handball es amateur: no hay contrato ni sueldo.
+            "amateur": entry["country"] == "ARG",
             "verified": entry["verified"],
             "teams": teams,
         })

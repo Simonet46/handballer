@@ -122,6 +122,7 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
 .hud {
   background: var(--ink-2); border: 1px solid var(--faint); border-radius: var(--radius);
   padding: 16px; display: grid; gap: 14px; position: sticky; top: 8px; z-index: 2;
+  max-height: 62vh; overflow: auto;
 }
 .hud-player { display: flex; align-items: center; gap: 12px; }
 .hud-number {
@@ -142,7 +143,10 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
   font-size: 10px; font-weight: 700; letter-spacing: .1em;
   text-transform: uppercase; color: var(--muted);
 }
-.hud-stats dd { margin: 2px 0 0; font-size: 18px; font-weight: 800; }
+.hud-stats dd {
+  margin: 2px 0 0; font-size: 17px; font-weight: 800;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
 
 .progress {
   height: 26px; border-radius: 999px; background: var(--ink-3);
@@ -174,8 +178,11 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
 }
 .tag-warn { background: rgba(232, 85, 47, .22); color: #ffb59e; }
 .tag-gold { background: rgba(240, 192, 44, .18); color: var(--gold); }
+.tag-bad { background: rgba(220, 38, 38, .28); color: #ffb4b4; font-weight: 800; }
 
-.decision { margin-top: 22px; }
+.decision { margin-top: 22px; scroll-margin-top: 20px; }
+/* El HUD es pegajoso, así que la tarjeta de decisión no puede quedar debajo. */
+#career { scroll-margin-top: 8px; }
 .decision-eyebrow {
   font-size: 11px; font-weight: 800; letter-spacing: .14em;
   text-transform: uppercase; color: var(--accent);

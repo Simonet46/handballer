@@ -41,6 +41,11 @@ const START_AGE = 17;
 const RETIREMENT_AGE = 38;
 const START_SEASON = 2026;
 const MATCHES_PER_SEASON = 34;
+// En Argentina se juega un fin de semana sí y otro no, y el calendario es corto.
+const AMATEUR_MATCHES = 22;
+// Quedarse en una liga amateur pasada cierta edad te baja el techo: ya no
+// aprendés lo que sólo se aprende entrenando todos los días.
+const AMATEUR_CEILING_AGE = 25;
 
 // Embudo geográfico: a dónde puede fichar un jugador según su edad y de dónde es.
 // En handball la ruta real de un sudamericano es liga local -> Península/Brasil ->
@@ -122,7 +127,11 @@ export function loadUniverse({ leagues, countries }) {
       ...team,
       leagueName: league.name,
       confederation: league.confederation,
-      countryName: league.country_name
+      countryName: league.country_name,
+      amateur: Boolean(league.amateur),
+      // Filial de un club grande: el "B" o "II". Es la puerta de entrada
+      // típica del sudamericano que llega a Europa sin nombre.
+      reserve: /\s(?:B|C|II)$/.test(team.name)
     }))
   );
   return { clubs: CLUBS.length, leagues: LEAGUES.length };
@@ -364,6 +373,132 @@ export const SPECIAL_EVENTS = [
       { id: "que-lo-gane", label: "Que se lo gane", detail: "Un último pico egoísta", effects: { rating: 2, form: 3, loyalty: -2, risk: 1 } }
     ]
   }
+,
+
+  // ------------------------------------------------------------------ zona gris
+  // Estos eventos dejan una marca en `state.flags`. Cada marca es una ruleta
+  // que se tira todas las temporadas: si sale, hay sanción y se te cae la
+  // carrera. Es la única forma de que la decisión pese de verdad.
+  {
+    id: "medico-milagroso",
+    minAge: 21, maxAge: 34,
+    choices: [
+      { id: "tomarlo", effects: { rating: 3, form: 3, fitness: 8, flag: "doping" } },
+      { id: "no-tomarlo", effects: { form: -2, fitness: -2, loyalty: 2 } }
+    ]
+  },
+  {
+    id: "apuesta-amigo",
+    minAge: 19, maxAge: 33,
+    choices: [
+      { id: "pasar-dato", effects: { fame: -1, flag: "apuestas" } },
+      { id: "cortar", effects: { loyalty: 2, form: 1 } }
+    ]
+  },
+  {
+    id: "partido-arreglado",
+    minAge: 22, maxAge: 34,
+    choices: [
+      { id: "aceptar-plata", effects: { fame: -2, form: -1, flag: "amanio" } },
+      { id: "denunciar", effects: { fame: 3, loyalty: 3, form: -2, risk: 1 } }
+    ]
+  },
+  {
+    id: "boliche-clasico",
+    minAge: 18, maxAge: 29,
+    choices: [
+      { id: "salir", effects: { fame: 2, form: -2, fitness: -6, risk: 2 } },
+      { id: "quedarse-casa", effects: { fitness: 4, form: 2, fame: -1 } }
+    ]
+  },
+  {
+    id: "falta-tactica",
+    minAge: 19, maxAge: 36,
+    choices: [
+      { id: "falta-limpia", effects: { form: 2, loyalty: 2, risk: 1 } },
+      { id: "falta-sucia", effects: { fame: 2, form: 3, loyalty: -2, risk: 3 } }
+    ]
+  },
+  {
+    id: "simular-exclusion",
+    minAge: 18, maxAge: 34,
+    choices: [
+      { id: "tirarse", effects: { form: 2, fame: -1, risk: 1 } },
+      { id: "seguir-jugando", effects: { fame: 1, loyalty: 1, fitness: -2 } }
+    ]
+  },
+  {
+    id: "sueldo-negro",
+    minAge: 20, maxAge: 35,
+    choices: [
+      { id: "firmar-igual", effects: { loyalty: 2, form: 1, risk: 1 } },
+      { id: "exigir-blanco", effects: { fame: 1, loyalty: -3, form: -1 } }
+    ]
+  },
+  {
+    id: "agente-treinta",
+    minAge: 18, maxAge: 27,
+    choices: [
+      { id: "firmar-agente", effects: { fame: 3, form: 1, loyalty: -1 } },
+      { id: "manejarte-solo", effects: { loyalty: 2, fame: -2, rating: 1 } }
+    ]
+  },
+  {
+    id: "tuit-viejo",
+    minAge: 19, maxAge: 33,
+    choices: [
+      { id: "pedir-perdon", effects: { fame: -2, form: -1, loyalty: 2 } },
+      { id: "no-explicar", effects: { fame: 2, form: -2, risk: 2 } }
+    ]
+  },
+  {
+    id: "oferta-petrodolar",
+    minAge: 26, maxAge: 36,
+    choices: [
+      { id: "ir-por-plata", effects: { fame: 2, loyalty: -3, rating: -1 }, richOffer: true },
+      { id: "quedarse-nivel", effects: { rating: 2, form: 1, loyalty: 2 } }
+    ]
+  },
+  {
+    id: "cambiar-seleccion",
+    minAge: 22, maxAge: 31,
+    choices: [
+      { id: "nacionalizarte", effects: { nationalBoost: 7, fame: 3, loyalty: -4 } },
+      { id: "esperar-tu-pais", effects: { loyalty: 4, nationalBoost: -1, fame: -1 } }
+    ]
+  },
+  {
+    id: "portero-jugador",
+    minAge: 20, maxAge: 34,
+    choices: [
+      { id: "salir-al-ataque", effects: { rating: 2, form: 2, fame: 2, fitness: -4 } },
+      { id: "no-arriesgar", effects: { fitness: 3, loyalty: 1, form: -1 } }
+    ]
+  },
+  {
+    id: "vas-a-ser-padre",
+    minAge: 24, maxAge: 36,
+    choices: [
+      { id: "priorizar-familia", effects: { fitness: 5, loyalty: 3, rating: -1, form: -2 } },
+      { id: "no-aflojar", effects: { rating: 2, form: 2, fitness: -3, loyalty: -2 } }
+    ]
+  },
+  {
+    id: "pelea-vestuario",
+    minAge: 20, maxAge: 35,
+    choices: [
+      { id: "bancar-la-piña", effects: { fame: 2, form: 1, loyalty: -3, risk: 2 } },
+      { id: "tragarsela", effects: { loyalty: 2, form: -2, fitness: 2 } }
+    ]
+  },
+  {
+    id: "bajar-peso",
+    minAge: 19, maxAge: 31,
+    choices: [
+      { id: "hacer-dieta", effects: { fitness: 7, rating: 1, form: -1 } },
+      { id: "ignorarlo", effects: { form: 1, fitness: -5, risk: 2, loyalty: -1 } }
+    ]
+  }
 ];
 
 // ---------------------------------------------------------------------------
@@ -405,6 +540,9 @@ export function createCareer(profile, rng = Math.random) {
     contractYears: 0,
     roleOverride: null,
     loan: null,
+    flags: {},
+    scandals: [],
+    ceilingDropped: false,
     squadRole: "juvenil",
     timeline: [],
     decisions: [],
@@ -499,8 +637,11 @@ function chooseSpecialEvent(state, rng) {
   );
   if (!available.length) return marketEvent(state, rng);
 
-  const recent = state.decisions.slice(-4).map((d) => d.eventId);
-  const fresh = available.filter((event) => !recent.includes(event.id));
+  // El bug anterior miraba las últimas 4 decisiones, pero los eventos
+  // especiales salen una de cada dos: en la práctica alcanzaba con dos para
+  // que se repitiera. Ahora llevamos la cuenta de todos los ya vistos.
+  const seen = new Set(state.decisions.map((decision) => decision.eventId));
+  const fresh = available.filter((event) => !seen.has(event.id));
   const event = structuredClone(pick(fresh.length ? fresh : available, rng));
   event.kind = "career-event";
 
@@ -524,9 +665,72 @@ function chooseSpecialEvent(state, rng) {
   return event;
 }
 
+/**
+ * La decisión que define una carrera sudamericana. En Argentina el handball es
+ * amateur: no hay contrato ni sueldo, y el que quiere vivir de esto se va.
+ * Las dos rutas reales son la filial de un club grande (entrenás con los
+ * mejores pero no jugás) o una liga chica de Europa (jugás todo pero no te ve
+ * nadie). Quedarse también es una opción... y tiene precio.
+ */
+function emigrationEvent(state, rng) {
+  const home = countryOf(state.player.country);
+  const abroad = CLUBS.filter((club) => club.country !== home.code && !club.amateur);
+
+  // "Filial de un club grande" tiene que ser de un club grande de verdad: la
+  // gracia es entrenar todos los días con internacionales, no jugar en la
+  // reserva de un equipo de mitad de tabla.
+  const bigNames = new Set(
+    CLUBS.filter((club) => club.strength >= 3)
+      .map((club) => club.name.replace(/\s(?:B|C|II)$/, "").toLowerCase())
+  );
+  const reserves = abroad.filter(
+    (club) => club.reserve && bigNames.has(club.name.replace(/\s(?:B|C|II)$/, "").toLowerCase())
+  );
+  // Segunda o tercera de Francia, Alemania o España: jugás los 60 minutos
+  // todos los fines de semana y no te ve nadie. Así empezaron casi todos.
+  const smallLeagues = abroad.filter(
+    (club) => !club.reserve && club.tier >= 2 && club.strength <= 2 &&
+      ["FRA", "GER", "ESP"].includes(club.country)
+  );
+
+  const choices = [];
+  const filial = pick(reserves.length ? reserves : abroad.filter((c) => c.strength <= 2), rng);
+  if (filial) {
+    choices.push({
+      ...clubChoice(state, filial, "firmar", 0),
+      id: "filial",
+      effects: { potential: 4, rating: -1, fame: 1, loyalty: -2 }
+    });
+  }
+  const small = pick(smallLeagues.length ? smallLeagues : abroad.filter((c) => c.strength <= 2), rng);
+  if (small && small.id !== filial?.id) {
+    choices.push({
+      ...clubChoice(state, small, "firmar", 1),
+      id: "liga-chica",
+      effects: { rating: 2, form: 3, fitness: -2, loyalty: -1 }
+    });
+  }
+  choices.push({
+    ...clubChoice(state, state.club, "seguir", 2),
+    id: "quedarse-en-casa",
+    effects: { loyalty: 5, form: 2, fitness: 3 }
+  });
+
+  return { id: "emigrar", kind: "career-event", choices };
+}
+
 function chooseNextEvent(state, rng) {
   if (state.age >= state.retirementAge - state.pace) return finalCycleEvent(state, rng);
-  if (state.firstClub && state.contractYears <= 0) return contractExpiryEvent(state, rng);
+  // En una liga amateur no hay contrato que renovar: no existe el evento.
+  if (state.firstClub && state.contractYears <= 0 && !state.club.amateur) {
+    return contractExpiryEvent(state, rng);
+  }
+  // El salto a Europa se ofrece una vez, en la ventana en que de verdad pasa.
+  if (state.club.amateur && state.age >= 19 && !state.emigrationOffered) {
+    state.emigrationOffered = true;
+    return emigrationEvent(state, rng);
+  }
+
   const index = state.decisions.length;
   return index > 0 && index % 2 === 0 ? chooseSpecialEvent(state, rng) : marketEvent(state, rng);
 }
@@ -562,6 +766,10 @@ function applyChoice(state, choice, event, rng) {
     if (choice.contractYears) state.contractYears = choice.contractYears;
   }
 
+  if (effects.flag) {
+    state.flags[effects.flag] = (state.flags[effects.flag] || 0) + 1;
+  }
+
   if (effects.retireNow) state.retireNow = true;
 
   state.decisions.push({
@@ -583,8 +791,11 @@ function applyChoice(state, choice, event, rng) {
 
 function ratingCurve(state, rng) {
   const { age } = state;
-  if (age <= 23) return Math.max(0, (state.potential - state.rating) * (0.16 + rng() * 0.07));
-  if (age <= 29) return rng() < 0.75 ? 0.4 + rng() * 1.5 : -rng() * 0.6;
+  // Jugar amateur cuesta caro: entrenás de noche, después de laburar, con
+  // menos cuerpo técnico y menos partidos exigentes. Se nota en la curva.
+  const amateur = state.club.amateur ? 0.65 : 1;
+  if (age <= 23) return Math.max(0, (state.potential - state.rating) * (0.16 + rng() * 0.07) * amateur);
+  if (age <= 29) return (rng() < 0.75 ? 0.4 + rng() * 1.5 : -rng() * 0.6) * amateur;
   if (age <= 32) return (rng() - 0.55) * 1.3;
   return -(0.4 + rng() * (age - 31) * 0.3);
 }
@@ -601,12 +812,16 @@ function simulateSeason(state, rng) {
     change -= 0.5 + rng() * 1.8;
     state.fitness -= between(6, 16, rng);
   }
+  if (state.club.amateur && state.age >= AMATEUR_CEILING_AGE && !state.ceilingDropped) {
+    state.potential = clamp(state.potential - 8, state.rating, 99);
+    state.ceilingDropped = true;
+  }
   state.rating = clamp(Math.round((state.rating + change) * 10) / 10, 46, state.potential);
   state.maxRating = Math.max(state.maxRating, state.rating);
 
   const availability = injured ? 0.5 + rng() * 0.25 : 0.85 + rng() * 0.15;
   const selection = clamp(role.share + state.form * 0.014 + state.loyalty * 0.0015, 0.3, 1);
-  const matches = round(MATCHES_PER_SEASON * availability * selection);
+  const matches = round((state.club.amateur ? AMATEUR_MATCHES : MATCHES_PER_SEASON) * availability * selection);
   const minutes = round(matches * between(role.minutesMin, role.minutesMax, rng));
 
   const performance = clamp(
@@ -693,6 +908,24 @@ function simulateSeason(state, rng) {
   }
 
   // --- acumulados -------------------------------------------------------
+  // Cada zona gris que aceptaste es una ruleta que se tira todos los años.
+  for (const [flag, times] of Object.entries(state.flags)) {
+    if (!times || state.caughtFor?.[flag]) continue;
+    if (rng() < 0.038 * times) {
+      state.caughtFor = { ...(state.caughtFor || {}), [flag]: true };
+      state.scandals.push({ flag, year, age });
+      season.scandal = flag;
+      state.rating = clamp(state.rating - 5, 46, 99);
+      state.potential = clamp(state.potential - 4, state.rating, 99);
+      state.fame = clamp(state.fame - 8, -5, 50);
+      state.form = -4;
+      season.matches = Math.round(season.matches * 0.25);
+      season.goals = Math.round(season.goals * 0.25);
+      season.assists = Math.round(season.assists * 0.25);
+      season.saves = Math.round(season.saves * 0.25);
+    }
+  }
+
   const totals = state.totals;
   totals.seasons += 1;
   totals.matches += matches;
@@ -749,10 +982,10 @@ const addAward = (state, season, key, params, name, weight) =>
 // ---------------------------------------------------------------------------
 
 const VERDICTS = [
-  { min: 1180, key: "inmortal", title: "Inmortal del handball", line: "Una era lleva tu nombre. Los números dejaron de ser creíbles hace rato." },
-  { min: 860, key: "icono", title: "Ícono mundial", line: "Finales grandes, títulos y una carrera que pasó por encima de un solo escudo." },
-  { min: 660, key: "leyenda", title: "Leyenda de club", line: "Una generación entera aprendió el juego mirándote a vos." },
-  { min: 420, key: "idolo", title: "Ídolo de tribuna", line: "No hizo falta ser perfecto. Te ganaste cantitos, cicatrices y cariño para siempre." },
+  { min: 1060, key: "inmortal", title: "Inmortal del handball", line: "Una era lleva tu nombre. Los números dejaron de ser creíbles hace rato." },
+  { min: 820, key: "icono", title: "Ícono mundial", line: "Finales grandes, títulos y una carrera que pasó por encima de un solo escudo." },
+  { min: 620, key: "leyenda", title: "Leyenda de club", line: "Una generación entera aprendió el juego mirándote a vos." },
+  { min: 400, key: "idolo", title: "Ídolo de tribuna", line: "No hizo falta ser perfecto. Te ganaste cantitos, cicatrices y cariño para siempre." },
   { min: 0, key: "trotamundos", title: "Trotamundos", line: "Cada camiseta fue un capítulo. El camino terminó siendo la historia." }
 ];
 

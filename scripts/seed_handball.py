@@ -38,8 +38,8 @@ COUNTRIES = {
                 cup="DHB-Pokal", supercup="Supercup"),
     "ARG": dict(name="Argentina", flag="\U0001F1E6\U0001F1F7", conf="PATHF", startable=True,
                 cup="Copa Argentina", supercup="Supercopa"),
-    "ESP": dict(name="España", flag="\U0001F1EA\U0001F1F8", conf="EHF", cup="Copa del Rey",
-                supercup="Supercopa ASOBAL"),
+    "ESP": dict(name="España", flag="\U0001F1EA\U0001F1F8", conf="EHF", startable=True,
+                cup="Copa del Rey", supercup="Supercopa ASOBAL"),
     "DEN": dict(name="Dinamarca", flag="\U0001F1E9\U0001F1F0", conf="EHF", cup="Santander Cup"),
     "HUN": dict(name="Hungría", flag="\U0001F1ED\U0001F1FA", conf="EHF", cup="Magyar Kupa"),
     "POL": dict(name="Polonia", flag="\U0001F1F5\U0001F1F1", conf="EHF", cup="Puchar Polski"),
@@ -186,6 +186,17 @@ GER_3LIGA = [
     ("Longericher SC Köln", 1, "de:Longericher SC Köln"),
     ("Bergische Panther", 1, "de:Bergische Panther"),
     ("TV Kirchzell", 1, "de:TV Kirchzell"),
+    # Las filiales de la Bundesliga: entrenás con internacionales toda la
+    # semana y el sábado jugás en 3. Liga. Es la puerta real para el que llega
+    # de afuera sin nombre.
+    ("SC Magdeburg II", 2, None),
+    ("Füchse Berlin Reinickendorf II", 2, None),
+    ("Rhein-Neckar Löwen II", 2, None),
+    ("MT Melsungen II", 2, None),
+    ("HC Erlangen II", 1, None),
+    ("TVB Stuttgart II", 1, None),
+    ("SC DHfK Leipzig II", 1, None),
+    ("HBW Balingen-Weilstetten II", 1, None),
 ]
 
 # --------------------------------------------------------------------------
@@ -255,34 +266,57 @@ ARG_METROPOLITANO_A = [
 # --------------------------------------------------------------------------
 ESP_ASOBAL = [
     ("Barça", 5, "es:Fútbol Club Barcelona (balonmano)"),
-    ("Bidasoa Irun", 3, "es:Sociedad Deportiva Bidasoa"),
     ("Abanca Ademar León", 3, "es:Club Balonmano Ademar León"),
     ("Fraikin BM Granollers", 3, "es:Club Balonmano Granollers"),
+    ("Bidasoa Irun", 3, "es:Sociedad Deportiva Bidasoa"),
     ("BM Logroño La Rioja", 3, "es:Club Balonmano Logroño La Rioja"),
     ("Bathco BM Torrelavega", 2, "es:Balonmano Torrelavega"),
-    ("Bada Huesca", 2, "es:Club Balonmano Huesca"),
-    ("Ángel Ximénez Puente Genil", 2, "es:Ángel Ximénez Puente Genil"),
+    ("Atlético Valladolid", 2, "es:Club Balonmano Valladolid"),
     ("Frigoríficos del Morrazo", 2, "es:Club Balonmano Cangas"),
-    ("Horneo EON Alicante", 2, None),
+    ("Ángel Ximénez Puente Genil", 2, "es:Ángel Ximénez Puente Genil"),
+    ("Balonmano Cuenca", 2, "es:Club Balonmano Cuenca"),
+    ("Horneo BM Alicante", 2, None),
     ("BM Caserío Ciudad Real", 2, None),
-    ("Viveros Herol Nava", 2, "es:Balonmano Nava"),
-    ("Incarlopsa Cuenca", 2, "es:Club Balonmano Cuenca"),
-    ("Recoletas Atletico Valladolid", 2, "es:Club Balonmano Valladolid"),
-    ("BM Benidorm", 2, "es:Club Balonmano Benidorm"),
-    ("Helvetia Anaitasuna", 2, "es:Club Deportivo Anaitasuna"),
+    ("BM Villa de Aranda", 2, None),
+    ("Viveros Herol BM Nava", 2, "es:Balonmano Nava"),
+    ("BM Sevilla", 2, None),
+    ("BM Puerto Sagunto", 2, None),
 ]
 
+# Division de Honor Plata - lista indicativa, auditar contra el portal de la
+# RFEBM (resultadosbalonmano.isquad.es, categoria 2522).
 ESP_PLATA = [
-    ("BM Villa de Aranda", 1, None),
-    ("Trops Malaga", 1, None),
-    ("BM Alarcos Ciudad Real", 1, None),
-    ("Zamora Balonmano", 1, None),
-    ("BM Soria", 1, None),
+    ("Bada Huesca", 2, "es:Club Balonmano Huesca"),
+    ("BM Benidorm", 2, "es:Club Balonmano Benidorm"),
+    ("Helvetia Anaitasuna", 2, "es:Club Deportivo Anaitasuna"),
+    ("Balonmano Zamora", 1, None),
+    ("Balonmano Sinfín", 1, "es:Balonmano Sinfín"),
+    ("Trops Málaga", 1, None),
+    ("Balonmano Soria", 1, None),
     ("Agustinos Alicante", 1, None),
-    ("BM Torrelavega B", 1, None),
     ("Cisne Pontevedra", 1, "es:Club Balonmano Cisne"),
+    ("BM Bordils", 1, None),
+    ("BM Alcobendas", 1, None),
+    ("Base Oviedo", 1, None),
+    ("BM Antequera", 1, None),
+    ("BM Villa de Aranda B", 1, None),
+]
+
+# Primera Division: el escalon donde viven las filiales de los grandes. Es la
+# puerta de entrada tipica del sudamericano que llega a Europa sin nombre.
+ESP_PRIMERA = [
     ("Barça B", 2, None),
-    ("Sinfin Santander", 1, "es:Balonmano Sinfín"),
+    ("Ademar León B", 1, None),
+    ("Granollers B", 1, None),
+    ("Bidasoa Irun B", 1, None),
+    ("Balonmano Cuenca B", 1, None),
+    ("BM Nava B", 1, None),
+    ("Torrelavega B", 1, None),
+    ("BM Pozoblanco", 1, None),
+    ("Handbol Sant Quirze", 1, None),
+    ("BM Guadalajara", 1, None),
+    ("Balonmano Ciudad Encantada B", 1, None),
+    ("BM Salamanca", 1, None),
 ]
 
 DEN_LIGA = [
@@ -538,6 +572,7 @@ LEAGUES = [
     # destinos
     dict(id="esp-asobal", name="Liga ASOBAL", country="ESP", tier=1, teams=ESP_ASOBAL, verified=True),
     dict(id="esp-plata", name="División de Honor Plata", country="ESP", tier=2, teams=ESP_PLATA, verified=False),
+    dict(id="esp-primera", name="Primera División", country="ESP", tier=3, teams=ESP_PRIMERA, verified=False),
     dict(id="den-handboldligaen", name="Håndboldligaen", country="DEN", tier=1, teams=DEN_LIGA, verified=True),
     dict(id="hun-nbi", name="Nemzeti Bajnokság I", country="HUN", tier=1, teams=HUN_NBI, verified=True),
     dict(id="pol-superliga", name="Orlen Superliga", country="POL", tier=1, teams=POL_SUPERLIGA, verified=False),

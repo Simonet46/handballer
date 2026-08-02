@@ -3,7 +3,7 @@
 Simulador de carrera de handball para navegador, inspirado en la mecánica del
 juego viral argentino **Copero — «Convertite en leyenda»**.
 
-Elegís de dónde salís —🇫🇷 **Francia**, 🇩🇪 **Alemania** o 🇦🇷 **Argentina**—,
+Elegís de dónde salís —🇫🇷 **Francia**, 🇩🇪 **Alemania**, 🇪🇸 **España** o 🇦🇷 **Argentina**—,
 arrancás a los 17 en inferiores y vas subiendo por la pirámide de divisiones
 hasta la Champions y el Mundial. Una carrera entera en menos de dos minutos.
 
@@ -15,8 +15,8 @@ hasta la Champions y el Mundial. Una carrera entera en menos de dos minutos.
 | | |
 |---|---|
 | Motor de juego | ✅ funcional (`src/game-engine.js`) |
-| Dataset | ✅ 29 ligas · 359 clubes · 22 países |
-| Escudos | ✅ Argentina real (52 clubes) · el resto, monograma por color |
+| Dataset | ✅ 30 ligas · 383 clubes · 22 países |
+| Escudos | ✅ 273/383 (71 %) desde ligas oficiales, EHF y FeMeBal · el resto, monograma |
 | Interfaz | ✅ jugable en es · fr · de |
 | Tarjeta de resultado para compartir | ✅ PNG 1080×1350 + `navigator.share` |
 | Reto diario con semilla fija | ⛔ pendiente |
@@ -37,6 +37,8 @@ data/            leagues.json · femebal.json · countries.json · positions.jso
 src/             game-engine.js       ← lógica pura, sin DOM
 scripts/         seed_handball.py     ← dataset curado (fuente de verdad)
                  fetch_femebal.py     ← padrón oficial argentino (Tournament Tracker)
+                 fetch_league_crests.py ← escudos de LNH, HBL y ASOBAL
+                 fetch_ehf_crests.py  ← escudos de la API de la EHF
                  build_dataset.py     ← genera data/*.json
                  fetch_crests.py      ← baja escudos de Wikipedia (3 pasadas)
                  smoke-test.mjs       ← 600 carreras y distribución de veredictos

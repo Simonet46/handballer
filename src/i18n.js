@@ -179,6 +179,90 @@ const es = {
       body: "Es el que va a ocupar tu lugar. Podés enseñarle todo o hacérselo ganar.",
       choices: { ensenar: { label: "Enseñarle todo", detail: "Legado más allá de los números" }, "que-lo-gane": { label: "Que se lo gane", detail: "Un último pico egoísta" } },
     },
+    "medico-milagroso": {
+      eyebrow: "Consultorio", title: "El médico tiene algo que te levanta",
+      body: "Volvés de la lesión y no llegás. Te dice que hay algo que no da positivo, que lo toma medio vestuario y que nadie pregunta nunca.",
+      choices: { tomarlo: { label: "Tomarlo", detail: "Volvés antes · si algún día salta, se terminó" }, "no-tomarlo": { label: "No", detail: "Perdés el puesto · dormís tranquilo" } },
+    },
+    "apuesta-amigo": {
+      eyebrow: "Un mensaje a las 2 am", title: "Un conocido te pide el dato",
+      body: "Sólo quiere saber si el arquero llega. Dice que es entre nosotros. Dice que después te tira algo.",
+      choices: { "pasar-dato": { label: "Pasarle el dato", detail: "Plata fácil · queda registrado en algún lado" }, cortar: { label: "Cortar el vínculo", detail: "Se pudre una amistad · te sacás el problema" } },
+    },
+    "partido-arreglado": {
+      eyebrow: "Estacionamiento del club", title: "Te ofrecen plata por perder",
+      body: "Dos apellidos que ya escuchaste. Un número que es tres años de sueldo. Un partido que ya venían a perder igual.",
+      choices: { "aceptar-plata": { label: "Agarrar la plata", detail: "Se te acomoda la vida · te la jugás entera" }, denunciar: { label: "Ir a la federación", detail: "Hacés lo correcto · te quedás solo" } },
+    },
+    "boliche-clasico": {
+      eyebrow: "Jueves, 4 de la mañana", title: "Alguien te filmó en el boliche",
+      body: "El clásico es el sábado. El video ya está dando vueltas por los grupos.",
+      choices: { salir: { label: "Bancar que sos así", detail: "El vestuario se ríe · el DT no" }, "quedarse-casa": { label: "Pedir disculpas y encerrarte", detail: "Aburrido · llegás entero al sábado" } },
+    },
+    "falta-tactica": {
+      eyebrow: "Quedan 20 segundos", title: "El DT te pide LA falta",
+      body: "Van uno abajo y el 9 rival sale al contragolpe. El banco grita. Sabés cuál es la falta que lo frena y sabés dónde le pega.",
+      choices: { "falta-limpia": { label: "Hacerla limpia", detail: "Roja igual · pero le das la mano al levantarse" }, "falta-sucia": { label: "Hacerla como sale", detail: "Lo sacás del partido · y capaz del mes" } },
+    },
+    "simular-exclusion": {
+      eyebrow: "Seis metros", title: "Te rozan y te podés tirar",
+      body: "No fue nada. Pero el árbitro está mirando y son dos minutos que cambian el partido.",
+      choices: { tirarse: { label: "Tirarte", detail: "Ganás la exclusión · el rival no se olvida" }, "seguir-jugando": { label: "Aguantar y tirar", detail: "Te la bancás · quizá no entra" } },
+    },
+    "sueldo-negro": {
+      eyebrow: "Oficina del tesorero", title: "Te ofrecen la mitad en negro",
+      body: "Dicen que es así en todos lados, que cobrás más limpio, que el contrato dice otra cosa por si acaso.",
+      choices: { "firmar-igual": { label: "Firmar igual", detail: "Cobrás más ahora · no existís para nadie" }, "exigir-blanco": { label: "Exigir todo en blanco", detail: "Te ponés pesado · quedás cubierto" } },
+    },
+    "agente-treinta": {
+      eyebrow: "Café en Puerto Madero", title: "Un representante te promete Europa",
+      body: "Tiene los contactos, tiene las fotos con jugadores que conocés. Quiere el 30 % de todo lo que ganes, para siempre.",
+      choices: { "firmar-agente": { label: "Firmar con él", detail: "Se te abren puertas · se te va un tercio" }, "manejarte-solo": { label: "Manejarte solo", detail: "Todo tuyo · nadie atiende tus llamados" } },
+    },
+    "tuit-viejo": {
+      eyebrow: "Te explota el teléfono", title: "Se viralizó algo que escribiste a los 17",
+      body: "Once años atrás, una boludez que ya ni te acordabas. Hoy está en todos lados y el club te pide una respuesta.",
+      choices: { "pedir-perdon": { label: "Pedir disculpas públicas", detail: "Se apaga rápido · queda la foto" }, "no-explicar": { label: "No explicar nada", detail: "Te bancás el ruido · el club se incomoda" } },
+    },
+    "oferta-petrodolar": {
+      eyebrow: "Una llamada del Golfo", title: "El triple de plata por la mitad de nivel",
+      body: "Un contrato que te cambia la vida y la de tu familia, en una liga donde nadie va a ver un partido tuyo.",
+      choices: { "ir-por-plata": { label: "Ir por la plata", detail: "Te asegurás el futuro · te bajás del mapa" }, "quedarse-nivel": { label: "Quedarte en el nivel", detail: "Menos plata · seguís existiendo" } },
+    },
+    "cambiar-seleccion": {
+      eyebrow: "Una propuesta incómoda", title: "Otro país te ofrece el pasaporte",
+      body: "Tenés los papeles y ellos tienen plaza en el Mundial. Tu selección hace dos años que no te llama.",
+      choices: { nacionalizarte: { label: "Cambiar de selección", detail: "Jugás el Mundial · no volvés a casa igual" }, "esperar-tu-pais": { label: "Esperar a los tuyos", detail: "La camiseta de siempre · puede que nunca llegue" } },
+    },
+    "portero-jugador": {
+      eyebrow: "Pizarrón, último minuto", title: "Te quieren de séptimo jugador",
+      body: "Sacan al arquero y entrás vos. Si sale, sos el héroe. Si te roban la pelota, es gol en arco vacío y te lo van a recordar.",
+      choices: { "salir-al-ataque": { label: "Salir al ataque", detail: "Protagonismo puro · el error se ve desde la tribuna" }, "no-arriesgar": { label: "Que salga otro", detail: "Nadie te culpa · nadie te nombra" } },
+    },
+    "vas-a-ser-padre": {
+      eyebrow: "Una noticia en marzo", title: "Vas a ser padre en plena temporada",
+      body: "El parto cae en la semana de los playoffs y estás a 2.000 km de tu casa.",
+      choices: { "priorizar-familia": { label: "Estar ahí", detail: "Te perdés la serie · ganás lo otro" }, "no-aflojar": { label: "No aflojar ahora", detail: "Jugás la serie · vas a pensarlo toda la vida" } },
+    },
+    "pelea-vestuario": {
+      eyebrow: "Después del partido", title: "Te vas a las manos con el referente",
+      body: "Te viene cargando hace tres meses. Hoy, con la derrota fresca, se te cortó.",
+      choices: { "bancar-la-piña": { label: "Ir de frente", detail: "Media cancha te respeta · la otra media te odia" }, tragarsela: { label: "Tragártela", detail: "Se acaba ahí · te queda adentro" } },
+    },
+    "bajar-peso": {
+      eyebrow: "Balanza del club", title: "El preparador dice que estás pasado",
+      body: "Cuatro kilos. Dice que en el uno contra uno se nota y que la rodilla lo va a pagar.",
+      choices: { "hacer-dieta": { label: "Ponerte a dieta", detail: "Te movés mejor · perdés el choque" }, ignorarlo: { label: "Ignorarlo", detail: "Seguís siendo el que empuja · el cuerpo cobra" } },
+    },
+    emigrar: {
+      eyebrow: "La decisión", title: "En Argentina no vas a poder vivir de esto",
+      body: "Acá se juega gratis: entrenás a la noche, después del laburo, y el club te paga los viáticos si hay. Todos los que llegaron se fueron antes de los 23. Estas son las dos puertas que hay.",
+      choices: {
+        filial: { label: "Filial de un club grande", detail: "Entrenás con los mejores · jugás con los suplentes" },
+        "liga-chica": { label: "Liga chica de Europa", detail: "Jugás los 60 minutos · no te ve nadie" },
+        "quedarse-en-casa": { label: "Quedarte", detail: "Tu club, tu gente, tu techo" },
+      },
+    },
   },
   share: {
     line: "¿Podés armar una carrera mejor?",
@@ -188,6 +272,11 @@ const es = {
     major: "{n} títulos grandes",
     peak: "Pico {n} VAL",
     caps: "{n} caps",
+  },
+  scandals: {
+    doping: "Sancionado por dopaje",
+    apuestas: "Investigado por filtrar información",
+    amanio: "Suspendido por amaño de partidos",
   },
 };
 
@@ -361,6 +450,90 @@ const fr = {
       body: "C'est lui qui prendra ta place. Tu peux tout lui apprendre ou le lui faire mériter.",
       choices: { ensenar: { label: "Tout lui apprendre", detail: "Un héritage au-delà des chiffres" }, "que-lo-gane": { label: "Qu'il le mérite", detail: "Un dernier pic égoïste" } },
     },
+    "medico-milagroso": {
+      eyebrow: "Cabinet médical", title: "Le médecin a quelque chose qui te relance",
+      body: "Tu reviens de blessure et tu n'y es pas. Il te dit que ça ne sort pas aux contrôles, que la moitié du vestiaire en prend et que personne ne pose de questions.",
+      choices: { tomarlo: { label: "En prendre", detail: "Tu reviens plus tôt · si ça sort un jour, c'est fini" }, "no-tomarlo": { label: "Refuser", detail: "Tu perds ta place · tu dors tranquille" } },
+    },
+    "apuesta-amigo": {
+      eyebrow: "Un message à 2 h du matin", title: "Une connaissance te demande l'info",
+      body: "Il veut juste savoir si le gardien est apte. Il dit que ça reste entre vous. Il dit qu'il te renverra l'ascenseur.",
+      choices: { "pasar-dato": { label: "Donner l'info", detail: "Argent facile · ça reste écrit quelque part" }, cortar: { label: "Couper les ponts", detail: "Une amitié en moins · un problème en moins" } },
+    },
+    "partido-arreglado": {
+      eyebrow: "Parking du club", title: "On te propose de l'argent pour perdre",
+      body: "Deux noms que tu as déjà entendus. Un chiffre qui vaut trois ans de salaire. Un match que vous alliez perdre de toute façon.",
+      choices: { "aceptar-plata": { label: "Prendre l'argent", detail: "Ta vie change · tu joues tout sur un coup" }, denunciar: { label: "Aller voir la fédération", detail: "Tu fais ce qu'il faut · tu te retrouves seul" } },
+    },
+    "boliche-clasico": {
+      eyebrow: "Jeudi, 4 h du matin", title: "Quelqu'un t'a filmé en boîte",
+      body: "Le derby est samedi. La vidéo tourne déjà dans tous les groupes.",
+      choices: { salir: { label: "Assumer", detail: "Le vestiaire rit · le coach non" }, "quedarse-casa": { label: "T'excuser et t'enfermer", detail: "Ennuyeux · tu arrives entier samedi" } },
+    },
+    "falta-tactica": {
+      eyebrow: "Il reste 20 secondes", title: "Le coach te demande LA faute",
+      body: "Vous êtes menés d'un but et le 9 adverse part en contre. Le banc hurle. Tu sais quelle faute l'arrête et tu sais où elle fait mal.",
+      choices: { "falta-limpia": { label: "La faire proprement", detail: "Rouge quand même · tu lui tends la main" }, "falta-sucia": { label: "La faire comme elle vient", detail: "Tu le sors du match · et peut-être du mois" } },
+    },
+    "simular-exclusion": {
+      eyebrow: "Six mètres", title: "Il t'effleure et tu peux tomber",
+      body: "Ce n'était rien. Mais l'arbitre regarde, et deux minutes changent le match.",
+      choices: { tirarse: { label: "Te laisser tomber", detail: "Tu gagnes l'exclusion · l'adversaire n'oublie pas" }, "seguir-jugando": { label: "Tenir et tirer", detail: "Tu encaisses · ça ne rentre peut-être pas" } },
+    },
+    "sueldo-negro": {
+      eyebrow: "Bureau du trésorier", title: "On te propose la moitié au noir",
+      body: "Ils disent que c'est partout pareil, que tu touches plus net, que le contrat dit autre chose au cas où.",
+      choices: { "firmar-igual": { label: "Signer quand même", detail: "Tu gagnes plus maintenant · tu n'existes pour personne" }, "exigir-blanco": { label: "Exiger tout au clair", detail: "Tu passes pour un lourd · tu es couvert" } },
+    },
+    "agente-treinta": {
+      eyebrow: "Café en ville", title: "Un agent te promet l'Europe",
+      body: "Il a les contacts et les photos avec des joueurs que tu connais. Il veut 30 % de tout ce que tu gagneras, à vie.",
+      choices: { "firmar-agente": { label: "Signer avec lui", detail: "Des portes s'ouvrent · un tiers s'en va" }, "manejarte-solo": { label: "Te gérer seul", detail: "Tout est à toi · personne ne répond à tes appels" } },
+    },
+    "tuit-viejo": {
+      eyebrow: "Ton téléphone explose", title: "Un vieux message de tes 17 ans refait surface",
+      body: "Onze ans plus tard, une bêtise dont tu ne te souvenais même plus. Aujourd'hui elle est partout et le club attend une réponse.",
+      choices: { "pedir-perdon": { label: "T'excuser publiquement", detail: "Ça s'éteint vite · la capture reste" }, "no-explicar": { label: "Ne rien expliquer", detail: "Tu encaisses le bruit · le club est mal à l'aise" } },
+    },
+    "oferta-petrodolar": {
+      eyebrow: "Un appel du Golfe", title: "Le triple du salaire pour la moitié du niveau",
+      body: "Un contrat qui change ta vie et celle de ta famille, dans un championnat où personne ne verra jamais un de tes matchs.",
+      choices: { "ir-por-plata": { label: "Y aller pour l'argent", detail: "Ton avenir est assuré · tu sors de la carte" }, "quedarse-nivel": { label: "Rester au niveau", detail: "Moins d'argent · tu existes encore" } },
+    },
+    "cambiar-seleccion": {
+      eyebrow: "Une proposition gênante", title: "Un autre pays t'offre le passeport",
+      body: "Tu as les papiers et eux ont une place au Mondial. Ta sélection ne t'a pas appelé depuis deux ans.",
+      choices: { nacionalizarte: { label: "Changer de sélection", detail: "Tu joues le Mondial · tu ne rentres plus pareil" }, "esperar-tu-pais": { label: "Attendre les tiens", detail: "Le maillot de toujours · qui n'arrivera peut-être jamais" } },
+    },
+    "portero-jugador": {
+      eyebrow: "Dernière minute", title: "On te veut en septième joueur de champ",
+      body: "Le gardien sort et tu entres. Si ça passe, tu es le héros. Si on te pique la balle, c'est but dans le but vide et on te le rappellera.",
+      choices: { "salir-al-ataque": { label: "Monter à l'attaque", detail: "Pleine lumière · l'erreur se voit des tribunes" }, "no-arriesgar": { label: "Laisser un autre y aller", detail: "Personne ne t'accuse · personne ne te cite" } },
+    },
+    "vas-a-ser-padre": {
+      eyebrow: "Une nouvelle en mars", title: "Tu vas être père en pleine saison",
+      body: "L'accouchement tombe la semaine des playoffs et tu es à 2 000 km de chez toi.",
+      choices: { "priorizar-familia": { label: "Être là", detail: "Tu rates la série · tu gagnes le reste" }, "no-aflojar": { label: "Ne rien lâcher", detail: "Tu joues la série · tu y penseras toute ta vie" } },
+    },
+    "pelea-vestuario": {
+      eyebrow: "Après le match", title: "Tu en viens aux mains avec le cadre du groupe",
+      body: "Il te chambre depuis trois mois. Aujourd'hui, la défaite encore chaude, ça a lâché.",
+      choices: { "bancar-la-piña": { label: "Y aller franchement", detail: "La moitié du vestiaire te respecte · l'autre te déteste" }, tragarsela: { label: "Encaisser", detail: "Ça s'arrête là · ça reste en toi" } },
+    },
+    "bajar-peso": {
+      eyebrow: "Balance du club", title: "Le préparateur te trouve trop lourd",
+      body: "Quatre kilos. Il dit que ça se voit dans le un contre un et que le genou finira par payer.",
+      choices: { "hacer-dieta": { label: "Te mettre au régime", detail: "Tu bouges mieux · tu perds l'impact" }, ignorarlo: { label: "L'ignorer", detail: "Tu restes celui qui pousse · le corps encaisse" } },
+    },
+    emigrar: {
+      eyebrow: "La décision", title: "En Argentine tu ne pourras pas en vivre",
+      body: "Ici on joue gratuitement : entraînement le soir, après le travail, et le club rembourse les trajets quand il peut. Tous ceux qui sont arrivés sont partis avant 23 ans. Voilà les deux portes qui existent.",
+      choices: {
+        filial: { label: "Équipe réserve d'un grand club", detail: "Tu t'entraînes avec les meilleurs · tu joues avec les remplaçants" },
+        "liga-chica": { label: "Petit championnat européen", detail: "Tu joues les 60 minutes · personne ne te voit" },
+        "quedarse-en-casa": { label: "Rester", detail: "Ton club, tes gens, ton plafond" },
+      },
+    },
   },
   share: {
     line: "Tu peux faire mieux ?",
@@ -370,6 +543,11 @@ const fr = {
     major: "{n} titres majeurs",
     peak: "Pic {n} NOTE",
     caps: "{n} sélections",
+  },
+  scandals: {
+    doping: "Suspendu pour dopage",
+    apuestas: "Mis en cause pour fuite d'informations",
+    amanio: "Suspendu pour matchs truqués",
   },
 };
 
@@ -543,6 +721,90 @@ const de = {
       body: "Er ist der, der deinen Platz einnehmen wird. Du kannst ihm alles beibringen oder es ihn verdienen lassen.",
       choices: { ensenar: { label: "Ihm alles beibringen", detail: "Ein Vermächtnis jenseits der Zahlen" }, "que-lo-gane": { label: "Soll er es sich verdienen", detail: "Ein letzter egoistischer Höhepunkt" } },
     },
+    "medico-milagroso": {
+      eyebrow: "Sprechzimmer", title: "Der Arzt hat etwas, das dich hochbringt",
+      body: "Du kommst aus der Verletzung und bist nicht da. Er sagt, das schlägt bei keiner Kontrolle an, die halbe Kabine nimmt es, und niemand fragt je nach.",
+      choices: { tomarlo: { label: "Nehmen", detail: "Du kommst früher zurück · fliegt es auf, ist Schluss" }, "no-tomarlo": { label: "Ablehnen", detail: "Du verlierst den Platz · du schläfst ruhig" } },
+    },
+    "apuesta-amigo": {
+      eyebrow: "Eine Nachricht um 2 Uhr", title: "Ein Bekannter will die Info",
+      body: "Er will nur wissen, ob der Torwart fit ist. Bleibt unter uns, sagt er. Er revanchiert sich, sagt er.",
+      choices: { "pasar-dato": { label: "Die Info geben", detail: "Leichtes Geld · irgendwo steht es geschrieben" }, cortar: { label: "Kontakt abbrechen", detail: "Eine Freundschaft weniger · ein Problem weniger" } },
+    },
+    "partido-arreglado": {
+      eyebrow: "Parkplatz am Verein", title: "Man bietet dir Geld fürs Verlieren",
+      body: "Zwei Namen, die du schon gehört hast. Eine Summe von drei Jahresgehältern. Ein Spiel, das ihr ohnehin verloren hättet.",
+      choices: { "aceptar-plata": { label: "Das Geld nehmen", detail: "Dein Leben ändert sich · du setzt alles aufs Spiel" }, denunciar: { label: "Zum Verband gehen", detail: "Du tust das Richtige · du stehst allein da" } },
+    },
+    "boliche-clasico": {
+      eyebrow: "Donnerstag, 4 Uhr morgens", title: "Jemand hat dich im Club gefilmt",
+      body: "Das Derby ist am Samstag. Das Video geht schon durch alle Gruppen.",
+      choices: { salir: { label: "Dazu stehen", detail: "Die Kabine lacht · der Trainer nicht" }, "quedarse-casa": { label: "Entschuldigen und daheim bleiben", detail: "Langweilig · du kommst fit in den Samstag" } },
+    },
+    "falta-tactica": {
+      eyebrow: "Noch 20 Sekunden", title: "Der Trainer will DAS Foul",
+      body: "Ihr liegt einen zurück und die gegnerische Neun läuft den Gegenstoß. Die Bank schreit. Du weißt, welches Foul ihn stoppt, und du weißt, wo es wehtut.",
+      choices: { "falta-limpia": { label: "Sauber ziehen", detail: "Trotzdem Rot · du hilfst ihm hoch" }, "falta-sucia": { label: "Ziehen, wie es kommt", detail: "Er ist raus aus dem Spiel · vielleicht aus dem Monat" } },
+    },
+    "simular-exclusion": {
+      eyebrow: "Sechs Meter", title: "Er streift dich und du könntest fallen",
+      body: "Es war nichts. Aber der Schiedsrichter schaut hin, und zwei Minuten drehen das Spiel.",
+      choices: { tirarse: { label: "Fallen lassen", detail: "Du holst die Zeitstrafe · der Gegner vergisst nicht" }, "seguir-jugando": { label: "Durchziehen und werfen", detail: "Du hältst stand · vielleicht sitzt er nicht" } },
+    },
+    "sueldo-negro": {
+      eyebrow: "Büro des Schatzmeisters", title: "Die Hälfte soll schwarz laufen",
+      body: "Machen alle so, sagen sie, du bekommst netto mehr, und im Vertrag steht sicherheitshalber etwas anderes.",
+      choices: { "firmar-igual": { label: "Trotzdem unterschreiben", detail: "Jetzt mehr Geld · offiziell existierst du nicht" }, "exigir-blanco": { label: "Alles offiziell verlangen", detail: "Du giltst als schwierig · du bist abgesichert" } },
+    },
+    "agente-treinta": {
+      eyebrow: "Café in der Stadt", title: "Ein Berater verspricht dir Europa",
+      body: "Er hat die Kontakte und die Fotos mit Spielern, die du kennst. Er will 30 % von allem, was du je verdienst. Für immer.",
+      choices: { "firmar-agente": { label: "Bei ihm unterschreiben", detail: "Türen gehen auf · ein Drittel geht weg" }, "manejarte-solo": { label: "Dich selbst managen", detail: "Alles gehört dir · niemand geht ans Telefon" } },
+    },
+    "tuit-viejo": {
+      eyebrow: "Dein Handy explodiert", title: "Ein alter Post von dir mit 17 taucht auf",
+      body: "Elf Jahre her, ein Blödsinn, an den du dich nicht mal erinnerst. Heute steht er überall und der Verein erwartet eine Antwort.",
+      choices: { "pedir-perdon": { label: "Dich öffentlich entschuldigen", detail: "Geht schnell vorbei · der Screenshot bleibt" }, "no-explicar": { label: "Nichts erklären", detail: "Du hältst den Lärm aus · dem Verein ist es unangenehm" } },
+    },
+    "oferta-petrodolar": {
+      eyebrow: "Ein Anruf vom Golf", title: "Das Dreifache für das halbe Niveau",
+      body: "Ein Vertrag, der dein Leben und das deiner Familie verändert — in einer Liga, in der niemand je ein Spiel von dir sehen wird.",
+      choices: { "ir-por-plata": { label: "Dem Geld folgen", detail: "Die Zukunft ist sicher · du verschwindest von der Landkarte" }, "quedarse-nivel": { label: "Auf dem Niveau bleiben", detail: "Weniger Geld · du existierst weiter" } },
+    },
+    "cambiar-seleccion": {
+      eyebrow: "Ein unbequemes Angebot", title: "Ein anderes Land bietet dir den Pass",
+      body: "Du hast die Papiere, sie haben einen Platz bei der WM. Deine eigene Auswahl hat seit zwei Jahren nicht angerufen.",
+      choices: { nacionalizarte: { label: "Die Nation wechseln", detail: "Du spielst die WM · du kommst nicht mehr derselbe heim" }, "esperar-tu-pais": { label: "Auf deine warten", detail: "Das Trikot von immer · das vielleicht nie kommt" } },
+    },
+    "portero-jugador": {
+      eyebrow: "Letzte Minute", title: "Du sollst der siebte Feldspieler sein",
+      body: "Der Torwart geht raus, du kommst rein. Klappt es, bist du der Held. Verlierst du den Ball, ist es das leere Tor — und man erinnert dich daran.",
+      choices: { "salir-al-ataque": { label: "Mit nach vorn", detail: "Volles Rampenlicht · der Fehler ist von der Tribüne sichtbar" }, "no-arriesgar": { label: "Einen anderen schicken", detail: "Niemand gibt dir die Schuld · niemand nennt dich" } },
+    },
+    "vas-a-ser-padre": {
+      eyebrow: "Eine Nachricht im März", title: "Du wirst mitten in der Saison Vater",
+      body: "Der Termin fällt in die Playoff-Woche und du bist 2.000 km von zu Hause weg.",
+      choices: { "priorizar-familia": { label: "Da sein", detail: "Du verpasst die Serie · du gewinnst das andere" }, "no-aflojar": { label: "Jetzt nicht nachlassen", detail: "Du spielst die Serie · du denkst dein Leben lang daran" } },
+    },
+    "pelea-vestuario": {
+      eyebrow: "Nach dem Spiel", title: "Du gehst auf den Führungsspieler los",
+      body: "Er stichelt seit drei Monaten. Heute, die Niederlage noch frisch, ist bei dir etwas gerissen.",
+      choices: { "bancar-la-piña": { label: "Es ausfechten", detail: "Die halbe Kabine respektiert dich · die andere hasst dich" }, tragarsela: { label: "Runterschlucken", detail: "Damit ist es vorbei · es bleibt in dir" } },
+    },
+    "bajar-peso": {
+      eyebrow: "Waage im Verein", title: "Der Athletiktrainer sagt, du bist zu schwer",
+      body: "Vier Kilo. Er sagt, im Eins-gegen-eins sieht man es, und das Knie zahlt am Ende die Rechnung.",
+      choices: { "hacer-dieta": { label: "Diät machen", detail: "Du bewegst dich besser · du verlierst die Wucht" }, ignorarlo: { label: "Ignorieren", detail: "Du bleibst der, der drückt · der Körper zahlt" } },
+    },
+    emigrar: {
+      eyebrow: "Die Entscheidung", title: "In Argentinien kannst du davon nicht leben",
+      body: "Hier spielt man umsonst: Training abends, nach der Arbeit, und der Verein zahlt die Fahrt, wenn Geld da ist. Alle, die es geschafft haben, sind vor 23 gegangen. Das sind die zwei Türen, die es gibt.",
+      choices: {
+        filial: { label: "Zweite Mannschaft eines Großen", detail: "Du trainierst mit den Besten · du spielst mit den Reservisten" },
+        "liga-chica": { label: "Kleine europäische Liga", detail: "Du spielst die vollen 60 Minuten · niemand sieht dich" },
+        "quedarse-en-casa": { label: "Bleiben", detail: "Dein Verein, deine Leute, deine Grenze" },
+      },
+    },
   },
   share: {
     line: "Schaffst du eine bessere Karriere?",
@@ -552,6 +814,11 @@ const de = {
     major: "{n} große Titel",
     peak: "Bestwert {n}",
     caps: "{n} Länderspiele",
+  },
+  scandals: {
+    doping: "Wegen Dopings gesperrt",
+    apuestas: "Wegen Informationsweitergabe belangt",
+    amanio: "Wegen Spielmanipulation gesperrt",
   },
 };
 
