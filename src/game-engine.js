@@ -266,6 +266,7 @@ export const SPECIAL_EVENTS = [
   {
     id: "hombro-lanzador",
     minAge: 22, maxAge: 36,
+    positions: ["LW", "LB", "CB", "RB", "RW", "PV"],
     eyebrow: "Kinesiología",
     title: "El hombro de lanzar dice basta",
     body: "Tendinitis crónica. Podés infiltrarte y seguir jugando o parar y perder el ritmo.",
@@ -277,6 +278,7 @@ export const SPECIAL_EVENTS = [
   {
     id: "siete-metros",
     minAge: 19, maxAge: 36,
+    positions: ["LW", "LB", "CB", "RB", "RW", "PV"],
     eyebrow: "Últimos segundos",
     title: "Siete metros para ganar la serie",
     body: "El estadio de pie. El entrenador te busca con la mirada.",
@@ -299,6 +301,7 @@ export const SPECIAL_EVENTS = [
   {
     id: "defensa-6-0",
     minAge: 20, maxAge: 33,
+    positions: ["LB", "CB", "RB", "PV"],
     eyebrow: "Pizarrón",
     title: "Te quieren de central de la 6-0",
     body: "Aprender a defender adentro te da minutos que hoy no tenés, pero te saca del ataque.",
@@ -470,6 +473,7 @@ export const SPECIAL_EVENTS = [
   {
     id: "portero-jugador",
     minAge: 20, maxAge: 34,
+    positions: ["LW", "LB", "CB", "RB", "RW", "PV"],
     choices: [
       { id: "salir-al-ataque", effects: { rating: 2, form: 2, fame: 2, fitness: -4 } },
       { id: "no-arriesgar", effects: { fitness: 3, loyalty: 1, form: -1 } }
@@ -497,6 +501,58 @@ export const SPECIAL_EVENTS = [
     choices: [
       { id: "hacer-dieta", effects: { fitness: 7, rating: 1, form: -1 } },
       { id: "ignorarlo", effects: { form: 1, fitness: -5, risk: 2, loyalty: -1 } }
+    ]
+  }
+,
+  // ------------------------------------------------- cambios de puesto reales
+  // El lateral que se corre al extremo (y al revés) es el cambio más común del
+  // handball. A veces te salva la carrera y a veces te la corta: por eso el
+  // resultado se sortea y no se sabe hasta la temporada siguiente.
+  {
+    id: "lateral-a-extremo",
+    minAge: 19, maxAge: 31,
+    positions: ["LB", "RB"],
+    choices: [
+      { id: "correrse-al-ala", effects: { potential: 1, form: -2 }, positionSwap: true },
+      { id: "seguir-de-lateral", effects: { form: 2, loyalty: -1 } }
+    ]
+  },
+  {
+    id: "extremo-a-lateral",
+    minAge: 19, maxAge: 31,
+    positions: ["LW", "RW"],
+    choices: [
+      { id: "meterse-adentro", effects: { potential: 1, form: -2 }, positionSwap: true },
+      { id: "seguir-de-extremo", effects: { form: 2, loyalty: -1 } }
+    ]
+  },
+
+  // --------------------------------------------------------- sólo arqueros
+  {
+    id: "siete-metros-parada",
+    minAge: 19, maxAge: 37,
+    positions: ["GK"],
+    choices: [
+      { id: "jugartela", effects: { fame: 3, form: 2, risk: 1 } },
+      { id: "quedarte-parado", effects: { form: 1, fitness: 1, fame: -1 } }
+    ]
+  },
+  {
+    id: "septimo-jugador-gk",
+    minAge: 20, maxAge: 36,
+    positions: ["GK"],
+    choices: [
+      { id: "aceptar-salir", effects: { loyalty: 3, form: -2, fame: -2 } },
+      { id: "plantarse", effects: { fame: 2, form: 2, loyalty: -3, risk: 1 } }
+    ]
+  },
+  {
+    id: "arquero-al-arco-vacio",
+    minAge: 21, maxAge: 36,
+    positions: ["GK"],
+    choices: [
+      { id: "tirar-al-arco-vacio", effects: { fame: 3, form: 2, risk: 2 } },
+      { id: "no-tirar", effects: { loyalty: 2, form: 1 } }
     ]
   }
 ];
@@ -629,9 +685,13 @@ function loanDestination(state, rng) {
 
 function chooseSpecialEvent(state, rng) {
   const home = countryOf(state.player.country);
+  const position = state.player.position;
   const available = SPECIAL_EVENTS.filter(
     (event) =>
       state.age >= event.minAge && state.age <= event.maxAge &&
+      // Un arquero no se pone de central de la 6-0 ni tira el siete metros:
+      // cada evento declara en qué puestos tiene sentido.
+      (!event.positions || event.positions.includes(position)) &&
       (event.id !== "cesion" || state.club.strength >= 2) &&
       (event.id !== "volver-a-casa" || state.club.country !== home.code)
   );
@@ -735,12 +795,40 @@ function chooseNextEvent(state, rng) {
   return index > 0 && index % 2 === 0 ? chooseSpecialEvent(state, rng) : marketEvent(state, rng);
 }
 
+// El lateral se corre al extremo de su mismo lado y viceversa: es el único
+// cambio que de verdad ocurre en handball.
+const POSITION_SWAP = { LB: "LW", RB: "RW", LW: "LB", RW: "RB" };
+
 function applyChoice(state, choice, event, rng) {
   const outcome =
     event.id === "competencia-puesto" && choice.id === "pelear"
       ? (rng() < 0.5 ? "titular" : "rotacion")
       : null;
   if (outcome) state.roleOverride = { key: outcome, seasonsLeft: state.pace };
+
+  let swap = null;
+  if (choice.positionSwap) {
+    const target = POSITION_SWAP[state.player.position];
+    if (target) {
+      const position = positionOf(target);
+      state.player.position = position.code;
+      state.player.positionName = position.name;
+      // Adaptarse sale bien seis de cada diez veces. Cuando sale mal, perdiste
+      // dos años aprendiendo algo que no era para vos.
+      swap = rng() < 0.6 ? "encajo" : "no-encajo";
+      if (swap === "encajo") {
+        state.rating = clamp(state.rating + 2, 46, 99);
+        state.potential = clamp(state.potential + 3, state.rating, 99);
+      } else {
+        state.rating = clamp(state.rating - 2, 46, 99);
+        state.potential = clamp(state.potential - 2, state.rating, 99);
+        state.form = clamp(state.form - 2, -6, 8);
+      }
+      state.positionChanges = (state.positionChanges || 0) + 1;
+      // Se muestra en el resumen de la primera temporada en el puesto nuevo.
+      state.pendingSwapNote = swap;
+    }
+  }
 
   const effects = choice.effects || {};
   state.rating = clamp(state.rating + (effects.rating || 0), 46, 99);
@@ -781,7 +869,8 @@ function applyChoice(state, choice, event, rng) {
     choiceId: choice.id,
     choice: choice.label,
     club: choice.club?.name || null,
-    ...(outcome ? { outcome } : {})
+    ...(outcome ? { outcome } : {}),
+    ...(swap ? { swap, newPosition: state.player.position } : {})
   });
 }
 
@@ -853,8 +942,10 @@ function simulateSeason(state, rng) {
     savePct: keeper ? Math.round(savePct * 100) : null,
     shotPct: shots ? Math.round((goals / shots) * 100) : null,
     twoMinutes, redCards, injured,
+    swap: state.pendingSwapNote || null,
     honours: []
   };
+  state.pendingSwapNote = null;
 
   // --- títulos de club --------------------------------------------------
   const titleChance = clamp(

@@ -15,8 +15,8 @@ hasta la Champions y el Mundial. Una carrera entera en menos de dos minutos.
 | | |
 |---|---|
 | Motor de juego | ✅ funcional (`src/game-engine.js`) |
-| Dataset | ✅ 30 ligas · 383 clubes · 22 países |
-| Escudos | ✅ 273/383 (71 %) desde ligas oficiales, EHF y FeMeBal · el resto, monograma |
+| Dataset | ✅ 25 ligas · 308 clubes · 4 países jugables |
+| Escudos | ✅ 308/308 · ningún club del juego sale sin escudo real |
 | Interfaz | ✅ jugable en es · fr · de |
 | Tarjeta de resultado para compartir | ✅ PNG 1080×1350 + `navigator.share` |
 | Reto diario con semilla fija | ⛔ pendiente |
@@ -57,13 +57,20 @@ Y abrir <http://localhost:4321>. No hay build ni bundler: son archivos estático
 
 ## Regenerar
 
+El orden importa: cada paso de escudos respeta lo que dejó el anterior.
+
 ```bash
-python3 scripts/fetch_femebal.py --crests   # padrón oficial argentino
-python3 scripts/build_dataset.py            # data/*.json
-python3 scripts/fetch_crests.py             # escudos de Wikipedia
+python3 scripts/fetch_femebal.py --crests   # padrón + escudos oficiales argentinos
+python3 scripts/build_dataset.py            # data/*.json desde el seed
+python3 scripts/fetch_league_crests.py      # escudos de LNH, HBL y ASOBAL
+python3 scripts/fetch_ehf_crests.py         # escudos de la API de la EHF
+python3 scripts/fetch_crests.py             # Wikipedia, último recurso
+python3 scripts/fill_from_ehf.py            # tapa huecos con clubes reales del país
+python3 scripts/optimize_crests.py          # los deja en 160 px
+python3 scripts/prune_crestless.py          # saca lo que igual quedó sin escudo
 python3 scripts/build_site.py               # index.html en es · fr · de
 python3 scripts/build_og.py                 # imagen de previsualización social
-node scripts/smoke-test.mjs 600             # 600 carreras, distribución de veredictos
+node scripts/smoke-test.mjs 600             # 600 carreras y distribución de veredictos
 ```
 
 Dependencias: Python 3 (`cryptography` y `pillow` para dos de los scripts) y Node

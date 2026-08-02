@@ -38,16 +38,30 @@ def optimize():
             continue
 
         needs_resize = max(image.size) > MAX_SIDE
-        if not needs_resize and size < 24_000:
+        if not needs_resize and size < 40_000:
             after += size
             continue
 
-        image = image.convert("RGBA")
+        # Sólo pasamos a PNG lo que tiene transparencia. Convertir un JPEG de
+        # 200x200 a PNG lo hace más grande, no más chico: es lo contrario de
+        # lo que este script tiene que hacer.
+        has_alpha = image.mode in ("RGBA", "LA") or "transparency" in image.info
         if needs_resize:
+            image = image.convert("RGBA" if has_alpha else "RGB")
             image.thumbnail((MAX_SIDE, MAX_SIDE), Image.LANCZOS)
 
-        target = os.path.splitext(path)[0] + ".png"
-        image.save(target, "PNG", optimize=True)
+        if has_alpha:
+            target = os.path.splitext(path)[0] + ".png"
+            image.save(target, "PNG", optimize=True)
+        else:
+            target = os.path.splitext(path)[0] + ".jpg"
+            image.convert("RGB").save(target, "JPEG", quality=86, optimize=True)
+
+        if os.path.getsize(target) >= size and target != path:
+            # No mejoró: nos quedamos con el original.
+            os.remove(target)
+            after += size
+            continue
         if target != path:
             os.remove(path)
         after += os.path.getsize(target)

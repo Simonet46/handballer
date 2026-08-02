@@ -1,0 +1,136 @@
+{
+ "fra-starligue": [
+  {
+   "out": "Pays d'Aix Universite Club",
+   "in": "PAUC Handball"
+  }
+ ],
+ "esp-plata": [
+  {
+   "out": "Balonmano Zamora",
+   "in": "BM Aragon"
+  },
+  {
+   "out": "Balonmano Sinfín",
+   "in": "J.D. Arrate"
+  },
+  {
+   "out": "Trops Málaga",
+   "in": "Amaya Sport San Antonio"
+  }
+ ],
+ "den-handboldligaen": [
+  {
+   "out": "TMS Ringsted",
+   "in": "AaB Handball"
+  },
+  {
+   "out": "HØJ Elite",
+   "in": "AG Kobenhavn"
+  },
+  {
+   "out": "Grindsted GIF Handbold",
+   "in": "Aarhus Haandbold"
+  }
+ ],
+ "hun-nbi": [
+  {
+   "out": "Győri ETO-UNI FKC",
+   "in": "Dunaferr SE"
+  },
+  {
+   "out": "NEKA",
+   "in": "DKSE-Airport Debrecen"
+  },
+  {
+   "out": "Dabas KC",
+   "in": "FTC-Green Collect"
+  },
+  {
+   "out": "Szigetszentmiklosi KSK",
+   "in": "Sport36 - Komló"
+  }
+ ],
+ "pol-superliga": [
+  {
+   "out": "MKS Kalisz",
+   "in": "KPR Gwardia Opole"
+  },
+  {
+   "out": "Piotrkowianin Piotrkow",
+   "in": "SPR Pogon Szczecin"
+  },
+  {
+   "out": "Nielba Wągrowiec",
+   "in": "Grupa Azoty Unia Tarnów"
+  }
+ ],
+ "por-andebol-1": [
+  {
+   "out": "AC Fafe",
+   "in": "Xico Andebol"
+  },
+  {
+   "out": "Sanjoanense",
+   "in": "Liberty S. Bernardo"
+  }
+ ],
+ "swe-handbollsligan": [
+  {
+   "out": "Önnereds HK",
+   "in": "HK DROTT Halmstad"
+  },
+  {
+   "out": "IF Hallby HK",
+   "in": "H43 Lund"
+  }
+ ],
+ "nor-ligaen": [
+  {
+   "out": "Follo HK",
+   "in": "Bodö HK"
+  }
+ ],
+ "rou-liga-nationala": [
+  {
+   "out": "HC Buzau",
+   "in": "Handbal club Odorhei"
+  },
+  {
+   "out": "Odorheiu Secuiesc",
+   "in": "Stiinta Municipal Dedeman Bacau"
+  }
+ ],
+ "slo-liga-nlb": [
+  {
+   "out": "RK Slovan",
+   "in": "RK Slovenj Gradec"
+  }
+ ],
+ "cro-premijer-liga": [
+  {
+   "out": "RK Sesvete",
+   "in": "GRK Varazdin 1930"
+  },
+  {
+   "out": "RK Split",
+   "in": "R.K. \"Kastela Adriachem\""
+  }
+ ],
+ "aut-hla": [
+  {
+   "out": "Union Leoben",
+   "in": "HIT medalp Tirol"
+  },
+  {
+   "out": "HSG Graz",
+   "in": "UHC Goldmann Druck Tulln"
+  }
+ ],
+ "isl-urvalsdeild": [
+  {
+   "out": "Grótta",
+   "in": "HK Kopavogur"
+  }
+ ]
+}

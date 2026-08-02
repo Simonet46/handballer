@@ -263,6 +263,31 @@ const es = {
         "quedarse-en-casa": { label: "Quedarte", detail: "Tu club, tu gente, tu techo" },
       },
     },
+    "lateral-a-extremo": {
+      eyebrow: "Pizarrón", title: "El DT te quiere de extremo",
+      body: "Dice que tenés el salto y que en el ala vas a jugar los 60 minutos. También que desde ahí nunca más vas a armar un ataque.",
+      choices: { "correrse-al-ala": { label: "Correrte al ala", detail: "Minutos asegurados · otro juego" }, "seguir-de-lateral": { label: "Seguir de lateral", detail: "Tu puesto de siempre · peleás por el lugar" } },
+    },
+    "extremo-a-lateral": {
+      eyebrow: "Pizarrón", title: "Te quieren meter adentro, de lateral",
+      body: "Se lesionó el lateral y sos el que mejor tira de los que quedan. Adentro se cobra más, pero también se pega más.",
+      choices: { "meterse-adentro": { label: "Meterte adentro", detail: "Más pelota · más golpes" }, "seguir-de-extremo": { label: "Seguir en el ala", detail: "Lo que sabés hacer · el techo que ya conocés" } },
+    },
+    "siete-metros-parada": {
+      eyebrow: "Últimos segundos", title: "Siete metros para salvar la serie",
+      body: "Uno arriba, cero en el reloj. El tirador te miró el palo largo dos veces y vos ya sabés que eso es mentira.",
+      choices: { jugartela: { label: "Salir a jugártela", detail: "Si la adivinás sos leyenda · si no, sos el que se tiró antes" }, "quedarte-parado": { label: "Quedarte parado", detail: "Sin invento · que decida él" } },
+    },
+    "septimo-jugador-gk": {
+      eyebrow: "Banco de suplentes", title: "Te sacan en todos los ataques",
+      body: "El DT juega siete contra seis todo el partido. Vos entrás y salís cada 30 segundos y nunca terminás de entrar en calor.",
+      choices: { "aceptar-salir": { label: "Aceptarlo", detail: "Es lo que pide el equipo · te enfriás y se te nota" }, plantarse: { label: "Plantarte", detail: "Le decís que así no atajás · se pudre el vestuario" } },
+    },
+    "arquero-al-arco-vacio": {
+      eyebrow: "Contraataque", title: "Arco vacío del otro lado",
+      body: "Agarrás el rebote y del otro lado no hay nadie. Son 40 metros y una foto que puede quedar para siempre. O el ridículo del año.",
+      choices: { "tirar-al-arco-vacio": { label: "Tirar", detail: "Gol de arquero · o el papelón" }, "no-tirar": { label: "Jugarla al pivote", detail: "Lo correcto · nadie se acuerda" } },
+    },
   },
   share: {
     line: "¿Podés armar una carrera mejor?",
@@ -272,6 +297,10 @@ const es = {
     major: "{n} títulos grandes",
     peak: "Pico {n} VAL",
     caps: "{n} caps",
+  },
+  swap: {
+    encajo: "Se adaptó al puesto nuevo",
+    "no-encajo": "No terminó de encajar en el puesto nuevo",
   },
   scandals: {
     doping: "Sancionado por dopaje",
@@ -534,6 +563,31 @@ const fr = {
         "quedarse-en-casa": { label: "Rester", detail: "Ton club, tes gens, ton plafond" },
       },
     },
+    "lateral-a-extremo": {
+      eyebrow: "Tableau tactique", title: "Le coach te veut ailier",
+      body: "Il dit que tu as la détente et que sur l'aile tu joueras les 60 minutes. Il dit aussi que de là, tu ne construiras plus jamais une attaque.",
+      choices: { "correrse-al-ala": { label: "Passer sur l'aile", detail: "Temps de jeu garanti · un autre jeu" }, "seguir-de-lateral": { label: "Rester arrière", detail: "Ton poste de toujours · tu te bats pour la place" } },
+    },
+    "extremo-a-lateral": {
+      eyebrow: "Tableau tactique", title: "On veut te faire rentrer à l'arrière",
+      body: "L'arrière s'est blessé et tu es celui qui tire le mieux parmi ceux qui restent. À l'intérieur on touche plus de ballons, mais on prend aussi plus de coups.",
+      choices: { "meterse-adentro": { label: "Rentrer à l'intérieur", detail: "Plus de ballons · plus de contacts" }, "seguir-de-extremo": { label: "Rester sur l'aile", detail: "Ce que tu sais faire · le plafond que tu connais" } },
+    },
+    "siete-metros-parada": {
+      eyebrow: "Dernières secondes", title: "Sept mètres pour sauver la série",
+      body: "Un but d'avance, zéro au chrono. Le tireur a regardé ton grand côté deux fois et tu sais déjà que c'est du bluff.",
+      choices: { jugartela: { label: "Tenter le coup", detail: "Si tu devines tu es une légende · sinon tu es celui qui a plongé trop tôt" }, "quedarte-parado": { label: "Rester debout", detail: "Sans invention · à lui de décider" } },
+    },
+    "septimo-jugador-gk": {
+      eyebrow: "Banc de touche", title: "On te sort à chaque attaque",
+      body: "Le coach joue à sept contre six tout le match. Tu entres et tu sors toutes les 30 secondes et tu n'es jamais vraiment chaud.",
+      choices: { "aceptar-salir": { label: "L'accepter", detail: "C'est ce que l'équipe demande · tu refroidis et ça se voit" }, plantarse: { label: "Refuser", detail: "Tu lui dis que comme ça tu n'arrêtes rien · le vestiaire s'enflamme" } },
+    },
+    "arquero-al-arco-vacio": {
+      eyebrow: "Contre-attaque", title: "But vide en face",
+      body: "Tu captes le rebond et de l'autre côté il n'y a personne. 40 mètres et une image qui peut rester pour toujours. Ou le ridicule de l'année.",
+      choices: { "tirar-al-arco-vacio": { label: "Tirer", detail: "But de gardien · ou la honte" }, "no-tirar": { label: "La jouer au pivot", detail: "Le bon choix · personne ne s'en souvient" } },
+    },
   },
   share: {
     line: "Tu peux faire mieux ?",
@@ -543,6 +597,10 @@ const fr = {
     major: "{n} titres majeurs",
     peak: "Pic {n} NOTE",
     caps: "{n} sélections",
+  },
+  swap: {
+    encajo: "Il s'est adapté au nouveau poste",
+    "no-encajo": "Il ne s'est jamais adapté au nouveau poste",
   },
   scandals: {
     doping: "Suspendu pour dopage",
@@ -805,6 +863,31 @@ const de = {
         "quedarse-en-casa": { label: "Bleiben", detail: "Dein Verein, deine Leute, deine Grenze" },
       },
     },
+    "lateral-a-extremo": {
+      eyebrow: "Taktiktafel", title: "Der Trainer will dich auf Außen",
+      body: "Er sagt, du hast den Sprung und auf Außen spielst du die vollen 60 Minuten. Er sagt auch, dass du von dort nie wieder einen Angriff lenkst.",
+      choices: { "correrse-al-ala": { label: "Auf Außen gehen", detail: "Sichere Einsatzzeit · ein anderes Spiel" }, "seguir-de-lateral": { label: "Im Rückraum bleiben", detail: "Deine Position von immer · du kämpfst um den Platz" } },
+    },
+    "extremo-a-lateral": {
+      eyebrow: "Taktiktafel", title: "Sie wollen dich nach innen holen",
+      body: "Der Rückraumspieler ist verletzt und du wirfst am besten von denen, die übrig sind. Innen bekommst du mehr Bälle — und mehr Schläge.",
+      choices: { "meterse-adentro": { label: "Nach innen gehen", detail: "Mehr Bälle · mehr Kontakt" }, "seguir-de-extremo": { label: "Auf Außen bleiben", detail: "Was du kannst · die Grenze, die du kennst" } },
+    },
+    "siete-metros-parada": {
+      eyebrow: "Letzte Sekunden", title: "Siebenmeter, um die Serie zu retten",
+      body: "Ein Tor Vorsprung, null auf der Uhr. Der Werfer hat zweimal in deine lange Ecke geschaut, und du weißt längst, dass das gelogen ist.",
+      choices: { jugartela: { label: "Es riskieren", detail: "Triffst du die Ecke, bist du Legende · sonst der, der zu früh fiel" }, "quedarte-parado": { label: "Stehen bleiben", detail: "Kein Trick · soll er entscheiden" } },
+    },
+    "septimo-jugador-gk": {
+      eyebrow: "Auswechselbank", title: "Du wirst bei jedem Angriff rausgenommen",
+      body: "Der Trainer spielt das ganze Spiel sieben gegen sechs. Du gehst alle 30 Sekunden rein und raus und wirst nie richtig warm.",
+      choices: { "aceptar-salir": { label: "Es hinnehmen", detail: "Die Mannschaft braucht es · du kühlst aus, und man sieht es" }, plantarse: { label: "Dich weigern", detail: "Du sagst, so hältst du nichts · die Kabine kocht" } },
+    },
+    "arquero-al-arco-vacio": {
+      eyebrow: "Tempogegenstoß", title: "Auf der anderen Seite steht kein Torwart",
+      body: "Du fängst den Abpraller und gegenüber ist niemand. 40 Meter und ein Bild, das für immer bleiben kann. Oder die Blamage des Jahres.",
+      choices: { "tirar-al-arco-vacio": { label: "Werfen", detail: "Torwarttor · oder die Blamage" }, "no-tirar": { label: "Zum Kreisläufer spielen", detail: "Das Richtige · niemand erinnert sich" } },
+    },
   },
   share: {
     line: "Schaffst du eine bessere Karriere?",
@@ -814,6 +897,10 @@ const de = {
     major: "{n} große Titel",
     peak: "Bestwert {n}",
     caps: "{n} Länderspiele",
+  },
+  swap: {
+    encajo: "Hat sich auf der neuen Position zurechtgefunden",
+    "no-encajo": "Ist auf der neuen Position nie angekommen",
   },
   scandals: {
     doping: "Wegen Dopings gesperrt",

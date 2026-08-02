@@ -180,6 +180,7 @@ function renderLastBlock() {
       <span class="recap-club">${season.club}</span>
       <span class="recap-stat">${season.matches} ${t("ui.matches")}</span>
       <span class="recap-stat">${keeper ? `${season.saves} ${t("ui.saves")}` : `${season.goals} ${t("ui.goals")}`}</span>
+      ${season.swap ? `<span class="tag ${season.swap === "encajo" ? "tag-good" : "tag-warn"}">${t(`swap.${season.swap}`)}</span>` : ""}
       ${season.scandal ? `<span class="tag tag-bad">⚠ ${t(`scandals.${season.scandal}`)}</span>` : ""}
       ${season.injured ? `<span class="tag tag-warn">${t("ui.injured")}</span>` : ""}
       ${season.loan ? `<span class="tag">${t("ui.loan")}</span>` : ""}

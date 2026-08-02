@@ -178,6 +178,7 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
 }
 .tag-warn { background: rgba(232, 85, 47, .22); color: #ffb59e; }
 .tag-gold { background: rgba(240, 192, 44, .18); color: var(--gold); }
+.tag-good { background: rgba(74, 222, 128, .18); color: #86efac; }
 .tag-bad { background: rgba(220, 38, 38, .28); color: #ffb4b4; font-weight: 800; }
 
 .decision { margin-top: 22px; scroll-margin-top: 20px; }
