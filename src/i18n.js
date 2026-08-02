@@ -136,7 +136,7 @@ const es = {
     },
     "siete-metros": {
       eyebrow: "Últimos segundos", title: "Siete metros para ganar la serie",
-      body: "El estadio de pie. El entrenador te busca con la mirada.",
+      body: "La tribuna de pie. El entrenador te busca con la mirada.",
       choices: { tirar: { label: "Agarrar la pelota", detail: "Gloria o silbatina" }, ceder: { label: "Dejárselo al capitán", detail: "Sin riesgo, sin historia" } },
     },
     seleccion: {
@@ -155,8 +155,8 @@ const es = {
       choices: { "aceptar-cesion": { label: "Aceptar la cesión", detail: "Una temporada de minutos" }, "quedarse-pelear": { label: "Quedarte a pelearla", detail: "Banco, pero en el club grande" } },
     },
     "roja-directa": {
-      eyebrow: "Comité de disciplina", title: "Roja directa y expediente",
-      body: "Un impacto en la cabeza en contraataque. La federación pide explicaciones.",
+      eyebrow: "Comité de disciplina", title: "Descalificación y expediente",
+      body: "Un impacto en la cabeza en el contraataque. Roja directa, y como fue en la cara, la mesa saca la azul: va con informe a la federación.",
       choices: { disculparse: { label: "Pedir disculpas públicas", detail: "Bajás la sanción · perdés carácter" }, bancarsela: { label: "Bancártela", detail: "El vestuario te respeta · tres fechas afuera" } },
     },
     "crisis-club": {
@@ -165,9 +165,9 @@ const es = {
       choices: { encabezar: { label: "Encabezar el reclamo", detail: "Te respetan · te marcan" }, jugar: { label: "Sólo jugar", detail: "Guardás energía · perdés peso" } },
     },
     capitania: {
-      eyebrow: "Antes del sorteo", title: "Te ofrecen la cinta",
+      eyebrow: "Antes del sorteo", title: "Te ofrecen la capitanía",
       body: "Ser capitán te da voz en el club y la culpa de cada noche mala.",
-      choices: { "aceptar-cinta": { label: "Ponerte la cinta", detail: "Liderás · cargás" }, "sin-cinta": { label: "Seguir sin cinta", detail: "Cuidás tu juego" } },
+      choices: { "aceptar-cinta": { label: "Aceptar la capitanía", detail: "Liderás · cargás" }, "sin-cinta": { label: "Dejarla pasar", detail: "Cuidás tu juego" } },
     },
     "volver-a-casa": {
       eyebrow: "Un llamado desde casa", title: "Tu club de origen quiere tus últimos años",
@@ -200,9 +200,9 @@ const es = {
       choices: { salir: { label: "Bancar que sos así", detail: "El vestuario se ríe · el DT no" }, "quedarse-casa": { label: "Pedir disculpas y encerrarte", detail: "Aburrido · llegás entero al sábado" } },
     },
     "falta-tactica": {
-      eyebrow: "Quedan 20 segundos", title: "El DT te pide LA falta",
-      body: "Van uno abajo y el 9 rival sale al contragolpe. El banco grita. Sabés cuál es la falta que lo frena y sabés dónde le pega.",
-      choices: { "falta-limpia": { label: "Hacerla limpia", detail: "Roja igual · pero le das la mano al levantarse" }, "falta-sucia": { label: "Hacerla como sale", detail: "Lo sacás del partido · y capaz del mes" } },
+      eyebrow: "Quedan 20 segundos", title: "El entrenador te pide LA falta",
+      body: "Van uno abajo y el extremo rival se escapa solo al contragolpe. El banco grita. Sabés que la única manera de frenarlo es cruzarlo en el aire, y sabés lo que cuesta: descalificación directa.",
+      choices: { "falta-limpia": { label: "Cruzarlo limpio", detail: "Descalificación igual · le das la mano al levantarse" }, "falta-sucia": { label: "Bajarlo como sea", detail: "Azul directa · lo sacás del partido y capaz del mes" } },
     },
     "simular-exclusion": {
       eyebrow: "Seis metros", title: "Te rozan y te podés tirar",
@@ -264,7 +264,7 @@ const es = {
       },
     },
     "lateral-a-extremo": {
-      eyebrow: "Pizarrón", title: "El DT te quiere de extremo",
+      eyebrow: "Pizarrón", title: "El entrenador te quiere de extremo",
       body: "Dice que tenés el salto y que en el ala vas a jugar los 60 minutos. También que desde ahí nunca más vas a armar un ataque.",
       choices: { "correrse-al-ala": { label: "Correrte al ala", detail: "Minutos asegurados · otro juego" }, "seguir-de-lateral": { label: "Seguir de lateral", detail: "Tu puesto de siempre · peleás por el lugar" } },
     },
@@ -280,7 +280,7 @@ const es = {
     },
     "septimo-jugador-gk": {
       eyebrow: "Banco de suplentes", title: "Te sacan en todos los ataques",
-      body: "El DT juega siete contra seis todo el partido. Vos entrás y salís cada 30 segundos y nunca terminás de entrar en calor.",
+      body: "El entrenador juega siete contra seis todo el partido. Vos entrás y salís cada 30 segundos y nunca terminás de entrar en calor.",
       choices: { "aceptar-salir": { label: "Aceptarlo", detail: "Es lo que pide el equipo · te enfriás y se te nota" }, plantarse: { label: "Plantarte", detail: "Le decís que así no atajás · se pudre el vestuario" } },
     },
     "arquero-al-arco-vacio": {
@@ -471,8 +471,8 @@ const fr = {
       choices: { "aceptar-cesion": { label: "Accepter le prêt", detail: "Une saison de temps de jeu" }, "quedarse-pelear": { label: "Rester et te battre", detail: "Le banc, mais dans le grand club" } },
     },
     "roja-directa": {
-      eyebrow: "Commission de discipline", title: "Rouge direct et dossier ouvert",
-      body: "Un impact à la tête en contre-attaque. La fédération demande des explications.",
+      eyebrow: "Commission de discipline", title: "Disqualification et dossier ouvert",
+      body: "Un impact à la tête sur le contre-attaque. Disqualification directe, et comme c'était au visage, la table sort le carton bleu : rapport à la fédération.",
       choices: { disculparse: { label: "T'excuser publiquement", detail: "Sanction réduite · image adoucie" }, bancarsela: { label: "Assumer", detail: "Le vestiaire te respecte · trois matchs de suspension" } },
     },
     "crisis-club": {
@@ -481,9 +481,9 @@ const fr = {
       choices: { encabezar: { label: "Mener la fronde", detail: "On te respecte · on te fiche" }, jugar: { label: "Juste jouer", detail: "Tu gardes ton énergie · tu perds du poids" } },
     },
     capitania: {
-      eyebrow: "Avant le coup d'envoi", title: "On te propose le brassard",
+      eyebrow: "Avant l'engagement", title: "On te propose la capitainerie",
       body: "Être capitaine te donne une voix au club et la faute de chaque mauvaise soirée.",
-      choices: { "aceptar-cinta": { label: "Prendre le brassard", detail: "Tu mènes · tu portes" }, "sin-cinta": { label: "Rester sans brassard", detail: "Tu protèges ton jeu" } },
+      choices: { "aceptar-cinta": { label: "Accepter la capitainerie", detail: "Tu mènes · tu portes" }, "sin-cinta": { label: "La laisser passer", detail: "Tu protèges ton jeu" } },
     },
     "volver-a-casa": {
       eyebrow: "Un appel du pays", title: "Ton club formateur veut tes dernières années",
@@ -516,9 +516,9 @@ const fr = {
       choices: { salir: { label: "Assumer", detail: "Le vestiaire rit · le coach non" }, "quedarse-casa": { label: "T'excuser et t'enfermer", detail: "Ennuyeux · tu arrives entier samedi" } },
     },
     "falta-tactica": {
-      eyebrow: "Il reste 20 secondes", title: "Le coach te demande LA faute",
-      body: "Vous êtes menés d'un but et le 9 adverse part en contre. Le banc hurle. Tu sais quelle faute l'arrête et tu sais où elle fait mal.",
-      choices: { "falta-limpia": { label: "La faire proprement", detail: "Rouge quand même · tu lui tends la main" }, "falta-sucia": { label: "La faire comme elle vient", detail: "Tu le sors du match · et peut-être du mois" } },
+      eyebrow: "Il reste 20 secondes", title: "L'entraîneur te demande LA faute",
+      body: "Vous êtes menés d'un but et l'ailier adverse part seul en contre-attaque. Le banc hurle. Tu sais que la seule façon de l'arrêter est de le prendre en l'air, et tu sais ce que ça coûte : disqualification directe.",
+      choices: { "falta-limpia": { label: "Le prendre proprement", detail: "Disqualification quand même · tu lui tends la main" }, "falta-sucia": { label: "Le faucher net", detail: "Carton bleu · tu le sors du match, peut-être du mois" } },
     },
     "simular-exclusion": {
       eyebrow: "Six mètres", title: "Il t'effleure et tu peux tomber",
@@ -596,7 +596,7 @@ const fr = {
     },
     "septimo-jugador-gk": {
       eyebrow: "Banc de touche", title: "On te sort à chaque attaque",
-      body: "Le coach joue à sept contre six tout le match. Tu entres et tu sors toutes les 30 secondes et tu n'es jamais vraiment chaud.",
+      body: "L'entraîneur joue à sept contre six tout le match. Tu entres et tu sors toutes les 30 secondes et tu n'es jamais vraiment chaud.",
       choices: { "aceptar-salir": { label: "L'accepter", detail: "C'est ce que l'équipe demande · tu refroidis et ça se voit" }, plantarse: { label: "Refuser", detail: "Tu lui dis que comme ça tu n'arrêtes rien · le vestiaire s'enflamme" } },
     },
     "arquero-al-arco-vacio": {
@@ -787,8 +787,8 @@ const de = {
       choices: { "aceptar-cesion": { label: "Die Leihe annehmen", detail: "Eine Saison mit Einsatzzeit" }, "quedarse-pelear": { label: "Bleiben und kämpfen", detail: "Bank, aber im großen Verein" } },
     },
     "roja-directa": {
-      eyebrow: "Sportgericht", title: "Rote Karte und Verfahren",
-      body: "Ein Treffer am Kopf im Tempogegenstoß. Der Verband will eine Erklärung.",
+      eyebrow: "Sportgericht", title: "Disqualifikation und Verfahren",
+      body: "Ein Treffer am Kopf im Tempogegenstoß. Direkte Disqualifikation, und weil es ins Gesicht ging, zeigt der Kampfrichter Blau: Bericht an den Verband.",
       choices: { disculparse: { label: "Dich öffentlich entschuldigen", detail: "Weniger Sperre · weicheres Image" }, bancarsela: { label: "Dazu stehen", detail: "Die Kabine respektiert dich · drei Spiele Sperre" } },
     },
     "crisis-club": {
@@ -797,9 +797,9 @@ const de = {
       choices: { encabezar: { label: "Den Protest anführen", detail: "Man respektiert dich · man merkt es sich" }, jugar: { label: "Einfach spielen", detail: "Du sparst Kraft · du verlierst Gewicht" } },
     },
     capitania: {
-      eyebrow: "Vor dem Anwurf", title: "Man bietet dir die Kapitänsbinde an",
-      body: "Kapitän sein gibt dir eine Stimme im Verein — und die Schuld für jeden schlechten Abend.",
-      choices: { "aceptar-cinta": { label: "Die Binde nehmen", detail: "Du führst · du trägst" }, "sin-cinta": { label: "Ohne Binde weiter", detail: "Du schützt dein Spiel" } },
+      eyebrow: "Vor dem Anwurf", title: "Man bietet dir die Kapitänsrolle an",
+      body: "Die Kapitänsrolle gibt dir eine Stimme im Verein — und die Schuld für jeden schlechten Abend.",
+      choices: { "aceptar-cinta": { label: "Die Kapitänsrolle annehmen", detail: "Du führst · du trägst" }, "sin-cinta": { label: "Ablehnen", detail: "Du schützt dein Spiel" } },
     },
     "volver-a-casa": {
       eyebrow: "Ein Anruf von zu Hause", title: "Dein Heimatverein will deine letzten Jahre",
@@ -833,8 +833,8 @@ const de = {
     },
     "falta-tactica": {
       eyebrow: "Noch 20 Sekunden", title: "Der Trainer will DAS Foul",
-      body: "Ihr liegt einen zurück und die gegnerische Neun läuft den Gegenstoß. Die Bank schreit. Du weißt, welches Foul ihn stoppt, und du weißt, wo es wehtut.",
-      choices: { "falta-limpia": { label: "Sauber ziehen", detail: "Trotzdem Rot · du hilfst ihm hoch" }, "falta-sucia": { label: "Ziehen, wie es kommt", detail: "Er ist raus aus dem Spiel · vielleicht aus dem Monat" } },
+      body: "Ihr liegt einen zurück und der gegnerische Außen zieht allein den Tempogegenstoß. Die Bank schreit. Du weißt, dass ihn nur ein Foul im Sprung stoppt — und du weißt, was das kostet: Disqualifikation.",
+      choices: { "falta-limpia": { label: "Ihn sauber stoppen", detail: "Trotzdem Disqualifikation · du hilfst ihm hoch" }, "falta-sucia": { label: "Ihn abräumen", detail: "Blaue Karte · raus aus dem Spiel, vielleicht aus dem Monat" } },
     },
     "simular-exclusion": {
       eyebrow: "Sechs Meter", title: "Er streift dich und du könntest fallen",

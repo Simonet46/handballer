@@ -299,7 +299,7 @@ export const SPECIAL_EVENTS = [
     positions: ["LW", "LB", "CB", "RB", "RW", "PV"],
     eyebrow: "Últimos segundos",
     title: "Siete metros para ganar la serie",
-    body: "El estadio de pie. El entrenador te busca con la mirada.",
+    body: "La tribuna de pie. El entrenador te busca con la mirada.",
     choices: [
       { id: "tirar", label: "Agarrar la pelota", detail: "Gloria o silbatina", effects: { fame: 3, form: 2, risk: 1 } },
       { id: "ceder", label: "Dejárselo al capitán", detail: "Sin riesgo, sin historia", effects: { loyalty: 2, form: -1 } }
@@ -343,8 +343,8 @@ export const SPECIAL_EVENTS = [
     id: "roja-directa",
     minAge: 19, maxAge: 35,
     eyebrow: "Comité de disciplina",
-    title: "Roja directa y expediente",
-    body: "Un impacto en la cabeza en contraataque. La federación pide explicaciones.",
+    title: "Descalificación y expediente",
+    body: "Un impacto en la cabeza en el contraataque. Roja directa y azul: informe a la federación.",
     choices: [
       { id: "disculparse", label: "Pedir disculpas públicas", detail: "Bajás la sanción · perdés carácter", effects: { fame: -1, loyalty: 2, risk: -1 } },
       { id: "bancarsela", label: "Bancártela", detail: "El vestuario te respeta · tres fechas afuera", effects: { fame: 2, form: -2, risk: 1 } }
@@ -365,7 +365,7 @@ export const SPECIAL_EVENTS = [
     id: "capitania",
     minAge: 25, maxAge: 35,
     eyebrow: "Antes del sorteo",
-    title: "Te ofrecen la cinta",
+    title: "Te ofrecen la capitanía",
     body: "Ser capitán te da voz en el club y la culpa de cada noche mala.",
     choices: [
       { id: "aceptar-cinta", label: "Ponerte la cinta", detail: "Liderás · cargás", effects: { loyalty: 4, fame: 2, fitness: -3 } },
