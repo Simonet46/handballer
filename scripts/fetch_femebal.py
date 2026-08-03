@@ -216,9 +216,11 @@ def main():
                "season": {"id": season_id, "name": season_name},
                "branch": args.rama, "category": args.categoria,
                "divisions": out}
-    json.dump(payload, open(OUT, "w", encoding="utf8"), ensure_ascii=False, indent=1)
+    # Cada rama a su archivo: el femenino no debe pisar el padrón masculino.
+    target = OUT if args.rama == "M" else OUT.replace(".json", "-f.json")
+    json.dump(payload, open(target, "w", encoding="utf8"), ensure_ascii=False, indent=1)
     total = sum(len(d["clubs"]) for d in out)
-    print(f"\n-> data/femebal.json · {len(out)} divisiones · {total} clubes")
+    print(f"\n-> {os.path.relpath(target, ROOT)} · {len(out)} divisiones · {total} clubes")
 
 
 if __name__ == "__main__":

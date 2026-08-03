@@ -37,6 +37,7 @@ def strings_for(locale):
         "    tagline: t('ui.tagline'), intro: t('ui.intro'),"
         "    lastName: t('ui.lastName'), lastNamePh: t('ui.lastNamePlaceholder'),"
         "    number: t('ui.number'), hand: t('ui.hand'), country: t('ui.country'),"
+        "    rama: t('ui.rama'),"
         "    position: t('ui.position'), pace: t('ui.pace'), start: t('ui.start'),"
         "    age: t('ui.age'), rating: t('ui.rating'), role: t('ui.role'),"
         "    score: t('ui.score'), career: t('ui.yourCareer'), honours: t('ui.honours'),"
@@ -97,6 +98,7 @@ def build():
             "L_LASTNAME": s["lastName"],
             "L_LASTNAME_PH": s["lastNamePh"],
             "L_NUMBER": s["number"],
+            "L_RAMA": s["rama"],
             "L_HAND": s["hand"],
             "L_COUNTRY": s["country"],
             "L_POSITION": s["position"],

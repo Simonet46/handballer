@@ -34,12 +34,24 @@ let busy = false;
 // Arranque
 // ---------------------------------------------------------------------------
 
+// Cada rama tiene su propio universo de clubes: leagues.json (masculino) y
+// leagues-f.json (femenino). Se cargan una sola vez y se cambia al elegir.
+const datasets = { M: null, F: null };
+let activeLeagues = [];
+let countriesData = null;
+
+async function loadRama(rama) {
+  const file = rama === "F" ? "data/leagues-f.json" : "data/leagues.json";
+  if (!datasets[rama]) {
+    datasets[rama] = await fetch(file).then((r) => r.json());
+  }
+  activeLeagues = datasets[rama];
+  universe = loadUniverse({ leagues: activeLeagues, countries: countriesData });
+}
+
 async function boot() {
-  const [leagues, countries] = await Promise.all([
-    fetch("data/leagues.json").then((r) => r.json()),
-    fetch("data/countries.json").then((r) => r.json()),
-  ]);
-  universe = loadUniverse({ leagues, countries });
+  countriesData = await fetch("data/countries.json").then((r) => r.json());
+  await loadRama(form.rama);
   renderSetup();
   el("app").dataset.ready = "1";
 }
@@ -48,7 +60,7 @@ async function boot() {
 // Pantalla 1: creación del jugador
 // ---------------------------------------------------------------------------
 
-const form = { lastName: "", number: 7, hand: "Diestra", country: "ARG", position: "CB", pace: 2 };
+const form = { lastName: "", number: 7, rama: "M", hand: "Diestra", country: "ARG", position: "CB", pace: 2 };
 
 function renderSetup() {
   const countries = startableCountries();
@@ -66,6 +78,9 @@ function renderSetup() {
 
   el("hand-options").innerHTML =
     chip("hand", "Diestra", t("ui.handRight")) + chip("hand", "Zurda", t("ui.handLeft"));
+
+  el("rama-options").innerHTML =
+    chip("rama", "M", t("ui.ramaM")) + chip("rama", "F", t("ui.ramaF"));
 
   for (const group of document.querySelectorAll("[data-group]")) {
     group.addEventListener("click", (event) => {
@@ -239,7 +254,10 @@ function renderPreview() {
   el("start").disabled = false;
 }
 
-function startCareer() {
+async function startCareer() {
+  // La rama elegida define el universo: se garantiza acá, por si el dataset
+  // femenino todavía no terminó de bajar cuando apretaron "Empezar".
+  await loadRama(form.rama);
   rng = createRng(Date.now() ^ Math.floor(Math.random() * 1e9));
   career = createCareer({ ...form, lastName: form.lastName || t("ui.lastNamePlaceholder") }, rng);
   advanceCareer(career, null, rng);
@@ -424,6 +442,9 @@ function summarize(before) {
     if (season.scandal) {
       beats.push({ kind: "bad", icon: "⚠", text: t(`scandals.${season.scandal}`), big: true });
     }
+    if (season.maternity) {
+      beats.push({ kind: "good", icon: "👶", text: t("beats.maternity", { year: season.year }), big: true });
+    }
     if (season.injured) {
       beats.push({ kind: "bad", icon: "🚑", text: t("beats.injured", { year: season.year }) });
     }
@@ -547,14 +568,19 @@ function renderResult() {
   // El salto es el componente más grande del puntaje, así que se cuenta aparte.
   const climbBox = el("result-climb");
   const detail = career.climbDetail || {};
+  const chunks = [];
   if (career.climb > 0 && detail.from && detail.to) {
-    climbBox.hidden = false;
-    climbBox.innerHTML = `<span>${t("climb.label")}</span>` +
+    chunks.push(`<span>${t("climb.label")}</span>` +
       `<strong>+${career.climb}</strong>` +
-      `<em>${t("climb.line", { from: detail.from, to: detail.to })}</em>`;
-  } else {
-    climbBox.hidden = true;
+      `<em>${t("climb.line", { from: detail.from, to: detail.to })}</em>`);
   }
+  if (career.comeback > 0) {
+    chunks.push(`<span>${t("climb.comebackLabel")}</span>` +
+      `<strong>+${career.comeback}</strong>` +
+      `<em>${t("climb.comeback", { n: career.comebackTitles })}</em>`);
+  }
+  climbBox.hidden = !chunks.length;
+  climbBox.innerHTML = chunks.join("");
 
   const stats = [
     [t("ui.matches"), totals.matches],
@@ -821,7 +847,7 @@ function renderBoard(highlightId) {
 }
 
 function universeLeagues() {
-  return window.__leagues || [];
+  return activeLeagues;
 }
 
 // ---------------------------------------------------------------------------
@@ -830,7 +856,6 @@ function show(stage) {
   for (const [name, node] of Object.entries(view)) node.hidden = name !== stage;
 }
 
-fetch("data/leagues.json").then((r) => r.json()).then((leagues) => { window.__leagues = leagues; });
 boot().catch((error) => {
   console.error(error);
   el("app").innerHTML = `<p class="error">No se pudo cargar el juego. Recargá la página.</p>`;

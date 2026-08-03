@@ -503,6 +503,8 @@ export const SPECIAL_EVENTS = [
   },
   {
     id: "vas-a-ser-padre",
+    // En el femenino esta historia es "maternidad", con su propia mecánica.
+    rama: "M",
     minAge: 24, maxAge: 36,
     choices: [
       { id: "priorizar-familia", effects: { fitness: 5, loyalty: 3, rating: -1, form: -2 } },
@@ -576,6 +578,67 @@ export const SPECIAL_EVENTS = [
       { id: "tirar-al-arco-vacio", effects: { fame: 3, form: 2, risk: 2 } },
       { id: "no-tirar", effects: { loyalty: 2, form: 1 } }
     ]
+  },
+
+  // --- las historias del femenino ---------------------------------------
+  // Nada de esto es inventado: maternidad y vuelta, doble jornada laboral,
+  // cláusulas antiembarazo, premios desiguales, la multa por el uniforme
+  // (Noruega 2021) y el acoso en redes son la carrera real de una handbolista.
+  {
+    id: "maternidad",
+    rama: "F",
+    minAge: 26, maxAge: 32,
+    choices: [
+      // Parar el año entero: el cuerpo vuelve bien y los títulos de la vuelta
+      // valen más (ver finishCareer). Sin flags: esto no es una zona gris.
+      { id: "pausa", effects: { maternity: true, loyalty: 3, fame: 1, fitness: 6 } },
+      { id: "volver-rapido", effects: { maternity: true, maternityLeave: 0, fitness: -8, form: -2, risk: 1 } }
+    ]
+  },
+  {
+    id: "doble-jornada",
+    rama: "F",
+    minAge: 18, maxAge: 26,
+    choices: [
+      { id: "trabajo", effects: { loyalty: 2, fitness: -3, rating: -1 } },
+      { id: "a-todo-o-nada", effects: { rating: 2, form: 2, risk: 1, fame: 1 } }
+    ]
+  },
+  {
+    id: "clausula",
+    rama: "F",
+    minAge: 20, maxAge: 28,
+    choices: [
+      { id: "firmar-callada", effects: { loyalty: 1, fame: -2 } },
+      { id: "denunciar", effects: { fame: 4, loyalty: -3, form: -1 } }
+    ]
+  },
+  {
+    id: "premios-desiguales",
+    rama: "F",
+    minAge: 22, maxAge: 34,
+    choices: [
+      { id: "plantarse", effects: { fame: 3, loyalty: -2, nationalBoost: 2 } },
+      { id: "cabeza-gacha", effects: { form: 1, fame: -1 } }
+    ]
+  },
+  {
+    id: "uniforme",
+    rama: "F",
+    minAge: 18, maxAge: 30,
+    choices: [
+      { id: "hacer-ruido", effects: { fame: 3, risk: 1, nationalBoost: 1 } },
+      { id: "pagar-la-multa", effects: { loyalty: 1, form: 1 } }
+    ]
+  },
+  {
+    id: "redes-acoso",
+    rama: "F",
+    minAge: 18, maxAge: 28,
+    choices: [
+      { id: "responder", effects: { fame: 2, form: -1 } },
+      { id: "bloquear-y-jugar", effects: { form: 2, fitness: 1 } }
+    ]
   }
 ];
 
@@ -598,7 +661,8 @@ export function createCareer(profile, rng = Math.random) {
       countryName: country.name,
       flag: country.flag,
       position: position.code,
-      positionName: position.name
+      positionName: position.name,
+      rama: profile.rama === "F" ? "F" : "M"
     },
     pace,
     age: START_AGE,
@@ -717,6 +781,9 @@ function chooseSpecialEvent(state, rng) {
       // Un arquero no se pone de central de la 6-0 ni tira el siete metros:
       // cada evento declara en qué puestos tiene sentido.
       (!event.positions || event.positions.includes(position)) &&
+      // Y cada rama tiene sus propias historias: la maternidad o la pelea por
+      // premios igualitarios son del femenino.
+      (!event.rama || event.rama === state.player.rama) &&
       (event.id !== "cesion" || state.club.strength >= 2) &&
       (event.id !== "volver-a-casa" || state.club.country !== home.code)
   );
@@ -727,7 +794,11 @@ function chooseSpecialEvent(state, rng) {
   // que se repitiera. Ahora llevamos la cuenta de todos los ya vistos.
   const seen = new Set(state.decisions.map((decision) => decision.eventId));
   const fresh = available.filter((event) => !seen.has(event.id));
-  const event = structuredClone(pick(fresh.length ? fresh : available, rng));
+  // La maternidad es LA historia del femenino: cuando la ventana está abierta
+  // (26-32), empuja fuerte para aparecer en vez de sortearse entre 40 eventos.
+  const flagship = fresh.find((entry) => entry.id === "maternidad");
+  const chosen = flagship && rng() < 0.55 ? flagship : pick(fresh.length ? fresh : available, rng);
+  const event = structuredClone(chosen);
   event.kind = "career-event";
 
   const fill = (predicate, club, id) => {
@@ -902,6 +973,14 @@ function applyChoice(state, choice, event, rng) {
     state.flags[effects.flag] = (state.flags[effects.flag] || 0) + 1;
   }
 
+  // Maternidad: si pausás, la próxima temporada es de licencia. En cualquiera
+  // de los dos caminos queda marcado el año: los títulos que vengan después
+  // valen más (la vuelta de mamá se paga en finishCareer).
+  if (effects.maternity) {
+    state.maternityLeave = (state.maternityLeave || 0) + (effects.maternityLeave ?? 1);
+    state.maternitySeason = state.seasonYear;
+  }
+
   const gamble = GAMBLES[`${event.id}:${choice.id}`];
   let gambleResult = null;
   if (gamble) {
@@ -959,9 +1038,15 @@ function simulateSeason(state, rng) {
   const role = projectSquadRole(state);
   const { age, seasonYear: year } = state;
 
+  // Licencia por maternidad: la temporada pasa sin partidos, sin lesiones y
+  // sin títulos; el cuerpo descansa y la carrera espera.
+  const maternity = (state.maternityLeave || 0) > 0;
+  if (maternity) state.maternityLeave -= 1;
+
   let change = ratingCurve(state, rng) + state.form * 0.08;
+  if (maternity) change = -0.4;
   const injuryChance = clamp(0.05 + state.risk * 0.02 + (100 - state.fitness) * 0.002, 0.03, 0.34);
-  const injured = rng() < injuryChance;
+  const injured = !maternity && rng() < injuryChance;
   if (injured) {
     change -= 0.5 + rng() * 1.8;
     state.fitness -= between(6, 16, rng);
@@ -973,7 +1058,7 @@ function simulateSeason(state, rng) {
   state.rating = clamp(Math.round((state.rating + change) * 10) / 10, 46, state.potential);
   state.maxRating = Math.max(state.maxRating, state.rating);
 
-  const availability = injured ? 0.5 + rng() * 0.25 : 0.85 + rng() * 0.15;
+  const availability = maternity ? 0 : injured ? 0.5 + rng() * 0.25 : 0.85 + rng() * 0.15;
   const selection = clamp(role.share + state.form * 0.014 + state.loyalty * 0.0015, 0.3, 1);
   const matches = round((state.club.amateur ? AMATEUR_MATCHES : MATCHES_PER_SEASON) * availability * selection);
   const minutes = round(matches * between(role.minutesMin, role.minutesMax, rng));
@@ -1015,9 +1100,11 @@ function simulateSeason(state, rng) {
   };
   state.pendingSwapNote = null;
   state.pendingGambleNote = null;
+  if (maternity) season.maternity = true;
 
   // --- títulos de club --------------------------------------------------
-  const titleChance = clamp(
+  // De licencia no se levantan copas: titleChance 0 apaga todos los sorteos.
+  const titleChance = maternity ? 0 : clamp(
     0.02 + state.club.strength * 0.04 + Math.max(0, state.rating - 72) * 0.006, 0.03, 0.4
   );
   const clubPrestige = state.club.prestige ?? 3;
@@ -1062,7 +1149,7 @@ function simulateSeason(state, rng) {
   let caps = 0;
   let nationalGoals = 0;
   let nationalAssists = 0;
-  const scouted = (state.club.prestige ?? 3) >= NATIONAL_TEAM_PRESTIGE;
+  const scouted = !maternity && (state.club.prestige ?? 3) >= NATIONAL_TEAM_PRESTIGE;
   if (scouted && nationalQuality >= 68 && rng() < clamp((nationalQuality - 64) / 28, 0.1, 0.94)) {
     caps = between(4, 14, rng);
     nationalGoals = keeper ? 0 : noisy(caps * position.goalRate * 0.8, rng, 0.5);
@@ -1089,7 +1176,9 @@ function simulateSeason(state, rng) {
   // se lo lleva casi todas las temporadas y la vitrina pierde sentido.
   const alreadyBest = state.awards.filter((award) => award.key === "ihf-player").length;
   const bestChance = clamp((awardScore - 110) / 90, 0.06, 0.6) / (1 + alreadyBest * 2.4);
-  if (awardScore >= 128 && rng() < bestChance) {
+  if (maternity) {
+    // Sin jugar no hay premios individuales.
+  } else if (awardScore >= 128 && rng() < bestChance) {
     addAward(state, season, "ihf-player", {}, "Mejor jugador del mundo IHF", 95);
   } else if (!keeper && goals >= 150 && rng() < 0.3) {
     addAward(state, season, "top-scorer", {}, "Máximo goleador de la liga", 40);
@@ -1211,6 +1300,18 @@ function finishCareer(state) {
 
   const paceFactor = PACES.find((p) => p.value === state.pace).scoreFactor;
 
+  // La vuelta de mamá: parar la carrera y volver a ganar vale más que ganar
+  // de corrido. Cada título posterior suma un 60 % extra de su peso, más un
+  // piso por haber vuelto.
+  const postMaternity = state.maternitySeason
+    ? state.trophies.filter((item) => item.year > state.maternitySeason)
+    : [];
+  const comeback = state.maternitySeason
+    ? round(postMaternity.reduce((sum, item) => sum + item.weight, 0) * 0.6) + 12
+    : 0;
+  state.comeback = comeback;
+  state.comebackTitles = postMaternity.length;
+
   state.climb = climb;
   state.climbDetail = {
     from: state.firstClub?.leagueName || null,
@@ -1221,7 +1322,7 @@ function finishCareer(state) {
   state.score = round(
     (state.totals.matches * 0.12 + production + state.totals.caps * 0.9 +
       trophyWeight * 0.55 + awardWeight * 0.65 + state.maxRating * 1.1 +
-      climb + Math.max(0, state.loyalty) + state.fame * 0.8) * paceFactor
+      climb + comeback + Math.max(0, state.loyalty) + state.fame * 0.8) * paceFactor
   );
   state.verdict = VERDICTS.find((verdict) => state.score >= verdict.min);
   state.ended = true;

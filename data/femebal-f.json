@@ -1,0 +1,1278 @@
+{
+ "source": "femebal.com/tournament-tracker",
+ "season": {
+  "id": "002",
+  "name": "2025"
+ },
+ "branch": "F",
+ "category": "100",
+ "divisions": [
+  {
+   "division_id": "420",
+   "name": "LHD Hipotecario Seguros",
+   "tier": null,
+   "tournaments": [
+    {
+     "id": "00000527",
+     "name": "Torneo Metropolitano Clausura",
+     "state": "Finalizado"
+    },
+    {
+     "id": "00000222",
+     "name": "Super 8 Hipotecario Seguros Liga Honor Damas",
+     "state": "Finalizado"
+    },
+    {
+     "id": "00000224",
+     "name": "Torneo Metropolitano Apertura",
+     "state": "Finalizado"
+    }
+   ],
+   "clubs": [
+    {
+     "femebal_id": "00000354",
+     "name": "Argentinos Juniors",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/1/0/1/1017ec6e0d7ae101.jpg",
+     "crest": "assets/crests/femebal-00000354.jpg"
+    },
+    {
+     "femebal_id": "00000341",
+     "name": "C.A. Lanús",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/1/8/c/18c4d2e9b24f5844.png",
+     "crest": "assets/crests/femebal-00000341.png"
+    },
+    {
+     "femebal_id": "00000348",
+     "name": "C.A. River Plate",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/f/0/4/f048a543faf00ee3.png",
+     "crest": "assets/crests/femebal-00000348.png"
+    },
+    {
+     "femebal_id": "00000428",
+     "name": "C.A. Vélez Sarsfield",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/6/8/5/68598a9b5ac24c08.jpg",
+     "crest": "assets/crests/femebal-00000428.jpg"
+    },
+    {
+     "femebal_id": "00000394",
+     "name": "C.D.S. Juventud Unida",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/4/8/2/4822fbb442c502f3.jpg",
+     "crest": "assets/crests/femebal-00000394.jpg"
+    },
+    {
+     "femebal_id": "00000369",
+     "name": "C.I.D. Moreno",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/2/1/4/214f1e942ba8eda4.png",
+     "crest": "assets/crests/femebal-00000369.png"
+    },
+    {
+     "femebal_id": "00000339",
+     "name": "Ci.De.Co.",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/a/1/1/a11fef7a043c4a8d.png",
+     "crest": "assets/crests/femebal-00000339.png"
+    },
+    {
+     "femebal_id": "00000333",
+     "name": "Club Ferrocarril Mitre",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/6/c/d/6cdded535329c544.png",
+     "crest": "assets/crests/femebal-00000333.png"
+    },
+    {
+     "femebal_id": "00000386",
+     "name": "Dorrego Handball",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/f/e/e/feee86daf3929bda.png",
+     "crest": "assets/crests/femebal-00000386.png"
+    },
+    {
+     "femebal_id": "00000335",
+     "name": "Ferro Carril Oeste",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/6/3/a/63a30e39a9f48ef0.jpeg",
+     "crest": "assets/crests/femebal-00000335.jpeg"
+    },
+    {
+     "femebal_id": "00000387",
+     "name": "Mariano Acosta Handball",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/f/c/2/fc2986555c5f0b23.png",
+     "crest": "assets/crests/femebal-00000387.png"
+    },
+    {
+     "femebal_id": "00000337",
+     "name": "Municipalidad de Vicente López",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/b/9/1/b91dc3795a86cd3a.png",
+     "crest": "assets/crests/femebal-00000337.png"
+    },
+    {
+     "femebal_id": "00000336",
+     "name": "Nuestra Señora de Luján",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/5/7/4/574aa5e9927f24da.png",
+     "crest": "assets/crests/femebal-00000336.png"
+    },
+    {
+     "femebal_id": "00000414",
+     "name": "S.A.G.A.B.",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/5/e/9/5e90353c59b3fc9c.png",
+     "crest": "assets/crests/femebal-00000414.png"
+    },
+    {
+     "femebal_id": "00000338",
+     "name": "S.E.D.A.L.O.",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/b/f/7/bf79356bd1deba7d.png",
+     "crest": "assets/crests/femebal-00000338.png"
+    },
+    {
+     "femebal_id": "00000421",
+     "name": "UBA",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/3/4/4/34400f2a622e7689.jpg",
+     "crest": "assets/crests/femebal-00000421.jpg"
+    }
+   ]
+  },
+  {
+   "division_id": "422",
+   "name": "Liga de Honor Plata",
+   "tier": 2,
+   "tournaments": [
+    {
+     "id": "00000753",
+     "name": "Super 8 Liga de Honor Plata Damas",
+     "state": "Finalizado"
+    },
+    {
+     "id": "00000528",
+     "name": "Torneo Metropolitano Clausura",
+     "state": "Finalizado"
+    },
+    {
+     "id": "00000230",
+     "name": "Torneo Metropolitano Apertura",
+     "state": "Finalizado"
+    }
+   ],
+   "clubs": [
+    {
+     "femebal_id": "00000351",
+     "name": "A.A.C.F. Quilmes",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/0/a/9/0a9966c38bc2e3a8.png",
+     "crest": "assets/crests/femebal-00000351.png"
+    },
+    {
+     "femebal_id": "00000359",
+     "name": "C.A. Atlanta",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/3/6/d/36d1fdf306541c08.jpg",
+     "crest": "assets/crests/femebal-00000359.jpg"
+    },
+    {
+     "femebal_id": "00000362",
+     "name": "C.A. Boca Juniors",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/6/7/a/67acfb789ccd8751.jpg",
+     "crest": "assets/crests/femebal-00000362.jpg"
+    },
+    {
+     "femebal_id": "00000410",
+     "name": "C.A. Platense",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/6/2/b/62b81a6d1da20ddd.png",
+     "crest": "assets/crests/femebal-00000410.png"
+    },
+    {
+     "femebal_id": "00000418",
+     "name": "C.A. San Lorenzo de Almagro",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/3/b/e/3be5b828144c6dd8.png",
+     "crest": "assets/crests/femebal-00000418.png"
+    },
+    {
+     "femebal_id": "00000430",
+     "name": "C.A.D. Villa Modelo",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/4/0/3/403d1d01d68a458d.jpg",
+     "crest": "assets/crests/femebal-00000430.jpg"
+    },
+    {
+     "femebal_id": "00000339",
+     "name": "Ci.De.Co. B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/a/1/1/a11fef7a043c4a8d.png",
+     "crest": "assets/crests/femebal-00000339.png"
+    },
+    {
+     "femebal_id": "00000377",
+     "name": "Club Comunicaciones",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/c/4/f/c4f137bab4d24415.png",
+     "crest": "assets/crests/femebal-00000377.png"
+    },
+    {
+     "femebal_id": "00000388",
+     "name": "Estrella de Boedo",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/5/f/2/5f27e687195a3e34.png",
+     "crest": "assets/crests/femebal-00000388.png"
+    },
+    {
+     "femebal_id": "00000340",
+     "name": "Estudiantes de La Plata",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/1/e/8/1e82e5e569fc98c7.png",
+     "crest": "assets/crests/femebal-00000340.png"
+    },
+    {
+     "femebal_id": "00000335",
+     "name": "Ferro Carril Oeste B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/6/3/a/63a30e39a9f48ef0.jpeg",
+     "crest": "assets/crests/femebal-00000335.jpeg"
+    },
+    {
+     "femebal_id": "00000398",
+     "name": "Municipalidad San Miguel",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/2/d/6/2d6ff19050137a97.png",
+     "crest": "assets/crests/femebal-00000398.png"
+    },
+    {
+     "femebal_id": "00000400",
+     "name": "Municipalidad de Tres de Febrero",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/c/5/7/c57afdd20f913c50.jpg",
+     "crest": "assets/crests/femebal-00000400.jpg"
+    },
+    {
+     "femebal_id": "00000334",
+     "name": "S.A.G. Villa Ballester",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/3/2/8/328dfd0ad0e24eca.png",
+     "crest": "assets/crests/femebal-00000334.png"
+    },
+    {
+     "femebal_id": "00000416",
+     "name": "Sagrado Corazón",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/7/2/d/72da1e625638b86e.png",
+     "crest": "assets/crests/femebal-00000416.png"
+    },
+    {
+     "femebal_id": "00000417",
+     "name": "San Fernando Handball",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/7/1/2/7126501fd7c11fc7.png",
+     "crest": "assets/crests/femebal-00000417.png"
+    }
+   ]
+  },
+  {
+   "division_id": "424",
+   "name": "1º División",
+   "tier": 3,
+   "tournaments": [
+    {
+     "id": "00000727",
+     "name": "Super 8 1° Division Damas",
+     "state": "Finalizado"
+    },
+    {
+     "id": "00000529",
+     "name": "Torneo Metropolitano Clausura",
+     "state": "Finalizado"
+    },
+    {
+     "id": "00000231",
+     "name": "Torneo Metropolitano Apertura",
+     "state": "Finalizado"
+    }
+   ],
+   "clubs": [
+    {
+     "femebal_id": "00000352",
+     "name": "A.F.A.L.P.",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/7/0/2/702c41f01c1a33f2.png",
+     "crest": "assets/crests/femebal-00000352.png"
+    },
+    {
+     "femebal_id": "00000354",
+     "name": "Argentinos Juniors B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/1/0/1/1017ec6e0d7ae101.jpg",
+     "crest": "assets/crests/femebal-00000354.jpg"
+    },
+    {
+     "femebal_id": "00000357",
+     "name": "Ateneo Don Bosco",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/8/4/2/84276ef4e203621f.png",
+     "crest": "assets/crests/femebal-00000357.png"
+    },
+    {
+     "femebal_id": "00000369",
+     "name": "C.I.D. Moreno B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/2/1/4/214f1e942ba8eda4.png",
+     "crest": "assets/crests/femebal-00000369.png"
+    },
+    {
+     "femebal_id": "00000382",
+     "name": "C.S. y C. Deportivo Laferrere",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/4/1/9/4194d115bf836bc6.png",
+     "crest": "assets/crests/femebal-00000382.png"
+    },
+    {
+     "femebal_id": "00000519",
+     "name": "Don Bosco Handball",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/0/7/f/07f798e1a932ac3c.jpg",
+     "crest": "assets/crests/femebal-00000519.jpg"
+    },
+    {
+     "femebal_id": "00000386",
+     "name": "Dorrego Handball B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/f/e/e/feee86daf3929bda.png",
+     "crest": "assets/crests/femebal-00000386.png"
+    },
+    {
+     "femebal_id": "00000340",
+     "name": "Estudiantes de La Plata B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/1/e/8/1e82e5e569fc98c7.png",
+     "crest": "assets/crests/femebal-00000340.png"
+    },
+    {
+     "femebal_id": "00000335",
+     "name": "Ferro Carril Oeste C",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/6/3/a/63a30e39a9f48ef0.jpeg",
+     "crest": "assets/crests/femebal-00000335.jpeg"
+    },
+    {
+     "femebal_id": "00000345",
+     "name": "Grilli Handball",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/d/4/3/d438dc5d02082953.png",
+     "crest": "assets/crests/femebal-00000345.png"
+    },
+    {
+     "femebal_id": "00000387",
+     "name": "Mariano Acosta Handball B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/f/c/2/fc2986555c5f0b23.png",
+     "crest": "assets/crests/femebal-00000387.png"
+    },
+    {
+     "femebal_id": "00000407",
+     "name": "Muñiz Handball",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/b/1/5/b15be2c0021d6f37.jpg",
+     "crest": "assets/crests/femebal-00000407.jpg"
+    },
+    {
+     "femebal_id": "00000415",
+     "name": "S.A.G. Polvorines",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/e/6/e/e6ed029efaa141e2.jpg",
+     "crest": "assets/crests/femebal-00000415.jpg"
+    },
+    {
+     "femebal_id": "00000414",
+     "name": "S.A.G.A.B. B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/5/e/9/5e90353c59b3fc9c.png",
+     "crest": "assets/crests/femebal-00000414.png"
+    },
+    {
+     "femebal_id": "00000413",
+     "name": "S.E.C.L.A.",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/c/d/8/cd853cc21c94b318.jpg",
+     "crest": "assets/crests/femebal-00000413.jpg"
+    },
+    {
+     "femebal_id": "00000425",
+     "name": "U.N. La Plata",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/4/3/8/438135603253cc44.jpg",
+     "crest": "assets/crests/femebal-00000425.jpg"
+    }
+   ]
+  },
+  {
+   "division_id": "538",
+   "name": "2º División",
+   "tier": 4,
+   "tournaments": [
+    {
+     "id": "00000728",
+     "name": "Super 8 2° Division Damas Zona Ascenso",
+     "state": "Finalizado"
+    },
+    {
+     "id": "00000729",
+     "name": "Super 8 2° Division Damas Zona Permanencia",
+     "state": "Finalizado"
+    },
+    {
+     "id": "00000588",
+     "name": "Torneo Metropolitano Clausura 2° Division Ascenso",
+     "state": "Finalizado"
+    },
+    {
+     "id": "00000589",
+     "name": "Torneo Metropolitano Clausura 2° Division Permanencia",
+     "state": "Finalizado"
+    },
+    {
+     "id": "00000516",
+     "name": "Definicion Torneo Metropolitano Apertura 2° Damas",
+     "state": "Finalizado"
+    },
+    {
+     "id": "00000232",
+     "name": "Torneo Metropolitano Apertura Zona A",
+     "state": "Finalizado"
+    },
+    {
+     "id": "00000238",
+     "name": "Torneo Metropolitano Apertura Zona B",
+     "state": "Finalizado"
+    }
+   ],
+   "clubs": [
+    {
+     "femebal_id": "00000351",
+     "name": "A.A.C.F. Quilmes B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/0/a/9/0a9966c38bc2e3a8.png",
+     "crest": "assets/crests/femebal-00000351.png"
+    },
+    {
+     "femebal_id": "00000353",
+     "name": "C. A. All Boys",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/e/2/a/e2a91544578b8b64.png",
+     "crest": "assets/crests/femebal-00000353.png"
+    },
+    {
+     "femebal_id": "00000359",
+     "name": "C.A. Atlanta B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/3/6/d/36d1fdf306541c08.jpg",
+     "crest": "assets/crests/femebal-00000359.jpg"
+    },
+    {
+     "femebal_id": "00000360",
+     "name": "C.A. Banfield",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/c/8/a/c8afad7202c12a2f.png",
+     "crest": "assets/crests/femebal-00000360.png"
+    },
+    {
+     "femebal_id": "00000380",
+     "name": "C.A. Defensores de Glew",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/8/8/b/88b062c40cbd0fc0.png",
+     "crest": "assets/crests/femebal-00000380.png"
+    },
+    {
+     "femebal_id": "00000381",
+     "name": "C.A. Defensores de Moreno",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/2/9/f/29f0907796be4c51.jpg",
+     "crest": "assets/crests/femebal-00000381.jpg"
+    },
+    {
+     "femebal_id": "00000363",
+     "name": "C.A. Huracán",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/4/5/6/4565815583862e7d.png",
+     "crest": "assets/crests/femebal-00000363.png"
+    },
+    {
+     "femebal_id": "00000613",
+     "name": "C.A. Independiente",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/c/8/e/c8e42088cd7b0d6c.jpg",
+     "crest": "assets/crests/femebal-00000613.jpg"
+    },
+    {
+     "femebal_id": "00000341",
+     "name": "C.A. Lanús B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/1/8/c/18c4d2e9b24f5844.png",
+     "crest": "assets/crests/femebal-00000341.png"
+    },
+    {
+     "femebal_id": "00000410",
+     "name": "C.A. Platense B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/6/2/b/62b81a6d1da20ddd.png",
+     "crest": "assets/crests/femebal-00000410.png"
+    },
+    {
+     "femebal_id": "00000419",
+     "name": "C.A. San Telmo",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/b/c/9/bc9129145fb2fedb.jpg",
+     "crest": "assets/crests/femebal-00000419.jpg"
+    },
+    {
+     "femebal_id": "00000625",
+     "name": "C.A. Talleres",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/a/a/8/aa860c3f65594723.png",
+     "crest": "assets/crests/femebal-00000625.png"
+    },
+    {
+     "femebal_id": "00000420",
+     "name": "C.A. Temperley",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/5/a/4/5a49db7daa2bf063.jpg",
+     "crest": "assets/crests/femebal-00000420.jpg"
+    },
+    {
+     "femebal_id": "00000428",
+     "name": "C.A. Vélez Sarsfield B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/6/8/5/68598a9b5ac24c08.jpg",
+     "crest": "assets/crests/femebal-00000428.jpg"
+    },
+    {
+     "femebal_id": "00000429",
+     "name": "C.A. y S. Villa Calzada",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/e/2/d/e2d2cddd58b9962a.jpg",
+     "crest": "assets/crests/femebal-00000429.jpg"
+    },
+    {
+     "femebal_id": "00000430",
+     "name": "C.A.D. Villa Modelo B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/4/0/3/403d1d01d68a458d.jpg",
+     "crest": "assets/crests/femebal-00000430.jpg"
+    },
+    {
+     "femebal_id": "00000368",
+     "name": "Campana Boat Club",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/e/c/e/ece17d30e5be0dbd.png",
+     "crest": "assets/crests/femebal-00000368.png"
+    },
+    {
+     "femebal_id": "00000528",
+     "name": "Centro Asturiano Handball",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/d/7/0/d70bbd1266c3f5fb.png",
+     "crest": "assets/crests/femebal-00000528.png"
+    },
+    {
+     "femebal_id": "00000371",
+     "name": "Circulo General Belgrano",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/f/6/4/f642782fe0dd018c.png",
+     "crest": "assets/crests/femebal-00000371.png"
+    },
+    {
+     "femebal_id": "00000377",
+     "name": "Club Comunicaciones B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/c/4/f/c4f137bab4d24415.png",
+     "crest": "assets/crests/femebal-00000377.png"
+    },
+    {
+     "femebal_id": "00000375",
+     "name": "Colegio Ward",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/6/4/3/643c8d0f33da83c4.jpg",
+     "crest": "assets/crests/femebal-00000375.jpg"
+    },
+    {
+     "femebal_id": "00000533",
+     "name": "Colegio del Parque",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/5/e/c/5ec4b1185443822f.jpg",
+     "crest": "assets/crests/femebal-00000533.jpg"
+    },
+    {
+     "femebal_id": "00000390",
+     "name": "Handball La Patriada",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/4/7/9/4792fcc0729a3b29.jpg",
+     "crest": "assets/crests/femebal-00000390.jpg"
+    },
+    {
+     "femebal_id": "00000392",
+     "name": "I.S.E.F. Dickens",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/a/9/1/a91b85b58f595386.png",
+     "crest": "assets/crests/femebal-00000392.png"
+    },
+    {
+     "femebal_id": "00000342",
+     "name": "Larre Handball",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/0/7/6/07677e4578b4c744.jpeg",
+     "crest": "assets/crests/femebal-00000342.jpeg"
+    },
+    {
+     "femebal_id": "00000397",
+     "name": "Municipalidad de Avellaneda",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/4/0/8/408895785431e12e.jpg",
+     "crest": "assets/crests/femebal-00000397.jpg"
+    },
+    {
+     "femebal_id": "00000403",
+     "name": "Municipalidad de Escobar",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/e/5/8/e586c83784d73a77.png",
+     "crest": "assets/crests/femebal-00000403.png"
+    },
+    {
+     "femebal_id": "00000337",
+     "name": "Municipalidad de Vicente López B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/b/9/1/b91dc3795a86cd3a.png",
+     "crest": "assets/crests/femebal-00000337.png"
+    },
+    {
+     "femebal_id": "00000391",
+     "name": "Municipio Lomas de Zamora",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/c/e/8/ce814b22b60685a2.png",
+     "crest": "assets/crests/femebal-00000391.png"
+    },
+    {
+     "femebal_id": "00000336",
+     "name": "Nuestra Señora de Luján B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/5/7/4/574aa5e9927f24da.png",
+     "crest": "assets/crests/femebal-00000336.png"
+    },
+    {
+     "femebal_id": "00000411",
+     "name": "Racing Club",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/3/3/b/33bcb773555bfaab.png",
+     "crest": "assets/crests/femebal-00000411.png"
+    },
+    {
+     "femebal_id": "00000334",
+     "name": "S.A.G. Villa Ballester B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/3/2/8/328dfd0ad0e24eca.png",
+     "crest": "assets/crests/femebal-00000334.png"
+    }
+   ]
+  },
+  {
+   "division_id": "539",
+   "name": "3º División",
+   "tier": 5,
+   "tournaments": [
+    {
+     "id": "00000730",
+     "name": "Super 8 3° Division Damas Zona Ascenso",
+     "state": "Finalizado"
+    },
+    {
+     "id": "00000731",
+     "name": "Super 8 3° Division Damas Zona Permanencia",
+     "state": "Finalizado"
+    },
+    {
+     "id": "00000590",
+     "name": "Torneo Metropolitano Clausura 3° Division Ascenso",
+     "state": "Finalizado"
+    },
+    {
+     "id": "00000591",
+     "name": "Torneo Metropolitano Clausura 3° Division Permanencia",
+     "state": "Finalizado"
+    },
+    {
+     "id": "00000515",
+     "name": "Definicion Torneo Metropolitano Apertura 3° Damas",
+     "state": "Finalizado"
+    },
+    {
+     "id": "00000296",
+     "name": "Torneo Metropolitano Apertura Zona A",
+     "state": "Finalizado"
+    },
+    {
+     "id": "00000297",
+     "name": "Torneo Metropolitano Apertura Zona B",
+     "state": "Finalizado"
+    }
+   ],
+   "clubs": [
+    {
+     "femebal_id": "00000352",
+     "name": "A.F.A.L.P. B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/7/0/2/702c41f01c1a33f2.png",
+     "crest": "assets/crests/femebal-00000352.png"
+    },
+    {
+     "femebal_id": "00000357",
+     "name": "Ateneo Don Bosco B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/8/4/2/84276ef4e203621f.png",
+     "crest": "assets/crests/femebal-00000357.png"
+    },
+    {
+     "femebal_id": "00000373",
+     "name": "Banco Central Handball",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/f/e/4/fe45f4d2ba6e012a.png",
+     "crest": "assets/crests/femebal-00000373.png"
+    },
+    {
+     "femebal_id": "00000362",
+     "name": "C.A. Boca Juniors B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/6/7/a/67acfb789ccd8751.jpg",
+     "crest": "assets/crests/femebal-00000362.jpg"
+    },
+    {
+     "femebal_id": "00000617",
+     "name": "C.A. Monte Grande",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/6/b/b/6bb43315324a367b.jpg",
+     "crest": "assets/crests/femebal-00000617.jpg"
+    },
+    {
+     "femebal_id": "00000408",
+     "name": "C.A. Nueva Chicago",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/9/e/7/9e727708def566cd.jpg",
+     "crest": "assets/crests/femebal-00000408.jpg"
+    },
+    {
+     "femebal_id": "00000418",
+     "name": "C.A. San Lorenzo de Almagro B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/3/b/e/3be5b828144c6dd8.png",
+     "crest": "assets/crests/femebal-00000418.png"
+    },
+    {
+     "femebal_id": "00000419",
+     "name": "C.A. San Telmo B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/b/c/9/bc9129145fb2fedb.jpg",
+     "crest": "assets/crests/femebal-00000419.jpg"
+    },
+    {
+     "femebal_id": "00000429",
+     "name": "C.A. y S. Villa Calzada B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/e/2/d/e2d2cddd58b9962a.jpg",
+     "crest": "assets/crests/femebal-00000429.jpg"
+    },
+    {
+     "femebal_id": "00000383",
+     "name": "C.S. Deportivo Merlo",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/1/e/e/1eeb24a9612ef3f6.jpg",
+     "crest": "assets/crests/femebal-00000383.jpg"
+    },
+    {
+     "femebal_id": "00000382",
+     "name": "C.S. y C. Deportivo Laferrere B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/4/1/9/4194d115bf836bc6.png",
+     "crest": "assets/crests/femebal-00000382.png"
+    },
+    {
+     "femebal_id": "00000379",
+     "name": "C.S. y D. Defensores de Banfield",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/7/d/b/7db95d30a2d48b7d.png",
+     "crest": "assets/crests/femebal-00000379.png"
+    },
+    {
+     "femebal_id": "00000396",
+     "name": "C.S. y D. Isidro Casanova",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/d/7/a/d7a7e42929cabdfd.jpg",
+     "crest": "assets/crests/femebal-00000396.jpg"
+    },
+    {
+     "femebal_id": "00000374",
+     "name": "C.V. La Unión Villa Giambruno",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/d/d/9/dd9333a857f55064.png",
+     "crest": "assets/crests/femebal-00000374.png"
+    },
+    {
+     "femebal_id": "00000370",
+     "name": "Circulo Devoto Handball",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/b/8/6/b86fb9ca5100aad6.png",
+     "crest": "assets/crests/femebal-00000370.png"
+    },
+    {
+     "femebal_id": "00000333",
+     "name": "Club Ferrocarril Mitre B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/6/c/d/6cdded535329c544.png",
+     "crest": "assets/crests/femebal-00000333.png"
+    },
+    {
+     "femebal_id": "00000372",
+     "name": "Club Guernica S.C. y D.",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/f/4/e/f4eb4ffd6e0116a2.png",
+     "crest": "assets/crests/femebal-00000372.png"
+    },
+    {
+     "femebal_id": "00000519",
+     "name": "Don Bosco Handball B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/0/7/f/07f798e1a932ac3c.jpg",
+     "crest": "assets/crests/femebal-00000519.jpg"
+    },
+    {
+     "femebal_id": "00000386",
+     "name": "Dorrego Handball C",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/f/e/e/feee86daf3929bda.png",
+     "crest": "assets/crests/femebal-00000386.png"
+    },
+    {
+     "femebal_id": "00000593",
+     "name": "G.E.I.",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/8/a/7/8a7484132b825539.jpg",
+     "crest": "assets/crests/femebal-00000593.jpg"
+    },
+    {
+     "femebal_id": "00000387",
+     "name": "Mariano Acosta Handball C",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/f/c/2/fc2986555c5f0b23.png",
+     "crest": "assets/crests/femebal-00000387.png"
+    },
+    {
+     "femebal_id": "00000399",
+     "name": "Municipalidad de Almirante Brown",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/a/c/2/ac25057ce70fb6b1.jpg",
+     "crest": "assets/crests/femebal-00000399.jpg"
+    },
+    {
+     "femebal_id": "00000402",
+     "name": "Municipalidad de Ensenada",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/0/1/f/01fb481596515f88.png",
+     "crest": "assets/crests/femebal-00000402.png"
+    },
+    {
+     "femebal_id": "00000404",
+     "name": "Municipalidad de Hurlingham",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/3/8/b/38bc5e5eb14a4ef2.jpg",
+     "crest": "assets/crests/femebal-00000404.jpg"
+    },
+    {
+     "femebal_id": "00000616",
+     "name": "Municipalidad de San Martín (Ce.M.E.F)",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/2/e/c/2ec2cc46dba08ef7.jpg",
+     "crest": "assets/crests/femebal-00000616.jpg"
+    },
+    {
+     "femebal_id": "00000400",
+     "name": "Municipalidad de Tres de Febrero B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/c/5/7/c57afdd20f913c50.jpg",
+     "crest": "assets/crests/femebal-00000400.jpg"
+    },
+    {
+     "femebal_id": "00000409",
+     "name": "Palermo Handball",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/0/6/e/06e92d7aca7272dc.png",
+     "crest": "assets/crests/femebal-00000409.png"
+    },
+    {
+     "femebal_id": "00000594",
+     "name": "Racing Club Villa del Parque",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/e/1/7/e1722251d931077b.png",
+     "crest": "assets/crests/femebal-00000594.png"
+    },
+    {
+     "femebal_id": "00000415",
+     "name": "S.A.G. Polvorines B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/e/6/e/e6ed029efaa141e2.jpg",
+     "crest": "assets/crests/femebal-00000415.jpg"
+    },
+    {
+     "femebal_id": "00000587",
+     "name": "S.F.C. y D. Querandí",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/8/2/2/822668374c1e2663.jpg",
+     "crest": "assets/crests/femebal-00000587.jpg"
+    },
+    {
+     "femebal_id": "00000423",
+     "name": "U.G.A.",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/6/a/a/6aad2cd988fa4d5a.jpg",
+     "crest": "assets/crests/femebal-00000423.jpg"
+    },
+    {
+     "femebal_id": "00000424",
+     "name": "U.N.La.M.",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/2/c/d/2cdcb9a13c15b186.png",
+     "crest": "assets/crests/femebal-00000424.png"
+    }
+   ]
+  },
+  {
+   "division_id": "540",
+   "name": "4º División",
+   "tier": 6,
+   "tournaments": [
+    {
+     "id": "00000733",
+     "name": "Super 8 4° Division Damas Zona Ascenso",
+     "state": "Finalizado"
+    },
+    {
+     "id": "00000734",
+     "name": "Super 8 4° Division Damas Zona Permanencia",
+     "state": "Finalizado"
+    },
+    {
+     "id": "00000592",
+     "name": "Torneo Metropolitano Clausura 4° Division Ascenso",
+     "state": "Finalizado"
+    },
+    {
+     "id": "00000600",
+     "name": "Torneo Metropolitano Clausura 4° Division B",
+     "state": "Finalizado"
+    },
+    {
+     "id": "00000514",
+     "name": "Definicion Torneo Metropolitano Apertura 4° Damas",
+     "state": "Finalizado"
+    },
+    {
+     "id": "00000299",
+     "name": "Torneo Metropolitano Apertura Zona B",
+     "state": "Finalizado"
+    },
+    {
+     "id": "00000333",
+     "name": "Torneo Metropolitano Apertura",
+     "state": "Finalizado"
+    }
+   ],
+   "clubs": [
+    {
+     "femebal_id": "00000354",
+     "name": "Argentinos Juniors C",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/1/0/1/1017ec6e0d7ae101.jpg",
+     "crest": "assets/crests/femebal-00000354.jpg"
+    },
+    {
+     "femebal_id": "00000627",
+     "name": "Arsenal F.C.",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/1/1/6/1167ddc627a6f280.jpg",
+     "crest": "assets/crests/femebal-00000627.jpg"
+    },
+    {
+     "femebal_id": "00000361",
+     "name": "Beata Handball",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/3/7/c/37c43053863392e5.jpg",
+     "crest": "assets/crests/femebal-00000361.jpg"
+    },
+    {
+     "femebal_id": "00000531",
+     "name": "C.A. Chacarita Juniors",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/9/8/1/981e2fcb82f19468.png",
+     "crest": "assets/crests/femebal-00000531.png"
+    },
+    {
+     "femebal_id": "00000366",
+     "name": "C.A. Ituzaingó",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/7/c/8/7c8d3dce97287633.png",
+     "crest": "assets/crests/femebal-00000366.png"
+    },
+    {
+     "femebal_id": "00000001",
+     "name": "C.A. Los Andes",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/c/6/7/c678d6cfa80e86b0.png",
+     "crest": "assets/crests/femebal-00000001.png"
+    },
+    {
+     "femebal_id": "00000410",
+     "name": "C.A. Platense C",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/6/2/b/62b81a6d1da20ddd.png",
+     "crest": "assets/crests/femebal-00000410.png"
+    },
+    {
+     "femebal_id": "00000620",
+     "name": "C.D. San Andrés",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/b/a/6/ba68a4f24214734d.png",
+     "crest": "assets/crests/femebal-00000620.png"
+    },
+    {
+     "femebal_id": "00000583",
+     "name": "C.D. Villa Elisa",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/b/d/3/bd3102d872802b29.jpg",
+     "crest": "assets/crests/femebal-00000583.jpg"
+    },
+    {
+     "femebal_id": "00000371",
+     "name": "Circulo General Belgrano B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/f/6/4/f642782fe0dd018c.png",
+     "crest": "assets/crests/femebal-00000371.png"
+    },
+    {
+     "femebal_id": "00000377",
+     "name": "Club Comunicaciones C",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/c/4/f/c4f137bab4d24415.png",
+     "crest": "assets/crests/femebal-00000377.png"
+    },
+    {
+     "femebal_id": "00000384",
+     "name": "Club Deportivo Morón",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/d/3/f/d3fb09be3dd00425.jpg",
+     "crest": "assets/crests/femebal-00000384.jpg"
+    },
+    {
+     "femebal_id": "00000385",
+     "name": "El Portugués",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/1/b/b/1bb0fea8c526ed5f.jpg",
+     "crest": "assets/crests/femebal-00000385.jpg"
+    },
+    {
+     "femebal_id": "00000592",
+     "name": "Estrella del Sur",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/b/b/b/bbb2e36058036a3e.png",
+     "crest": "assets/crests/femebal-00000592.png"
+    },
+    {
+     "femebal_id": "00000618",
+     "name": "FEINCO",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/c/f/6/cf664e1c29c1ac69.jpg",
+     "crest": "assets/crests/femebal-00000618.jpg"
+    },
+    {
+     "femebal_id": "00000660",
+     "name": "Fe.Me.Bal Libre 1",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/6/7/d/67dce82b00005276.png",
+     "crest": "assets/crests/femebal-00000660.png"
+    },
+    {
+     "femebal_id": "00000661",
+     "name": "Fe.Me.Bal. Libre 2",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/0/3/8/0381ea53138ef109.png",
+     "crest": "assets/crests/femebal-00000661.png"
+    },
+    {
+     "femebal_id": "00000390",
+     "name": "Handball La Patriada B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/4/7/9/4792fcc0729a3b29.jpg",
+     "crest": "assets/crests/femebal-00000390.jpg"
+    },
+    {
+     "femebal_id": "00000632",
+     "name": "I.E.F. Cardenas Handball",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/0/b/a/0ba3567b5390eff0.png",
+     "crest": "assets/crests/femebal-00000632.png"
+    },
+    {
+     "femebal_id": "00000393",
+     "name": "Instituto Manuel Belgrano",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/f/2/5/f25059fa594ae72c.jpg",
+     "crest": "assets/crests/femebal-00000393.jpg"
+    },
+    {
+     "femebal_id": "00000659",
+     "name": "Juan Cruz Varela",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/a/4/7/a47df4d003dd58ac.jpg",
+     "crest": "assets/crests/femebal-00000659.jpg"
+    },
+    {
+     "femebal_id": "00000342",
+     "name": "Larre Handball B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/0/7/6/07677e4578b4c744.jpeg",
+     "crest": "assets/crests/femebal-00000342.jpeg"
+    },
+    {
+     "femebal_id": "00000403",
+     "name": "Municipalidad de Escobar B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/e/5/8/e586c83784d73a77.png",
+     "crest": "assets/crests/femebal-00000403.png"
+    },
+    {
+     "femebal_id": "00000615",
+     "name": "Municipalidad de Ezeiza",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/9/e/4/9e4913f2c0235f33.jpg",
+     "crest": "assets/crests/femebal-00000615.jpg"
+    },
+    {
+     "femebal_id": "00000405",
+     "name": "Municipalidad de Pilar",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/0/3/2/032a6b2bb3a2d164.png",
+     "crest": "assets/crests/femebal-00000405.png"
+    },
+    {
+     "femebal_id": "00000407",
+     "name": "Muñiz Handball B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/b/1/5/b15be2c0021d6f37.jpg",
+     "crest": "assets/crests/femebal-00000407.jpg"
+    },
+    {
+     "femebal_id": "00000415",
+     "name": "S.A.G. Polvorines C",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/e/6/e/e6ed029efaa141e2.jpg",
+     "crest": "assets/crests/femebal-00000415.jpg"
+    },
+    {
+     "femebal_id": "00000412",
+     "name": "S.A.P.A.",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/b/3/b/b3bccf3b2065dd51.png",
+     "crest": "assets/crests/femebal-00000412.png"
+    },
+    {
+     "femebal_id": "00000413",
+     "name": "S.E.C.L.A. B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/c/d/8/cd853cc21c94b318.jpg",
+     "crest": "assets/crests/femebal-00000413.jpg"
+    },
+    {
+     "femebal_id": "00000631",
+     "name": "S.F. Barrio La Carne",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/f/7/b/f7ba64d6d99ec59c.png",
+     "crest": "assets/crests/femebal-00000631.png"
+    },
+    {
+     "femebal_id": "00000426",
+     "name": "UNSAM",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/2/1/6/216291b3834cefe4.jpg",
+     "crest": "assets/crests/femebal-00000426.jpg"
+    }
+   ]
+  },
+  {
+   "division_id": "573",
+   "name": "Desarrollo",
+   "tier": 7,
+   "tournaments": [
+    {
+     "id": "00000703",
+     "name": "Torneo Promocional Playoff Intermedia Damas",
+     "state": "Finalizado"
+    },
+    {
+     "id": "00000629",
+     "name": "Torneo Promocional Clausura Zona A",
+     "state": "Finalizado"
+    },
+    {
+     "id": "00000630",
+     "name": "Torneo Promocional Clausura Zona B",
+     "state": "Finalizado"
+    },
+    {
+     "id": "00000365",
+     "name": "Torneo Promocional Apertura",
+     "state": "Finalizado"
+    }
+   ],
+   "clubs": [
+    {
+     "femebal_id": "00000353",
+     "name": "C. A. All Boys B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/e/2/a/e2a91544578b8b64.png",
+     "crest": "assets/crests/femebal-00000353.png"
+    },
+    {
+     "femebal_id": "00000362",
+     "name": "C.A. Boca Juniors C",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/6/7/a/67acfb789ccd8751.jpg",
+     "crest": "assets/crests/femebal-00000362.jpg"
+    },
+    {
+     "femebal_id": "00000613",
+     "name": "C.A. Independiente B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/c/8/e/c8e42088cd7b0d6c.jpg",
+     "crest": "assets/crests/femebal-00000613.jpg"
+    },
+    {
+     "femebal_id": "00000366",
+     "name": "C.A. Ituzaingó B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/7/c/8/7c8d3dce97287633.png",
+     "crest": "assets/crests/femebal-00000366.png"
+    },
+    {
+     "femebal_id": "00000001",
+     "name": "C.A. Los Andes B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/c/6/7/c678d6cfa80e86b0.png",
+     "crest": "assets/crests/femebal-00000001.png"
+    },
+    {
+     "femebal_id": "00000546",
+     "name": "C.A. Olimpia",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/3/6/b/36bcc563df457a1d.png",
+     "crest": "assets/crests/femebal-00000546.png"
+    },
+    {
+     "femebal_id": "00000410",
+     "name": "C.A. Platense D",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/6/2/b/62b81a6d1da20ddd.png",
+     "crest": "assets/crests/femebal-00000410.png"
+    },
+    {
+     "femebal_id": "00000418",
+     "name": "C.A. San Lorenzo de Almagro C",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/3/b/e/3be5b828144c6dd8.png",
+     "crest": "assets/crests/femebal-00000418.png"
+    },
+    {
+     "femebal_id": "00000625",
+     "name": "C.A. Talleres C",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/a/a/8/aa860c3f65594723.png",
+     "crest": "assets/crests/femebal-00000625.png"
+    },
+    {
+     "femebal_id": "00000628",
+     "name": "C.D. y F. Las Mandarinas",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/a/4/4/a4408ed33a2aff6a.gif",
+     "crest": "assets/crests/femebal-00000628.png"
+    },
+    {
+     "femebal_id": "00000383",
+     "name": "C.S. Deportivo Merlo B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/1/e/e/1eeb24a9612ef3f6.jpg",
+     "crest": "assets/crests/femebal-00000383.jpg"
+    },
+    {
+     "femebal_id": "00000614",
+     "name": "C.S.C.D. Sargento Cabral B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/2/e/4/2e4c7358fd3f0e6f.jpg",
+     "crest": "assets/crests/femebal-00000614.jpg"
+    },
+    {
+     "femebal_id": "00000701",
+     "name": "Don Bosco Handball Uribelarrea",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/c/1/c/c1c8647e060aa233.png",
+     "crest": "assets/crests/femebal-00000701.png"
+    },
+    {
+     "femebal_id": "00000385",
+     "name": "El Portugués B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/1/b/b/1bb0fea8c526ed5f.jpg",
+     "crest": "assets/crests/femebal-00000385.jpg"
+    },
+    {
+     "femebal_id": "00000592",
+     "name": "Estrella del Sur B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/b/b/b/bbb2e36058036a3e.png",
+     "crest": "assets/crests/femebal-00000592.png"
+    },
+    {
+     "femebal_id": "00000618",
+     "name": "FEINCO B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/c/f/6/cf664e1c29c1ac69.jpg",
+     "crest": "assets/crests/femebal-00000618.jpg"
+    },
+    {
+     "femebal_id": "00000660",
+     "name": "Fe.Me.Bal Libre 1 B",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/6/7/d/67dce82b00005276.png",
+     "crest": "assets/crests/femebal-00000660.png"
+    },
+    {
+     "femebal_id": "00000571",
+     "name": "Independiente de Merlo",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/8/f/6/8f62ee5f70a8e3c2.png",
+     "crest": "assets/crests/femebal-00000571.png"
+    },
+    {
+     "femebal_id": "00000422",
+     "name": "U.N.Lu.",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/4/9/c/49cf91527e7280c7.png",
+     "crest": "assets/crests/femebal-00000422.png"
+    },
+    {
+     "femebal_id": "00000702",
+     "name": "Union Handball",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/0/f/1/0f110ecbd115856c.jpg",
+     "crest": "assets/crests/femebal-00000702.jpg"
+    }
+   ]
+  },
+  {
+   "division_id": "ID_FICTICIO",
+   "name": "Torneos multidivision",
+   "tier": null,
+   "tournaments": [
+    {
+     "id": "00000221",
+     "name": "Copa de Campeones 2024 Mayores Damas",
+     "state": "Finalizado"
+    }
+   ],
+   "clubs": [
+    {
+     "femebal_id": "00000627",
+     "name": "Arsenal F.C.",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/1/1/6/1167ddc627a6f280.jpg",
+     "crest": "assets/crests/femebal-00000627.jpg"
+    },
+    {
+     "femebal_id": "00000613",
+     "name": "C.A. Independiente",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/c/8/e/c8e42088cd7b0d6c.jpg",
+     "crest": "assets/crests/femebal-00000613.jpg"
+    },
+    {
+     "femebal_id": "00000410",
+     "name": "C.A. Platense",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/6/2/b/62b81a6d1da20ddd.png",
+     "crest": "assets/crests/femebal-00000410.png"
+    },
+    {
+     "femebal_id": "00000418",
+     "name": "C.A. San Lorenzo de Almagro",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/3/b/e/3be5b828144c6dd8.png",
+     "crest": "assets/crests/femebal-00000418.png"
+    },
+    {
+     "femebal_id": "00000625",
+     "name": "C.A. Talleres",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/a/a/8/aa860c3f65594723.png",
+     "crest": "assets/crests/femebal-00000625.png"
+    },
+    {
+     "femebal_id": "00000387",
+     "name": "Mariano Acosta Handball C",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/f/c/2/fc2986555c5f0b23.png",
+     "crest": "assets/crests/femebal-00000387.png"
+    },
+    {
+     "femebal_id": "00000413",
+     "name": "S.E.C.L.A.",
+     "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/c/d/8/cd853cc21c94b318.jpg",
+     "crest": "assets/crests/femebal-00000413.jpg"
+    }
+   ]
+  }
+ ]
+}

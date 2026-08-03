@@ -25,6 +25,9 @@ const es = {
     lastName: "Apellido",
     lastNamePlaceholder: "TU APELLIDO",
     number: "Dorsal",
+    rama: "Rama",
+    ramaF: "Femenino",
+    ramaM: "Masculino",
     hand: "Mano hábil",
     handRight: "Diestra",
     handLeft: "Zurda",
@@ -296,6 +299,36 @@ const es = {
       body: "Agarrás el rebote y del otro lado no hay nadie. Son 40 metros y una foto que puede quedar para siempre. O el ridículo del año.",
       choices: { "tirar-al-arco-vacio": { label: "Tirar", detail: "Gol de arquero · o el papelón" }, "no-tirar": { label: "Jugarla al pivote", detail: "Lo correcto · nadie se acuerda" } },
     },
+    maternidad: {
+      eyebrow: "La vida", title: "Vas a ser mamá",
+      body: "La noticia más grande de todas llega en mitad de la temporada. El club espera tu decisión, pero acá la que decide sos vos.",
+      choices: { pausa: { label: "Parar el año", detail: "El cuerpo primero · los títulos de la vuelta valen más" }, "volver-rapido": { label: "Volver a los cuatro meses", detail: "Sin perder la temporada · el cuerpo lo paga" } },
+    },
+    "doble-jornada": {
+      eyebrow: "Fin de mes", title: "El sueldo no alcanza",
+      body: "En el femenino casi nadie vive solo del handball. Te ofrecen medio turno en una oficina: plata segura, piernas cansadas.",
+      choices: { trabajo: { label: "Aceptar el trabajo", detail: "Llegás a fin de mes · entrenás con lo justo" }, "a-todo-o-nada": { label: "Jugártela al handball", detail: "Sin red · todo el día para entrenar" } },
+    },
+    clausula: {
+      eyebrow: "La firma", title: "La cláusula",
+      body: "En la renovación aparece una línea: rescisión si quedás embarazada. Es ilegal, pero ahí está, esperando tu firma.",
+      choices: { "firmar-callada": { label: "Firmar igual", detail: "El contrato sale · te la guardás" }, denunciar: { label: "Hacerla pública", detail: "El club arde · el vestuario te banca" } },
+    },
+    "premios-desiguales": {
+      eyebrow: "Premios", title: "La mitad de la mitad",
+      body: "Por el mismo título, el plantel masculino cobra el triple. El grupo habla de plantarse antes de la final.",
+      choices: { plantarse: { label: "Plantarse con el grupo", detail: "La pelea es de todas · la federación toma nota" }, "cabeza-gacha": { label: "Jugar y callar", detail: "La final es la final · la bronca queda adentro" } },
+    },
+    uniforme: {
+      eyebrow: "Federación", title: "La multa por el uniforme",
+      body: "El equipo salió a jugar con el short que eligió y la federación responde con una multa. Pasó de verdad, en 2021.",
+      choices: { "hacer-ruido": { label: "Hacer ruido", detail: "El mundo se entera · la norma cambia" }, "pagar-la-multa": { label: "Pagar y seguir", detail: "Plata que duele · el foco sigue en la cancha" } },
+    },
+    "redes-acoso": {
+      eyebrow: "Redes", title: "Los comentarios",
+      body: "Perdiste una final y las redes se llenan de mensajes que a un varón no le escriben nunca. El teléfono quema.",
+      choices: { responder: { label: "Responder", detail: "Se arma lío · muchas te lo agradecen" }, "bloquear-y-jugar": { label: "Bloquear y entrenar", detail: "El silencio también es respuesta" } },
+    },
   },
   share: {
     line: "¿Podés armar una carrera mejor?",
@@ -315,6 +348,7 @@ const es = {
     worse: "−{n} de valoración",
     role: "Pasaste a ser {role}",
     debut: "Debutaste en la selección",
+    maternity: "Fuiste mamá · {year}",
     tap: "tocá para seguir",
   },
   board: {
@@ -346,6 +380,8 @@ const es = {
     label: "El salto",
     line: "De {from} a {to}",
     none: "Empezaste arriba y te quedaste arriba.",
+    comebackLabel: "La vuelta de mamá",
+    comeback: "{n} títulos después de la maternidad",
   },
   scandals: {
     doping: "Sancionado por dopaje",
@@ -370,6 +406,9 @@ const fr = {
     lastName: "Nom",
     lastNamePlaceholder: "TON NOM",
     number: "Numéro",
+    rama: "Section",
+    ramaF: "Féminin",
+    ramaM: "Masculin",
     hand: "Main forte",
     handRight: "Droitier",
     handLeft: "Gaucher",
@@ -641,6 +680,36 @@ const fr = {
       body: "Tu captes le rebond et de l'autre côté il n'y a personne. 40 mètres et une image qui peut rester pour toujours. Ou le ridicule de l'année.",
       choices: { "tirar-al-arco-vacio": { label: "Tirer", detail: "But de gardien · ou la honte" }, "no-tirar": { label: "La jouer au pivot", detail: "Le bon choix · personne ne s'en souvient" } },
     },
+    maternidad: {
+      eyebrow: "La vie", title: "Tu vas être maman",
+      body: "La plus grande nouvelle de toutes arrive en pleine saison. Le club attend ta décision, mais ici c'est toi qui décides.",
+      choices: { pausa: { label: "Faire une pause d'un an", detail: "Le corps d'abord · les titres du retour valent plus" }, "volver-rapido": { label: "Revenir à quatre mois", detail: "Sans perdre la saison · le corps le paie" } },
+    },
+    "doble-jornada": {
+      eyebrow: "Fins de mois", title: "Le salaire ne suffit pas",
+      body: "Dans le hand féminin, presque personne ne vit que du handball. On te propose un mi-temps au bureau : argent sûr, jambes lourdes.",
+      choices: { trabajo: { label: "Accepter le travail", detail: "Les fins de mois passent · l'entraînement en pâtit" }, "a-todo-o-nada": { label: "Tout miser sur le hand", detail: "Sans filet · toute la journée pour s'entraîner" } },
+    },
+    clausula: {
+      eyebrow: "La signature", title: "La clause",
+      body: "Dans la prolongation apparaît une ligne : rupture en cas de grossesse. C'est illégal, mais elle est là, qui attend ta signature.",
+      choices: { "firmar-callada": { label: "Signer quand même", detail: "Le contrat passe · tu gardes ça pour toi" }, denunciar: { label: "La rendre publique", detail: "Le club s'embrase · le vestiaire te soutient" } },
+    },
+    "premios-desiguales": {
+      eyebrow: "Primes", title: "La moitié de la moitié",
+      body: "Pour le même titre, l'équipe masculine touche le triple. Le groupe parle de se mettre en grève avant la finale.",
+      choices: { plantarse: { label: "Faire bloc avec le groupe", detail: "Le combat est collectif · la fédération prend note" }, "cabeza-gacha": { label: "Jouer et se taire", detail: "Une finale est une finale · la colère reste dedans" } },
+    },
+    uniforme: {
+      eyebrow: "Fédération", title: "L'amende pour la tenue",
+      body: "L'équipe a joué avec le short qu'elle avait choisi et la fédération répond par une amende. C'est arrivé pour de vrai, en 2021.",
+      choices: { "hacer-ruido": { label: "Faire du bruit", detail: "Le monde l'apprend · la règle change" }, "pagar-la-multa": { label: "Payer et continuer", detail: "L'argent fait mal · le focus reste sur le terrain" } },
+    },
+    "redes-acoso": {
+      eyebrow: "Réseaux", title: "Les commentaires",
+      body: "Tu as perdu une finale et les réseaux se remplissent de messages qu'on n'écrit jamais à un homme. Le téléphone brûle.",
+      choices: { responder: { label: "Répondre", detail: "Ça fait des vagues · beaucoup te remercient" }, "bloquear-y-jugar": { label: "Bloquer et s'entraîner", detail: "Le silence aussi est une réponse" } },
+    },
   },
   share: {
     line: "Tu peux faire mieux ?",
@@ -660,6 +729,7 @@ const fr = {
     worse: "−{n} de note",
     role: "Tu deviens {role}",
     debut: "Première sélection",
+    maternity: "Tu es devenue maman · {year}",
     tap: "touche pour continuer",
   },
   board: {
@@ -691,6 +761,8 @@ const fr = {
     label: "La montée",
     line: "De {from} à {to}",
     none: "Tu as commencé en haut et tu y es resté.",
+    comebackLabel: "Le retour de maman",
+    comeback: "{n} titres après la maternité",
   },
   scandals: {
     doping: "Suspendu pour dopage",
@@ -715,6 +787,9 @@ const de = {
     lastName: "Nachname",
     lastNamePlaceholder: "DEIN NAME",
     number: "Nummer",
+    rama: "Bereich",
+    ramaF: "Frauen",
+    ramaM: "Männer",
     hand: "Wurfhand",
     handRight: "Rechts",
     handLeft: "Links",
@@ -986,6 +1061,36 @@ const de = {
       body: "Du fängst den Abpraller und gegenüber ist niemand. 40 Meter und ein Bild, das für immer bleiben kann. Oder die Blamage des Jahres.",
       choices: { "tirar-al-arco-vacio": { label: "Werfen", detail: "Torwarttor · oder die Blamage" }, "no-tirar": { label: "Zum Kreisläufer spielen", detail: "Das Richtige · niemand erinnert sich" } },
     },
+    maternidad: {
+      eyebrow: "Das Leben", title: "Du wirst Mama",
+      body: "Die größte Nachricht von allen kommt mitten in der Saison. Der Verein wartet auf deine Entscheidung — aber hier entscheidest du.",
+      choices: { pausa: { label: "Ein Jahr pausieren", detail: "Der Körper zuerst · Titel nach dem Comeback zählen mehr" }, "volver-rapido": { label: "Nach vier Monaten zurück", detail: "Keine Saison verloren · der Körper zahlt den Preis" } },
+    },
+    "doble-jornada": {
+      eyebrow: "Monatsende", title: "Das Gehalt reicht nicht",
+      body: "Im Frauenhandball lebt kaum jemand nur vom Sport. Ein Bürojob winkt: sicheres Geld, müde Beine.",
+      choices: { trabajo: { label: "Den Job annehmen", detail: "Das Konto stimmt · das Training leidet" }, "a-todo-o-nada": { label: "Alles auf Handball setzen", detail: "Ohne Netz · der ganze Tag fürs Training" } },
+    },
+    clausula: {
+      eyebrow: "Die Unterschrift", title: "Die Klausel",
+      body: "In der Vertragsverlängerung steht ein Satz: Auflösung bei Schwangerschaft. Illegal — aber da steht er und wartet auf deine Unterschrift.",
+      choices: { "firmar-callada": { label: "Trotzdem unterschreiben", detail: "Der Vertrag steht · du behältst es für dich" }, denunciar: { label: "Öffentlich machen", detail: "Der Verein tobt · die Kabine steht hinter dir" } },
+    },
+    "premios-desiguales": {
+      eyebrow: "Prämien", title: "Die Hälfte der Hälfte",
+      body: "Für denselben Titel bekommt das Männerteam das Dreifache. Die Mannschaft redet vor dem Finale über einen Streik.",
+      choices: { plantarse: { label: "Mit dem Team aufstehen", detail: "Der Kampf gehört allen · der Verband merkt es sich" }, "cabeza-gacha": { label: "Spielen und schweigen", detail: "Ein Finale ist ein Finale · die Wut bleibt drinnen" } },
+    },
+    uniforme: {
+      eyebrow: "Verband", title: "Die Strafe für die Hose",
+      body: "Das Team spielt in der Hose, die es selbst gewählt hat — der Verband antwortet mit einer Geldstrafe. Ist wirklich passiert, 2021.",
+      choices: { "hacer-ruido": { label: "Laut werden", detail: "Die Welt erfährt es · die Regel fällt" }, "pagar-la-multa": { label: "Zahlen und weitermachen", detail: "Das Geld tut weh · der Fokus bleibt auf dem Feld" } },
+    },
+    "redes-acoso": {
+      eyebrow: "Social Media", title: "Die Kommentare",
+      body: "Ein verlorenes Finale, und die Kommentarspalten füllen sich mit Nachrichten, die einem Mann nie geschrieben würden. Das Handy glüht.",
+      choices: { responder: { label: "Antworten", detail: "Es gibt Wirbel · viele danken es dir" }, "bloquear-y-jugar": { label: "Blockieren und trainieren", detail: "Auch Schweigen ist eine Antwort" } },
+    },
   },
   share: {
     line: "Schaffst du eine bessere Karriere?",
@@ -1005,6 +1110,7 @@ const de = {
     worse: "−{n} Stärke",
     role: "Du bist jetzt {role}",
     debut: "Länderspieldebüt",
+    maternity: "Du bist Mama geworden · {year}",
     tap: "tippen zum Weitermachen",
   },
   board: {
@@ -1036,6 +1142,8 @@ const de = {
     label: "Der Aufstieg",
     line: "Von {from} bis {to}",
     none: "Du hast oben angefangen und bist oben geblieben.",
+    comebackLabel: "Mamas Comeback",
+    comeback: "{n} Titel nach der Babypause",
   },
   scandals: {
     doping: "Wegen Dopings gesperrt",
