@@ -26,6 +26,32 @@ body {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
+/* Fondo de héroes: ella a la izquierda, él a la derecha, fundidos en negro.
+   Las fotos ya vienen pre-oscurecidas; los gradientes las terminan de hundir
+   para que la UI siga leyéndose encima sin esfuerzo. */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0 50% 0 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to bottom, rgba(11, 15, 20, .45) 0%, rgba(11, 15, 20, .78) 55%, var(--ink) 92%),
+    linear-gradient(to right, rgba(11, 15, 20, .38) 0%, rgba(11, 15, 20, .72) 70%, var(--ink) 100%),
+    url("assets/bg/heroina.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+body::after {
+  inset: 0 0 0 50%;
+  background-image:
+    linear-gradient(to bottom, rgba(11, 15, 20, .45) 0%, rgba(11, 15, 20, .78) 55%, var(--ink) 92%),
+    linear-gradient(to left, rgba(11, 15, 20, .38) 0%, rgba(11, 15, 20, .72) 70%, var(--ink) 100%),
+    url("assets/bg/heroe.jpg");
+}
+
 #app {
   max-width: 640px;
   margin: 0 auto;
