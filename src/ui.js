@@ -564,13 +564,32 @@ function choose(choiceId) {
  * La crónica: un periodista deportivo cuenta la carrera en cuatro o cinco
  * frases. Se arma con piezas de i18n según lo que de verdad pasó.
  */
+// Cada carrera sortea su apertura y su cierre entre varias plumas distintas:
+// el mismo veredicto nunca se lee dos veces igual.
+function storyHash() {
+  let h = 2166136261;
+  for (const ch of String(career.id)) {
+    h ^= ch.codePointAt(0);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+
+function storyPick(key, params, salt = 0) {
+  const value = t(key);
+  const raw = Array.isArray(value) ? value[(storyHash() + salt) % value.length] : value;
+  return typeof raw === "string"
+    ? raw.replace(/\{(\w+)\}/g, (match, slot) => params?.[slot] ?? match)
+    : "";
+}
+
 function buildStory() {
   const stints = buildStints();
   const verdict = career.verdict.key;
   const totals = career.totals;
   const parts = [];
 
-  parts.push(t(`story.opener.${verdict}`, { name: career.player.lastName }));
+  parts.push(storyPick(`story.opener.${verdict}`, { name: career.player.lastName }));
 
   const first = career.firstClub?.name || stints[0]?.club || "";
   // Si cerró el círculo, el "hasta" del viaje es el club anterior: la vuelta
@@ -611,8 +630,13 @@ function buildStory() {
   if (stints.length > 1 && stints.at(-1)?.clubId === stints[0]?.clubId) {
     parts.push(t("story.fullCircle", { club: first }));
   }
+  // El argentino que se animó a irse merece el reconocimiento aunque la
+  // carrera haya sido floja: emigrar ya es ganarle a la estadística.
+  if (career.player.country === "ARG" && stints.some((s) => s.country && s.country !== "Argentina")) {
+    parts.push(storyPick("story.adventure", {}, 3));
+  }
 
-  parts.push(t(`story.closer.${verdict}`));
+  parts.push(storyPick(`story.closer.${verdict}`, {}, 7));
   return parts.join(" ");
 }
 
@@ -630,7 +654,8 @@ function renderResult() {
   el("result-meta").textContent =
     `${t(`positions.${career.player.position}`)} · ${totals.seasons} ${t("ui.season").toLowerCase()}s`;
   el("result-score").textContent = career.score;
-  el("story").textContent = buildStory();
+  const story = buildStory();
+  el("story").textContent = story;
 
   // El salto es el componente más grande del puntaje, así que se cuenta aparte.
   const climbBox = el("result-climb");
@@ -683,7 +708,7 @@ function renderResult() {
 
   renderBoard(saveRun());
 
-  drawShareCard(el("share-canvas"), career, t);
+  drawShareCard(el("share-canvas"), career, t, story);
   el("share").onclick = () => shareCareer(career, t, el("share-canvas"), el("share-feedback"));
   el("play-again").onclick = () => { show("setup"); window.scrollTo({ top: 0 }); };
 }

@@ -1301,7 +1301,9 @@ function simulateSeason(state, rng) {
   const bestChance = clamp((awardScore - 110) / 90, 0.06, 0.6) / (1 + alreadyBest * 2.4);
   if (maternity) {
     // Sin jugar no hay premios individuales.
-  } else if (awardScore >= 128 && rng() < bestChance) {
+  } else if (awardScore >= 128 && clubPrestige >= 4 && caps > 0 && rng() < bestChance) {
+    // El premio IHF se juega en los Mundiales: nadie lo gana desde un club
+    // chico de Argentina o una segunda división, ni sin vestir su selección.
     addAward(state, season, "ihf-player", {}, "Mejor jugador del mundo IHF", 95);
   } else if (!keeper && goals >= 150 && rng() < 0.3) {
     addAward(state, season, "top-scorer", {}, "Máximo goleador de la liga", 40);

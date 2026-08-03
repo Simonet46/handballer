@@ -40,7 +40,7 @@ function roundRect(ctx, x, y, w, h, r) {
   ctx.closePath();
 }
 
-export function drawShareCard(canvas, career, t) {
+export function drawShareCard(canvas, career, t, story = "") {
   canvas.width = W;
   canvas.height = H;
   const ctx = canvas.getContext("2d");
@@ -55,27 +55,38 @@ export function drawShareCard(canvas, career, t) {
   ctx.textAlign = "left";
   ctx.fillStyle = "rgba(244,241,234,.55)";
   ctx.font = "600 30px system-ui, sans-serif";
-  ctx.fillText("HANDBALLER", 72, 100);
+  ctx.fillText("HANDBALLER", 72, 96);
 
   // Dorsal gigante de fondo
   ctx.save();
   ctx.textAlign = "right";
-  ctx.fillStyle = "rgba(244,241,234,.06)";
-  ctx.font = "800 420px system-ui, sans-serif";
-  ctx.fillText(String(career.player.number), W - 40, 470);
+  ctx.fillStyle = "rgba(244,241,234,.05)";
+  ctx.font = "800 380px system-ui, sans-serif";
+  ctx.fillText(String(career.player.number), W - 40, 420);
   ctx.restore();
 
   ctx.fillStyle = PAPER;
-  ctx.font = "800 96px system-ui, sans-serif";
-  ctx.fillText(`${career.player.flag} ${career.player.lastName}`.slice(0, 22), 72, 250);
+  ctx.font = "800 72px system-ui, sans-serif";
+  ctx.fillText(`${career.player.flag} ${career.player.lastName}`.slice(0, 18), 72, 192);
 
   ctx.fillStyle = ACCENT;
-  ctx.font = "800 62px system-ui, sans-serif";
-  ctx.fillText(t(`verdicts.${career.verdict.key}.title`), 72, 335);
+  ctx.font = "800 54px system-ui, sans-serif";
+  ctx.fillText(t(`verdicts.${career.verdict.key}.title`), 72, 262);
 
-  ctx.fillStyle = "rgba(244,241,234,.7)";
-  ctx.font = "400 34px system-ui, sans-serif";
-  wrap(ctx, t(`verdicts.${career.verdict.key}.line`), 72, 400, W - 144, 46);
+  // El puntaje arriba a la derecha: es el número que se compara.
+  ctx.fillStyle = ACCENT;
+  roundRect(ctx, W - 72 - 280, 112, 280, 112, 20);
+  ctx.fill();
+  ctx.textAlign = "center";
+  ctx.fillStyle = INK;
+  ctx.font = "600 22px system-ui, sans-serif";
+  ctx.fillText(t("ui.score").toUpperCase(), W - 72 - 140, 156);
+  ctx.font = "800 54px system-ui, sans-serif";
+  ctx.fillText(String(career.score), W - 72 - 140, 210);
+  ctx.textAlign = "left";
+
+  // La crónica del periodista, con su hilo naranja al costado.
+  const storyEnd = story ? drawStory(ctx, story) : 320;
 
   // Cuadro de estadísticas
   const stats = [
@@ -84,19 +95,19 @@ export function drawShareCard(canvas, career, t) {
     keeper ? [totals.caps, t("ui.caps")] : [totals.assists, t("ui.assists")],
     [Math.round(career.maxRating), t("ui.peak")],
   ];
-  const boxY = 560;
+  const boxY = storyEnd + 34;
   ctx.fillStyle = "rgba(244,241,234,.06)";
-  roundRect(ctx, 72, boxY, W - 144, 180, 24);
+  roundRect(ctx, 72, boxY, W - 144, 160, 24);
   ctx.fill();
   stats.forEach(([value, label], index) => {
     const x = 72 + (W - 144) * (index + 0.5) / stats.length;
     ctx.textAlign = "center";
     ctx.fillStyle = PAPER;
-    ctx.font = "800 64px system-ui, sans-serif";
-    ctx.fillText(String(value), x, boxY + 90);
+    ctx.font = "800 58px system-ui, sans-serif";
+    ctx.fillText(String(value), x, boxY + 78);
     ctx.fillStyle = "rgba(244,241,234,.5)";
-    ctx.font = "600 26px system-ui, sans-serif";
-    ctx.fillText(label.toUpperCase(), x, boxY + 132);
+    ctx.font = "600 24px system-ui, sans-serif";
+    ctx.fillText(label.toUpperCase(), x, boxY + 118);
   });
 
   // Recorrido: primeros y últimos clubes
@@ -106,47 +117,59 @@ export function drawShareCard(canvas, career, t) {
     if (clubs.at(-1) !== season.club) clubs.push(season.club);
   }
   const shown = clubs.length > 6 ? [...clubs.slice(0, 3), "…", ...clubs.slice(-2)] : clubs;
+  const clubsY = boxY + 226;
   ctx.fillStyle = "rgba(244,241,234,.5)";
   ctx.font = "600 26px system-ui, sans-serif";
-  ctx.fillText(t("ui.clubs").toUpperCase(), 72, 810);
+  ctx.fillText(t("ui.clubs").toUpperCase(), 72, clubsY);
   ctx.fillStyle = PAPER;
-  ctx.font = "500 34px system-ui, sans-serif";
-  wrap(ctx, shown.join("  ›  "), 72, 860, W - 144, 48, 4);
+  ctx.font = "500 33px system-ui, sans-serif";
+  wrap(ctx, shown.join("  ›  "), 72, clubsY + 46, W - 144, 46, 2);
 
-  // Vitrina
+  // Vitrina: lo más pesado primero
   const honours = new Map();
   for (const item of [...career.trophies, ...career.awards]) {
     const name = honourName(t, item);
-    honours.set(name, (honours.get(name) || 0) + 1);
+    const entry = honours.get(name) || { count: 0, weight: item.weight || 0 };
+    entry.count += 1;
+    honours.set(name, entry);
   }
-  const top = [...honours].sort((a, b) => b[1] - a[1]).slice(0, 3);
+  const top = [...honours]
+    .sort((a, b) => b[1].weight * b[1].count - a[1].weight * a[1].count)
+    .slice(0, 3);
   if (top.length) {
+    const vitY = clubsY + 150;
     ctx.fillStyle = "rgba(244,241,234,.5)";
     ctx.font = "600 26px system-ui, sans-serif";
-    ctx.fillText(t("ui.honours").toUpperCase(), 72, 1000);
+    ctx.fillText(t("ui.honours").toUpperCase(), 72, vitY);
     ctx.font = "500 32px system-ui, sans-serif";
-    top.forEach(([name, count], index) => {
+    // Solo las filas que entran arriba del pie: nada se pisa con nada.
+    const rows = Math.max(0, Math.min(top.length, Math.floor((H - 96 - (vitY + 50)) / 44) + 1));
+    top.slice(0, rows).forEach(([name, { count }], index) => {
       ctx.fillStyle = "#f0c02c";
-      ctx.fillText("🏆", 72, 1052 + index * 46);
+      ctx.fillText("🏆", 72, vitY + 50 + index * 44);
       ctx.fillStyle = PAPER;
-      ctx.fillText(`${count}× ${name}`, 122, 1052 + index * 46);
+      ctx.fillText(`${count}× ${name}`.slice(0, 46), 122, vitY + 50 + index * 44);
     });
   }
-
-  // Puntaje
-  ctx.fillStyle = ACCENT;
-  roundRect(ctx, 72, H - 150, 330, 96, 20);
-  ctx.fill();
-  ctx.fillStyle = INK;
-  ctx.font = "600 24px system-ui, sans-serif";
-  ctx.fillText(t("ui.score").toUpperCase(), 100, H - 108);
-  ctx.font = "800 46px system-ui, sans-serif";
-  ctx.fillText(String(career.score), 100, H - 74);
 
   ctx.textAlign = "right";
   ctx.fillStyle = "rgba(244,241,234,.45)";
   ctx.font = "500 30px system-ui, sans-serif";
-  ctx.fillText(shareUrl(), W - 72, H - 82);
+  ctx.fillText(shareUrl(), W - 72, H - 44);
+}
+
+/** La crónica en la tarjeta: hasta 7 líneas en itálica. Devuelve la Y final. */
+function drawStory(ctx, story) {
+  const top = 316;
+  const lineHeight = 46;
+  ctx.textAlign = "left";
+  ctx.fillStyle = "rgba(244,241,234,.85)";
+  ctx.font = "italic 500 32px system-ui, sans-serif";
+  const lines = wrap(ctx, story, 104, top + 40, W - 190, lineHeight, 6);
+  const height = 24 + lines * lineHeight + 30;
+  ctx.fillStyle = ACCENT;
+  ctx.fillRect(72, top, 6, height);
+  return top + height;
 }
 
 function wrap(ctx, text, x, y, maxWidth, lineHeight, maxLines = 3) {
@@ -159,12 +182,19 @@ function wrap(ctx, text, x, y, maxWidth, lineHeight, maxLines = 3) {
       ctx.fillText(line, x, y + lines * lineHeight);
       lines += 1;
       line = word;
-      if (lines >= maxLines) return;
+      if (lines >= maxLines) {
+        ctx.fillText(`${line}…`.slice(0, 60), x, y + lines * lineHeight);
+        return lines + 1;
+      }
     } else {
       line = candidate;
     }
   }
-  if (line) ctx.fillText(line, x, y + lines * lineHeight);
+  if (line) {
+    ctx.fillText(line, x, y + lines * lineHeight);
+    lines += 1;
+  }
+  return lines;
 }
 
 function shareUrl() {
@@ -180,7 +210,10 @@ export async function shareCareer(career, t, canvas, feedback) {
 
   if (file && navigator.canShare?.({ files: [file] })) {
     try {
-      await navigator.share({ files: [file], text, url });
+      // SOLO la imagen: mezclar files + text + url hacía que Safari/WhatsApp
+      // adjuntara la tarjeta dos veces y pegara la ruta temporal del archivo.
+      // La tarjeta ya lleva adentro el puntaje, la crónica y la URL.
+      await navigator.share({ files: [file] });
       return;
     } catch {
       // El usuario canceló: seguimos con las alternativas.
