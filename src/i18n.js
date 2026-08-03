@@ -324,6 +324,16 @@ const es = {
       body: "Agarrás el rebote y del otro lado no hay nadie. Son 40 metros y una foto que puede quedar para siempre. O el ridículo del año.",
       choices: { "tirar-al-arco-vacio": { label: "Tirar", detail: "Gol de arquero · o el papelón" }, "no-tirar": { label: "Jugarla al pivote", detail: "Lo correcto · nadie se acuerda" } },
     },
+    "brazo-armado": {
+      eyebrow: "Charla táctica", title: "El entrenador quiere cruzarte de lado",
+      body: "Tu brazo de armado queda contra la línea: parado ahí, el ángulo de tiro no existe. Te propone cambiar de lado, donde tu mano juega a favor. En handball, la derecha es de los zurdos y la izquierda de los diestros.",
+      choices: { cambiar: { label: "Cruzarte de lado", detail: "El ángulo aparece · tu mano por fin suma" }, mantener: { label: "Quedarte donde estás", detail: "Terco · los clubes grandes no van a llamar" } },
+    },
+    "brazo-armado-2": {
+      eyebrow: "Seis años después", title: "Otro entrenador, el mismo pedido",
+      body: "Un técnico nuevo mira tu mano, mira tu posición y no lo puede creer. Te lo pide otra vez: cruzate de lado. Es probablemente tu última chance de una carrera de verdad.",
+      choices: { cambiar: { label: "Aceptar ahora", detail: "Tarde, pero el ángulo aparece" }, mantener: { label: "Mantener la posición", detail: "Nadie va a volver a pedirlo · carrera cuesta arriba" } },
+    },
     maternidad: {
       eyebrow: "La vida", title: "Vas a ser mamá",
       body: "La noticia más grande de todas llega en mitad de la temporada. El club espera tu decisión, pero acá la que decide sos vos.",
@@ -730,6 +740,16 @@ const fr = {
       body: "Tu captes le rebond et de l'autre côté il n'y a personne. 40 mètres et une image qui peut rester pour toujours. Ou le ridicule de l'année.",
       choices: { "tirar-al-arco-vacio": { label: "Tirer", detail: "But de gardien · ou la honte" }, "no-tirar": { label: "La jouer au pivot", detail: "Le bon choix · personne ne s'en souvient" } },
     },
+    "brazo-armado": {
+      eyebrow: "Causerie tactique", title: "Le coach veut te faire changer de côté",
+      body: "Ton bras de tir se retrouve contre la ligne : posté là, l'angle n'existe pas. Il te propose de croiser, là où ta main joue pour toi. Au hand, la droite est aux gauchers et la gauche aux droitiers.",
+      choices: { cambiar: { label: "Croiser de côté", detail: "L'angle apparaît · ta main compte enfin" }, mantener: { label: "Rester où tu es", detail: "Têtu · les grands clubs n'appelleront pas" } },
+    },
+    "brazo-armado-2": {
+      eyebrow: "Six ans plus tard", title: "Un autre coach, la même demande",
+      body: "Un nouveau technicien regarde ta main, regarde ton poste, et n'en revient pas. Il te le redemande : change de côté. C'est sans doute ta dernière chance d'une vraie carrière.",
+      choices: { cambiar: { label: "Accepter maintenant", detail: "Tard, mais l'angle apparaît" }, mantener: { label: "Garder le poste", detail: "Personne ne le redemandera · carrière en côte" } },
+    },
     maternidad: {
       eyebrow: "La vie", title: "Tu vas être maman",
       body: "La plus grande nouvelle de toutes arrive en pleine saison. Le club attend ta décision, mais ici c'est toi qui décides.",
@@ -1135,6 +1155,16 @@ const de = {
       eyebrow: "Tempogegenstoß", title: "Auf der anderen Seite steht kein Torwart",
       body: "Du fängst den Abpraller und gegenüber ist niemand. 40 Meter und ein Bild, das für immer bleiben kann. Oder die Blamage des Jahres.",
       choices: { "tirar-al-arco-vacio": { label: "Werfen", detail: "Torwarttor · oder die Blamage" }, "no-tirar": { label: "Zum Kreisläufer spielen", detail: "Das Richtige · niemand erinnert sich" } },
+    },
+    "brazo-armado": {
+      eyebrow: "Taktikgespräch", title: "Der Trainer will dich auf die andere Seite stellen",
+      body: "Dein Wurfarm zeigt zur Auslinie: Von dort gibt es keinen Winkel. Er schlägt vor, die Seite zu wechseln — dahin, wo deine Hand für dich spielt. Im Handball gehört rechts den Linkshändern und links den Rechtshändern.",
+      choices: { cambiar: { label: "Die Seite wechseln", detail: "Der Winkel ist da · deine Hand zählt endlich" }, mantener: { label: "Bleiben, wo du bist", detail: "Stur · die großen Vereine rufen nicht an" } },
+    },
+    "brazo-armado-2": {
+      eyebrow: "Sechs Jahre später", title: "Anderer Trainer, dieselbe Frage",
+      body: "Ein neuer Trainer sieht deine Hand, sieht deine Position — und fasst es nicht. Er fragt noch einmal: Wechsle die Seite. Es ist wohl deine letzte Chance auf eine echte Karriere.",
+      choices: { cambiar: { label: "Jetzt annehmen", detail: "Spät, aber der Winkel ist da" }, mantener: { label: "Position behalten", detail: "Niemand fragt noch einmal · Karriere bergauf" } },
     },
     maternidad: {
       eyebrow: "Das Leben", title: "Du wirst Mama",

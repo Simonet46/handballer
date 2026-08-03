@@ -246,6 +246,8 @@ function syncChips() {
 
 function renderPreview() {
   const country = startableCountries().find((c) => c.code === form.country);
+  // La camiseta se pinta con los colores de la selección elegida.
+  document.querySelector(".jersey").dataset.country = form.country;
   el("preview-name").textContent = form.lastName || t("ui.lastNamePlaceholder");
   el("preview-number").textContent = form.number;
   el("preview-flag").textContent = country?.flag || "";

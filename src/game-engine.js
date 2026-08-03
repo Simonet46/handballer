@@ -195,10 +195,14 @@ function candidatePool(state, { minStrength, maxStrength }) {
 }
 
 export function transferOffers(state, rng, count = 2, farewell = false) {
-  const level = targetStrength(state);
+  let level = targetStrength(state);
+  // Con el brazo de armado del lado equivocado, los que llaman son siempre
+  // clubes chicos: nadie paga por un extremo sin ángulo de tiro.
+  const badSide = state.wrongHand && state.brazoRefusedYear;
+  if (badSide) level = 1;
   const pool = candidatePool(state, {
     minStrength: clamp(level - (farewell ? 2 : 1), 1, 5),
-    maxStrength: clamp(level + (state.age < 23 ? 0 : 1), 1, 5)
+    maxStrength: badSide ? 2 : clamp(level + (state.age < 23 ? 0 : 1), 1, 5)
   });
   return sampleUnique(pool, count, rng);
 }
@@ -664,6 +668,9 @@ export function createCareer(profile, rng = Math.random) {
       positionName: position.name,
       rama: profile.rama === "F" ? "F" : "M"
     },
+    // Diestro a la derecha o zurdo a la izquierda: el lado equivocado para tu
+    // mano. El primer entrenador te lo va a hacer notar.
+    wrongHand: wrongSideFor(profile.hand === "Zurda" ? "Zurda" : "Diestra", position.code),
     pace,
     age: START_AGE,
     retirementAge: RETIREMENT_AGE,
@@ -911,6 +918,17 @@ function emigrationEvent(state, rng) {
 
 function chooseNextEvent(state, rng) {
   if (state.age >= state.retirementAge - state.pace) return finalCycleEvent(state, rng);
+  // El brazo de armado se discute antes que nada: es la primera charla seria
+  // que tiene cualquier entrenador con un pibe parado del lado equivocado.
+  if (state.wrongHand && !state.brazoAsked && state.age >= 18) {
+    state.brazoAsked = true;
+    return handednessEvent(1);
+  }
+  if (state.wrongHand && state.brazoRefusedYear && !state.brazoAskedAgain &&
+      state.seasonYear >= state.brazoRefusedYear + 6) {
+    state.brazoAskedAgain = true;
+    return handednessEvent(2);
+  }
   // En una liga amateur no hay contrato que renovar: no existe el evento.
   if (state.firstClub && state.contractYears <= 0 && !state.club.amateur) {
     return contractExpiryEvent(state, rng);
@@ -928,6 +946,37 @@ function chooseNextEvent(state, rng) {
 // El lateral se corre al extremo de su mismo lado y viceversa: es el único
 // cambio que de verdad ocurre en handball.
 const POSITION_SWAP = { LB: "LW", RB: "RW", LW: "LB", RW: "RB" };
+
+// En handball la mano manda el lado: a la derecha juegan zurdos (el ángulo de
+// tiro queda hacia adentro) y a la izquierda diestros. Un diestro de extremo
+// derecho no existe en ningún plantel serio.
+const HAND_MIRROR = { RW: "LW", RB: "LB", LW: "RW", LB: "RB" };
+
+function wrongSideFor(hand, positionCode) {
+  const banned = hand === "Zurda" ? ["LB", "LW"] : ["RW", "RB"];
+  return banned.includes(positionCode);
+}
+
+/**
+ * La charla que define todo: el entrenador te pide cruzarte de lado porque tu
+ * brazo de armado quedó contra la línea. Si te negás, los clubes grandes no
+ * llaman más; seis años después otro técnico te da la última chance.
+ */
+function handednessEvent(stage) {
+  return {
+    id: stage === 1 ? "brazo-armado" : "brazo-armado-2",
+    kind: "career-event",
+    choices: stage === 1
+      ? [
+        { id: "cambiar", handFix: true, effects: { rating: 2, potential: 3, form: 1 } },
+        { id: "mantener", effects: { loyalty: 1 } }
+      ]
+      : [
+        { id: "cambiar", handFix: true, effects: { rating: 1, potential: 1, form: 1 } },
+        { id: "mantener", effects: { loyalty: 1 } }
+      ]
+  };
+}
 
 // Los momentos a todo o nada se resuelven acá: elegiste arriesgar, y el juego
 // te dice si la metiste o no. Sin esto, "tirar el siete metros" era un botón
@@ -953,6 +1002,26 @@ function applyChoice(state, choice, event, rng) {
       ? (rng() < 0.5 ? "titular" : "rotacion")
       : null;
   if (outcome) state.roleOverride = { key: outcome, seasonsLeft: state.pace };
+
+  // Cruzarte de lado por tu mano: cambio deterministico, siempre encaja —
+  // es jugar por fin donde el ángulo existe.
+  if (choice.handFix) {
+    const mirror = HAND_MIRROR[state.player.position];
+    if (mirror) {
+      const position = positionOf(mirror);
+      state.player.position = position.code;
+      state.player.positionName = position.name;
+      state.positionChanges = (state.positionChanges || 0) + 1;
+      state.pendingSwapNote = "encajo";
+    }
+    state.wrongHand = false;
+  }
+  if (event.id === "brazo-armado" && choice.id === "mantener") {
+    state.brazoRefusedYear = state.seasonYear;
+  }
+  if (event.id === "brazo-armado-2" && choice.id === "mantener") {
+    state.brazoForever = true;
+  }
 
   let swap = null;
   if (choice.positionSwap) {
@@ -1092,6 +1161,9 @@ function simulateSeason(state, rng) {
   // Estirar más allá del retiro natural se paga: el nivel cae en picada y el
   // cuerpo de un veterano se rompe mucho más seguido.
   if (state.age >= RETIREMENT_AGE) change -= 0.9 + rng() * 1.1;
+  // Jugar del lado equivocado para tu mano, después de que te lo dijeron, se
+  // paga todos los fines de semana: sin ángulo de tiro no hay crecimiento.
+  if (state.wrongHand && state.brazoRefusedYear) change -= 0.85;
   const injuryChance = clamp(
     0.05 + state.risk * 0.02 + (100 - state.fitness) * 0.002 +
       Math.max(0, state.age - 34) * 0.025,
