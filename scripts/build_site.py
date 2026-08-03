@@ -40,7 +40,8 @@ def strings_for(locale):
         "    position: t('ui.position'), pace: t('ui.pace'), start: t('ui.start'),"
         "    age: t('ui.age'), rating: t('ui.rating'), role: t('ui.role'),"
         "    score: t('ui.score'), career: t('ui.yourCareer'), honours: t('ui.honours'),"
-        "    share: t('ui.share'), again: t('ui.playAgain')"
+        "    share: t('ui.share'), again: t('ui.playAgain'),"
+        "    board: t('board.title'), boardClear: t('board.clear'), boardNote: t('board.note')"
         "  }));"
         "});"
     ) % (os.path.join(ROOT, "src", "i18n.js"), locale)
@@ -109,6 +110,9 @@ def build():
             "L_HONOURS": s["honours"],
             "L_SHARE": s["share"],
             "L_AGAIN": s["again"],
+            "L_BOARD": s["board"],
+            "L_BOARD_CLEAR": s["boardClear"],
+            "L_BOARD_NOTE": s["boardNote"],
             "DISCLAIMER": DISCLAIMER[locale],
         }
         for key, value in values.items():

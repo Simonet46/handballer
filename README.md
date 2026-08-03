@@ -19,6 +19,7 @@ hasta la Champions y el Mundial. Una carrera entera en menos de dos minutos.
 | Escudos | ✅ 308/308 · ningún club del juego sale sin escudo real |
 | Interfaz | ✅ jugable en es · fr · de |
 | Tarjeta de resultado para compartir | ✅ PNG 1080×1350 + `navigator.share` |
+| Tabla de posiciones local | ✅ ranking en el dispositivo |
 | Reto diario con semilla fija | ⛔ pendiente |
 
 Plan completo en **[PLAN.md](PLAN.md)**.

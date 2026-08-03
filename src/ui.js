@@ -93,21 +93,121 @@ function renderSetup() {
   renderPreview();
 }
 
-// Media pista de balonmano vista desde arriba, con las 7 posiciones donde
-// juegan de verdad: portería abajo, los seis de campo arriba en ataque.
-// left/top en %, sobre el rectángulo de la pista.
-const COURT_SPOTS = {
-  LW: { left: 12, top: 26 }, LB: { left: 30, top: 44 }, CB: { left: 50, top: 50 },
-  RB: { left: 70, top: 44 }, RW: { left: 88, top: 26 },
-  PV: { left: 50, top: 22 }, GK: { left: 50, top: 84 },
+// ---------------------------------------------------------------------------
+// La media pista de balonmano, en perspectiva y a escala real.
+//
+// Todo se calcula en METROS sobre una pista reglamentaria (20 m de ancho, arco
+// de 3 m) y después se proyecta a la vista inclinada. Así el área de 6 m, la
+// línea de 9 m y cada puesto caen exactamente donde caen en una cancha.
+// ---------------------------------------------------------------------------
+
+const COURT = {
+  // lienzo SVG (con aire a los costados para que los extremos entren enteros)
+  topY: 48, bottomY: 232, topHalf: 96, bottomHalf: 168, centerX: 200,
+  // pista real
+  widthM: 20, depthM: 14, goalHalfM: 1.5,
+};
+
+/** (u, v) normalizados -> punto en el SVG. v = 0 lejos, v = 1 línea de gol. */
+function project(u, v) {
+  const y = COURT.topY + (COURT.bottomY - COURT.topY) * v;
+  const half = COURT.topHalf + (COURT.bottomHalf - COURT.topHalf) * v;
+  return [COURT.centerX + (u - 0.5) * 2 * half, y];
+}
+
+/** metros (x desde el centro, d desde la línea de gol) -> punto en el SVG. */
+function meters(xm, dm) {
+  return project(0.5 + xm / COURT.widthM, 1 - dm / COURT.depthM);
+}
+
+/**
+ * El área de X metros no es un semicírculo: son dos cuartos de círculo
+ * alrededor de cada poste unidos por una recta. Así es en la cancha y así se
+ * dibuja acá.
+ */
+function areaPath(radius, steps = 26) {
+  const post = COURT.goalHalfM;
+  const points = [];
+  for (let i = 0; i <= steps; i += 1) {
+    const a = (Math.PI / 2) * (i / steps);
+    points.push([-post - radius * Math.cos(a), radius * Math.sin(a)]);
+  }
+  for (let i = steps; i >= 0; i -= 1) {
+    const a = (Math.PI / 2) * (i / steps);
+    points.push([post + radius * Math.cos(a), radius * Math.sin(a)]);
+  }
+  return points.map(([xm, dm], i) => {
+    const [x, y] = meters(xm, dm);
+    return `${i ? "L" : "M"}${x.toFixed(1)} ${y.toFixed(1)}`;
+  }).join(" ");
+}
+
+// Dónde se para cada puesto en un ataque 3-3, en metros: los extremos abiertos
+// contra la banda casi sobre los 6 m, el pivote de espaldas en el área, los
+// laterales y el central sobre los 9 m.
+const SPOT_METERS = {
+  GK: [0, 1.7], PV: [0, 6.4],
+  LW: [-8.4, 2.9], RW: [8.4, 2.9],
+  LB: [-5.4, 10.0], CB: [0, 10.8], RB: [5.4, 10.0],
 };
 
 function renderCourt() {
-  el("position-court").innerHTML = POSITIONS.map((position) => {
-    const spot = COURT_SPOTS[position.code] || { left: 50, top: 50 };
+  const [tl, tr] = [project(0, 0), project(1, 0)];
+  const [bl, br] = [project(0, 1), project(1, 1)];
+  const depth = 26;                       // grosor del "bloque" de la pista
+  const [gl, gr] = [meters(-COURT.goalHalfM, 0), meters(COURT.goalHalfM, 0)];
+
+  const svg = `<svg class="court-svg" viewBox="0 0 400 300" aria-hidden="true">
+    <defs>
+      <!-- La línea de 9 m llega a 10,5 m del centro y la media cancha mide 10:
+           en la cancha real se corta en la banda, así que acá también. -->
+      <clipPath id="pitch">
+        <polygon points="${tl[0]},${tl[1]} ${tr[0]},${tr[1]} ${br[0]},${br[1]} ${bl[0]},${bl[1]}"/>
+      </clipPath>
+      <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#ef7346"/><stop offset="1" stop-color="#d9482c"/>
+      </linearGradient>
+      <linearGradient id="area6" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#c33a44"/><stop offset="1" stop-color="#a62b38"/>
+      </linearGradient>
+    </defs>
+
+    <!-- caras laterales: le dan el volumen de la foto -->
+    <polygon points="${bl[0]},${bl[1]} ${br[0]},${br[1]} ${br[0]},${br[1] + depth} ${bl[0]},${bl[1] + depth}" fill="#7d2231"/>
+    <polygon points="${tl[0]},${tl[1]} ${bl[0]},${bl[1]} ${bl[0]},${bl[1] + depth} ${tl[0]},${tl[1] + depth * 0.55}" fill="#8d2836"/>
+    <polygon points="${tr[0]},${tr[1]} ${br[0]},${br[1]} ${br[0]},${br[1] + depth} ${tr[0]},${tr[1] + depth * 0.55}" fill="#8d2836"/>
+
+    <!-- superficie -->
+    <polygon points="${tl[0]},${tl[1]} ${tr[0]},${tr[1]} ${br[0]},${br[1]} ${bl[0]},${bl[1]}" fill="url(#floor)"/>
+
+    <g clip-path="url(#pitch)">
+      <!-- área de 6 m -->
+      <path d="${areaPath(6)} Z" fill="url(#area6)"/>
+      <path d="${areaPath(6)}" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/>
+      <!-- línea de 9 m, punteada -->
+      <path d="${areaPath(9)}" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="9 7" opacity=".9"/>
+      <!-- marca de siete metros -->
+      <line x1="${meters(-0.5, 7)[0]}" y1="${meters(0, 7)[1]}"
+            x2="${meters(0.5, 7)[0]}" y2="${meters(0, 7)[1]}" stroke="#fff" stroke-width="2.4"/>
+    </g>
+
+    <!-- líneas de banda y de fondo -->
+    <polygon points="${tl[0]},${tl[1]} ${tr[0]},${tr[1]} ${br[0]},${br[1]} ${bl[0]},${bl[1]}"
+             fill="none" stroke="#fff" stroke-width="2.4"/>
+    <!-- arco -->
+    <rect x="${gl[0]}" y="${gl[1] - 2}" width="${gr[0] - gl[0]}" height="13"
+          fill="none" stroke="#fff" stroke-width="2.6"/>
+  </svg>`;
+
+  const spots = POSITIONS.map((position) => {
+    const [xm, dm] = SPOT_METERS[position.code] || [0, 7];
+    const [x, y] = meters(xm, dm);
     return `<button type="button" data-value="${position.code}" class="spot"
-      style="left:${spot.left}%;top:${spot.top}%">${position.code}</button>`;
+      style="left:${(x / 400 * 100).toFixed(2)}%;top:${(y / 300 * 100).toFixed(2)}%"
+      title="${t(`positions.${position.code}`)}">${position.code}</button>`;
   }).join("");
+
+  el("position-court").innerHTML = svg + spots;
 }
 
 function chip(group, value, label, badge, detail) {
@@ -502,6 +602,8 @@ function renderResult() {
         .map(([name, count]) => `<li><span class="honour-count">${count}×</span> ${name}</li>`).join("")
     : `<li class="muted">${t("ui.noHonours")}</li>`;
 
+  renderBoard(saveRun());
+
   drawShareCard(el("share-canvas"), career, t);
   el("share").onclick = () => shareCareer(career, t, el("share-canvas"), el("share-feedback"));
   el("play-again").onclick = () => { show("setup"); window.scrollTo({ top: 0 }); };
@@ -619,6 +721,86 @@ function flagCrest(player) {
     `<circle cx="32" cy="32" r="30" fill="#1e2833"/>` +
     `<text x="32" y="44" font-size="34" text-anchor="middle">${player.flag || "🏳"}</text></svg>`;
   return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+}
+
+
+// ---------------------------------------------------------------------------
+// Tabla de posiciones
+//
+// Se guarda en el navegador: cada carrera terminada entra al ranking y queda
+// ahí. Si el teléfono va pasando de mano en mano, todos compiten en la misma
+// tabla. No hay servidor: es la misma decisión de Copero, que tampoco guarda
+// carreras en ningún lado.
+// ---------------------------------------------------------------------------
+
+const BOARD_KEY = "handballer:board:v1";
+const BOARD_MAX = 50;
+
+function loadBoard() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(BOARD_KEY) || "[]");
+    return Array.isArray(raw) ? raw : [];
+  } catch {
+    return [];   // navegador sin storage o dato corrupto: el juego sigue igual
+  }
+}
+
+function storeBoard(entries) {
+  try {
+    localStorage.setItem(BOARD_KEY, JSON.stringify(entries.slice(0, BOARD_MAX)));
+  } catch {
+    // en modo incógnito puede fallar: no es motivo para romper el resultado
+  }
+}
+
+/** Guarda la carrera recién terminada y devuelve su id para resaltarla. */
+function saveRun() {
+  if (career.boardId) return career.boardId;
+  const id = `${Date.now().toString(36)}-${Math.floor(Math.random() * 1e6).toString(36)}`;
+  career.boardId = id;
+
+  const entries = loadBoard();
+  entries.push({
+    id,
+    name: career.player.lastName,
+    flag: career.player.flag,
+    number: career.player.number,
+    position: career.player.position,
+    score: career.score,
+    verdict: career.verdict.key,
+    club: career.timeline.at(-1)?.club || "",
+  });
+  entries.sort((a, b) => b.score - a.score);
+  storeBoard(entries);
+  return id;
+}
+
+function renderBoard(highlightId) {
+  const entries = loadBoard();
+  const box = el("board");
+
+  if (!entries.length) {
+    box.innerHTML = `<li class="board-empty">${t("board.empty")}</li>`;
+    return;
+  }
+
+  box.innerHTML = entries.slice(0, 20).map((entry, index) => {
+    const medal = ["🥇", "🥈", "🥉"][index] || index + 1;
+    return `<li class="board-row${entry.id === highlightId ? " board-me" : ""}">
+      <span class="board-rank">${medal}</span>
+      <span class="board-who">
+        <span class="board-name">${entry.flag || ""} ${entry.name}</span>
+        <span class="board-meta">${t(`positions.${entry.position}`)} · ${t(`verdicts.${entry.verdict}.title`)}</span>
+      </span>
+      <span class="board-score">${entry.score}</span>
+    </li>`;
+  }).join("");
+
+  el("board-clear").onclick = () => {
+    if (!window.confirm(t("board.confirm"))) return;
+    storeBoard([]);
+    renderBoard(null);
+  };
 }
 
 function universeLeagues() {

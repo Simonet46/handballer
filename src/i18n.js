@@ -316,6 +316,13 @@ const es = {
     debut: "Debutaste en la selección",
     tap: "tocá para seguir",
   },
+  board: {
+    title: "Tabla de posiciones",
+    empty: "Todavía no hay carreras. Ésta es la primera.",
+    clear: "Borrar",
+    confirm: "¿Borrar la tabla de posiciones?",
+    note: "Las carreras se guardan en este dispositivo. Pasá el teléfono y jueguen todos en la misma tabla.",
+  },
   gambles: {
     "siete-metros": {
       win: "¡La clavaste! Siete metros adentro, serie ganada",
@@ -653,6 +660,13 @@ const fr = {
     debut: "Première sélection",
     tap: "touche pour continuer",
   },
+  board: {
+    title: "Classement",
+    empty: "Aucune carrière pour l'instant. C'est la première.",
+    clear: "Effacer",
+    confirm: "Effacer le classement ?",
+    note: "Les carrières sont enregistrées sur cet appareil. Passe le téléphone et jouez tous dans le même classement.",
+  },
   gambles: {
     "siete-metros": {
       win: "Au fond ! Sept mètres converti, série gagnée",
@@ -989,6 +1003,13 @@ const de = {
     role: "Du bist jetzt {role}",
     debut: "Länderspieldebüt",
     tap: "tippen zum Weitermachen",
+  },
+  board: {
+    title: "Rangliste",
+    empty: "Noch keine Karrieren. Das hier ist die erste.",
+    clear: "Löschen",
+    confirm: "Rangliste löschen?",
+    note: "Die Karrieren werden auf diesem Gerät gespeichert. Gebt das Handy weiter und spielt alle in derselben Rangliste.",
   },
   gambles: {
     "siete-metros": {
