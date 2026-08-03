@@ -16,6 +16,11 @@
 
 * { box-sizing: border-box; }
 
+/* El atributo hidden SIEMPRE gana. Sin esto, cualquier display: grid/flex
+   sobre una sección (p. ej. #career en desktop) pisaba al hidden del
+   navegador y la decisión final quedaba en pantalla tras el retiro. */
+[hidden] { display: none !important; }
+
 html { -webkit-text-size-adjust: 100%; }
 
 body {
@@ -383,17 +388,24 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
 .result-name { font-size: 22px; font-weight: 800; margin-top: 18px; color: var(--paper); }
 .result-meta { font-size: 14px; }
 
-/* La crónica del final: lectura de diario, no de tablero. */
+/* La crónica del final: lectura de diario, con lugar de privilegio. */
 .story {
-  margin: 18px 0 6px;
-  padding: 14px 18px;
+  position: relative;
+  margin: 20px 0 8px;
+  padding: 22px 24px 22px 30px;
   border-left: 3px solid var(--accent);
   background: var(--ink-2);
   border-radius: 0 var(--radius) var(--radius) 0;
-  font-size: 15px;
-  line-height: 1.75;
-  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--paper);
   font-style: italic;
+}
+.story::before {
+  content: "“";
+  position: absolute; top: 2px; left: 8px;
+  font-size: 44px; line-height: 1; color: var(--accent);
+  font-style: normal; opacity: .85;
 }
 
 .result-stats {
@@ -420,13 +432,14 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
 .result-climb strong { font-size: 24px; font-weight: 800; color: var(--gold); }
 .result-climb em { grid-column: 1 / -1; font-style: normal; font-size: 14px; color: var(--muted); }
 
+/* El puntaje es EL número: héroe, centrado, enorme. */
 .result-score {
-  display: flex; justify-content: space-between; align-items: center;
+  display: grid; place-items: center; gap: 2px;
   background: var(--accent); color: var(--ink); border-radius: var(--radius);
-  padding: 14px 18px; margin-top: 12px; font-weight: 800;
+  padding: 18px 18px 22px; margin-top: 4px; font-weight: 800;
 }
-.result-score span { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
-.result-score strong { font-size: 28px; }
+.result-score span { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; opacity: .8; }
+.result-score strong { font-size: 56px; line-height: 1; }
 
 #result h3 {
   font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
@@ -470,11 +483,21 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
 }
 .tl-national .tl-ovr { background: none; }
 
-.honours { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+/* La vitrina: tarjetas con ícono, nombre y cuántas veces. */
+.honours { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
 .honours li {
-  background: var(--ink-2); border-radius: 12px; padding: 10px 12px; font-size: 15px;
+  display: flex; align-items: center; gap: 10px;
+  background: var(--ink-2); border: 1px solid var(--faint);
+  border-radius: 12px; padding: 12px 14px; font-size: 15px; font-weight: 600;
 }
-.honour-count { color: var(--gold); font-weight: 800; margin-right: 6px; }
+.honour-icon { font-size: 22px; line-height: 1; }
+.honour-name { flex: 1; min-width: 0; }
+.honour-count { color: var(--gold); font-weight: 800; font-size: 16px; }
+.honours-empty { justify-content: center; font-weight: 400; }
+@media (min-width: 560px) {
+  .honours { grid-template-columns: 1fr 1fr; }
+  .honours-empty { grid-column: 1 / -1; }
+}
 
 /* ------------------------------------------------------ tabla de posiciones */
 .board-head {

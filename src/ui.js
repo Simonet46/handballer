@@ -527,7 +527,8 @@ function showTransition(before, done) {
     clearTimeout(transitionTimer);
     box.removeEventListener("click", finish);
     box.hidden = true;
-    document.querySelector(".decision").hidden = false;
+    // Con la carrera terminada, la decisión ya respondida no vuelve más.
+    document.querySelector(".decision").hidden = Boolean(career?.ended);
     done();
   };
   box.addEventListener("click", finish);
@@ -572,7 +573,11 @@ function buildStory() {
   parts.push(t(`story.opener.${verdict}`, { name: career.player.lastName }));
 
   const first = career.firstClub?.name || stints[0]?.club || "";
-  const last = stints.at(-1)?.club || "";
+  // Si cerró el círculo, el "hasta" del viaje es el club anterior: la vuelta
+  // a casa ya la cuenta la frase del final ("story.fullCircle").
+  let lastStint = stints.at(-1);
+  if (stints.length > 1 && lastStint?.clubId === stints[0]?.clubId) lastStint = stints.at(-2);
+  const last = lastStint?.club || "";
   parts.push(t("story.journey", {
     seasons: totals.seasons,
     clubs: new Set(stints.map((s) => s.clubId)).size,
@@ -615,6 +620,10 @@ function renderResult() {
   const keeper = career.player.position === "GK";
   const totals = career.totals;
 
+  // La última decisión ya se respondió: se vacía para que no quede ni
+  // clickeable ni visible en ningún tamaño de pantalla.
+  el("decision-options").innerHTML = "";
+
   el("verdict-title").textContent = t(`verdicts.${career.verdict.key}.title`);
   el("verdict-line").textContent = t(`verdicts.${career.verdict.key}.line`);
   el("result-name").textContent = `${career.player.flag} ${career.player.lastName}`;
@@ -652,16 +661,25 @@ function renderResult() {
 
   renderTimeline(keeper);
 
+  // La vitrina: cada título con su ícono, los repetidos agrupados, y lo más
+  // pesado primero. Es la parte de la pantalla que más se mira.
   const honours = [...career.trophies, ...career.awards];
   const counted = new Map();
   for (const honour of honours) {
     const name = honourName(t, honour);
-    counted.set(name, (counted.get(name) || 0) + 1);
+    const entry = counted.get(name) || { count: 0, key: honour.key, weight: honour.weight || 0 };
+    entry.count += 1;
+    counted.set(name, entry);
   }
   el("honours").innerHTML = counted.size
-    ? [...counted].sort((a, b) => b[1] - a[1])
-        .map(([name, count]) => `<li><span class="honour-count">${count}×</span> ${name}</li>`).join("")
-    : `<li class="muted">${t("ui.noHonours")}</li>`;
+    ? [...counted].sort((a, b) => b[1].weight * b[1].count - a[1].weight * a[1].count)
+        .map(([name, { count, key }]) =>
+          `<li>
+             <span class="honour-icon">${HONOUR_ICON[key] || "🏅"}</span>
+             <span class="honour-name">${name}</span>
+             <span class="honour-count">${count > 1 ? `${count}×` : ""}</span>
+           </li>`).join("")
+    : `<li class="honours-empty muted">${t("ui.noHonours")}</li>`;
 
   renderBoard(saveRun());
 
