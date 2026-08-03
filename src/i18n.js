@@ -312,6 +312,20 @@ const es = {
     debut: "Debutaste en la selección",
     tap: "tocá para seguir",
   },
+  gambles: {
+    "siete-metros": {
+      win: "¡La clavaste! Siete metros adentro, serie ganada",
+      lose: "Te lo atajó. A todo o nada… y fue nada",
+    },
+    parada: {
+      win: "¡La sacaste! Elegiste el palo correcto",
+      lose: "Te venció. Elegiste palo… y era el otro",
+    },
+    "arco-vacio": {
+      win: "¡GOL DE ARQUERO! De área a área",
+      lose: "Salió besando el palo. El ridículo del año",
+    },
+  },
   swap: {
     encajo: "Se adaptó al puesto nuevo",
     "no-encajo": "No terminó de encajar en el puesto nuevo",
@@ -631,6 +645,20 @@ const fr = {
     debut: "Première sélection",
     tap: "touche pour continuer",
   },
+  gambles: {
+    "siete-metros": {
+      win: "Au fond ! Sept mètres converti, série gagnée",
+      lose: "Le gardien l'a sorti. Quitte ou double… et c'était double",
+    },
+    parada: {
+      win: "Arrêt décisif ! Tu as choisi le bon côté",
+      lose: "Battu. Tu as choisi un côté… c'était l'autre",
+    },
+    "arco-vacio": {
+      win: "BUT DU GARDIEN ! D'une zone à l'autre",
+      lose: "À côté du poteau. Le ridicule de l'année",
+    },
+  },
   swap: {
     encajo: "Il s'est adapté au nouveau poste",
     "no-encajo": "Il ne s'est jamais adapté au nouveau poste",
@@ -949,6 +977,20 @@ const de = {
     role: "Du bist jetzt {role}",
     debut: "Länderspieldebüt",
     tap: "tippen zum Weitermachen",
+  },
+  gambles: {
+    "siete-metros": {
+      win: "Drin! Siebenmeter verwandelt, Serie gewonnen",
+      lose: "Gehalten. Alles oder nichts … und es war nichts",
+    },
+    parada: {
+      win: "Gehalten! Du hast die richtige Ecke gewählt",
+      lose: "Überwunden. Du hast eine Ecke gewählt — es war die andere",
+    },
+    "arco-vacio": {
+      win: "TORWART-TOR! Von Kreis zu Kreis",
+      lose: "Knapp vorbei. Die Blamage des Jahres",
+    },
   },
   swap: {
     encajo: "Hat sich auf der neuen Position zurechtgefunden",

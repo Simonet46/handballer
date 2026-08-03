@@ -224,12 +224,12 @@ function marketKey(event) {
 function choiceCopy(event, choice) {
   const custom = t(`events.${event.id}.choices.${choice.id}`);
   if (custom && typeof custom === "object") {
-    // Las opciones de club dentro de un evento narrativo muestran a quién vas.
+    // Si la opción es un club, el club ES el título. En el celu se veía
+    // "Aceptar la oferta" con un escudo suelto y nadie sabía a dónde iba.
     if (choice.club) {
       return {
-        ...custom,
-        label: `${choice.club.flag || ""} ${custom.label}`.trim(),
-        detail: `${choice.club.name} · ${custom.detail}`,
+        label: `${choice.club.flag || ""} ${choice.club.name}`.trim(),
+        detail: `${custom.label} · ${custom.detail}`,
         role: t(`roles.${choice.projectedRole}`),
       };
     }
@@ -348,6 +348,16 @@ function summarize(before) {
     }
     if (season.injured) {
       beats.push({ kind: "bad", icon: "🚑", text: t("beats.injured", { year: season.year }) });
+    }
+    if (season.gamble) {
+      const win = season.gamble.result === "win";
+      const icons = { "siete-metros": "🎯", parada: "🧤", "arco-vacio": "🥅" };
+      beats.push({
+        kind: win ? "good" : "bad",
+        icon: win ? (icons[season.gamble.key] || "🎯") : "❌",
+        text: t(`gambles.${season.gamble.key}.${season.gamble.result}`),
+        big: true,
+      });
     }
     if (season.swap) {
       beats.push({

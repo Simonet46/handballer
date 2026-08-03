@@ -820,6 +820,24 @@ function chooseNextEvent(state, rng) {
 // cambio que de verdad ocurre en handball.
 const POSITION_SWAP = { LB: "LW", RB: "RW", LW: "LB", RW: "RB" };
 
+// Los momentos a todo o nada se resuelven acá: elegiste arriesgar, y el juego
+// te dice si la metiste o no. Sin esto, "tirar el siete metros" era un botón
+// sin consecuencia visible y la decisión no tenía gusto a nada.
+const GAMBLES = {
+  "siete-metros:tirar": {
+    key: "siete-metros", chance: 0.66,
+    win: { fame: 2, form: 2 }, lose: { fame: -2, form: -3 },
+  },
+  "siete-metros-parada:jugartela": {
+    key: "parada", chance: 0.45,
+    win: { fame: 3, form: 2 }, lose: { form: -2 },
+  },
+  "arquero-al-arco-vacio:tirar-al-arco-vacio": {
+    key: "arco-vacio", chance: 0.55,
+    win: { fame: 3, form: 2 }, lose: { fame: -3, form: -2 },
+  },
+};
+
 function applyChoice(state, choice, event, rng) {
   const outcome =
     event.id === "competencia-puesto" && choice.id === "pelear"
@@ -880,6 +898,18 @@ function applyChoice(state, choice, event, rng) {
     state.flags[effects.flag] = (state.flags[effects.flag] || 0) + 1;
   }
 
+  const gamble = GAMBLES[`${event.id}:${choice.id}`];
+  let gambleResult = null;
+  if (gamble) {
+    // Estar en forma ayuda un poco, pero nunca es seguro: por eso es apuesta.
+    const chance = clamp(gamble.chance + state.form * 0.02, 0.2, 0.85);
+    gambleResult = rng() < chance ? "win" : "lose";
+    const extra = gamble[gambleResult];
+    state.fame = clamp(state.fame + (extra.fame || 0), -5, 50);
+    state.form = clamp(state.form + (extra.form || 0), -6, 8);
+    state.pendingGambleNote = { key: gamble.key, result: gambleResult };
+  }
+
   if (effects.retireNow) state.retireNow = true;
 
   state.decisions.push({
@@ -892,7 +922,8 @@ function applyChoice(state, choice, event, rng) {
     choice: choice.label,
     club: choice.club?.name || null,
     ...(outcome ? { outcome } : {}),
-    ...(swap ? { swap, newPosition: state.player.position } : {})
+    ...(swap ? { swap, newPosition: state.player.position } : {}),
+    ...(gambleResult ? { gamble: gamble.key, gambleResult } : {})
   });
 }
 
@@ -974,10 +1005,12 @@ function simulateSeason(state, rng) {
     shotPct: shots ? Math.round((goals / shots) * 100) : null,
     twoMinutes, redCards, injured,
     swap: state.pendingSwapNote || null,
+    gamble: state.pendingGambleNote || null,
     caps: 0, nationalGoals: 0, nationalAssists: 0,
     honours: []
   };
   state.pendingSwapNote = null;
+  state.pendingGambleNote = null;
 
   // --- títulos de club --------------------------------------------------
   const titleChance = clamp(

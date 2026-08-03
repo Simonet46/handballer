@@ -409,6 +409,41 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
 .error { text-align: center; padding: 40px 0; color: var(--accent); }
 
 /* ------------------------------------------------------------ pantallas grandes */
+/* ------------------------------------------------------------- celulares */
+@media (max-width: 560px) {
+  /* En un teléfono el HUD pegajoso comía media pantalla y tapaba la
+     decisión. Estático y compacto: el jugador scrollea, como en Copero. */
+  .hud { position: static; max-height: none; padding: 12px; gap: 10px; }
+  .hud-number { font-size: 24px; min-width: 38px; }
+  .hud-name { font-size: 15px; }
+  .hud-club-name { font-size: 15px; }
+  .hud-stats { gap: 6px; }
+  .hud-stats dd { font-size: 15px; }
+  .progress { height: 22px; }
+
+  .jersey { width: 128px; height: 142px; }
+  .jersey-number { font-size: 62px; }
+
+  .decision h2 { font-size: 21px; }
+  .option { padding: 12px; gap: 10px; }
+  .option-crest { width: 34px; height: 40px; }
+  .option-text strong { font-size: 15px; }
+  .option-role { font-size: 10px; padding: 3px 7px; }
+
+  .tl-row, .tl-head {
+    grid-template-columns: 22px 28px minmax(0, 1fr) 30px 28px 28px 28px;
+    gap: 5px; padding: 7px 8px;
+  }
+  .tl-crest { width: 24px; height: 24px; }
+  .tl-name { font-size: 13px; }
+  .tl-stat, .tl-age { font-size: 12px; }
+  .tl-ovr { font-size: 12px; }
+  .tl-trophies { display: none; }  /* en 360px no entran; están en la vitrina */
+
+  .result-stats strong { font-size: 19px; }
+  .verdict h2 { font-size: 30px; }
+}
+
 @media (min-width: 640px) {
   .setup-grid { grid-template-columns: 200px 1fr; align-items: start; gap: 28px; }
   .preview { position: sticky; top: 20px; }
