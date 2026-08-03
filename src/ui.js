@@ -147,8 +147,10 @@ function areaPath(radius, steps = 26) {
 // laterales y el central sobre los 9 m.
 const SPOT_METERS = {
   GK: [0, 1.7], PV: [0, 6.4],
-  LW: [-8.4, 2.9], RW: [8.4, 2.9],
-  LB: [-5.4, 10.0], CB: [0, 10.8], RB: [5.4, 10.0],
+  // La cancha se ve desde atrás del arco, así que los lados van espejados:
+  // el lateral izquierdo del ataque queda a la derecha de la pantalla.
+  LW: [8.4, 2.9], RW: [-8.4, 2.9],
+  LB: [5.4, 10.0], CB: [0, 10.8], RB: [-5.4, 10.0],
 };
 
 function renderCourt() {

@@ -210,7 +210,11 @@ export function projectSquadRole(state, club = state.club) {
   }
   const benchmark = 46 + club.strength * 7.5;
   const score = state.rating + state.form * 0.8 + clamp(state.loyalty, 0, 10) * 0.08 - benchmark;
-  if (score < -5 || (state.age <= 19 && score < 0)) return SQUAD_ROLES[0];
+  // "Juvenil" es rol de pibe: pasados los 21, al que llega justo lo anotan
+  // como rotación. Sin este corte, un veterano de 37 que firmaba en un club
+  // grande aparecía ofertado "de juvenil".
+  const shortOfLevel = score < -5 || (state.age <= 19 && score < 0);
+  if (shortOfLevel) return state.age <= 21 ? SQUAD_ROLES[0] : SQUAD_ROLES[1];
   if (score < 1) return SQUAD_ROLES[1];
   if (score < 7) return SQUAD_ROLES[2];
   return SQUAD_ROLES[3];
