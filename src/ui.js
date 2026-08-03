@@ -314,6 +314,7 @@ function marketKey(event) {
   if (event.id.startsWith("mercado")) return "mercado";
   if (event.id.startsWith("contrato")) return "contrato";
   if (event.id === "ultimo-contrato") return "ultimo";
+  if (event.id.startsWith("estirar")) return "estirar";
   return null;
 }
 
@@ -532,7 +533,9 @@ function showTransition(before, done) {
 }
 
 function choose(choiceId) {
-  if (busy) return;
+  // Con la carrera terminada no hay más decisiones: cualquier click perdido
+  // sobre una opción vieja se ignora.
+  if (busy || !career || career.ended) return;
   busy = true;
   const before = snapshot();
   advanceCareer(career, choiceId, rng);
@@ -554,6 +557,58 @@ function choose(choiceId) {
 // Pantalla 3: resultado
 // ---------------------------------------------------------------------------
 
+/**
+ * La crónica: un periodista deportivo cuenta la carrera en cuatro o cinco
+ * frases. Se arma con piezas de i18n según lo que de verdad pasó.
+ */
+function buildStory() {
+  const stints = buildStints();
+  const verdict = career.verdict.key;
+  const totals = career.totals;
+  const parts = [];
+
+  parts.push(t(`story.opener.${verdict}`, { name: career.player.lastName }));
+
+  const first = career.firstClub?.name || stints[0]?.club || "";
+  const last = stints.at(-1)?.club || "";
+  parts.push(t("story.journey", {
+    seasons: totals.seasons,
+    clubs: new Set(stints.map((s) => s.clubId)).size,
+    first,
+    last,
+  }));
+
+  if (career.trophies.length) {
+    const top = career.trophies.reduce((best, item) => (item.weight > best.weight ? item : best));
+    parts.push(t("story.titles", {
+      titles: career.trophies.length,
+      top: honourName(t, top),
+      year: top.year,
+    }));
+  } else {
+    parts.push(t("story.noTitles"));
+  }
+
+  if (totals.caps > 0) {
+    parts.push(t("story.caps", { caps: totals.caps, country: t(`countries.${career.player.country}`) || career.player.countryName }));
+  }
+  if (career.maternitySeason) {
+    parts.push(t("story.maternity", { year: career.maternitySeason, n: career.comebackTitles }));
+  }
+  if (career.scandals.length) {
+    parts.push(t("story.scandal"));
+  }
+  if (career.age >= 39) {
+    parts.push(t("story.stretch", { age: career.age }));
+  }
+  if (stints.length > 1 && stints.at(-1)?.clubId === stints[0]?.clubId) {
+    parts.push(t("story.fullCircle", { club: first }));
+  }
+
+  parts.push(t(`story.closer.${verdict}`));
+  return parts.join(" ");
+}
+
 function renderResult() {
   const keeper = career.player.position === "GK";
   const totals = career.totals;
@@ -564,6 +619,7 @@ function renderResult() {
   el("result-meta").textContent =
     `${t(`positions.${career.player.position}`)} · ${totals.seasons} ${t("ui.season").toLowerCase()}s`;
   el("result-score").textContent = career.score;
+  el("story").textContent = buildStory();
 
   // El salto es el componente más grande del puntaje, así que se cuenta aparte.
   const climbBox = el("result-climb");

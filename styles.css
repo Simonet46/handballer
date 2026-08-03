@@ -351,6 +351,19 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
 .result-name { font-size: 22px; font-weight: 800; margin-top: 18px; color: var(--paper); }
 .result-meta { font-size: 14px; }
 
+/* La crónica del final: lectura de diario, no de tablero. */
+.story {
+  margin: 18px 0 6px;
+  padding: 14px 18px;
+  border-left: 3px solid var(--accent);
+  background: var(--ink-2);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--muted);
+  font-style: italic;
+}
+
 .result-stats {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
   background: var(--ink-2); border-radius: var(--radius); padding: 16px 10px;

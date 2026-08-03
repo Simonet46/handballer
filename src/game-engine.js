@@ -750,18 +750,52 @@ function contractExpiryEvent(state, rng) {
   };
 }
 
+// Hasta cuándo se puede estirar una carrera. Después de acá, el cuerpo decide.
+const MAX_STRETCH_AGE = 42;
+
+function originClub(state) {
+  if (!state.firstClub) return null;
+  const club = CLUBS.find((entry) => entry.id === state.firstClub.id);
+  return club && club.id !== state.club.id ? club : null;
+}
+
+/**
+ * El final de una carrera no es un botón: es una negociación que se repite.
+ * Podés retirarte a lo grande, o estirar... sabiendo que cada año que pasa
+ * hay menos ofertas, más lesiones y clubes más chicos. Y siempre está la
+ * puerta de cerrar el círculo: volver al club donde empezaste a jugar el
+ * torneo de tu país.
+ */
 function finalCycleEvent(state, rng) {
-  const offers = transferOffers(state, rng, 2, true);
+  const stretching = state.stretchCycles || 0;
+  // El mercado se achica un ciclo a la vez: primero dos ofertas, después
+  // capaz una, después capaz ninguna. Nadie te promete un final feliz.
+  const count = stretching === 0 ? 2
+    : stretching === 1 ? (rng() < 0.75 ? 1 : 0)
+    : (rng() < 0.3 ? 1 : 0);
+  const offers = transferOffers(state, rng, count, true);
+  const choices = offers.map((club, index) => clubChoice(state, club, "firmar", index));
+
+  const origin = originClub(state);
+  if (origin) {
+    choices.push({
+      ...clubChoice(state, origin, "volver", choices.length),
+      id: "volver-al-origen",
+      effects: { loyalty: 6, fame: 2, form: 1 }
+    });
+  }
+
+  choices.push({ id: "retirarse", kind: "retire", action: "retire", label: "Retirarte", detail: "Colgar las zapatillas", effects: { retireNow: true } });
+
   return {
-    id: "ultimo-contrato",
+    id: stretching ? `estirar-${stretching}` : "ultimo-contrato",
     kind: "club-offer",
-    eyebrow: "Último contrato",
-    title: "Una decisión más",
-    body: "Dos clubes quieren tu experiencia. Firmá un último capítulo o retirate ahora.",
-    choices: [
-      ...offers.map((club, index) => clubChoice(state, club, "firmar", index)),
-      { id: "retirarse", kind: "retire", action: "retire", label: "Retirarte", detail: "Colgar las zapatillas", effects: { retireNow: true } }
-    ]
+    eyebrow: stretching ? "El cuerpo pide, la cabeza duda" : "Último contrato",
+    title: stretching ? "¿Una temporada más?" : "Una decisión más",
+    body: stretching
+      ? "Podrías colgarlas ahora, a lo grande. O estirar: menos ofertas, la rodilla que avisa, y ningún final garantizado."
+      : "Firmá un último capítulo, cerrá el círculo donde empezaste, o retirate ahora.",
+    choices
   };
 }
 
@@ -969,6 +1003,16 @@ function applyChoice(state, choice, event, rng) {
     if (choice.contractYears) state.contractYears = choice.contractYears;
   }
 
+  // Firmar en el último ciclo es estirar la carrera: corre el retiro un año
+  // más allá (nunca después de los 42) y degrada el mercado del próximo ciclo.
+  if (choice.club && (event.id === "ultimo-contrato" || event.id.startsWith("estirar-"))) {
+    state.stretchCycles = (state.stretchCycles || 0) + 1;
+    state.retirementAge = Math.min(state.age + state.pace + 1, MAX_STRETCH_AGE);
+  }
+  // Cerrar el círculo: en el club de origen se juega el torneo del país,
+  // aunque el club esté en una categoría de ascenso.
+  if (choice.id === "volver-al-origen") state.originReturn = true;
+
   if (effects.flag) {
     state.flags[effects.flag] = (state.flags[effects.flag] || 0) + 1;
   }
@@ -1045,7 +1089,14 @@ function simulateSeason(state, rng) {
 
   let change = ratingCurve(state, rng) + state.form * 0.08;
   if (maternity) change = -0.4;
-  const injuryChance = clamp(0.05 + state.risk * 0.02 + (100 - state.fitness) * 0.002, 0.03, 0.34);
+  // Estirar más allá del retiro natural se paga: el nivel cae en picada y el
+  // cuerpo de un veterano se rompe mucho más seguido.
+  if (state.age >= RETIREMENT_AGE) change -= 0.9 + rng() * 1.1;
+  const injuryChance = clamp(
+    0.05 + state.risk * 0.02 + (100 - state.fitness) * 0.002 +
+      Math.max(0, state.age - 34) * 0.025,
+    0.03, 0.45
+  );
   const injured = !maternity && rng() < injuryChance;
   if (injured) {
     change -= 0.5 + rng() * 1.8;
@@ -1121,7 +1172,7 @@ function simulateSeason(state, rng) {
     if (rng() < titleChance * 0.6) {
       addTrophy(state, season, "super8", {}, "Super 8", 5);
     }
-    if (state.club.tier === 1 && rng() < titleChance * 0.5) {
+    if ((state.club.tier === 1 || state.originReturn) && rng() < titleChance * 0.5) {
       addTrophy(state, season, "nacional-clubes", {}, "Nacional de Clubes", 13);
     }
     if (state.club.tier === 1 && state.club.strength >= 3 && rng() < titleChance * 0.35) {
@@ -1343,6 +1394,9 @@ export function advanceCareer(state, choiceId = null, rng = Math.random) {
     applyChoice(state, choice, state.pendingEvent, rng);
     state.pendingEvent = null;
     if (state.retireNow) {
+      // Sin esto, la transición del retiro repetía los beats de las
+      // temporadas anteriores y parecía que el juego no había terminado.
+      state.latestBlock = [];
       finishCareer(state);
       return state;
     }
