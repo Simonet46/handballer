@@ -516,6 +516,7 @@ function renderResult() {
 const HONOUR_ICON = {
   worlds: "🏆", olympics: "🥇", champions: "⭐", "european-league": "🎖",
   euro: "🌍", continental: "🌍", league: "🛡", cup: "🏅",
+  super8: "🏅", "nacional-clubes": "⚔️", panamericano: "🌎", "asian-clubs": "🌏",
   "ihf-player": "👑", "top-scorer": "🎯", "all-star": "⭐",
 };
 

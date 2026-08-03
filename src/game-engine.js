@@ -1016,14 +1016,41 @@ function simulateSeason(state, rng) {
   const titleChance = clamp(
     0.02 + state.club.strength * 0.04 + Math.max(0, state.rating - 72) * 0.006, 0.03, 0.4
   );
-  if (rng() < titleChance) addTrophy(state, season, "league", { league: state.club.leagueName },
-      state.club.leagueName, 26 + state.club.strength * 4);
-  if (rng() < titleChance * 0.6) addTrophy(state, season, "cup", { country: state.club.country },
-      `Copa de ${state.club.countryName}`, 18);
-  if (state.club.strength >= 4 && rng() < titleChance * 0.4) {
-    addTrophy(state, season, "champions", {}, "EHF Champions League", 70);
-  } else if (state.club.strength === 3 && rng() < titleChance * 0.3) {
-    addTrophy(state, season, "european-league", {}, "EHF European League", 34);
+  const clubPrestige = state.club.prestige ?? 3;
+  if (rng() < titleChance) {
+    addTrophy(state, season, "league", { league: state.club.leagueName },
+      state.club.leagueName, LEAGUE_TITLE_WEIGHT * clubPrestige);
+  }
+
+  if (state.club.country === "ARG") {
+    // El handball argentino tiene su propio calendario y sus propias copas:
+    // el Super 8 de FeMeBal, el Nacional de Clubes de la CAH (se juega entre
+    // todos los clubes del país) y, para los grandes, el Panamericano de
+    // Clubes — la Libertadores del handball. Acá no existe la EHF.
+    if (rng() < titleChance * 0.6) {
+      addTrophy(state, season, "super8", {}, "Super 8", 5);
+    }
+    if (state.club.tier === 1 && rng() < titleChance * 0.5) {
+      addTrophy(state, season, "nacional-clubes", {}, "Nacional de Clubes", 13);
+    }
+    if (state.club.tier === 1 && state.club.strength >= 3 && rng() < titleChance * 0.35) {
+      addTrophy(state, season, "panamericano", {}, "Panamericano de Clubes", 22);
+    }
+  } else {
+    if (rng() < titleChance * 0.6) {
+      addTrophy(state, season, "cup", { country: state.club.country },
+        `Copa de ${state.club.countryName}`, CUP_WEIGHT * clubPrestige);
+    }
+    if (state.club.confederation === "EHF") {
+      if (state.club.strength >= 4 && rng() < titleChance * 0.4) {
+        addTrophy(state, season, "champions", {}, "EHF Champions League", 70);
+      } else if (state.club.strength === 3 && rng() < titleChance * 0.3) {
+        addTrophy(state, season, "european-league", {}, "EHF European League", 34);
+      }
+    } else if (state.club.confederation === "AHF" && state.club.strength >= 3 &&
+               rng() < titleChance * 0.35) {
+      addTrophy(state, season, "asian-clubs", {}, "Campeonato Asiático de Clubes", 26);
+    }
   }
 
   // --- selección --------------------------------------------------------
