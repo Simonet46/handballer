@@ -33,27 +33,38 @@
     </header>
 
     <div class="setup-grid">
+      <!-- camiseta con nombre + dorsal grande, estilo Copero -->
       <div class="preview">
-        <div class="shirt">
-          <span class="shirt-number" id="preview-number">7</span>
+        <div class="jersey">
+          <div class="jersey-stripes"></div>
+          <span class="jersey-name" id="preview-name">APELLIDO</span>
+          <span class="jersey-number" id="preview-number">7</span>
         </div>
-        <p class="preview-name"><span id="preview-flag"></span> <span id="preview-name"></span></p>
-        <p class="preview-position" id="preview-position"></p>
+        <p class="preview-tag"><span id="preview-flag"></span> <span id="preview-position"></span></p>
       </div>
 
       <form class="setup-form" autocomplete="off" onsubmit="return false">
-        <label class="field">
-          <span>Nom</span>
-          <input id="lastName" type="text" maxlength="16" placeholder="TON NOM" inputmode="text">
-        </label>
-        <label class="field field-narrow">
-          <span>Numéro</span>
-          <input id="number" type="number" min="1" max="99" value="7" inputmode="numeric">
-        </label>
+        <div class="field-row">
+          <label class="field">
+            <span>Nom</span>
+            <input id="lastName" type="text" maxlength="16" placeholder="TON NOM" inputmode="text">
+          </label>
+          <label class="field field-narrow">
+            <span>Numéro</span>
+            <input id="number" type="number" min="1" max="99" value="7" inputmode="numeric">
+          </label>
+        </div>
 
         <fieldset><legend>Main forte</legend><div class="chips" data-group="hand" id="hand-options"></div></fieldset>
         <fieldset><legend>Pays</legend><div class="chips" data-group="country" id="country-options"></div></fieldset>
-        <fieldset><legend>Poste</legend><div class="chips" data-group="position" id="position-options"></div></fieldset>
+
+        <fieldset>
+          <legend>Poste</legend>
+          <!-- media pista de balonmano: elegís tu puesto tocando dónde jugás -->
+          <div class="court" data-group="position" id="position-court"></div>
+          <p class="court-pick" id="position-pick"></p>
+        </fieldset>
+
         <fieldset><legend>Rythme</legend><div class="chips chips-stack" data-group="pace" id="pace-options"></div></fieldset>
 
         <button id="start" class="cta" type="button">Commencer la carrière</button>

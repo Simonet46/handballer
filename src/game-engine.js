@@ -628,7 +628,7 @@ export function createCareer(profile, rng = Math.random) {
     totals: {
       seasons: 0, matches: 0, goals: 0, assists: 0, shots: 0,
       saves: 0, shotsFaced: 0, twoMinutes: 0, redCards: 0,
-      caps: 0, nationalGoals: 0, transfers: 0, loans: 0
+      caps: 0, nationalGoals: 0, nationalAssists: 0, transfers: 0, loans: 0
     },
     pendingEvent: null,
     latestBlock: [],
@@ -974,6 +974,7 @@ function simulateSeason(state, rng) {
     shotPct: shots ? Math.round((goals / shots) * 100) : null,
     twoMinutes, redCards, injured,
     swap: state.pendingSwapNote || null,
+    caps: 0, nationalGoals: 0, nationalAssists: 0,
     honours: []
   };
   state.pendingSwapNote = null;
@@ -996,10 +997,12 @@ function simulateSeason(state, rng) {
   const nationalQuality = state.rating + state.nationalBoost + state.fame * 0.08;
   let caps = 0;
   let nationalGoals = 0;
+  let nationalAssists = 0;
   const scouted = (state.club.prestige ?? 3) >= NATIONAL_TEAM_PRESTIGE;
   if (scouted && nationalQuality >= 68 && rng() < clamp((nationalQuality - 64) / 28, 0.1, 0.94)) {
     caps = between(4, 14, rng);
     nationalGoals = keeper ? 0 : noisy(caps * position.goalRate * 0.8, rng, 0.5);
+    nationalAssists = keeper ? 0 : noisy(caps * position.assistRate * 0.8, rng, 0.5);
     if (year % 2 === 1 && nationalQuality >= 80 && rng() < 0.06 + (nationalQuality - 79) * 0.008) {
       addTrophy(state, season, "worlds", {}, "Campeonato Mundial IHF", 130);
     }
@@ -1059,8 +1062,12 @@ function simulateSeason(state, rng) {
   totals.shotsFaced += shotsFaced;
   totals.twoMinutes += twoMinutes;
   totals.redCards += redCards;
+  season.caps = caps;
+  season.nationalGoals = nationalGoals;
+  season.nationalAssists = nationalAssists;
   totals.caps += caps;
   totals.nationalGoals += nationalGoals;
+  totals.nationalAssists += nationalAssists;
 
   state.squadRole = role.key;
   state.peakPrestige = Math.max(state.peakPrestige, state.club.prestige ?? 1);

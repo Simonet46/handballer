@@ -58,9 +58,7 @@ function renderSetup() {
     .map((country) => chip("country", country.code, `${country.flag} ${t(`countries.${country.code}`) || country.name}`))
     .join("");
 
-  el("position-options").innerHTML = POSITIONS
-    .map((position) => chip("position", position.code, t(`positions.${position.code}`), position.code))
-    .join("");
+  renderCourt();
 
   el("pace-options").innerHTML = PACES
     .map((pace) => chip("pace", pace.value, t(`paces.${pace.value}.name`), null, t(`paces.${pace.value}.detail`)))
@@ -95,6 +93,23 @@ function renderSetup() {
   renderPreview();
 }
 
+// Media pista de balonmano vista desde arriba, con las 7 posiciones donde
+// juegan de verdad: portería abajo, los seis de campo arriba en ataque.
+// left/top en %, sobre el rectángulo de la pista.
+const COURT_SPOTS = {
+  LW: { left: 12, top: 26 }, LB: { left: 30, top: 44 }, CB: { left: 50, top: 50 },
+  RB: { left: 70, top: 44 }, RW: { left: 88, top: 26 },
+  PV: { left: 50, top: 22 }, GK: { left: 50, top: 84 },
+};
+
+function renderCourt() {
+  el("position-court").innerHTML = POSITIONS.map((position) => {
+    const spot = COURT_SPOTS[position.code] || { left: 50, top: 50 };
+    return `<button type="button" data-value="${position.code}" class="spot"
+      style="left:${spot.left}%;top:${spot.top}%">${position.code}</button>`;
+  }).join("");
+}
+
 function chip(group, value, label, badge, detail) {
   return `<button type="button" data-value="${value}" class="chip${detail ? " chip-wide" : ""}">
     ${badge ? `<span class="chip-badge">${badge}</span>` : ""}
@@ -118,6 +133,7 @@ function renderPreview() {
   el("preview-number").textContent = form.number;
   el("preview-flag").textContent = country?.flag || "";
   el("preview-position").textContent = t(`positions.${form.position}`);
+  el("position-pick").textContent = t(`positions.${form.position}`);
   el("start").disabled = false;
 }
 
@@ -463,33 +479,7 @@ function renderResult() {
     .map(([label, value]) => `<div><strong>${value}</strong><span>${label}</span></div>`)
     .join("");
 
-  // Línea de tiempo: una fila por club, no por temporada.
-  const stints = [];
-  for (const season of career.timeline) {
-    const last = stints.at(-1);
-    if (last && last.club === season.club) {
-      last.to = season.year;
-      last.honours.push(...season.honours);
-    } else {
-      stints.push({ club: season.club, clubId: season.clubId, league: season.league,
-                    country: season.country, from: season.year, to: season.year,
-                    honours: [...season.honours] });
-    }
-  }
-  const clubById = new Map();
-  for (const league of universeLeagues()) for (const team of league.teams) clubById.set(team.id, team);
-
-  el("timeline").innerHTML = stints.map((stint) => {
-    const club = clubById.get(stint.clubId) || { id: stint.clubId, name: stint.club, short_name: stint.club };
-    const years = stint.from === stint.to ? stint.from : `${stint.from}–${stint.to}`;
-    return `<li>
-      <img src="${crestSrc(club)}" alt="" class="timeline-crest" loading="lazy">
-      <span class="timeline-club">${club.flag || ""} ${stint.club}</span>
-      <span class="timeline-league">${stint.league} · ${stint.country}</span>
-      <span class="timeline-years">${years}</span>
-      ${stint.honours.length ? `<span class="timeline-honours">${stint.honours.map(() => "🏆").join("")}</span>` : ""}
-    </li>`;
-  }).join("");
+  renderTimeline(keeper);
 
   const honours = [...career.trophies, ...career.awards];
   const counted = new Map();
@@ -505,6 +495,119 @@ function renderResult() {
   drawShareCard(el("share-canvas"), career, t);
   el("share").onclick = () => shareCareer(career, t, el("share-canvas"), el("share-feedback"));
   el("play-again").onclick = () => { show("setup"); window.scrollTo({ top: 0 }); };
+}
+
+
+// ---------------------------------------------------------------------------
+// La carrera vertical: cada club por el que pasaste, con tus números ahí, y
+// la fila de la selección al final. Es la pantalla que la gente comparte.
+// ---------------------------------------------------------------------------
+
+const HONOUR_ICON = {
+  worlds: "🏆", olympics: "🥇", champions: "⭐", "european-league": "🎖",
+  euro: "🌍", continental: "🌍", league: "🛡", cup: "🏅",
+  "ihf-player": "👑", "top-scorer": "🎯", "all-star": "⭐",
+};
+
+function renderTimeline(keeper) {
+  const clubById = new Map();
+  for (const league of universeLeagues()) for (const team of league.teams) clubById.set(team.id, team);
+
+  // Agrupamos temporadas consecutivas en el mismo club en un "tramo", y
+  // sumamos los números de ese tramo. Igual que Copero: una fila por etapa.
+  const stints = [];
+  for (const season of career.timeline) {
+    const last = stints.at(-1);
+    if (last && last.clubId === season.clubId) {
+      last.to = season.year;
+      last.endAge = season.age;
+      last.matches += season.matches;
+      last.goals += season.goals;
+      last.assists += season.assists;
+      last.saves += season.saves;
+      last.rating = season.rating;
+      for (const honour of season.honours) last.honours.push(honour);
+    } else {
+      stints.push({
+        clubId: season.clubId, club: season.club, league: season.league,
+        country: season.country, startAge: season.age, endAge: season.age,
+        from: season.year, to: season.year, rating: season.rating,
+        matches: season.matches, goals: season.goals, assists: season.assists,
+        saves: season.saves, loan: season.loan, honours: [...season.honours],
+      });
+    }
+  }
+
+  const rows = stints.map((stint) => {
+    const club = clubById.get(stint.clubId) || { id: stint.clubId, name: stint.club };
+    const trophies = uniqueHonourIcons(stint.honours);
+    const prod = keeper ? stint.saves : stint.goals;
+    const third = keeper ? "—" : stint.assists;
+    return `<li class="tl-row${stint.loan ? " tl-loan" : ""}">
+      <span class="tl-age">${stint.startAge}</span>
+      <img class="tl-crest" src="${crestSrc(club)}" alt="" loading="lazy">
+      <span class="tl-club">
+        <span class="tl-name">${stint.loan ? "↳ " : ""}${club.flag || ""} ${stint.club}</span>
+        ${trophies ? `<span class="tl-trophies">${trophies}</span>` : ""}
+      </span>
+      <span class="tl-ovr">${Math.round(stint.rating)}</span>
+      <span class="tl-stat">${stint.matches}</span>
+      <span class="tl-stat">${prod}</span>
+      <span class="tl-stat">${third}</span>
+    </li>`;
+  }).join("");
+
+  // Fila de la selección, con sus propios números y sus copas internacionales.
+  const totals = career.totals;
+  let nationalRow = "";
+  if (totals.caps > 0) {
+    const intl = uniqueHonourIcons(
+      career.trophies.filter((h) => ["worlds", "olympics", "euro", "continental"].includes(h.key))
+    );
+    const prod = keeper ? "—" : totals.nationalGoals;
+    const third = keeper ? "—" : totals.nationalAssists;
+    nationalRow = `<li class="tl-row tl-national">
+      <span class="tl-age"></span>
+      <img class="tl-crest" src="${flagCrest(career.player)}" alt="" loading="lazy">
+      <span class="tl-club">
+        <span class="tl-name">${career.player.flag || ""} ${t(`countries.${career.player.country}`) || career.player.countryName}</span>
+        ${intl ? `<span class="tl-trophies">${intl}</span>` : ""}
+      </span>
+      <span class="tl-ovr"></span>
+      <span class="tl-stat">${totals.caps}</span>
+      <span class="tl-stat">${prod}</span>
+      <span class="tl-stat">${third}</span>
+    </li>`;
+  }
+
+  el("timeline").innerHTML =
+    `<li class="tl-head">
+       <span class="tl-age">${t("ui.age")}</span>
+       <span class="tl-club-h">${t("ui.club")}</span>
+       <span class="tl-ovr">${t("ui.rating")}</span>
+       <span class="tl-stat">${t("ui.matches")}</span>
+       <span class="tl-stat">${keeper ? t("ui.savesShort") : t("ui.goalsShort")}</span>
+       <span class="tl-stat">${keeper ? "" : t("ui.assistsShort")}</span>
+     </li>` + rows + nationalRow;
+}
+
+function uniqueHonourIcons(honours) {
+  const seen = new Set();
+  const icons = [];
+  for (const honour of honours) {
+    if (seen.has(honour.key)) continue;
+    seen.add(honour.key);
+    if (HONOUR_ICON[honour.key]) icons.push(HONOUR_ICON[honour.key]);
+  }
+  return icons.slice(0, 4).join("");
+}
+
+/** Bandera del país como escudo circular para la fila de la selección. */
+function flagCrest(player) {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">` +
+    `<circle cx="32" cy="32" r="30" fill="#1e2833"/>` +
+    `<text x="32" y="44" font-size="34" text-anchor="middle">${player.flag || "🏳"}</text></svg>`;
+  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
 }
 
 function universeLeagues() {
