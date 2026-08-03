@@ -276,32 +276,8 @@ function renderCareer() {
   el("progress").style.setProperty("--p", `${Math.round((totals.seasons / span) * 100)}%`);
   el("season-label").textContent = `${t("ui.season")} ${career.seasonYear}`;
 
-  renderLastBlock();
+  renderCareerTimeline();
   renderDecision();
-}
-
-function renderLastBlock() {
-  const block = career.latestBlock || [];
-  const box = el("recap");
-  if (!block.length) {
-    box.innerHTML = "";
-    box.hidden = true;
-    return;
-  }
-  const keeper = career.player.position === "GK";
-  box.hidden = false;
-  box.innerHTML = `<h3>${t("ui.seasonSummary")}</h3>` + block.map((season) => `
-    <div class="recap-row">
-      <span class="recap-year">${season.year}</span>
-      <span class="recap-club">${season.club}</span>
-      <span class="recap-stat">${season.matches} ${t("ui.matches")}</span>
-      <span class="recap-stat">${keeper ? `${season.saves} ${t("ui.saves")}` : `${season.goals} ${t("ui.goals")}`}</span>
-      ${season.swap ? `<span class="tag ${season.swap === "encajo" ? "tag-good" : "tag-warn"}">${t(`swap.${season.swap}`)}</span>` : ""}
-      ${season.scandal ? `<span class="tag tag-bad">⚠ ${t(`scandals.${season.scandal}`)}</span>` : ""}
-      ${season.injured ? `<span class="tag tag-warn">${t("ui.injured")}</span>` : ""}
-      ${season.loan ? `<span class="tag">${t("ui.loan")}</span>` : ""}
-      ${season.honours.map((h) => `<span class="tag tag-gold">🏆 ${honourName(t, h)}</span>`).join("")}
-    </div>`).join("");
 }
 
 function decisionCopy(event) {
@@ -517,7 +493,6 @@ function showTransition(before, done) {
 
   // Mientras se cuenta lo que pasó, la decisión ya contestada y el resumen
   // viejo se van: si no, quedan en pantalla y confunden.
-  el("recap").hidden = true;
   document.querySelector(".decision").hidden = true;
   box.hidden = false;
   box.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -622,12 +597,17 @@ const HONOUR_ICON = {
   "ihf-player": "👑", "top-scorer": "🎯", "all-star": "⭐",
 };
 
-function renderTimeline(keeper) {
+function clubIndex() {
   const clubById = new Map();
   for (const league of universeLeagues()) for (const team of league.teams) clubById.set(team.id, team);
+  return clubById;
+}
 
-  // Agrupamos temporadas consecutivas en el mismo club en un "tramo", y
-  // sumamos los números de ese tramo. Igual que Copero: una fila por etapa.
+/**
+ * Agrupa temporadas consecutivas en el mismo club en un "tramo" y suma sus
+ * números. Igual que Copero: una fila por etapa, no por temporada.
+ */
+function buildStints() {
   const stints = [];
   for (const season of career.timeline) {
     const last = stints.at(-1);
@@ -650,58 +630,93 @@ function renderTimeline(keeper) {
       });
     }
   }
+  return stints;
+}
 
-  const rows = stints.map((stint) => {
-    const club = clubById.get(stint.clubId) || { id: stint.clubId, name: stint.club };
-    const trophies = uniqueHonourIcons(stint.honours);
-    const prod = keeper ? stint.saves : stint.goals;
-    const third = keeper ? "—" : stint.assists;
-    return `<li class="tl-row${stint.loan ? " tl-loan" : ""}">
-      <span class="tl-age">${stint.startAge}</span>
-      <img class="tl-crest" src="${crestSrc(club)}" alt="" loading="lazy">
-      <span class="tl-club">
-        <span class="tl-name">${stint.loan ? "↳ " : ""}${club.flag || ""} ${stint.club}</span>
-        ${trophies ? `<span class="tl-trophies">${trophies}</span>` : ""}
-      </span>
-      <span class="tl-ovr">${Math.round(stint.rating)}</span>
-      <span class="tl-stat">${stint.matches}</span>
-      <span class="tl-stat">${prod}</span>
-      <span class="tl-stat">${third}</span>
-    </li>`;
-  }).join("");
+function timelineHeader(keeper) {
+  return `<li class="tl-head">
+    <span class="tl-age">${t("ui.age")}</span>
+    <span class="tl-club-h">${t("ui.club")}</span>
+    <span class="tl-ovr">${t("ui.rating")}</span>
+    <span class="tl-stat">${t("ui.matches")}</span>
+    <span class="tl-stat">${keeper ? t("ui.savesShort") : t("ui.goalsShort")}</span>
+    <span class="tl-stat">${keeper ? "" : t("ui.assistsShort")}</span>
+  </li>`;
+}
 
-  // Fila de la selección, con sus propios números y sus copas internacionales.
+function stintRow(stint, keeper, clubById) {
+  const club = clubById.get(stint.clubId) || { id: stint.clubId, name: stint.club };
+  const trophies = uniqueHonourIcons(stint.honours);
+  const prod = keeper ? stint.saves : stint.goals;
+  const third = keeper ? "—" : stint.assists;
+  return `<li class="tl-row${stint.loan ? " tl-loan" : ""}">
+    <span class="tl-age">${stint.startAge}</span>
+    <img class="tl-crest" src="${crestSrc(club)}" alt="" loading="lazy">
+    <span class="tl-club">
+      <span class="tl-name">${stint.loan ? "↳ " : ""}${club.flag || ""} ${stint.club}</span>
+      ${trophies ? `<span class="tl-trophies">${trophies}</span>` : ""}
+    </span>
+    <span class="tl-ovr">${Math.round(stint.rating)}</span>
+    <span class="tl-stat">${stint.matches}</span>
+    <span class="tl-stat">${prod}</span>
+    <span class="tl-stat">${third}</span>
+  </li>`;
+}
+
+/** Fila de la selección, con sus propios números y sus copas internacionales. */
+function nationalRow(keeper) {
   const totals = career.totals;
-  let nationalRow = "";
-  if (totals.caps > 0) {
-    const intl = uniqueHonourIcons(
-      career.trophies.filter((h) => ["worlds", "olympics", "euro", "continental"].includes(h.key))
-    );
-    const prod = keeper ? "—" : totals.nationalGoals;
-    const third = keeper ? "—" : totals.nationalAssists;
-    nationalRow = `<li class="tl-row tl-national">
-      <span class="tl-age"></span>
-      <img class="tl-crest" src="${flagCrest(career.player)}" alt="" loading="lazy">
-      <span class="tl-club">
-        <span class="tl-name">${career.player.flag || ""} ${t(`countries.${career.player.country}`) || career.player.countryName}</span>
-        ${intl ? `<span class="tl-trophies">${intl}</span>` : ""}
-      </span>
-      <span class="tl-ovr"></span>
-      <span class="tl-stat">${totals.caps}</span>
-      <span class="tl-stat">${prod}</span>
-      <span class="tl-stat">${third}</span>
-    </li>`;
-  }
+  if (!totals.caps) return "";
+  const intl = uniqueHonourIcons(
+    career.trophies.filter((h) => ["worlds", "olympics", "euro", "continental"].includes(h.key))
+  );
+  const country = t(`countries.${career.player.country}`) || career.player.countryName;
+  return `<li class="tl-row tl-national">
+    <span class="tl-age"></span>
+    <img class="tl-crest" src="${flagCrest(career.player)}" alt="" loading="lazy">
+    <span class="tl-club">
+      <span class="tl-name">${career.player.flag || ""} ${country}</span>
+      ${intl ? `<span class="tl-trophies">${intl}</span>` : ""}
+    </span>
+    <span class="tl-ovr"></span>
+    <span class="tl-stat">${totals.caps}</span>
+    <span class="tl-stat">${keeper ? "—" : totals.nationalGoals}</span>
+    <span class="tl-stat">${keeper ? "—" : totals.nationalAssists}</span>
+  </li>`;
+}
 
-  el("timeline").innerHTML =
-    `<li class="tl-head">
-       <span class="tl-age">${t("ui.age")}</span>
-       <span class="tl-club-h">${t("ui.club")}</span>
-       <span class="tl-ovr">${t("ui.rating")}</span>
-       <span class="tl-stat">${t("ui.matches")}</span>
-       <span class="tl-stat">${keeper ? t("ui.savesShort") : t("ui.goalsShort")}</span>
-       <span class="tl-stat">${keeper ? "" : t("ui.assistsShort")}</span>
-     </li>` + rows + nationalRow;
+/** La carrera completa, en la pantalla de resultado. */
+function renderTimeline(keeper) {
+  const clubById = clubIndex();
+  el("timeline").innerHTML = timelineHeader(keeper) +
+    buildStints().map((stint) => stintRow(stint, keeper, clubById)).join("") +
+    nationalRow(keeper);
+}
+
+/**
+ * La misma carrera pero mientras jugás, al costado. Se va llenando con cada
+ * decisión y la última fila muestra que estás por elegir club, como Copero.
+ */
+function renderCareerTimeline() {
+  const keeper = career.player.position === "GK";
+  const clubById = clubIndex();
+  const stints = buildStints();
+
+  const kind = career.pendingEvent?.kind;
+  const choosing = kind === "club-offer" || kind === "contract-offer" ||
+    career.pendingEvent?.id === "emigrar";
+
+  const pendingRow = choosing ? `<li class="tl-row tl-choosing">
+    <span class="tl-age">${career.age}</span>
+    <span class="tl-crest tl-crest-empty">?</span>
+    <span class="tl-club"><span class="tl-name">${t("ui.choosing")}</span></span>
+    <span class="tl-ovr">${Math.round(career.rating)}</span>
+    <span class="tl-stat"></span><span class="tl-stat"></span><span class="tl-stat"></span>
+  </li>` : "";
+
+  el("career-timeline").innerHTML = timelineHeader(keeper) +
+    stints.map((stint) => stintRow(stint, keeper, clubById)).join("") +
+    pendingRow + nationalRow(keeper);
 }
 
 function uniqueHonourIcons(honours) {

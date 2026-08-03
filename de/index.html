@@ -74,6 +74,7 @@
 
   <!-- ------------------------------------------------ 2. la carrera -->
   <section id="career" hidden>
+    <div class="career-main">
     <div class="hud">
       <div class="hud-player">
         <span class="hud-number" id="hud-number"></span>
@@ -99,14 +100,19 @@
 
     <div class="transition" id="transition" hidden></div>
 
-    <div class="recap" id="recap" hidden></div>
-
     <article class="decision">
       <p class="decision-eyebrow" id="decision-eyebrow"></p>
       <h2 id="decision-title"></h2>
       <p class="decision-body" id="decision-body"></p>
       <div class="options" id="decision-options"></div>
     </article>
+    </div>
+
+    <!-- Los clubes por los que vas pasando, al costado en pantalla grande. -->
+    <aside class="career-side">
+      <h3>Deine Karriere</h3>
+      <ol class="timeline" id="career-timeline"></ol>
+    </aside>
   </section>
 
   <!-- ------------------------------------------------ 3. resultado -->
