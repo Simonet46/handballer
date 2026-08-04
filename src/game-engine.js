@@ -52,7 +52,8 @@ const AMATEUR_CEILING_AGE = 25;
 // Pesos base de los títulos domésticos, que se multiplican por el prestigio de
 // la liga (1 a 5). Una liga de las tres grandes vale 45; el amateur argentino, 9.
 const LEAGUE_TITLE_WEIGHT = 9;
-const CUP_WEIGHT = 4;
+// Peso fijo: una copa nacional vale ~15 puntos (27 × 0,55), gane quien gane.
+const CUP_WEIGHT = 27;
 
 // Desde qué prestigio de liga te empieza a ver el seleccionador. En Argentina
 // o en la segunda de España no te llaman: hay que estar en una primera seria.
@@ -62,7 +63,9 @@ const NATIONAL_TEAM_PRESTIGE = 3;
 // Salir del ascenso argentino y terminar en la Starligue son cuatro escalones.
 const CLIMB_WEIGHT = 42;
 // Cuántas temporadas hay que haber jugado abajo para cobrar el salto entero.
-const CLIMB_MIN_SEASONS = 5;
+// Tres temporadas abajo ya son "abajo de verdad": el bono del salto se cobra
+// entero desde ahí.
+const CLIMB_MIN_SEASONS = 3;
 
 // Embudo geográfico: a dónde puede fichar un jugador según su edad y de dónde es.
 // En handball la ruta real de un sudamericano es liga local -> Península/Brasil ->
@@ -222,6 +225,32 @@ export function projectSquadRole(state, club = state.club) {
   if (score < 1) return SQUAD_ROLES[1];
   if (score < 7) return SQUAD_ROLES[2];
   return SQUAD_ROLES[3];
+}
+
+/**
+ * Sueldo mensual estimado en euros. No afecta el puntaje: es la capa de
+ * realidad del handball profesional, calibrada con datos de primera mano:
+ * tope 50.000 y solo dos o tres monstruos llegan a 60.000; un buen jugador
+ * de Montpellier ronda los 15.000; en España se paga 1.000-5.000 salvo el
+ * Barcelona (hasta ~20.000); en Argentina no hay sueldo: es amateur.
+ */
+export function estimateSalary(state, roleKey = state.squadRole) {
+  const club = state.club;
+  if (!club || club.freeAgent || club.amateur) return 0;
+  const strength = club.strength ?? 2;
+  const prestige = club.prestige ?? 3;
+  const base = [0, 1500, 3000, 6000, 11000, 24000][strength];
+  const league = 0.5 + prestige * 0.12;
+  const role = { juvenil: 0.35, rotacion: 0.7, titular: 1, franquicia: 1.5 }[roleKey] || 0.7;
+  const level = 0.7 + (state.rating / 99) * 0.6;
+  let salary = base * league * role * level;
+  // España paga poco... salvo el Barcelona, que aun así ronda los 20.000.
+  if (club.country === "ESP") salary *= strength === 5 ? 0.45 : 0.4;
+  // Los dos o tres de 60.000: franquicia de un gigante en su mejor momento.
+  if (strength === 5 && prestige >= 5 && roleKey === "franquicia" && state.rating >= 95) {
+    salary *= 1.2;
+  }
+  return Math.min(60000, Math.round(salary / 500) * 500);
 }
 
 export function contractLength(state) {
@@ -1065,6 +1094,10 @@ function applyChoice(state, choice, event, rng) {
     } else if (!state.firstClub) {
       state.firstClub = { ...destination };
       state.startPrestige = destination.prestige ?? 3;
+      // Formarte en un grande de Argentina arranca la carrera un punto arriba.
+      if (destination.country === "ARG" && (destination.strength ?? 1) >= 3) {
+        state.rating = clamp(state.rating + 1, 46, 99);
+      }
     } else if (destination.id !== state.club.id) {
       state.totals.transfers += 1;
     }
@@ -1136,8 +1169,13 @@ function ratingCurve(state, rng) {
   // propósito en la liga más chica era plata gratis por el bono de salto.
   //
   // Los dos castigos no se acumulan: el amateur ya es el piso.
-  const academy = state.club.amateur ? 0.72 : 0.82 + (state.club.prestige ?? 3) * 0.06;
-  const amateur = state.club.amateur ? 0.85 : 1;
+  // Excepción: la elite argentina (River, Ballester, SEDALO...) forma bien
+  // aunque sea amateur — ahí no se castiga el desarrollo.
+  const eliteArg = state.club.country === "ARG" && (state.club.strength ?? 1) >= 3;
+  const academy = eliteArg ? 1
+    : state.club.amateur ? 0.72
+    : 0.82 + (state.club.prestige ?? 3) * 0.06;
+  const amateur = state.club.amateur && !eliteArg ? 0.85 : 1;
   if (age <= 23) {
     return Math.max(0, (state.potential - state.rating) * (0.16 + rng() * 0.07) * academy);
   }
@@ -1253,7 +1291,7 @@ function simulateSeason(state, rng) {
   } else {
     if (rng() < titleChance * 0.6) {
       addTrophy(state, season, "cup", { country: state.club.country },
-        `Copa de ${state.club.countryName}`, CUP_WEIGHT * clubPrestige);
+        `Copa de ${state.club.countryName}`, CUP_WEIGHT);
     }
     if (state.club.confederation === "EHF") {
       if (state.club.strength >= 4 && rng() < titleChance * 0.4) {
@@ -1277,16 +1315,19 @@ function simulateSeason(state, rng) {
     caps = between(4, 14, rng);
     nationalGoals = keeper ? 0 : noisy(caps * position.goalRate * 0.8, rng, 0.5);
     nationalAssists = keeper ? 0 : noisy(caps * position.assistRate * 0.8, rng, 0.5);
+    // Ganar con una selección de fuera de Europa (Argentina) es casi
+    // imposible: si pasa, vale un 60 % más.
+    const confederation = countryOf(state.player.country).confederation;
+    const merit = confederation === "EHF" ? 1 : 1.6;
     if (year % 2 === 1 && nationalQuality >= 80 && rng() < 0.06 + (nationalQuality - 79) * 0.008) {
-      addTrophy(state, season, "worlds", {}, "Campeonato Mundial IHF", 130);
+      addTrophy(state, season, "worlds", {}, "Campeonato Mundial IHF", round(130 * merit));
     }
     if (year % 4 === 0 && nationalQuality >= 84 && rng() < 0.05) {
-      addTrophy(state, season, "olympics", {}, "Juegos Olímpicos", 150);
+      addTrophy(state, season, "olympics", {}, "Juegos Olímpicos", round(150 * merit));
     }
     if (year % 2 === 0 && nationalQuality >= 76 && rng() < 0.09) {
-      const confederation = countryOf(state.player.country).confederation;
       addTrophy(state, season, confederation === "EHF" ? "euro" : "continental", {},
-        confederation === "EHF" ? "EHF Euro" : "Campeonato continental", 55);
+        confederation === "EHF" ? "EHF Euro" : "Campeonato continental", round(55 * merit));
     }
   }
 
@@ -1348,6 +1389,9 @@ function simulateSeason(state, rng) {
   totals.nationalAssists += nationalAssists;
 
   state.squadRole = role.key;
+  const salary = estimateSalary(state, role.key);
+  season.salary = salary;
+  if (salary > (state.maxSalary || 0)) state.maxSalary = salary;
   state.peakPrestige = Math.max(state.peakPrestige, state.club.prestige ?? 1);
   if ((state.club.prestige ?? 1) <= (state.startPrestige ?? 3)) state.seasonsLow += 1;
   state.timeline.push(season);
@@ -1445,9 +1489,9 @@ function finishCareer(state) {
     steps,
   };
   state.score = round(
-    (state.totals.matches * 0.12 + production + state.totals.caps * 0.9 +
+    (state.totals.matches * 0.12 + production + state.totals.caps * 1.15 +
       trophyWeight * 0.55 + awardWeight * 0.65 + state.maxRating * 1.1 +
-      climb + comeback + Math.max(0, state.loyalty) + state.fame * 0.8) * paceFactor
+      climb + comeback + Math.max(0, state.loyalty) + state.fame * 5) * paceFactor
   );
   state.verdict = VERDICTS.find((verdict) => state.score >= verdict.min);
   state.ended = true;

@@ -19,6 +19,11 @@ const locale = document.documentElement.lang || "es";
 const t = createTranslator(locale);
 
 const el = (id) => document.getElementById(id);
+
+const EURO_LOCALE = { es: "es-AR", fr: "fr-FR", de: "de-DE" };
+function formatEuros(amount) {
+  return `${amount.toLocaleString(EURO_LOCALE[locale] || "es-AR")} €`;
+}
 const view = {
   setup: el("setup"),
   career: el("career"),
@@ -280,7 +285,11 @@ function renderCareer() {
 
   const club = career.club;
   el("hud-club").textContent = club.freeAgent ? t("ui.freeAgent") : `${club.flag || ""} ${club.name}`.trim();
-  el("hud-league").textContent = club.freeAgent ? "" : `${club.leagueName} · ${club.countryName}`;
+  // El sueldo al lado de la liga: la capa de realidad. En Argentina no hay.
+  const salary = career.timeline.at(-1)?.salary || 0;
+  el("hud-league").textContent = club.freeAgent ? "" :
+    `${club.leagueName} · ${club.countryName}` +
+    (salary > 0 ? ` · ${formatEuros(salary)}${t("ui.perMonth")}` : "");
   el("hud-age").textContent = career.age;
   el("hud-rating").textContent = Math.round(career.rating);
   el("hud-role").textContent = t(`roles.${career.squadRole}`);
@@ -741,6 +750,7 @@ function renderResult() {
     keeper ? [t("ui.caps"), totals.caps] : [t("ui.assists"), totals.assists],
     [t("ui.peak"), Math.round(career.maxRating)],
   ];
+  if (career.maxSalary > 0) stats.push([t("ui.peakSalary"), formatEuros(career.maxSalary)]);
   el("result-stats").innerHTML = stats
     .map(([label, value]) => `<div><strong>${value}</strong><span>${label}</span></div>`)
     .join("");
