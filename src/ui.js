@@ -65,7 +65,22 @@ async function boot() {
 // Pantalla 1: creación del jugador
 // ---------------------------------------------------------------------------
 
-const form = { lastName: "", number: 7, rama: "M", hand: "Diestra", country: "ARG", position: "CB", pace: 2 };
+const form = { lastName: "", number: 7, rama: "M", hand: "Diestra", country: "ARG", position: "CB", pace: 2, mode: "libre" };
+
+// El desafío del día: la misma semilla para todo el mundo, cambia a
+// medianoche argentina. FNV-1a de la fecha: determinista y compartida.
+function argentineToday() {
+  return new Date().toLocaleDateString("en-CA", { timeZone: "America/Argentina/Buenos_Aires" });
+}
+
+function dailySeed() {
+  let h = 2166136261;
+  for (const ch of `handboludo:${argentineToday()}`) {
+    h ^= ch.codePointAt(0);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
 
 function renderSetup() {
   const countries = startableCountries();
@@ -86,6 +101,10 @@ function renderSetup() {
 
   el("rama-options").innerHTML =
     chip("rama", "M", t("ui.ramaM")) + chip("rama", "F", t("ui.ramaF"));
+
+  el("mode-options").innerHTML =
+    chip("mode", "libre", t("ui.modeFree"), null, t("ui.modeFreeDetail")) +
+    chip("mode", "diario", t("ui.modeDaily"), null, t("ui.modeDailyDetail"));
 
   for (const group of document.querySelectorAll("[data-group]")) {
     group.addEventListener("click", (event) => {
@@ -265,8 +284,10 @@ async function startCareer() {
   // La rama elegida define el universo: se garantiza acá, por si el dataset
   // femenino todavía no terminó de bajar cuando apretaron "Empezar".
   await loadRama(form.rama);
-  rng = createRng(Date.now() ^ Math.floor(Math.random() * 1e9));
+  const daily = form.mode === "diario";
+  rng = createRng(daily ? dailySeed() : Date.now() ^ Math.floor(Math.random() * 1e9));
   career = createCareer({ ...form, lastName: form.lastName || t("ui.lastNamePlaceholder") }, rng);
+  career.daily = daily;
   advanceCareer(career, null, rng);
   show("career");
   renderCareer();
@@ -1015,6 +1036,7 @@ function submitGlobalRun() {
     comeback: career.comeback || 0,
     first_club: (career.firstClub?.name || "").slice(0, 60) || null,
     last_club: (career.timeline.at(-1)?.club || "").slice(0, 60) || null,
+    daily: Boolean(career.daily),
     app_version: "1",
   };
   try {
@@ -1097,16 +1119,38 @@ function renderBoard(highlightId) {
 // ------------------------------------------------------------- tabla mundial
 
 let boardTab = "local";
-let worldCache = null;
+let worldFilter = "all";
+let worldCache = {};
+
+// Cada recorte del ranking mundial: histórico, el desafío de hoy, la semana,
+// solo femenino y solo Argentina. Todos salen de la función top_runs.
+const WORLD_FILTERS = [
+  { id: "all" },
+  { id: "today", daily: true },
+  { id: "week", days: 7 },
+  { id: "fem", rama: "F" },
+  { id: "arg", country: "ARG" },
+];
 
 function initBoardTabs(highlightId) {
   boardTab = "local";
-  worldCache = null;   // cada carrera nueva refresca el mundo
+  worldFilter = "all";
+  worldCache = {};   // cada carrera nueva refresca el mundo
   const tabs = { local: el("board-tab-local"), world: el("board-tab-world") };
+  const filters = el("board-filters");
+
+  filters.innerHTML = WORLD_FILTERS.map((f) =>
+    `<button type="button" class="board-tab" data-filter="${f.id}"
+       aria-pressed="${String(f.id === worldFilter)}">${t(`board.f_${f.id}`)}</button>`).join("");
+
   const paint = () => {
     tabs.local.setAttribute("aria-pressed", String(boardTab === "local"));
     tabs.world.setAttribute("aria-pressed", String(boardTab === "world"));
     el("board-clear").hidden = boardTab !== "local";
+    filters.hidden = boardTab !== "world";
+    for (const button of filters.querySelectorAll("button")) {
+      button.setAttribute("aria-pressed", String(button.dataset.filter === worldFilter));
+    }
     if (boardTab === "local") {
       el("board-note").textContent = t("board.note");
       renderBoard(highlightId);
@@ -1116,37 +1160,62 @@ function initBoardTabs(highlightId) {
   };
   tabs.local.onclick = () => { boardTab = "local"; paint(); };
   tabs.world.onclick = () => { boardTab = "world"; paint(); };
+  filters.onclick = (event) => {
+    const button = event.target.closest("button[data-filter]");
+    if (!button) return;
+    worldFilter = button.dataset.filter;
+    paint();
+  };
   paint();
+}
+
+async function fetchWorld(filter) {
+  const headers = backendHeaders();
+  if (filter.id === "all") {
+    const [rows, stats] = await Promise.all([
+      fetch(`${BACKEND.url}/rest/v1/leaderboard?select=*`, { headers }).then((r) => r.json()),
+      fetch(`${BACKEND.url}/rest/v1/stats?select=*`, { headers }).then((r) => r.json()),
+    ]);
+    return {
+      rows: Array.isArray(rows) ? rows : [],
+      stats: Array.isArray(stats) ? stats[0] : null,
+    };
+  }
+  const rows = await fetch(`${BACKEND.url}/rest/v1/rpc/top_runs`, {
+    method: "POST",
+    headers,
+    body: JSON.stringify({
+      p_rama: filter.rama ?? null,
+      p_country: filter.country ?? null,
+      p_days: filter.days ?? null,
+      p_daily: filter.daily ?? false,
+    }),
+  }).then((r) => r.json());
+  return { rows: Array.isArray(rows) ? rows : [], stats: null };
 }
 
 async function renderWorldBoard() {
   const box = el("board");
-  if (!worldCache) {
+  const filter = WORLD_FILTERS.find((f) => f.id === worldFilter) || WORLD_FILTERS[0];
+  if (!worldCache[filter.id]) {
     box.innerHTML = `<li class="board-empty">…</li>`;
     try {
-      const headers = backendHeaders();
-      const [rows, stats] = await Promise.all([
-        fetch(`${BACKEND.url}/rest/v1/leaderboard?select=*`, { headers }).then((r) => r.json()),
-        fetch(`${BACKEND.url}/rest/v1/stats?select=*`, { headers }).then((r) => r.json()),
-      ]);
-      worldCache = {
-        rows: Array.isArray(rows) ? rows : [],
-        stats: Array.isArray(stats) ? stats[0] : null,
-      };
+      worldCache[filter.id] = await fetchWorld(filter);
     } catch {
-      worldCache = { rows: null, stats: null };
+      worldCache[filter.id] = { rows: null, stats: null };
     }
   }
-  if (boardTab !== "world") return;   // cambiaron de pestaña mientras cargaba
+  // Mientras cargaba pudieron cambiar de pestaña o de filtro.
+  if (boardTab !== "world" || filter.id !== worldFilter) return;
 
-  const { rows, stats } = worldCache;
+  const { rows, stats } = worldCache[filter.id];
   if (!rows) {
     box.innerHTML = `<li class="board-empty">${t("board.worldError")}</li>`;
     el("board-note").textContent = "";
     return;
   }
   if (!rows.length) {
-    box.innerHTML = `<li class="board-empty">${t("board.worldEmpty")}</li>`;
+    box.innerHTML = `<li class="board-empty">${t(filter.id === "today" ? "board.todayEmpty" : "board.worldEmpty")}</li>`;
     el("board-note").textContent = "";
     return;
   }
@@ -1162,7 +1231,8 @@ async function renderWorldBoard() {
     </li>`;
   }).join("");
   el("board-note").textContent = stats
-    ? t("board.world", { n: stats.total_runs.toLocaleString(EURO_LOCALE[locale] || "es-AR"), avg: stats.avg_score })
+    ? t(stats.total_runs === 1 ? "board.worldOne" : "board.world",
+        { n: stats.total_runs.toLocaleString(EURO_LOCALE[locale] || "es-AR"), avg: stats.avg_score })
     : "";
 }
 

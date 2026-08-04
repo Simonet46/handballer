@@ -522,6 +522,7 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
 .board-tab[aria-pressed="true"] {
   background: var(--accent); border-color: var(--accent); color: var(--ink);
 }
+.board-filters { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; }
 .board-head h3 { margin: 0; }
 .board-clear {
   background: none; border: 0; color: var(--muted);
