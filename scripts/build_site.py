@@ -26,6 +26,12 @@ DISCLAIMER = {
     "de": "Inoffizielles, kostenloses Spiel. Ohne Verbindung zur IHF, EHF oder den genannten Vereinen.",
 }
 
+CAFECITO = {
+    "es": "Ayudanos con un Cafecito para que creemos más juegos de handball",
+    "fr": "Offre-nous un Cafecito pour qu'on crée plus de jeux de handball",
+    "de": "Spendier uns einen Cafecito, damit wir mehr Handballspiele bauen",
+}
+
 
 def strings_for(locale):
     """Lee los textos directamente de src/i18n.js con node, sin duplicarlos acá."""
@@ -116,6 +122,7 @@ def build():
             "L_BOARD_CLEAR": s["boardClear"],
             "L_BOARD_NOTE": s["boardNote"],
             "DISCLAIMER": DISCLAIMER[locale],
+            "CAFECITO": CAFECITO[locale],
         }
         for key, value in values.items():
             page = page.replace("{{%s}}" % key, str(value))
