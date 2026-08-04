@@ -369,18 +369,19 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
 }
 
 .options { display: grid; gap: 10px; margin-top: 18px; }
+/* Opciones grandes: la decisión es el corazón del juego, tiene que pesar. */
 .option {
   background: var(--ink-2); border: 1px solid var(--faint); border-radius: 14px;
-  padding: 14px; display: flex; align-items: center; gap: 12px; text-align: left;
+  padding: 18px 16px; display: flex; align-items: center; gap: 14px; text-align: left;
   transition: transform .12s, border-color .15s, background .15s;
 }
 .option:hover { border-color: rgba(244, 241, 234, .34); transform: translateY(-1px); }
 .option:active { transform: scale(.99); }
 .option-club { border-left: 4px solid var(--club, var(--accent)); }
-.option-crest { width: 40px; height: 46px; object-fit: contain; flex: 0 0 auto; }
-.option-text { display: grid; gap: 3px; flex: 1; min-width: 0; }
-.option-text strong { font-size: 16px; }
-.option-text span { color: var(--muted); font-size: 13px; }
+.option-crest { width: 58px; height: 64px; object-fit: contain; flex: 0 0 auto; }
+.option-text { display: grid; gap: 4px; flex: 1; min-width: 0; }
+.option-text strong { font-size: 18px; }
+.option-text span { color: var(--muted); font-size: 14px; }
 .option-role {
   font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
   background: var(--faint); border-radius: 999px; padding: 4px 9px; white-space: nowrap;
@@ -608,10 +609,11 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
   .jersey { width: 128px; height: 142px; }
   .jersey-number { font-size: 62px; }
 
-  .decision h2 { font-size: 21px; }
-  .option { padding: 12px; gap: 10px; }
-  .option-crest { width: 34px; height: 40px; }
-  .option-text strong { font-size: 15px; }
+  .decision h2 { font-size: 23px; }
+  /* En el celular las opciones se agrandan, no se achican: son el juego. */
+  .option { padding: 16px 14px; gap: 12px; }
+  .option-crest { width: 50px; height: 56px; }
+  .option-text strong { font-size: 17px; }
   .option-role { font-size: 10px; padding: 3px 7px; }
 
   .tl-row, .tl-head {

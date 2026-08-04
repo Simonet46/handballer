@@ -1188,8 +1188,11 @@ function ratingCurve(state, rng) {
     return Math.max(0, (state.potential - state.rating) * (0.16 + rng() * 0.07) * academy);
   }
   if (age <= 29) return (rng() < 0.75 ? 0.4 + rng() * 1.5 : -rng() * 0.6) * amateur;
-  if (age <= 32) return (rng() - 0.55) * 1.3;
-  return -(0.4 + rng() * (age - 31) * 0.3);
+  // La meseta dura hasta los 33: un profesional cuidado sostiene su nivel
+  // (Karabatic jugó de elite hasta los 40). La caída llega después, y es
+  // gradual: quien estira hasta los 42 termina en ~74, no en 60.
+  if (age <= 33) return (rng() - 0.5) * 1.1;
+  return -(0.25 + rng() * (age - 33) * 0.22);
 }
 
 function simulateSeason(state, rng) {
@@ -1204,9 +1207,10 @@ function simulateSeason(state, rng) {
 
   let change = ratingCurve(state, rng) + state.form * 0.08;
   if (maternity) change = -0.4;
-  // Estirar más allá del retiro natural se paga: el nivel cae en picada y el
-  // cuerpo de un veterano se rompe mucho más seguido.
-  if (state.age >= RETIREMENT_AGE) change -= 0.9 + rng() * 1.1;
+  // Estirar más allá del retiro natural se paga: el nivel baja más rápido y
+  // el cuerpo de un veterano se rompe mucho más seguido — pero es declive,
+  // no un precipicio.
+  if (state.age >= RETIREMENT_AGE) change -= 0.5 + rng() * 0.8;
   // Jugar del lado equivocado para tu mano, después de que te lo dijeron, se
   // paga todos los fines de semana: sin ángulo de tiro no hay crecimiento.
   if (state.wrongHand && state.brazoRefusedYear) change -= 0.85;

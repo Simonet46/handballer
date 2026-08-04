@@ -512,10 +512,12 @@ function summarize(before) {
   if (!block.length) return [];
   const beats = [];
 
-  // Cambio de club, y si eso fue subir o bajar de categoría.
+  // Cambio de club, y si eso fue subir o bajar de categoría. El primer club
+  // no compara contra nada: venías de "Sin club", no bajaste de ningún lado.
   if (career.club.id !== before.clubId && !career.club.freeAgent) {
     const now = career.club.prestige ?? 3;
-    const kind = now > before.prestige ? "up" : now < before.prestige ? "down" : "move";
+    const kind = before.clubId === "free-agent" ? "move"
+      : now > before.prestige ? "up" : now < before.prestige ? "down" : "move";
     beats.push({
       kind,
       icon: kind === "up" ? "⬆" : kind === "down" ? "⬇" : "✈",
