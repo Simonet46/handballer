@@ -230,27 +230,25 @@ export function projectSquadRole(state, club = state.club) {
 /**
  * Sueldo mensual estimado en euros. No afecta el puntaje: es la capa de
  * realidad del handball profesional, calibrada con datos de primera mano:
- * tope 50.000 y solo dos o tres monstruos llegan a 60.000; un buen jugador
- * de Montpellier ronda los 15.000; en España se paga 1.000-5.000 salvo el
- * Barcelona (hasta ~20.000); en Argentina no hay sueldo: es amateur.
+ * el tope real es ~30.000 (la figura del PSG); los colistas de la Starligue
+ * promedian 4.000; la Bundesliga promedia 8.000 con los seis grandes en
+ * 14.000; un buen jugador de Montpellier ronda los 15.000; en España se
+ * paga 1.000-5.000 salvo el Barcelona (hasta ~20.000); en Argentina no hay
+ * sueldo: es amateur.
  */
 export function estimateSalary(state, roleKey = state.squadRole) {
   const club = state.club;
   if (!club || club.freeAgent || club.amateur) return 0;
   const strength = club.strength ?? 2;
   const prestige = club.prestige ?? 3;
-  const base = [0, 1500, 3000, 6000, 11000, 24000][strength];
+  const base = [0, 1500, 3000, 5500, 10000, 14500][strength];
   const league = 0.5 + prestige * 0.12;
   const role = { juvenil: 0.35, rotacion: 0.7, titular: 1, franquicia: 1.5 }[roleKey] || 0.7;
   const level = 0.7 + (state.rating / 99) * 0.6;
   let salary = base * league * role * level;
   // España paga poco... salvo el Barcelona, que aun así ronda los 20.000.
-  if (club.country === "ESP") salary *= strength === 5 ? 0.45 : 0.4;
-  // Los dos o tres de 60.000: franquicia de un gigante en su mejor momento.
-  if (strength === 5 && prestige >= 5 && roleKey === "franquicia" && state.rating >= 95) {
-    salary *= 1.2;
-  }
-  return Math.min(60000, Math.round(salary / 500) * 500);
+  if (club.country === "ESP") salary *= strength === 5 ? 0.65 : 0.4;
+  return Math.min(30000, Math.round(salary / 500) * 500);
 }
 
 export function contractLength(state) {
