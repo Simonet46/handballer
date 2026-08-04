@@ -350,12 +350,23 @@ function choiceCopy(event, choice) {
 // Los momentos grandes tienen su foto (duotono negro y naranja, generadas
 // para el juego). Los demás eventos siguen siendo solo texto: cargan al toque.
 const EVENT_PHOTOS = {
+  // Generadas para el juego (duotono negro y naranja).
   maternidad: "assets/events/maternidad.jpg",
+  emigrar: "assets/events/emigrar.jpg",
+  "ultimo-contrato": "assets/events/retiro.jpg",
+  // Fotos reales de handball aportadas por Diego.
+  "siete-metros": "assets/events/siete-metros.jpg",
+  "siete-metros-parada": "assets/events/siete-metros-parada.jpg",
+  "arquero-al-arco-vacio": "assets/events/arquero-al-arco-vacio.jpg",
   "rotura-ligamento": "assets/events/rotura-ligamento.jpg",
   "brazo-armado": "assets/events/brazo-armado.jpg",
   "brazo-armado-2": "assets/events/brazo-armado.jpg",
-  emigrar: "assets/events/emigrar.jpg",
-  "ultimo-contrato": "assets/events/retiro.jpg",
+  seleccion: "assets/events/seleccion.jpg",
+  "falta-tactica": "assets/events/falta-tactica.jpg",
+  "simular-exclusion": "assets/events/simular-exclusion.jpg",
+  "defensa-6-0": "assets/events/defensa-6-0.jpg",
+  "roja-directa": "assets/events/roja-directa.jpg",
+  capitania: "assets/events/capitania.jpg",
 };
 
 function eventPhoto(event) {
