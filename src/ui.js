@@ -354,6 +354,7 @@ const EVENT_PHOTOS = {
   maternidad: "assets/events/maternidad.jpg",
   emigrar: "assets/events/emigrar.jpg",
   "ultimo-contrato": "assets/events/retiro.jpg",
+  "medico-milagroso": "assets/events/medico-milagroso.jpg",
   // Fotos reales de handball aportadas por Diego.
   "siete-metros": "assets/events/siete-metros.jpg",
   "siete-metros-parada": "assets/events/siete-metros-parada.jpg",
