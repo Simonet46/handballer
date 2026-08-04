@@ -445,6 +445,7 @@ export const SPECIAL_EVENTS = [
   },
   {
     id: "apuesta-amigo",
+    professional: true,
     minAge: 19, maxAge: 33,
     choices: [
       { id: "pasar-dato", effects: { fame: -1, flag: "apuestas" } },
@@ -453,6 +454,7 @@ export const SPECIAL_EVENTS = [
   },
   {
     id: "partido-arreglado",
+    professional: true,
     minAge: 22, maxAge: 34,
     choices: [
       { id: "aceptar-plata", effects: { fame: -2, form: -1, flag: "amanio" } },
@@ -485,6 +487,7 @@ export const SPECIAL_EVENTS = [
   },
   {
     id: "sueldo-negro",
+    professional: true,
     minAge: 20, maxAge: 35,
     choices: [
       { id: "firmar-igual", effects: { loyalty: 2, form: 1, risk: 1 } },
@@ -493,6 +496,7 @@ export const SPECIAL_EVENTS = [
   },
   {
     id: "agente-treinta",
+    professional: true,
     minAge: 18, maxAge: 27,
     choices: [
       { id: "firmar-agente", effects: { fame: 3, form: 1, loyalty: -1 } },
@@ -628,6 +632,7 @@ export const SPECIAL_EVENTS = [
   },
   {
     id: "doble-jornada",
+    professional: true,
     rama: "F",
     minAge: 18, maxAge: 26,
     choices: [
@@ -637,6 +642,7 @@ export const SPECIAL_EVENTS = [
   },
   {
     id: "clausula",
+    professional: true,
     rama: "F",
     minAge: 20, maxAge: 28,
     choices: [
@@ -646,6 +652,7 @@ export const SPECIAL_EVENTS = [
   },
   {
     id: "premios-desiguales",
+    professional: true,
     rama: "F",
     minAge: 22, maxAge: 34,
     choices: [
@@ -852,6 +859,9 @@ function chooseSpecialEvent(state, rng) {
       // Y cada rama tiene sus propias historias: la maternidad o la pelea por
       // premios igualitarios son del femenino.
       (!event.rama || event.rama === state.player.rama) &&
+      // En el amateur argentino no hay plata de por medio: sin sueldo no hay
+      // mitad en negro, ni agente, ni primas, ni apuestas sobre tus partidos.
+      (!event.professional || !state.club.amateur) &&
       (event.id !== "cesion" || state.club.strength >= 2) &&
       (event.id !== "volver-a-casa" || state.club.country !== home.code)
   );
