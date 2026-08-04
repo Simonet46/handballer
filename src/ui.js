@@ -351,13 +351,25 @@ function choiceCopy(event, choice) {
 // para el juego). Los demás eventos siguen siendo solo texto: cargan al toque.
 const EVENT_PHOTOS = {
   maternidad: "assets/events/maternidad.jpg",
+  "rotura-ligamento": "assets/events/rotura-ligamento.jpg",
+  "brazo-armado": "assets/events/brazo-armado.jpg",
+  "brazo-armado-2": "assets/events/brazo-armado.jpg",
+  emigrar: "assets/events/emigrar.jpg",
+  "siete-metros": "assets/events/siete-metros.jpg",
+  "ultimo-contrato": "assets/events/retiro.jpg",
 };
+
+function eventPhoto(event) {
+  // Los ciclos de estirar la carrera comparten la foto del retiro.
+  if (event.id.startsWith("estirar")) return EVENT_PHOTOS["ultimo-contrato"];
+  return EVENT_PHOTOS[event.id];
+}
 
 function renderDecision() {
   const event = career.pendingEvent;
   if (!event) return;
   const photo = el("decision-photo");
-  const src = EVENT_PHOTOS[event.id];
+  const src = eventPhoto(event);
   photo.hidden = !src;
   if (src) photo.src = src;
   const copy = decisionCopy(event);
