@@ -347,9 +347,19 @@ function choiceCopy(event, choice) {
   return { label: choice.label, detail: choice.detail };
 }
 
+// Los momentos grandes tienen su foto (duotono negro y naranja, generadas
+// para el juego). Los demás eventos siguen siendo solo texto: cargan al toque.
+const EVENT_PHOTOS = {
+  maternidad: "assets/events/maternidad.jpg",
+};
+
 function renderDecision() {
   const event = career.pendingEvent;
   if (!event) return;
+  const photo = el("decision-photo");
+  const src = EVENT_PHOTOS[event.id];
+  photo.hidden = !src;
+  if (src) photo.src = src;
   const copy = decisionCopy(event);
   el("decision-eyebrow").textContent = copy.eyebrow || "";
   el("decision-title").textContent = copy.title || "";
