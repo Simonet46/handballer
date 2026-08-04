@@ -48,7 +48,8 @@ def strings_for(locale):
         "    age: t('ui.age'), rating: t('ui.rating'), role: t('ui.role'),"
         "    score: t('ui.score'), career: t('ui.yourCareer'), honours: t('ui.honours'),"
         "    share: t('ui.share'), again: t('ui.playAgain'),"
-        "    board: t('board.title'), boardClear: t('board.clear'), boardNote: t('board.note')"
+        "    board: t('board.title'), boardClear: t('board.clear'), boardNote: t('board.note'),"
+        "    boardLocal: t('board.local'), boardWorld: t('board.world_tab')"
         "  }));"
         "});"
     ) % (os.path.join(ROOT, "src", "i18n.js"), locale)
@@ -120,6 +121,8 @@ def build():
             "L_AGAIN": s["again"],
             "L_BOARD": s["board"],
             "L_BOARD_CLEAR": s["boardClear"],
+            "L_BOARD_LOCAL": s["boardLocal"],
+            "L_BOARD_WORLD": s["boardWorld"],
             "L_BOARD_NOTE": s["boardNote"],
             "DISCLAIMER": DISCLAIMER[locale],
             "CAFECITO": CAFECITO[locale],

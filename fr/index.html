@@ -148,10 +148,15 @@
 
     <div class="board-head">
       <h3>Classement</h3>
+      <!-- Tu teléfono contra el mundo entero. -->
+      <div class="board-tabs">
+        <button type="button" class="board-tab" id="board-tab-local" aria-pressed="true">Ce téléphone</button>
+        <button type="button" class="board-tab" id="board-tab-world" aria-pressed="false">Mondial</button>
+      </div>
       <button type="button" class="board-clear" id="board-clear">Effacer</button>
     </div>
     <ol class="board" id="board"></ol>
-    <p class="board-note">Les carrières sont enregistrées sur cet appareil. Passe le téléphone et jouez tous dans le même classement.</p>
+    <p class="board-note" id="board-note">Les carrières sont enregistrées sur cet appareil. Passe le téléphone et jouez tous dans le même classement.</p>
 
     <div class="actions">
       <button id="share" class="cta" type="button">Partager</button>

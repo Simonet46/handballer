@@ -449,6 +449,11 @@ const es = {
     clear: "Borrar",
     confirm: "¿Borrar la tabla de posiciones?",
     note: "Las carreras se guardan en este dispositivo. Pasá el teléfono y jueguen todos en la misma tabla.",
+    local: "Este teléfono",
+    world_tab: "Mundial",
+    world: "{n} carreras jugadas en todo el mundo · promedio {avg} puntos",
+    worldEmpty: "Todavía no hay carreras en el ranking mundial. ¡La tuya puede ser la primera!",
+    worldError: "No se pudo cargar el ranking mundial. Probá de nuevo en un rato.",
   },
   gambles: {
     "siete-metros": {
@@ -917,6 +922,11 @@ const fr = {
     tap: "touche pour continuer",
   },
   board: {
+    local: "Ce téléphone",
+    world_tab: "Mondial",
+    world: "{n} carrières jouées dans le monde · moyenne {avg} points",
+    worldEmpty: "Pas encore de carrières au classement mondial. La tienne peut être la première !",
+    worldError: "Impossible de charger le classement mondial. Réessaie dans un moment.",
     title: "Classement",
     empty: "Aucune carrière pour l'instant. C'est la première.",
     clear: "Effacer",
@@ -1390,6 +1400,11 @@ const de = {
     tap: "tippen zum Weitermachen",
   },
   board: {
+    local: "Dieses Handy",
+    world_tab: "Weltweit",
+    world: "{n} Karrieren weltweit gespielt · Schnitt {avg} Punkte",
+    worldEmpty: "Noch keine Karrieren in der Weltrangliste. Deine kann die erste sein!",
+    worldError: "Weltrangliste konnte nicht geladen werden. Versuch es gleich nochmal.",
     title: "Rangliste",
     empty: "Noch keine Karrieren. Das hier ist die erste.",
     clear: "Löschen",

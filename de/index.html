@@ -148,10 +148,15 @@
 
     <div class="board-head">
       <h3>Rangliste</h3>
+      <!-- Tu teléfono contra el mundo entero. -->
+      <div class="board-tabs">
+        <button type="button" class="board-tab" id="board-tab-local" aria-pressed="true">Dieses Handy</button>
+        <button type="button" class="board-tab" id="board-tab-world" aria-pressed="false">Weltweit</button>
+      </div>
       <button type="button" class="board-clear" id="board-clear">Löschen</button>
     </div>
     <ol class="board" id="board"></ol>
-    <p class="board-note">Die Karrieren werden auf diesem Gerät gespeichert. Gebt das Handy weiter und spielt alle in derselben Rangliste.</p>
+    <p class="board-note" id="board-note">Die Karrieren werden auf diesem Gerät gespeichert. Gebt das Handy weiter und spielt alle in derselben Rangliste.</p>
 
     <div class="actions">
       <button id="share" class="cta" type="button">Teilen</button>

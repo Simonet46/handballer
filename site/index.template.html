@@ -145,10 +145,15 @@
 
     <div class="board-head">
       <h3>{{L_BOARD}}</h3>
+      <!-- Tu teléfono contra el mundo entero. -->
+      <div class="board-tabs">
+        <button type="button" class="board-tab" id="board-tab-local" aria-pressed="true">{{L_BOARD_LOCAL}}</button>
+        <button type="button" class="board-tab" id="board-tab-world" aria-pressed="false">{{L_BOARD_WORLD}}</button>
+      </div>
       <button type="button" class="board-clear" id="board-clear">{{L_BOARD_CLEAR}}</button>
     </div>
     <ol class="board" id="board"></ol>
-    <p class="board-note">{{L_BOARD_NOTE}}</p>
+    <p class="board-note" id="board-note">{{L_BOARD_NOTE}}</p>
 
     <div class="actions">
       <button id="share" class="cta" type="button">{{L_SHARE}}</button>

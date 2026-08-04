@@ -148,10 +148,15 @@
 
     <div class="board-head">
       <h3>Tabla de posiciones</h3>
+      <!-- Tu teléfono contra el mundo entero. -->
+      <div class="board-tabs">
+        <button type="button" class="board-tab" id="board-tab-local" aria-pressed="true">Este teléfono</button>
+        <button type="button" class="board-tab" id="board-tab-world" aria-pressed="false">Mundial</button>
+      </div>
       <button type="button" class="board-clear" id="board-clear">Borrar</button>
     </div>
     <ol class="board" id="board"></ol>
-    <p class="board-note">Las carreras se guardan en este dispositivo. Pasá el teléfono y jueguen todos en la misma tabla.</p>
+    <p class="board-note" id="board-note">Las carreras se guardan en este dispositivo. Pasá el teléfono y jueguen todos en la misma tabla.</p>
 
     <div class="actions">
       <button id="share" class="cta" type="button">Compartir</button>

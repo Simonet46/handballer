@@ -777,7 +777,8 @@ function renderResult() {
            </li>`).join("")
     : `<li class="honours-empty muted">${t("ui.noHonours")}</li>`;
 
-  renderBoard(saveRun());
+  submitGlobalRun();
+  initBoardTabs(saveRun());
 
   drawShareCard(el("share-canvas"), career, t, story);
   el("share").onclick = () => shareCareer(career, t, el("share-canvas"), el("share-feedback"));
@@ -951,6 +952,81 @@ function flagCrest(player) {
 const BOARD_KEY = "handballer:board:v1";
 const BOARD_MAX = 50;
 
+// ---------------------------------------------------------------------------
+// Backend (Supabase, proyecto "handboludo"). Una tabla append-only con cada
+// carrera terminada. La clave es pública por diseño: solo permite insertar
+// carreras validadas y leer el top-100 y los totales.
+// ---------------------------------------------------------------------------
+
+const BACKEND = {
+  url: "https://lerbzwnnmqpjjfuhgxfl.supabase.co",
+  key: "sb_publishable_3C0by73ZRB_zjt2XnnvaMg_y4bJduY_",
+};
+
+function backendHeaders() {
+  return {
+    "Content-Type": "application/json",
+    apikey: BACKEND.key,
+    Authorization: `Bearer ${BACKEND.key}`,
+  };
+}
+
+/** Id anónimo y estable por navegador: sirve para métricas, nunca identifica. */
+function clientId() {
+  const key = "handballer:client";
+  let id = null;
+  try { id = localStorage.getItem(key); } catch { /* incógnito */ }
+  if (!id) {
+    id = crypto?.randomUUID?.() ||
+      "xxxxxxxx-xxxx-4xxx-8xxx-xxxxxxxxxxxx".replace(/x/g, () =>
+        Math.floor(Math.random() * 16).toString(16));
+    try { localStorage.setItem(key, id); } catch { /* da igual */ }
+  }
+  return id;
+}
+
+/** Sube la carrera terminada al ranking mundial. Fire-and-forget: si falla,
+ *  el juego sigue como si nada — el backend nunca puede romper el resultado. */
+function submitGlobalRun() {
+  if (career.sentGlobal) return;
+  career.sentGlobal = true;
+  const totals = career.totals;
+  const body = {
+    client_id: clientId(),
+    player: career.player.lastName.slice(0, 16),
+    flag: career.player.flag,
+    rama: career.player.rama || "M",
+    country: career.player.country,
+    position: career.player.position,
+    pace: career.pace,
+    locale,
+    score: career.score,
+    verdict: career.verdict.key,
+    seasons: totals.seasons,
+    matches: totals.matches,
+    goals: totals.goals,
+    assists: totals.assists,
+    saves: totals.saves,
+    caps: totals.caps,
+    titles: career.trophies.length,
+    max_rating: Math.round(career.maxRating),
+    max_salary: career.maxSalary || 0,
+    climb: career.climb || 0,
+    comeback: career.comeback || 0,
+    first_club: (career.firstClub?.name || "").slice(0, 60) || null,
+    last_club: (career.timeline.at(-1)?.club || "").slice(0, 60) || null,
+    app_version: "1",
+  };
+  try {
+    fetch(`${BACKEND.url}/rest/v1/runs`, {
+      method: "POST",
+      headers: { ...backendHeaders(), Prefer: "return=minimal" },
+      body: JSON.stringify(body),
+      keepalive: true,
+    }).catch(() => {});
+  } catch { /* sin red: no pasa nada */ }
+}
+
 function loadBoard() {
   try {
     const raw = JSON.parse(localStorage.getItem(BOARD_KEY) || "[]");
@@ -1016,6 +1092,78 @@ function renderBoard(highlightId) {
     storeBoard([]);
     renderBoard(null);
   };
+}
+
+// ------------------------------------------------------------- tabla mundial
+
+let boardTab = "local";
+let worldCache = null;
+
+function initBoardTabs(highlightId) {
+  boardTab = "local";
+  worldCache = null;   // cada carrera nueva refresca el mundo
+  const tabs = { local: el("board-tab-local"), world: el("board-tab-world") };
+  const paint = () => {
+    tabs.local.setAttribute("aria-pressed", String(boardTab === "local"));
+    tabs.world.setAttribute("aria-pressed", String(boardTab === "world"));
+    el("board-clear").hidden = boardTab !== "local";
+    if (boardTab === "local") {
+      el("board-note").textContent = t("board.note");
+      renderBoard(highlightId);
+    } else {
+      renderWorldBoard();
+    }
+  };
+  tabs.local.onclick = () => { boardTab = "local"; paint(); };
+  tabs.world.onclick = () => { boardTab = "world"; paint(); };
+  paint();
+}
+
+async function renderWorldBoard() {
+  const box = el("board");
+  if (!worldCache) {
+    box.innerHTML = `<li class="board-empty">…</li>`;
+    try {
+      const headers = backendHeaders();
+      const [rows, stats] = await Promise.all([
+        fetch(`${BACKEND.url}/rest/v1/leaderboard?select=*`, { headers }).then((r) => r.json()),
+        fetch(`${BACKEND.url}/rest/v1/stats?select=*`, { headers }).then((r) => r.json()),
+      ]);
+      worldCache = {
+        rows: Array.isArray(rows) ? rows : [],
+        stats: Array.isArray(stats) ? stats[0] : null,
+      };
+    } catch {
+      worldCache = { rows: null, stats: null };
+    }
+  }
+  if (boardTab !== "world") return;   // cambiaron de pestaña mientras cargaba
+
+  const { rows, stats } = worldCache;
+  if (!rows) {
+    box.innerHTML = `<li class="board-empty">${t("board.worldError")}</li>`;
+    el("board-note").textContent = "";
+    return;
+  }
+  if (!rows.length) {
+    box.innerHTML = `<li class="board-empty">${t("board.worldEmpty")}</li>`;
+    el("board-note").textContent = "";
+    return;
+  }
+  box.innerHTML = rows.slice(0, 20).map((entry, index) => {
+    const medal = ["🥇", "🥈", "🥉"][index] || index + 1;
+    return `<li class="board-row">
+      <span class="board-rank">${medal}</span>
+      <span class="board-who">
+        <span class="board-name">${entry.flag || ""} ${entry.player}</span>
+        <span class="board-meta">${t(`positions.${entry.position}`)} · ${t(`verdicts.${entry.verdict}.title`)}</span>
+      </span>
+      <span class="board-score">${entry.score}</span>
+    </li>`;
+  }).join("");
+  el("board-note").textContent = stats
+    ? t("board.world", { n: stats.total_runs.toLocaleString(EURO_LOCALE[locale] || "es-AR"), avg: stats.avg_score })
+    : "";
 }
 
 function universeLeagues() {
