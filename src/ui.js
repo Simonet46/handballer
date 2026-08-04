@@ -355,7 +355,6 @@ const EVENT_PHOTOS = {
   "brazo-armado": "assets/events/brazo-armado.jpg",
   "brazo-armado-2": "assets/events/brazo-armado.jpg",
   emigrar: "assets/events/emigrar.jpg",
-  "siete-metros": "assets/events/siete-metros.jpg",
   "ultimo-contrato": "assets/events/retiro.jpg",
 };
 
