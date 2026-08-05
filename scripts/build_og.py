@@ -45,7 +45,7 @@ def build():
     # Título con degradado: se pinta el texto como máscara sobre el degradado.
     title_font = font("Arial Bold.ttf", 112)
     mask = Image.new("L", (W, H), 0)
-    ImageDraw.Draw(mask).text((70, 120), "HANDBALLER", font=title_font, fill=255)
+    ImageDraw.Draw(mask).text((70, 120), "HANDBOLUDO.COM", font=title_font, fill=255)
     gradient = Image.new("RGB", (W, H))
     for x in range(W):
         ratio = min(1.0, max(0.0, (x - 70) / 780))

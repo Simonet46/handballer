@@ -83,6 +83,12 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 .locales a[aria-current] { color: var(--paper); background: var(--faint); }
 
+/* El .COM del título, discreto al lado del nombre. */
+.hero h1 .tld { font-size: .45em; letter-spacing: .06em; vertical-align: .12em; }
+
+/* El botón apagado hasta que haya apellido. */
+.cta:disabled { opacity: .4; cursor: not-allowed; transform: none; }
+
 /* ------------------------------------------------------------------ setup */
 .hero { text-align: center; padding: 24px 0 28px; }
 .hero h1 {
@@ -98,7 +104,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .preview { text-align: center; }
 /* Camiseta con nombre arriba y dorsal gigante, como Copero. */
 .jersey {
-  position: relative; width: 150px; height: 166px; margin: 0 auto 10px;
+  position: relative; width: 180px; height: 200px; margin: 0 auto 10px;
   background: var(--ink-3);
   clip-path: polygon(20% 0, 36% 9%, 64% 9%, 80% 0, 100% 16%, 86% 32%, 86% 100%, 14% 100%, 14% 32%, 0 16%);
   overflow: hidden; display: grid; place-items: center;
@@ -170,6 +176,10 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
 
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chips-stack { flex-direction: column; }
+/* Ritmo y modo lado a lado cuando hay ancho: menos scroll en la inscripción. */
+@media (min-width: 640px) {
+  .chips-stack { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+}
 
 .chip {
   background: var(--ink-2); border: 1px solid var(--faint); border-radius: 12px;
@@ -606,8 +616,8 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
   .hud-stats dd { font-size: 15px; }
   .progress { height: 22px; }
 
-  .jersey { width: 128px; height: 142px; }
-  .jersey-number { font-size: 62px; }
+  .jersey { width: 156px; height: 172px; }
+  .jersey-number { font-size: 76px; }
 
   .decision h2 { font-size: 23px; }
   /* En el celular las opciones se agrandan, no se achican: son el juego. */
@@ -639,7 +649,15 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
 /* ------------------------------------------------- escritorio: dos columnas */
 @media (min-width: 1000px) {
   #app { max-width: 1060px; }
-  #setup, #result { max-width: 640px; margin-inline: auto; }
+  #result { max-width: 640px; margin-inline: auto; }
+  /* La inscripción respira: camiseta y cancha grandes a la izquierda,
+     el formulario a la derecha. Menos scroll, más presencia. */
+  #setup { max-width: 1020px; margin-inline: auto; }
+  .setup-grid { grid-template-columns: 400px minmax(0, 1fr); gap: 48px; }
+  .jersey { width: 250px; height: 276px; }
+  .jersey-number { font-size: 120px; }
+  .jersey-name { font-size: 16px; top: 24%; }
+  .preview-tag { font-size: 17px; margin-top: 10px; }
   #career {
     display: grid; grid-template-columns: minmax(0, 1fr) 386px;
     gap: 28px; align-items: start;

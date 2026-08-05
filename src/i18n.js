@@ -11,7 +11,7 @@ export const LOCALE_NAMES = { es: "Español", fr: "Français", de: "Deutsch" };
 
 const es = {
   meta: {
-    title: "HANDBALLER · Simulá tu carrera de handball",
+    title: "HANDBOLUDO.COM · Simulá tu carrera de handball",
     description:
       "Creá un handbolista, tomá las decisiones difíciles y mirá hasta dónde llega. " +
       "Una carrera entera en dos minutos. Gratis, sin registro.",
@@ -501,7 +501,7 @@ const es = {
 
 const fr = {
   meta: {
-    title: "HANDBALLER · Simule ta carrière de handball",
+    title: "HANDBOLUDO.COM · Simule ta carrière de handball",
     description:
       "Crée un handballeur, prends les décisions difficiles et vois jusqu'où il monte. " +
       "Une carrière entière en deux minutes. Gratuit, sans inscription.",
@@ -991,7 +991,7 @@ const fr = {
 
 const de = {
   meta: {
-    title: "HANDBALLER · Simuliere deine Handballkarriere",
+    title: "HANDBOLUDO.COM · Simuliere deine Handballkarriere",
     description:
       "Erstelle einen Handballer, triff die harten Entscheidungen und sieh, wie weit " +
       "er kommt. Eine ganze Karriere in zwei Minuten. Kostenlos, ohne Anmeldung.",

@@ -55,7 +55,7 @@ export function drawShareCard(canvas, career, t, story = "") {
   ctx.textAlign = "left";
   ctx.fillStyle = "rgba(244,241,234,.55)";
   ctx.font = "600 30px system-ui, sans-serif";
-  ctx.fillText("HANDBALLER", 72, 96);
+  ctx.fillText("HANDBOLUDO.COM", 72, 96);
 
   // Dorsal gigante de fondo
   ctx.save();

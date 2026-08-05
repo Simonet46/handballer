@@ -277,7 +277,8 @@ function renderPreview() {
   el("preview-flag").textContent = country?.flag || "";
   el("preview-position").textContent = t(`positions.${form.position}`);
   el("position-pick").textContent = t(`positions.${form.position}`);
-  el("start").disabled = false;
+  // Sin apellido no hay carrera: el botón se enciende cuando escribís el tuyo.
+  el("start").disabled = !form.lastName.trim();
 }
 
 async function startCareer() {
