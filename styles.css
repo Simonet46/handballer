@@ -266,8 +266,15 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
   display: flex; flex-wrap: wrap; align-items: center; gap: 3px;
   padding: 2px 2px 0;
 }
-.hud-trophy { display: inline-flex; }
+.hud-trophy { display: inline-flex; align-items: center; }
 .hud-trophy svg { width: 24px; height: 24px; filter: drop-shadow(0 1px 2px rgba(0,0,0,.5)); }
+/* Emblema real de la competición: fondo blanco para que respire sobre el
+   oscuro (casi todos vienen pensados para papel). */
+.comp-logo {
+  height: 24px; width: auto; max-width: 46px; object-fit: contain;
+  background: #fff; border-radius: 4px; padding: 2px;
+}
+.honour-icon .comp-logo { height: 26px; max-width: 54px; }
 .hud-trophy-more {
   color: var(--gold); font-size: 12px; font-weight: 800; margin-left: 4px;
 }

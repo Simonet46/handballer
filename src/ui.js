@@ -788,15 +788,16 @@ function renderResult() {
   const counted = new Map();
   for (const honour of honours) {
     const name = honourName(t, honour);
-    const entry = counted.get(name) || { count: 0, key: honour.key, weight: honour.weight || 0 };
+    const entry = counted.get(name) ||
+      { count: 0, key: honour.key, weight: honour.weight || 0, honour };
     entry.count += 1;
     counted.set(name, entry);
   }
   el("honours").innerHTML = counted.size
     ? [...counted].sort((a, b) => b[1].weight * b[1].count - a[1].weight * a[1].count)
-        .map(([name, { count, key }]) =>
+        .map(([name, { count, honour }]) =>
           `<li>
-             <span class="honour-icon">${HONOUR_ICON[key] || "🏅"}</span>
+             <span class="honour-icon">${honourBadge(honour)}</span>
              <span class="honour-name">${name}</span>
              <span class="honour-count">${count > 1 ? `${count}×` : ""}</span>
            </li>`).join("")
@@ -856,6 +857,40 @@ function trophyCategory(key) {
   return "club";
 }
 
+// Competiciones con emblema oficial bajado (ver data/competition-logos.json).
+// El resto muestra el trofeo dorado: el juego nunca queda sin ícono.
+const COMPETITION_LOGOS = new Set([
+  "champions", "european-league",
+  "fra-starligue", "fra-proligue", "fra-lbe",
+  "ger-hbl", "ger-hbf", "ger-3liga",
+  "pol-superliga", "pol-superliga-kobiet",
+  "por-andebol-1", "sui-qhl", "swe-handbollsligan",
+]);
+
+/** Nombre de liga -> id, para saber de qué liga es un título ganado. */
+let leagueIdByName = null;
+function leagueId(name) {
+  if (!leagueIdByName) {
+    leagueIdByName = new Map();
+    for (const league of universeLeagues()) leagueIdByName.set(league.name, league.id);
+  }
+  return leagueIdByName.get(name);
+}
+
+/** El emblema real de la competición, si lo tenemos. */
+function honourLogo(honour) {
+  const key = honour.key === "league" ? leagueId(honour.params?.league) : honour.key;
+  return key && COMPETITION_LOGOS.has(key) ? `assets/competitions/${key}.png` : null;
+}
+
+/** Ícono de un título: emblema oficial, o el trofeo dorado de respaldo. */
+function honourBadge(honour) {
+  const logo = honourLogo(honour);
+  return logo
+    ? `<img class="comp-logo" src="${logo}" alt="" loading="lazy">`
+    : TROPHY_SVG[trophyCategory(honour.key)];
+}
+
 /** La tira de trofeos del HUD: se llena a medida que ganás. */
 function renderHudVitrina() {
   const box = el("hud-vitrina");
@@ -865,7 +900,7 @@ function renderHudVitrina() {
   box.hidden = false;
   const MAX = 12;
   box.innerHTML = honours.slice(0, MAX).map((honour) =>
-    `<span class="hud-trophy" title="${honourName(t, honour)} · ${honour.year}">${TROPHY_SVG[trophyCategory(honour.key)]}</span>`
+    `<span class="hud-trophy" title="${honourName(t, honour)} · ${honour.year}">${honourBadge(honour)}</span>`
   ).join("") + (honours.length > MAX ? `<span class="hud-trophy-more">+${honours.length - MAX}</span>` : "");
 }
 

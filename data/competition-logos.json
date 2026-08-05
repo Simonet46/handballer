@@ -1,0 +1,80 @@
+{
+ "champions": {
+  "file": "assets/competitions/champions.png",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/EHF_Champions_League_Logo_2020.svg/960px-EHF_Champions_League_Logo_2020.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "wiki": "en:EHF Champions League",
+  "license": "CC BY-SA 4.0"
+ },
+ "european-league": {
+  "file": "assets/competitions/european-league.png",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/EHF_European_League_Logo.svg/960px-EHF_European_League_Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "wiki": "en:EHF European League",
+  "license": "Public domain"
+ },
+ "fra-lbe": {
+  "file": "assets/competitions/fra-lbe.png",
+  "source": "https://upload.wikimedia.org/wikipedia/fr/thumb/9/9c/Ligue_f%C3%A9minine_de_handball_logo.svg/960px-Ligue_f%C3%A9minine_de_handball_logo.svg.png?utm_source=fr.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "wiki": "fr:Championnat de France féminin de handball",
+  "license": "marque déposée"
+ },
+ "fra-proligue": {
+  "file": "assets/competitions/fra-proligue.png",
+  "source": "https://upload.wikimedia.org/wikipedia/fr/thumb/d/d1/ProLigue_2016_logo.svg/960px-ProLigue_2016_logo.svg.png?utm_source=fr.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "wiki": "fr:Championnat de France masculin de handball de deuxième division",
+  "license": "marque déposée"
+ },
+ "fra-starligue": {
+  "file": "assets/competitions/fra-starligue.png",
+  "source": "https://upload.wikimedia.org/wikipedia/fr/thumb/e/e8/Lidlstarligue_logo_2016.svg/960px-Lidlstarligue_logo_2016.svg.png?utm_source=fr.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "wiki": "fr:Championnat de France masculin de handball",
+  "license": "marque déposée"
+ },
+ "ger-3liga": {
+  "file": "assets/competitions/ger-3liga.png",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/RZ_Master_3-Liga_Logo_Print_positiv_RGB.svg/960px-RZ_Master_3-Liga_Logo_Print_positiv_RGB.svg.png?utm_source=de.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "wiki": "de:3. Liga (Handball)",
+  "license": "CC BY-SA 4.0"
+ },
+ "ger-hbf": {
+  "file": "assets/competitions/ger-hbf.png",
+  "source": "https://upload.wikimedia.org/wikipedia/de/thumb/6/6f/HBL_Logo.svg/960px-HBL_Logo.svg.png?utm_source=de.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "wiki": "de:Handball-Bundesliga (Frauen)",
+  "license": "Logo"
+ },
+ "ger-hbl": {
+  "file": "assets/competitions/ger-hbl.png",
+  "source": "https://upload.wikimedia.org/wikipedia/de/thumb/9/99/HBL_Logo_01.svg/960px-HBL_Logo_01.svg.png?utm_source=de.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "wiki": "de:Datei:HBL Logo 01.svg",
+  "license": "Logo"
+ },
+ "pol-superliga": {
+  "file": "assets/competitions/pol-superliga.png",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/SUPERLIGA_ZNAKI_M_SUPERLIGA_ZNAK_PODSTAWOWY.png/960px-SUPERLIGA_ZNAKI_M_SUPERLIGA_ZNAK_PODSTAWOWY.png?utm_source=pl.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "wiki": "pl:Superliga polska w piłce ręcznej mężczyzn",
+  "license": "CC0"
+ },
+ "pol-superliga-kobiet": {
+  "file": "assets/competitions/pol-superliga-kobiet.png",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/SUPERLIGA_ZNAKI_KOBIETA_SUPERLIGA_KOBIET_ZNAK_PODSTAWOWY.png/960px-SUPERLIGA_ZNAKI_KOBIETA_SUPERLIGA_KOBIET_ZNAK_PODSTAWOWY.png?utm_source=pl.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "wiki": "pl:Superliga polska w piłce ręcznej kobiet",
+  "license": "CC0"
+ },
+ "por-andebol-1": {
+  "file": "assets/competitions/por-andebol-1.png",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/2/2b/Andebol-1-logo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "wiki": "pt:Andebol 1",
+  "license": "CC BY-SA 4.0"
+ },
+ "sui-qhl": {
+  "file": "assets/competitions/sui-qhl.png",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Swiss_Handball_League_Logo.svg/960px-Swiss_Handball_League_Logo.svg.png?utm_source=de.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "wiki": "de:Handball League",
+  "license": "CC BY-SA 4.0"
+ },
+ "swe-handbollsligan": {
+  "file": "assets/competitions/swe-handbollsligan.png",
+  "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Handbollsligan_logo.svg/960px-Handbollsligan_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "wiki": "sv:Handbollsligan herr",
+  "license": "Public domain"
+ }
+}
