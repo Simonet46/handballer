@@ -133,6 +133,88 @@ const es = {
     retire: { label: "Retirarte", detail: "Colgar las zapatillas a lo grande" },
   },
   story: {
+    angle: {
+      "major": [
+        "Levantó {n} de los grandes, con {top} {year} como la noche que todavía se cuenta.",
+        "{top} {year} y otros {n} títulos mayores: la clase de vitrina que no se arma sin suerte y sin huevos.",
+        "Ganó lo que hay que ganar. {top} {year}, y no fue la única.",
+      ],
+      "best": [
+        "Fue elegido el mejor del mundo. Después de eso, el resto de la carrera se mide distinto.",
+        "La IHF lo puso arriba de todos {n} vez. Ahí se termina la discusión.",
+        "Hubo un año en que nadie en el planeta jugó mejor. Ese año tuvo su nombre.",
+      ],
+      "climb": [
+        "Empezó en {first}, donde no se cobra ni se sale en la tele, y terminó en la mesa de los grandes. Ese viaje no lo hace cualquiera.",
+        "De {first} al primer mundo: la carrera es, sobre todo, la historia de esa mudanza.",
+        "Nadie lo esperaba en Europa cuando arrancó en {first}. Se hizo lugar a los codazos.",
+      ],
+      "oneClub": [
+        "Se quedó {years} temporadas en {club}. Hoy hay pibes ahí que aprendieron mirándolo.",
+        "{years} años en {club}: eso ya no se estila, y por eso vale doble.",
+        "Pudo irse mil veces. Se quedó {years} temporadas en {club} y firmó su lugar en la historia del club.",
+      ],
+      "wanderer": [
+        "Pasó por {clubs} clubes: el vestuario nuevo dejó de darle miedo bastante temprano.",
+        "{clubs} camisetas, otros tantos idiomas mal hablados y una valija que aprendió sola a armarse.",
+        "Fue de todos lados y de ningún lado: {clubs} clubes en una sola vida.",
+      ],
+      "national": [
+        "Con {country} jugó {caps} partidos. Ahí adentro, la camiseta pesa distinto.",
+        "{caps} veces con la de {country}: hay quien construye una carrera entera con la mitad.",
+        "La selección de {country} lo llamó {caps} veces y nunca dijo que no.",
+      ],
+      "maternity": [
+        "Paró en {year} para ser mamá y volvió a ganar {n} títulos. Esa es la parte que hay que subrayar.",
+        "Fue madre en {year} y después levantó {n} trofeos más: el regreso valió más que cualquier título anterior.",
+        "La pausa de {year} podía ser el final. Fue el intervalo: volvió y ganó {n} veces más.",
+      ],
+      "scandal": [
+        "Hay un capítulo del expediente que en el club prefieren no abrir.",
+        "Quedó una mancha, de esas que los archivos no perdonan aunque la gente sí.",
+        "No todo fue épica: hubo un episodio que le costó caro y todavía se le recuerda.",
+      ],
+      "longevity": [
+        "Jugó hasta los {age}. A esa altura ya no competía contra rivales sino contra el almanaque.",
+        "Estiró hasta los {age}, cuando el cuerpo mandaba cartas documento todas las semanas.",
+        "A los {age} seguía entrando a la cancha. Terquedad, amor, o las dos cosas.",
+      ],
+      "noTitles": [
+        "No ganó nada, y sin embargo acá estamos hablando de él.",
+        "La vitrina quedó vacía. La memoria de los que lo vieron, no.",
+        "Cero títulos. Cientos de partidos. Vaya uno a saber qué pesa más.",
+      ],
+      "fullCircle": [
+        "Cerró donde había empezado, en {club}. Los finales así no se escriben: se ganan.",
+        "Volvió a {club} para el último acto. La platea entendió perfectamente lo que estaba viendo.",
+        "Terminó en {club}, el mismo club que le dio la primera camiseta. Redondo.",
+      ],
+      "adventure": [
+        "Se fue de Argentina cuando quedarse era más cómodo. Eso ya es media carrera ganada.",
+        "Salió del handball amateur argentino y se buscó la vida afuera: la mayoría no se anima.",
+        "Dejó el país sabiendo que acá no se vive de esto. Le salió bien o mal, pero se animó.",
+      ],
+      "saves": [
+        "Sacó {n} pelotas. Cada una fue un gol que alguien había cantado.",
+        "{n} atajadas: la estadística más ingrata del deporte y la que gana partidos.",
+        "Se comió {n} balonazos y los devolvió todos.",
+      ],
+      "goals": [
+        "Metió {n} goles. Ponele número a eso: no hay tarde libre que alcance.",
+        "{n} goles en la carrera. El arquero rival lo soñaba de noche.",
+        "Terminó con {n} goles, que es otra manera de decir que jugó siempre.",
+      ],
+      "peak": [
+        "Llegó a {val} de valoración: en ese pico, no había mucho mejor dando vueltas.",
+        "Su techo fue {val}. Poca gente en el mundo se para ahí.",
+        "Tocó los {val} puntos de valoración y desde ahí miró a todos de arriba.",
+      ],
+      "journey": [
+        "Fueron {seasons} temporadas y {clubs} camisetas, de {first} a {last}.",
+        "{seasons} temporadas, {clubs} clubes: de {first} hasta {last}.",
+        "La ruta completa: {first}, {last} y {clubs} camisetas en el medio, a lo largo de {seasons} temporadas.",
+      ],
+    },
     opener: {
       inmortal: [
         "Hay carreras que se estudian y carreras que se cuentan como leyendas: la de {name} es de las segundas.",
@@ -623,6 +705,88 @@ const fr = {
     retire: { label: "Prendre ta retraite", detail: "Raccrocher en beauté" },
   },
   story: {
+    angle: {
+      "major": [
+        "Il a soulevé {n} trophées majeurs, dont {top} {year}, la nuit qu'on raconte encore.",
+        "{top} {year} et {n} titres majeurs au total : ce genre de vitrine ne se remplit pas par hasard.",
+        "Il a gagné ce qu'il fallait gagner. {top} {year}, et ce ne fut pas la seule fois.",
+      ],
+      "best": [
+        "Élu meilleur joueur du monde. Après ça, le reste se mesure autrement.",
+        "L'IHF l'a placé au-dessus de tous. Fin du débat.",
+        "Il y eut une année où personne sur la planète n'a mieux joué. Cette année porte son nom.",
+      ],
+      "climb": [
+        "Parti de {first}, où l'on ne gagne rien et où personne ne filme, arrivé à la table des grands. Ce voyage-là, peu le font.",
+        "De {first} au très haut niveau : la carrière, c'est surtout l'histoire de ce déménagement.",
+        "Personne ne l'attendait en Europe quand il débutait à {first}. Il s'est fait sa place.",
+      ],
+      "oneClub": [
+        "{years} saisons à {club}. Aujourd'hui, des gamins y jouent en l'ayant regardé.",
+        "{years} ans au même endroit, {club} : ça ne se fait plus, et ça vaut double.",
+        "Il pouvait partir cent fois. Il est resté {years} saisons à {club}.",
+      ],
+      "wanderer": [
+        "{clubs} clubs traversés : le vestiaire inconnu a cessé de lui faire peur très tôt.",
+        "{clubs} maillots, autant de langues mal parlées et une valise qui se faisait toute seule.",
+        "De partout et de nulle part : {clubs} clubs dans une seule vie.",
+      ],
+      "national": [
+        "{caps} sélections avec {country}. Là-dedans, le maillot pèse autrement.",
+        "{caps} fois sous le maillot de {country} : certains bâtissent une carrière entière avec la moitié.",
+        "La sélection de {country} l'a appelé {caps} fois. Il n'a jamais dit non.",
+      ],
+      "maternity": [
+        "Elle s'est arrêtée en {year} pour devenir maman et elle est revenue gagner {n} titres. C'est la partie à souligner.",
+        "Maman en {year}, puis {n} trophées de plus : le retour valait plus que tout le reste.",
+        "La pause de {year} pouvait être la fin. Ce fut l'entracte : elle est revenue gagner {n} fois.",
+      ],
+      "scandal": [
+        "Il y a un chapitre du dossier que le club préfère ne pas rouvrir.",
+        "Une tache est restée, de celles que les archives ne pardonnent pas.",
+        "Tout ne fut pas épique : un épisode lui a coûté cher, et on s'en souvient encore.",
+      ],
+      "longevity": [
+        "Il a joué jusqu'à {age} ans. À ce stade, l'adversaire s'appelait le calendrier.",
+        "Prolongé jusqu'à {age} ans, quand le corps envoyait des rappels chaque semaine.",
+        "À {age} ans il entrait encore sur le terrain. Entêtement, amour, ou les deux.",
+      ],
+      "noTitles": [
+        "Il n'a rien gagné, et pourtant nous voilà à en parler.",
+        "La vitrine est restée vide. La mémoire de ceux qui l'ont vu, non.",
+        "Zéro titre. Des centaines de matchs. Allez savoir ce qui pèse le plus.",
+      ],
+      "fullCircle": [
+        "Il a fini là où tout avait commencé, à {club}. Ces fins-là ne s'écrivent pas : elles se méritent.",
+        "Retour à {club} pour le dernier acte. Les tribunes ont très bien compris.",
+        "Terminé à {club}, le club du premier maillot. Bouclé.",
+      ],
+      "adventure": [
+        "Il a quitté l'Argentine alors que rester était plus confortable. C'est déjà la moitié du chemin.",
+        "Sorti du hand amateur argentin pour tenter sa chance dehors : la plupart n'osent pas.",
+        "Il est parti en sachant qu'on ne vit pas de ça là-bas. Réussite ou pas, il a osé.",
+      ],
+      "saves": [
+        "{n} ballons sortis. Chacun était un but déjà crié.",
+        "{n} arrêts : la statistique la plus ingrate du sport, et celle qui gagne les matchs.",
+        "Il a pris {n} ballons en pleine face et les a tous renvoyés.",
+      ],
+      "goals": [
+        "{n} buts. Mets un chiffre là-dessus : aucun après-midi libre ne suffit.",
+        "{n} buts en carrière. Les gardiens adverses en rêvaient la nuit.",
+        "Il finit à {n} buts, autre façon de dire qu'il a toujours joué.",
+      ],
+      "peak": [
+        "Il a atteint {val} de note : à ce sommet, il n'y avait plus grand monde au-dessus.",
+        "Son plafond fut {val}. Peu de gens au monde s'y installent.",
+        "Il a touché les {val} points et a regardé tout le monde d'en haut.",
+      ],
+      "journey": [
+        "{seasons} saisons et {clubs} maillots, de {first} à {last}.",
+        "{seasons} saisons, {clubs} clubs : de {first} jusqu'à {last}.",
+        "L'itinéraire complet : {first}, {last} et {clubs} maillots entre les deux, sur {seasons} saisons.",
+      ],
+    },
     opener: {
       inmortal: [
         "Il y a des carrières qu'on étudie et d'autres qu'on raconte comme des légendes : celle de {name} est du deuxième genre.",
@@ -1113,6 +1277,88 @@ const de = {
     retire: { label: "Karriere beenden", detail: "Ganz groß aufhören" },
   },
   story: {
+    angle: {
+      "major": [
+        "Er stemmte {n} große Titel in die Höhe, darunter {top} {year} — die Nacht, die man immer noch erzählt.",
+        "{top} {year} und insgesamt {n} große Titel: So eine Vitrine füllt sich nicht zufällig.",
+        "Er gewann, was man gewinnen muss. {top} {year}, und das war nicht das einzige Mal.",
+      ],
+      "best": [
+        "Zum Weltspieler gewählt. Danach misst man den Rest anders.",
+        "Die IHF stellte ihn über alle. Damit ist die Debatte beendet.",
+        "Es gab ein Jahr, in dem niemand auf der Welt besser spielte. Dieses Jahr trägt seinen Namen.",
+      ],
+      "climb": [
+        "Angefangen in {first}, wo es kein Geld und keine Kameras gibt, gelandet am Tisch der Großen. Diese Reise macht nicht jeder.",
+        "Von {first} in die Weltspitze: Die Karriere ist vor allem die Geschichte dieses Umzugs.",
+        "Niemand erwartete ihn in Europa, als er bei {first} anfing. Er hat sich den Platz erkämpft.",
+      ],
+      "oneClub": [
+        "{years} Saisons bei {club}. Heute spielen dort Jungs, die ihm zugesehen haben.",
+        "{years} Jahre am selben Ort, {club}: Das gibt es kaum noch, und deshalb zählt es doppelt.",
+        "Er hätte hundertmal gehen können. Er blieb {years} Saisons bei {club}.",
+      ],
+      "wanderer": [
+        "{clubs} Vereine: Die fremde Kabine hat ihm früh die Angst genommen.",
+        "{clubs} Trikots, ebenso viele halb gelernte Sprachen und ein Koffer, der sich selbst packte.",
+        "Von überall und von nirgends: {clubs} Vereine in einem einzigen Leben.",
+      ],
+      "national": [
+        "{caps} Länderspiele für {country}. Dort drin wiegt das Trikot anders.",
+        "{caps} Mal im Trikot von {country}: Manche bauen eine ganze Karriere auf der Hälfte davon.",
+        "Die Auswahl von {country} rief {caps} Mal an. Er sagte nie ab.",
+      ],
+      "maternity": [
+        "Sie pausierte {year} für ihr Kind und kam zurück, um {n} Titel zu holen. Das ist der Teil, den man unterstreichen muss.",
+        "{year} Mutter geworden, danach {n} weitere Trophäen: Das Comeback wog schwerer als alles davor.",
+        "Die Pause {year} hätte das Ende sein können. Es war die Halbzeit: Sie kam zurück und gewann {n} Mal.",
+      ],
+      "scandal": [
+        "Es gibt ein Kapitel in der Akte, das der Verein lieber nicht aufschlägt.",
+        "Ein Fleck blieb — von der Sorte, die Archive nicht verzeihen.",
+        "Nicht alles war Heldenepos: Eine Episode kostete ihn teuer, und man erinnert sich noch.",
+      ],
+      "longevity": [
+        "Er spielte bis {age}. Da war der Gegner längst der Kalender.",
+        "Gestreckt bis {age}, als der Körper wöchentlich Mahnungen schickte.",
+        "Mit {age} lief er immer noch aufs Feld. Sturheit, Liebe, oder beides.",
+      ],
+      "noTitles": [
+        "Er gewann nichts — und trotzdem sitzen wir hier und reden über ihn.",
+        "Die Vitrine blieb leer. Das Gedächtnis derer, die ihn sahen, nicht.",
+        "Null Titel. Hunderte Spiele. Wer will schon sagen, was schwerer wiegt.",
+      ],
+      "fullCircle": [
+        "Er endete dort, wo alles begann, bei {club}. Solche Enden schreibt man nicht: die verdient man sich.",
+        "Zurück zu {club} für den letzten Akt. Die Tribüne verstand sofort, was sie da sah.",
+        "Schluss bei {club}, dem Verein des ersten Trikots. Rund.",
+      ],
+      "adventure": [
+        "Er verließ Argentinien, als Bleiben bequemer gewesen wäre. Das ist schon die halbe Miete.",
+        "Raus aus dem argentinischen Amateurhandball, das Glück draußen suchen: Die meisten trauen sich nicht.",
+        "Er ging, obwohl er wusste, dass man dort nicht davon lebt. Ob es aufging oder nicht — er hat es gewagt.",
+      ],
+      "saves": [
+        "{n} Bälle herausgeholt. Jeder war ein Tor, das schon gejubelt war.",
+        "{n} Paraden: die undankbarste Statistik des Sports und die, die Spiele gewinnt.",
+        "Er fing {n} Bälle mit dem ganzen Körper — und gab alle zurück.",
+      ],
+      "goals": [
+        "{n} Tore. Setz da mal eine Zahl daneben: Kein freier Nachmittag reicht dafür.",
+        "{n} Karrieretore. Gegnerische Torhüter träumten nachts von ihm.",
+        "Er endet bei {n} Toren — eine andere Art zu sagen, dass er immer spielte.",
+      ],
+      "peak": [
+        "Er erreichte Stärke {val}: Auf diesem Gipfel war nicht mehr viel über ihm.",
+        "Sein Maximum war {val}. Dort oben stehen weltweit wenige.",
+        "Er berührte die {val} und schaute von dort auf alle herab.",
+      ],
+      "journey": [
+        "{seasons} Saisons und {clubs} Trikots, von {first} bis {last}.",
+        "{seasons} Saisons, {clubs} Vereine: von {first} bis {last}.",
+        "Die ganze Route: {first}, {last} und {clubs} Trikots dazwischen, über {seasons} Saisons.",
+      ],
+    },
     opener: {
       inmortal: [
         "Es gibt Karrieren, die man studiert, und solche, die man wie Legenden erzählt: die von {name} gehört zur zweiten Sorte.",

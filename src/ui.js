@@ -666,80 +666,85 @@ function choose(choiceId) {
 // ---------------------------------------------------------------------------
 
 /**
- * La crónica: un periodista deportivo cuenta la carrera en cuatro o cinco
- * frases. Se arma con piezas de i18n según lo que de verdad pasó.
+ * La crónica. El problema de la versión anterior era el esqueleto: todas las
+ * carreras recibían los mismos bloques, en el mismo orden, con una sola
+ * redacción cada uno. Ahora la nota elige su ÁNGULO: se puntúa qué tiene de
+ * particular esta carrera y se cuentan sólo los dos o tres hechos más
+ * salientes, cada uno con varias redacciones. Dos carreras distintas ya no
+ * comparten estructura.
  */
-// Cada carrera sortea su apertura y su cierre entre varias plumas distintas:
-// el mismo veredicto nunca se lee dos veces igual.
+/** Hash estable de la carrera: la misma partida cuenta siempre lo mismo. */
 function storyHash() {
   let h = 2166136261;
-  for (const ch of String(career.id)) {
-    h ^= ch.codePointAt(0);
-    h = Math.imul(h, 16777619);
-  }
+  for (const ch of String(career?.id || "")) h = Math.imul(h ^ ch.codePointAt(0), 16777619);
   return h >>> 0;
 }
 
+/** Elige una de las redacciones de la clave y reemplaza los huecos. */
 function storyPick(key, params, salt = 0) {
   const value = t(key);
-  const raw = Array.isArray(value) ? value[(storyHash() + salt) % value.length] : value;
+  // El hash mezcla la carrera Y la clave: si sólo dependiera de la carrera,
+  // dos partidas distintas elegían la misma redacción demasiado seguido.
+  let mix = storyHash() ^ (salt * 2654435761);
+  for (const ch of key) mix = Math.imul(mix ^ ch.codePointAt(0), 16777619);
+  const raw = Array.isArray(value) ? value[(mix >>> 0) % value.length] : value;
   return typeof raw === "string"
     ? raw.replace(/\{(\w+)\}/g, (match, slot) => params?.[slot] ?? match)
     : "";
 }
 
+function storyAngles(stints) {
+  const totals = career.totals;
+  const first = career.firstClub?.name || stints[0]?.club || "";
+  const clubs = new Set(stints.map((s) => s.clubId)).size;
+  const abroad = stints.some((s) => s.country && s.country !== career.player.countryName);
+  const longest = stints.reduce((best, s) =>
+    (s.endAge - s.startAge) > (best.endAge - best.startAge) ? s : best, stints[0] || {});
+  const top = career.trophies.length
+    ? career.trophies.reduce((best, item) => (item.weight > best.weight ? item : best))
+    : null;
+  const major = career.trophies.filter((item) =>
+    ["champions", "worlds", "olympics"].includes(item.key)).length;
+  const best = career.awards.filter((a) => a.key === "ihf-player").length;
+  const keeper = career.player.position === "GK";
+
+  // [peso, clave, parámetros]. El peso decide qué se cuenta y qué se calla.
+  const angles = [
+    [major * 40, "major", { n: major, top: top ? honourName(t, top) : "", year: top?.year }],
+    [best * 45, "best", { n: best }],
+    [career.climb > 60 ? 38 : 0, "climb", { first }],
+    [(longest.endAge - longest.startAge) >= 9 ? 34 : 0, "oneClub",
+      { club: longest.club, years: (longest.endAge - longest.startAge) + 1 }],
+    [clubs >= 6 ? 30 : 0, "wanderer", { clubs }],
+    [totals.caps >= 70 ? 32 : 0, "national",
+      { caps: totals.caps, country: t(`countries.${career.player.country}`) || career.player.countryName }],
+    [career.maternitySeason ? 36 : 0, "maternity", { year: career.maternitySeason, n: career.comebackTitles }],
+    [career.scandals.length ? 33 : 0, "scandal", {}],
+    [career.age >= 40 ? 26 : 0, "longevity", { age: career.age }],
+    [!career.trophies.length ? 24 : 0, "noTitles", {}],
+    [stints.length > 1 && stints.at(-1)?.clubId === stints[0]?.clubId ? 28 : 0,
+      "fullCircle", { club: first }],
+    [career.player.country === "ARG" && abroad ? 22 : 0, "adventure", {}],
+    [keeper && totals.saves >= 3000 ? 25 : 0, "saves", { n: totals.saves }],
+    [!keeper && totals.goals >= 1200 ? 25 : 0, "goals", { n: totals.goals }],
+    [career.maxRating >= 88 ? 20 : 0, "peak", { val: Math.round(career.maxRating) }],
+    // El viaje sólo se cuenta si nada más pisa fuerte: es el relleno honesto.
+    [8, "journey", { seasons: totals.seasons, clubs, first, last: stints.at(-1)?.club || "" }],
+  ];
+  return angles.filter(([weight]) => weight > 0).sort((a, b) => b[0] - a[0]);
+}
+
 function buildStory() {
   const stints = buildStints();
   const verdict = career.verdict.key;
-  const totals = career.totals;
-  const parts = [];
+  const parts = [storyPick(`story.opener.${verdict}`, { name: career.player.lastName })];
 
-  parts.push(storyPick(`story.opener.${verdict}`, { name: career.player.lastName }));
-
-  const first = career.firstClub?.name || stints[0]?.club || "";
-  // Si cerró el círculo, el "hasta" del viaje es el club anterior: la vuelta
-  // a casa ya la cuenta la frase del final ("story.fullCircle").
-  let lastStint = stints.at(-1);
-  if (stints.length > 1 && lastStint?.clubId === stints[0]?.clubId) lastStint = stints.at(-2);
-  const last = lastStint?.club || "";
-  parts.push(t("story.journey", {
-    seasons: totals.seasons,
-    clubs: new Set(stints.map((s) => s.clubId)).size,
-    first,
-    last,
-  }));
-
-  if (career.trophies.length) {
-    const top = career.trophies.reduce((best, item) => (item.weight > best.weight ? item : best));
-    parts.push(t("story.titles", {
-      titles: career.trophies.length,
-      top: honourName(t, top),
-      year: top.year,
-    }));
-  } else {
-    parts.push(t("story.noTitles"));
-  }
-
-  if (totals.caps > 0) {
-    parts.push(t("story.caps", { caps: totals.caps, country: t(`countries.${career.player.country}`) || career.player.countryName }));
-  }
-  if (career.maternitySeason) {
-    parts.push(t("story.maternity", { year: career.maternitySeason, n: career.comebackTitles }));
-  }
-  if (career.scandals.length) {
-    parts.push(t("story.scandal"));
-  }
-  if (career.age >= 39) {
-    parts.push(t("story.stretch", { age: career.age }));
-  }
-  if (stints.length > 1 && stints.at(-1)?.clubId === stints[0]?.clubId) {
-    parts.push(t("story.fullCircle", { club: first }));
-  }
-  // El argentino que se animó a irse merece el reconocimiento aunque la
-  // carrera haya sido floja: emigrar ya es ganarle a la estadística.
-  if (career.player.country === "ARG" && stints.some((s) => s.country && s.country !== "Argentina")) {
-    parts.push(storyPick("story.adventure", {}, 3));
-  }
+  // Dos o tres ángulos: los suficientes para que se sienta escrita, los
+  // pocos para que no sea un inventario.
+  const chosen = storyAngles(stints).slice(0, 3 + (storyHash() % 2));
+  chosen.forEach(([, key, params], index) => {
+    parts.push(storyPick(`story.angle.${key}`, params, index + 1));
+  });
 
   parts.push(storyPick(`story.closer.${verdict}`, {}, 7));
   return parts.join(" ");
