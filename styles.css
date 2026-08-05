@@ -117,6 +117,8 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .jersey[data-country="FRA"] .jersey-number { color: #10307e; }
 .jersey[data-country="GER"] .jersey-name,
 .jersey[data-country="GER"] .jersey-number { color: #16181c; }
+/* La banda negra alemana cae justo donde va el apellido: se sube por encima. */
+.jersey[data-country="GER"] .jersey-name { top: 11%; }
 .jersey[data-country="ESP"] .jersey-name { color: #fff; }
 .jersey[data-country="ESP"] .jersey-number { color: #ffc400; }
 /* Como en una camiseta de verdad: el apellido arriba de todo, bien grande,
