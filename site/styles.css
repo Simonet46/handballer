@@ -109,21 +109,29 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 .jersey-img { width: 100%; height: auto; display: block; }
 
-/* El texto se acomoda al color de cada camiseta. */
+/* El texto se acomoda a cada camiseta: sobre las blancas va oscuro, sobre
+   las oscuras va claro. Si no, el dorsal desaparece. */
 .jersey[data-country="ARG"] .jersey-name,
 .jersey[data-country="ARG"] .jersey-number { color: #14274e; }
+.jersey[data-country="FRA"] .jersey-name,
+.jersey[data-country="FRA"] .jersey-number { color: #10307e; }
 .jersey[data-country="GER"] .jersey-name,
 .jersey[data-country="GER"] .jersey-number { color: #16181c; }
+.jersey[data-country="ESP"] .jersey-name { color: #fff; }
 .jersey[data-country="ESP"] .jersey-number { color: #ffc400; }
+/* Como en una camiseta de verdad: el apellido arriba de todo, bien grande,
+   y el dorsal enorme en el medio de la espalda. */
 .jersey-name {
-  position: absolute; top: 34%; left: 0; right: 0; text-align: center;
-  font-size: 13px; font-weight: 800; letter-spacing: .08em; color: var(--paper);
-  text-transform: uppercase; padding: 0 24%;
+  position: absolute; top: 20%; left: 0; right: 0; text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .25);
+  font-size: 18px; font-weight: 800; letter-spacing: .06em; color: var(--paper);
+  text-transform: uppercase; padding: 0 16%;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .jersey-number {
-  position: absolute; top: 41%; left: 0; right: 0; text-align: center;
-  font-size: 68px; font-weight: 800; color: var(--paper); line-height: 1;
+  position: absolute; top: 29%; left: 0; right: 0; text-align: center;
+  font-size: 92px; font-weight: 800; color: var(--paper); line-height: 1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, .25);
 }
 .preview-tag { color: var(--muted); font-size: 14px; font-weight: 600; }
 
@@ -615,8 +623,8 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
   .hud-stats dd { font-size: 15px; }
   .progress { height: 22px; }
 
-  .jersey { width: 176px; }
-  .jersey-number { font-size: 60px; }
+  .jersey { width: 190px; }
+  .jersey-number { font-size: 80px; }
 
   .decision h2 { font-size: 23px; }
   /* En el celular las opciones se agrandan, no se achican: son el juego. */
@@ -654,8 +662,8 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
   #setup { max-width: 1020px; margin-inline: auto; }
   .setup-grid { grid-template-columns: 400px minmax(0, 1fr); gap: 48px; }
   .jersey { width: 280px; }
-  .jersey-number { font-size: 96px; }
-  .jersey-name { font-size: 17px; }
+  .jersey-number { font-size: 128px; }
+  .jersey-name { font-size: 25px; }
   .preview-tag { font-size: 17px; margin-top: 10px; }
   #career {
     display: grid; grid-template-columns: minmax(0, 1fr) 386px;
