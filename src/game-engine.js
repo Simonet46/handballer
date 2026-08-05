@@ -203,9 +203,13 @@ export function transferOffers(state, rng, count = 2, farewell = false) {
   // clubes chicos: nadie paga por un extremo sin ángulo de tiro.
   const badSide = state.wrongHand && state.brazoRefusedYear;
   if (badSide) level = 1;
+  // Los gigantes no fichan veteranos: a los 36 dejan de llamar, a los 38 el
+  // mercado es de clubes medianos para abajo.
+  const ageCeiling = state.age >= 38 ? 3 : state.age >= 36 ? 4 : 5;
   const pool = candidatePool(state, {
     minStrength: clamp(level - (farewell ? 2 : 1), 1, 5),
-    maxStrength: badSide ? 2 : clamp(level + (state.age < 23 ? 0 : 1), 1, 5)
+    maxStrength: badSide ? 2
+      : Math.min(ageCeiling, clamp(level + (state.age < 23 ? 0 : 1), 1, 5))
   });
   return sampleUnique(pool, count, rng);
 }
@@ -215,16 +219,29 @@ export function projectSquadRole(state, club = state.club) {
   if (club.id === state.club?.id && state.roleOverride?.seasonsLeft > 0) {
     return SQUAD_ROLES.find((role) => role.key === state.roleOverride.key) || SQUAD_ROLES[0];
   }
-  const benchmark = 46 + club.strength * 7.5;
+  // En un gigante (fuerza 5) la vara es de verdad alta: hace falta rondar los
+  // 90 para ser algo más que rotación. Con 85 en el Veszprém sos un jugador
+  // más, no la figura.
+  const benchmark = 46 + club.strength * 7.5 + (club.strength >= 5 ? 5 : 0);
   const score = state.rating + state.form * 0.8 + clamp(state.loyalty, 0, 10) * 0.08 - benchmark;
   // "Juvenil" es rol de pibe: pasados los 21, al que llega justo lo anotan
   // como rotación. Sin este corte, un veterano de 37 que firmaba en un club
   // grande aparecía ofertado "de juvenil".
   const shortOfLevel = score < -5 || (state.age <= 19 && score < 0);
-  if (shortOfLevel) return state.age <= 21 ? SQUAD_ROLES[0] : SQUAD_ROLES[1];
-  if (score < 1) return SQUAD_ROLES[1];
-  if (score < 7) return SQUAD_ROLES[2];
-  return SQUAD_ROLES[3];
+  let role = shortOfLevel ? (state.age <= 21 ? 0 : 1)
+    : score < 1 ? 1
+    : score < 7 ? 2
+    : 3;
+
+  // A un club nuevo llegás como veterano, no como estrella: a los 35 el techo
+  // es titular y a los 37, rotación. Renovar donde ya sos ídolo no tiene tope:
+  // ahí la casa te conoce.
+  const renewal = club.id === state.club?.id;
+  if (!renewal) {
+    if (state.age >= 37) role = Math.min(role, 1);
+    else if (state.age >= 35) role = Math.min(role, 2);
+  }
+  return SQUAD_ROLES[role];
 }
 
 /**
@@ -761,6 +778,20 @@ function academyOffers(state, rng) {
   };
 }
 
+// A partir de los 36 colgarlas es una opción de verdad en cualquier mercado,
+// no sólo en el último contrato: se puede cortar en lo más alto.
+const RETIRE_FROM_AGE = 36;
+
+function retireChoice() {
+  return { id: "retirarse", kind: "retire", action: "retire",
+           label: "Retirarte", detail: "Colgar las zapatillas",
+           effects: { retireNow: true } };
+}
+
+function withRetirement(state, choices) {
+  return state.age >= RETIRE_FROM_AGE ? [...choices, retireChoice()] : choices;
+}
+
 function marketEvent(state, rng) {
   const offers = transferOffers(state, rng, 2);
   return {
@@ -769,10 +800,10 @@ function marketEvent(state, rng) {
     eyebrow: "Mercado de pases",
     title: "Elegí tu próximo club",
     body: "Llegaron ofertas después de tu última temporada. Aceptá una o quedate.",
-    choices: [
+    choices: withRetirement(state, [
       ...offers.map((club, index) => clubChoice(state, club, "firmar", index)),
       clubChoice(state, state.club, "seguir", 2)
-    ]
+    ])
   };
 }
 
@@ -784,10 +815,10 @@ function contractExpiryEvent(state, rng) {
     eyebrow: "Fin de contrato",
     title: "Se te vence el contrato",
     body: "Renovar con el club que te conoce, o salir libre a otro proyecto.",
-    choices: [
+    choices: withRetirement(state, [
       clubChoice(state, state.club, "renovar", 0),
       ...offers.map((club, index) => clubChoice(state, club, "libre", index + 1))
-    ]
+    ])
   };
 }
 
@@ -826,7 +857,7 @@ function finalCycleEvent(state, rng) {
     });
   }
 
-  choices.push({ id: "retirarse", kind: "retire", action: "retire", label: "Retirarte", detail: "Colgar las zapatillas", effects: { retireNow: true } });
+  choices.push(retireChoice());
 
   return {
     id: stretching ? `estirar-${stretching}` : "ultimo-contrato",
