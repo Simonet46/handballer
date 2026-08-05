@@ -329,6 +329,7 @@ function renderCareer() {
   el("progress").style.setProperty("--p", `${Math.round((totals.seasons / span) * 100)}%`);
   el("season-label").textContent = `${t("ui.season")} ${career.seasonYear}`;
 
+  renderHudVitrina();
   renderCareerTimeline();
   renderDecision();
 }
@@ -814,6 +815,59 @@ function renderResult() {
 // La carrera vertical: cada club por el que pasaste, con tus números ahí, y
 // la fila de la selección al final. Es la pantalla que la gente comparte.
 // ---------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------
+// La vitrina del HUD: trofeos dorados que se acumulan mientras jugás, como
+// en Copero. Tres diseños propios en SVG: copa de club, globo de selección
+// y balón de oro individual.
+// ---------------------------------------------------------------------------
+
+const TROPHY_SVG = {
+  // Copa de club: la de las orejas grandes.
+  club: `<svg viewBox="0 0 24 24" aria-hidden="true">
+    <path fill="#f0c02c" d="M7 3h10v2.2c0 4.1-1.7 7.3-4 8.3v2h2.3l.7 3H8l.7-3H11v-2c-2.3-1-4-4.2-4-8.3z"/>
+    <path fill="#c99a18" d="M8.8 20.5h6.4l.8 1.5H8z"/>
+    <path fill="none" stroke="#f0c02c" stroke-width="1.6" d="M7 5.2C4.8 5.2 3.4 6.4 3.6 8c.2 1.7 1.8 2.8 3.9 2.9M17 5.2c2.2 0 3.6 1.2 3.4 2.8-.2 1.7-1.8 2.8-3.9 2.9"/>
+    <circle fill="#fff3c4" cx="10" cy="6.6" r="1.1"/>
+  </svg>`,
+  // Selección: el globo sobre el pedestal.
+  national: `<svg viewBox="0 0 24 24" aria-hidden="true">
+    <circle fill="#f0c02c" cx="12" cy="9" r="6"/>
+    <path fill="none" stroke="#8f6d0f" stroke-width="1.1" d="M6 9h12M12 3a9.5 9.5 0 0 1 0 12M12 3a9.5 9.5 0 0 0 0 12"/>
+    <path fill="#f0c02c" d="M10.6 15.5h2.8l.6 3h1.6l.6 2.5H7.8l.6-2.5H10z"/>
+    <path fill="#c99a18" d="M8.4 21h7.2l.4 1H8z"/>
+  </svg>`,
+  // Individual: el balón de handball con la estrella.
+  individual: `<svg viewBox="0 0 24 24" aria-hidden="true">
+    <circle fill="#f0c02c" cx="12" cy="9.4" r="5.6"/>
+    <path fill="none" stroke="#8f6d0f" stroke-width="1.1" d="M8 5.5c2.4 1.7 5.6 1.7 8 0M8 13.3c2.4-1.7 5.6-1.7 8 0"/>
+    <path fill="#fff3c4" d="m12 6.4.8 1.7 1.9.3-1.4 1.3.4 1.9L12 10.7l-1.7.9.4-1.9-1.4-1.3 1.9-.3z"/>
+    <path fill="#f0c02c" d="M9.4 15.8h5.2l.5 2.7h1.4l.5 2.5H7l.5-2.5H9z"/>
+    <path fill="#c99a18" d="M8.1 21.2h7.8l.3.8H7.8z"/>
+  </svg>`,
+};
+
+const NATIONAL_TROPHY_KEYS = new Set(["worlds", "olympics", "euro", "continental"]);
+const INDIVIDUAL_TROPHY_KEYS = new Set(["ihf-player", "top-scorer", "all-star", "best-defender"]);
+
+function trophyCategory(key) {
+  if (INDIVIDUAL_TROPHY_KEYS.has(key)) return "individual";
+  if (NATIONAL_TROPHY_KEYS.has(key)) return "national";
+  return "club";
+}
+
+/** La tira de trofeos del HUD: se llena a medida que ganás. */
+function renderHudVitrina() {
+  const box = el("hud-vitrina");
+  const honours = [...career.trophies, ...career.awards]
+    .sort((a, b) => a.year - b.year);
+  if (!honours.length) { box.hidden = true; box.innerHTML = ""; return; }
+  box.hidden = false;
+  const MAX = 12;
+  box.innerHTML = honours.slice(0, MAX).map((honour) =>
+    `<span class="hud-trophy" title="${honourName(t, honour)} · ${honour.year}">${TROPHY_SVG[trophyCategory(honour.key)]}</span>`
+  ).join("") + (honours.length > MAX ? `<span class="hud-trophy-more">+${honours.length - MAX}</span>` : "");
+}
 
 const HONOUR_ICON = {
   worlds: "🏆", olympics: "🥇", champions: "⭐", "european-league": "🎖",

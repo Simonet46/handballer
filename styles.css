@@ -260,6 +260,17 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
   max-height: 62vh; overflow: auto;
 }
 .hud-player { display: flex; align-items: center; gap: 12px; }
+
+/* La vitrina del HUD: trofeos dorados acumulándose, estilo Copero. */
+.hud-vitrina {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 3px;
+  padding: 2px 2px 0;
+}
+.hud-trophy { display: inline-flex; }
+.hud-trophy svg { width: 24px; height: 24px; filter: drop-shadow(0 1px 2px rgba(0,0,0,.5)); }
+.hud-trophy-more {
+  color: var(--gold); font-size: 12px; font-weight: 800; margin-left: 4px;
+}
 .hud-number {
   font-size: 30px; font-weight: 800; color: var(--accent);
   min-width: 46px; text-align: center;
