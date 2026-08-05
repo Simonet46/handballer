@@ -832,57 +832,17 @@ function renderResult() {
 // y balón de oro individual.
 // ---------------------------------------------------------------------------
 
-// Un trofeo distinto por competición, dibujado para leerse a 24 px: la
-// silueta manda, el detalle sobra. Oro propio, sin depender de nadie.
-const TROPHY_SVG = {
-  // Champions: la copa alta y esbelta de boca ancha.
-  champions: `<svg viewBox="0 0 24 24" aria-hidden="true">
-    <path fill="#f0c02c" d="M6.5 2h11l-.6 5.7c-.4 3.4-2 5.6-3.9 6.2v2.2h2.4l.6 2.6H8l.6-2.6H11v-2.2C9.1 13.3 7.5 11.1 7.1 7.7z"/>
-    <path fill="none" stroke="#f0c02c" stroke-width="1.5" d="M6.8 4.3C4.7 4.5 3.5 5.7 3.8 7.2c.3 1.5 1.7 2.5 3.5 2.6M17.2 4.3c2.1.2 3.3 1.4 3 2.9-.3 1.5-1.7 2.5-3.5 2.6"/>
-    <path fill="#c99a18" d="M8.2 20.2h7.6l.7 1.8H7.5z"/>
-    <path fill="#fff3c4" d="M9.5 4.1H11l-.5 4.4H9.1z"/>
-  </svg>`,
-  // Mundial: la copa con el globo arriba.
-  worlds: `<svg viewBox="0 0 24 24" aria-hidden="true">
-    <circle fill="#f0c02c" cx="12" cy="6.4" r="4.4"/>
-    <path fill="none" stroke="#8f6d0f" stroke-width=".9" d="M7.6 6.4h8.8M12 2a7 7 0 0 1 0 8.8M12 2a7 7 0 0 0 0 8.8"/>
-    <path fill="#f0c02c" d="M8.3 11.6h7.4c-.5 2.7-1.9 4.4-3.7 4.8v1.8h2.3l.6 2.4H9.1l.6-2.4H12v-1.8c-1.8-.4-3.2-2.1-3.7-4.8z"/>
-    <path fill="#c99a18" d="M8.2 20.5h7.6l.6 1.5H7.6z"/>
-  </svg>`,
-  // Juegos Olímpicos: la medalla con la cinta (sin los aros, ver LICENCIAS).
-  olympics: `<svg viewBox="0 0 24 24" aria-hidden="true">
-    <path fill="#c99a18" d="m7.6 2 3.3 6.5-2.5 1.3L5.1 3.3zm8.8 0-3.3 6.5 2.5 1.3 3.3-6.5z"/>
-    <circle fill="#f0c02c" cx="12" cy="15.6" r="6.2"/>
-    <circle fill="none" stroke="#8f6d0f" stroke-width=".9" cx="12" cy="15.6" r="4.4"/>
-    <path fill="#fff3c4" d="m12 11.9 1.1 2.3 2.5.4-1.8 1.7.4 2.5-2.2-1.2-2.2 1.2.4-2.5-1.8-1.7 2.5-.4z"/>
-  </svg>`,
-  // Continental: la copa con la corona de estrellas.
-  euro: `<svg viewBox="0 0 24 24" aria-hidden="true">
-    <path fill="#f0c02c" d="M6.8 3h10.4v3.9c0 3.8-1.8 6.4-4.2 7v2.3h2.4l.6 2.6H8l.6-2.6H11v-2.3c-2.4-.6-4.2-3.2-4.2-7z"/>
-    <path fill="none" stroke="#f0c02c" stroke-width="1.5" d="M6.8 5.3C4.7 5.3 3.4 6.4 3.7 7.9c.3 1.5 1.6 2.4 3.4 2.5M17.2 5.3c2.1 0 3.4 1.1 3.1 2.6-.3 1.5-1.6 2.4-3.4 2.5"/>
-    <path fill="#c99a18" d="M8.2 20h7.6l.7 2H7.5z"/>
-    <g fill="#fff3c4"><circle cx="12" cy="5.4" r=".85"/><circle cx="9.5" cy="6.7" r=".68"/><circle cx="14.5" cy="6.7" r=".68"/><circle cx="10.3" cy="9.2" r=".68"/><circle cx="13.7" cy="9.2" r=".68"/></g>
-  </svg>`,
-  // Liga: el escudo de campeón, distinto de las copas de un vistazo.
-  league: `<svg viewBox="0 0 24 24" aria-hidden="true">
-    <path fill="#f0c02c" d="M12 1.8 20.4 4v7.3c0 5.2-3.5 9.2-8.4 10.9-4.9-1.7-8.4-5.7-8.4-10.9V4z"/>
-    <path fill="#c99a18" d="M12 1.8 20.4 4v7.3c0 5.2-3.5 9.2-8.4 10.9z" opacity=".45"/>
-    <path fill="#fff3c4" d="m12 6.2 1.6 3.3 3.6.5-2.6 2.5.6 3.6-3.2-1.7-3.2 1.7.6-3.6-2.6-2.5 3.6-.5z"/>
-  </svg>`,
-  // Copa nacional: la copa clásica de dos asas, más baja y ancha.
-  cup: `<svg viewBox="0 0 24 24" aria-hidden="true">
-    <path fill="#f0c02c" d="M7.2 4h9.6v3.6c0 3.3-1.6 5.6-3.8 6.2v2.1h2.2l.6 2.5H8.2l.6-2.5H11v-2.1c-2.2-.6-3.8-2.9-3.8-6.2z"/>
-    <path fill="none" stroke="#f0c02c" stroke-width="1.6" d="M7.2 6c-2 0-3.3 1.1-3 2.5.3 1.4 1.6 2.3 3.3 2.4M16.8 6c2 0 3.3 1.1 3 2.5-.3 1.4-1.6 2.3-3.3 2.4"/>
-    <path fill="#c99a18" d="M8.4 18.9h7.2l.7 2.1H7.7z"/>
-  </svg>`,
-  // Premio individual: el balón sobre el pedestal, con su estrella.
-  individual: `<svg viewBox="0 0 24 24" aria-hidden="true">
-    <circle fill="#f0c02c" cx="12" cy="8.6" r="5.4"/>
-    <path fill="none" stroke="#8f6d0f" stroke-width="1.05" d="M8.2 4.8c2.3 1.7 5.3 1.7 7.6 0M8.2 12.4c2.3-1.7 5.3-1.7 7.6 0"/>
-    <path fill="#fff3c4" d="m12 5.7.8 1.7 1.9.3-1.4 1.3.3 1.9-1.6-.9-1.6.9.3-1.9L9.3 7.7l1.9-.3z"/>
-    <path fill="#f0c02c" d="M9.4 15.2h5.2l.5 2.8h1.5l.5 2.6H6.9l.5-2.6H9z"/>
-    <path fill="#c99a18" d="M8 20.8h8l.3 1.2H7.7z"/>
-  </svg>`,
+// Los trofeos: renders propios generados para el juego (assets/trophies),
+// uno distinto por competición. Se muestran a 24-26 px, el archivo tiene
+// 160 px de alto y pesa 4-14 KB.
+const TROPHY_IMG = {
+  champions: "assets/trophies/champions.png",
+  worlds: "assets/trophies/worlds.png",
+  olympics: "assets/trophies/olympics.png",
+  euro: "assets/trophies/euro.png",
+  league: "assets/trophies/league.png",
+  cup: "assets/trophies/cup.png",
+  individual: "assets/trophies/individual.png",
 };
 
 // Cada honor a su trofeo. Los que no están acá caen en la copa nacional.
@@ -914,7 +874,8 @@ function competitionLogo(id) {
 
 /** La vitrina muestra trofeos: uno distinto según qué ganaste. */
 function honourBadge(honour) {
-  return TROPHY_SVG[TROPHY_BY_KEY[honour.key] || "cup"];
+  const src = TROPHY_IMG[TROPHY_BY_KEY[honour.key] || "cup"];
+  return `<img class="trophy" src="${src}" alt="" loading="lazy">`;
 }
 
 /** La tira de trofeos del HUD: se llena a medida que ganás. */

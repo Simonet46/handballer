@@ -267,7 +267,13 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
   padding: 2px 2px 0;
 }
 .hud-trophy { display: inline-flex; align-items: center; }
-.hud-trophy svg { width: 24px; height: 24px; filter: drop-shadow(0 1px 2px rgba(0,0,0,.5)); }
+/* Trofeos: render propio, alto fijo y ancho libre (una copa ancha y una
+   medalla fina no tienen por qué ocupar lo mismo). */
+.trophy {
+  height: 30px; width: auto; display: block;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, .55));
+}
+.honour-icon .trophy { height: 38px; }
 /* Emblema de la liga en el HUD: fondo blanco porque vienen pensados para
    papel, y chiquito porque acompaña al nombre, no lo reemplaza. */
 .hud-league { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
