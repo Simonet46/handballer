@@ -102,58 +102,28 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .setup-grid { display: grid; gap: 20px; }
 
 .preview { text-align: center; }
-/* Camiseta con nombre arriba y dorsal gigante, como Copero. */
+/* Camiseta 3D de la selección, con el nombre y el dorsal encima. */
 .jersey {
-  position: relative; width: 180px; height: 200px; margin: 0 auto 10px;
-  background: var(--ink-3);
-  clip-path: polygon(20% 0, 36% 9%, 64% 9%, 80% 0, 100% 16%, 86% 32%, 86% 100%, 14% 100%, 14% 32%, 0 16%);
-  overflow: hidden; display: grid; place-items: center;
+  position: relative; width: 200px; margin: 0 auto 10px;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, .55));
 }
-.jersey-stripes {
-  position: absolute; inset: 0;
-  background: repeating-linear-gradient(90deg, transparent 0 16%, rgba(244,241,234,.06) 16% 32%);
-}
+.jersey-img { width: 100%; height: auto; display: block; }
 
-/* La camiseta es la de tu selección. Cada una copia el kit real:
-   ARG bastones celestes y blancos, FRA el azul de Les Experts con el vivo
-   tricolor, ESP la roja de los Hispanos con detalle amarillo, GER blanca
-   con la banda schwarz-rot-gold. */
-.jersey[data-country="ARG"] { background: #f4f7fa; }
-.jersey[data-country="ARG"] .jersey-stripes {
-  background: repeating-linear-gradient(90deg, #85bde4 0 16%, #f4f7fa 16% 32%);
-}
+/* El texto se acomoda al color de cada camiseta. */
 .jersey[data-country="ARG"] .jersey-name,
 .jersey[data-country="ARG"] .jersey-number { color: #14274e; }
-
-.jersey[data-country="FRA"] { background: #10307e; }
-.jersey[data-country="FRA"] .jersey-stripes {
-  background: linear-gradient(to bottom,
-    transparent 68%, #f4f1ea 68% 70.5%, #ef4135 70.5% 74%, transparent 74%);
-}
-
-.jersey[data-country="ESP"] { background: #c60b1e; }
-.jersey[data-country="ESP"] .jersey-stripes {
-  background: linear-gradient(to bottom,
-    transparent 68%, #ffc400 68% 72%, transparent 72%);
-}
-.jersey[data-country="ESP"] .jersey-number { color: #ffc400; }
-
-.jersey[data-country="GER"] { background: #f2f2ef; }
-.jersey[data-country="GER"] .jersey-stripes {
-  background: linear-gradient(to bottom,
-    transparent 68%, #111 68% 70.5%, #dd0000 70.5% 73%, #ffce00 73% 75.5%, transparent 75.5%);
-}
 .jersey[data-country="GER"] .jersey-name,
 .jersey[data-country="GER"] .jersey-number { color: #16181c; }
+.jersey[data-country="ESP"] .jersey-number { color: #ffc400; }
 .jersey-name {
-  position: absolute; top: 22%; left: 0; right: 0; text-align: center;
-  font-size: 12px; font-weight: 800; letter-spacing: .08em; color: var(--paper);
-  text-transform: uppercase; padding: 0 18%;
+  position: absolute; top: 34%; left: 0; right: 0; text-align: center;
+  font-size: 13px; font-weight: 800; letter-spacing: .08em; color: var(--paper);
+  text-transform: uppercase; padding: 0 24%;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .jersey-number {
-  position: relative; font-size: 74px; font-weight: 800; color: var(--paper);
-  line-height: 1; margin-top: 14px;
+  position: absolute; top: 41%; left: 0; right: 0; text-align: center;
+  font-size: 68px; font-weight: 800; color: var(--paper); line-height: 1;
 }
 .preview-tag { color: var(--muted); font-size: 14px; font-weight: 600; }
 
@@ -645,8 +615,8 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
   .hud-stats dd { font-size: 15px; }
   .progress { height: 22px; }
 
-  .jersey { width: 156px; height: 172px; }
-  .jersey-number { font-size: 76px; }
+  .jersey { width: 176px; }
+  .jersey-number { font-size: 60px; }
 
   .decision h2 { font-size: 23px; }
   /* En el celular las opciones se agrandan, no se achican: son el juego. */
@@ -683,9 +653,9 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
      el formulario a la derecha. Menos scroll, más presencia. */
   #setup { max-width: 1020px; margin-inline: auto; }
   .setup-grid { grid-template-columns: 400px minmax(0, 1fr); gap: 48px; }
-  .jersey { width: 250px; height: 276px; }
-  .jersey-number { font-size: 120px; }
-  .jersey-name { font-size: 16px; top: 24%; }
+  .jersey { width: 280px; }
+  .jersey-number { font-size: 96px; }
+  .jersey-name { font-size: 17px; }
   .preview-tag { font-size: 17px; margin-top: 10px; }
   #career {
     display: grid; grid-template-columns: minmax(0, 1fr) 386px;

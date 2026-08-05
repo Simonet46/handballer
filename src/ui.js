@@ -270,8 +270,9 @@ function syncChips() {
 
 function renderPreview() {
   const country = startableCountries().find((c) => c.code === form.country);
-  // La camiseta se pinta con los colores de la selección elegida.
+  // La camiseta 3D es la de la selección elegida.
   document.querySelector(".jersey").dataset.country = form.country;
+  el("jersey-img").src = `assets/jerseys/${form.country}.png`;
   el("preview-name").textContent = form.lastName || t("ui.lastNamePlaceholder");
   el("preview-number").textContent = form.number;
   el("preview-flag").textContent = country?.flag || "";
