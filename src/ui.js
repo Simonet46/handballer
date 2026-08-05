@@ -308,10 +308,13 @@ function renderCareer() {
   const club = career.club;
   el("hud-club").textContent = club.freeAgent ? t("ui.freeAgent") : `${club.flag || ""} ${club.name}`.trim();
   // El sueldo al lado de la liga: la capa de realidad. En Argentina no hay.
+  // Y el emblema de la liga adelante, donde de verdad identifica algo.
   const salary = career.timeline.at(-1)?.salary || 0;
-  el("hud-league").textContent = club.freeAgent ? "" :
-    `${club.leagueName} · ${club.countryName}` +
-    (salary > 0 ? ` · ${formatEuros(salary)}${t("ui.perMonth")}` : "");
+  const logo = club.freeAgent ? null : competitionLogo(club.league);
+  el("hud-league").innerHTML = club.freeAgent ? "" :
+    (logo ? `<img class="league-logo" src="${logo}" alt="" loading="lazy">` : "") +
+    `<span>${club.leagueName} · ${club.countryName}` +
+    (salary > 0 ? ` · ${formatEuros(salary)}${t("ui.perMonth")}` : "") + "</span>";
   el("hud-age").textContent = career.age;
   el("hud-rating").textContent = Math.round(career.rating);
   el("hud-role").textContent = t(`roles.${career.squadRole}`);
@@ -442,7 +445,13 @@ function renderDecision() {
   const photo = el("decision-photo");
   const src = eventPhoto(event);
   photo.hidden = !src;
-  if (src) photo.src = src;
+  if (src) {
+    // Si la foto no carga (404 viejo en caché, red caída), se esconde sola:
+    // nunca un ícono de imagen rota en mitad de la decisión.
+    photo.onerror = () => { photo.hidden = true; };
+    photo.onload = () => { photo.hidden = false; };
+    photo.src = src;
+  }
   const copy = decisionCopy(event);
   el("decision-eyebrow").textContent = copy.eyebrow || "";
   el("decision-title").textContent = copy.title || "";
@@ -823,39 +832,70 @@ function renderResult() {
 // y balón de oro individual.
 // ---------------------------------------------------------------------------
 
+// Un trofeo distinto por competición, dibujado para leerse a 24 px: la
+// silueta manda, el detalle sobra. Oro propio, sin depender de nadie.
 const TROPHY_SVG = {
-  // Copa de club: la de las orejas grandes.
-  club: `<svg viewBox="0 0 24 24" aria-hidden="true">
-    <path fill="#f0c02c" d="M7 3h10v2.2c0 4.1-1.7 7.3-4 8.3v2h2.3l.7 3H8l.7-3H11v-2c-2.3-1-4-4.2-4-8.3z"/>
-    <path fill="#c99a18" d="M8.8 20.5h6.4l.8 1.5H8z"/>
-    <path fill="none" stroke="#f0c02c" stroke-width="1.6" d="M7 5.2C4.8 5.2 3.4 6.4 3.6 8c.2 1.7 1.8 2.8 3.9 2.9M17 5.2c2.2 0 3.6 1.2 3.4 2.8-.2 1.7-1.8 2.8-3.9 2.9"/>
-    <circle fill="#fff3c4" cx="10" cy="6.6" r="1.1"/>
+  // Champions: la copa alta y esbelta de boca ancha.
+  champions: `<svg viewBox="0 0 24 24" aria-hidden="true">
+    <path fill="#f0c02c" d="M6.5 2h11l-.6 5.7c-.4 3.4-2 5.6-3.9 6.2v2.2h2.4l.6 2.6H8l.6-2.6H11v-2.2C9.1 13.3 7.5 11.1 7.1 7.7z"/>
+    <path fill="none" stroke="#f0c02c" stroke-width="1.5" d="M6.8 4.3C4.7 4.5 3.5 5.7 3.8 7.2c.3 1.5 1.7 2.5 3.5 2.6M17.2 4.3c2.1.2 3.3 1.4 3 2.9-.3 1.5-1.7 2.5-3.5 2.6"/>
+    <path fill="#c99a18" d="M8.2 20.2h7.6l.7 1.8H7.5z"/>
+    <path fill="#fff3c4" d="M9.5 4.1H11l-.5 4.4H9.1z"/>
   </svg>`,
-  // Selección: el globo sobre el pedestal.
-  national: `<svg viewBox="0 0 24 24" aria-hidden="true">
-    <circle fill="#f0c02c" cx="12" cy="9" r="6"/>
-    <path fill="none" stroke="#8f6d0f" stroke-width="1.1" d="M6 9h12M12 3a9.5 9.5 0 0 1 0 12M12 3a9.5 9.5 0 0 0 0 12"/>
-    <path fill="#f0c02c" d="M10.6 15.5h2.8l.6 3h1.6l.6 2.5H7.8l.6-2.5H10z"/>
-    <path fill="#c99a18" d="M8.4 21h7.2l.4 1H8z"/>
+  // Mundial: la copa con el globo arriba.
+  worlds: `<svg viewBox="0 0 24 24" aria-hidden="true">
+    <circle fill="#f0c02c" cx="12" cy="6.4" r="4.4"/>
+    <path fill="none" stroke="#8f6d0f" stroke-width=".9" d="M7.6 6.4h8.8M12 2a7 7 0 0 1 0 8.8M12 2a7 7 0 0 0 0 8.8"/>
+    <path fill="#f0c02c" d="M8.3 11.6h7.4c-.5 2.7-1.9 4.4-3.7 4.8v1.8h2.3l.6 2.4H9.1l.6-2.4H12v-1.8c-1.8-.4-3.2-2.1-3.7-4.8z"/>
+    <path fill="#c99a18" d="M8.2 20.5h7.6l.6 1.5H7.6z"/>
   </svg>`,
-  // Individual: el balón de handball con la estrella.
+  // Juegos Olímpicos: la medalla con la cinta (sin los aros, ver LICENCIAS).
+  olympics: `<svg viewBox="0 0 24 24" aria-hidden="true">
+    <path fill="#c99a18" d="m7.6 2 3.3 6.5-2.5 1.3L5.1 3.3zm8.8 0-3.3 6.5 2.5 1.3 3.3-6.5z"/>
+    <circle fill="#f0c02c" cx="12" cy="15.6" r="6.2"/>
+    <circle fill="none" stroke="#8f6d0f" stroke-width=".9" cx="12" cy="15.6" r="4.4"/>
+    <path fill="#fff3c4" d="m12 11.9 1.1 2.3 2.5.4-1.8 1.7.4 2.5-2.2-1.2-2.2 1.2.4-2.5-1.8-1.7 2.5-.4z"/>
+  </svg>`,
+  // Continental: la copa con la corona de estrellas.
+  euro: `<svg viewBox="0 0 24 24" aria-hidden="true">
+    <path fill="#f0c02c" d="M6.8 3h10.4v3.9c0 3.8-1.8 6.4-4.2 7v2.3h2.4l.6 2.6H8l.6-2.6H11v-2.3c-2.4-.6-4.2-3.2-4.2-7z"/>
+    <path fill="none" stroke="#f0c02c" stroke-width="1.5" d="M6.8 5.3C4.7 5.3 3.4 6.4 3.7 7.9c.3 1.5 1.6 2.4 3.4 2.5M17.2 5.3c2.1 0 3.4 1.1 3.1 2.6-.3 1.5-1.6 2.4-3.4 2.5"/>
+    <path fill="#c99a18" d="M8.2 20h7.6l.7 2H7.5z"/>
+    <g fill="#fff3c4"><circle cx="12" cy="5.4" r=".85"/><circle cx="9.5" cy="6.7" r=".68"/><circle cx="14.5" cy="6.7" r=".68"/><circle cx="10.3" cy="9.2" r=".68"/><circle cx="13.7" cy="9.2" r=".68"/></g>
+  </svg>`,
+  // Liga: el escudo de campeón, distinto de las copas de un vistazo.
+  league: `<svg viewBox="0 0 24 24" aria-hidden="true">
+    <path fill="#f0c02c" d="M12 1.8 20.4 4v7.3c0 5.2-3.5 9.2-8.4 10.9-4.9-1.7-8.4-5.7-8.4-10.9V4z"/>
+    <path fill="#c99a18" d="M12 1.8 20.4 4v7.3c0 5.2-3.5 9.2-8.4 10.9z" opacity=".45"/>
+    <path fill="#fff3c4" d="m12 6.2 1.6 3.3 3.6.5-2.6 2.5.6 3.6-3.2-1.7-3.2 1.7.6-3.6-2.6-2.5 3.6-.5z"/>
+  </svg>`,
+  // Copa nacional: la copa clásica de dos asas, más baja y ancha.
+  cup: `<svg viewBox="0 0 24 24" aria-hidden="true">
+    <path fill="#f0c02c" d="M7.2 4h9.6v3.6c0 3.3-1.6 5.6-3.8 6.2v2.1h2.2l.6 2.5H8.2l.6-2.5H11v-2.1c-2.2-.6-3.8-2.9-3.8-6.2z"/>
+    <path fill="none" stroke="#f0c02c" stroke-width="1.6" d="M7.2 6c-2 0-3.3 1.1-3 2.5.3 1.4 1.6 2.3 3.3 2.4M16.8 6c2 0 3.3 1.1 3 2.5-.3 1.4-1.6 2.3-3.3 2.4"/>
+    <path fill="#c99a18" d="M8.4 18.9h7.2l.7 2.1H7.7z"/>
+  </svg>`,
+  // Premio individual: el balón sobre el pedestal, con su estrella.
   individual: `<svg viewBox="0 0 24 24" aria-hidden="true">
-    <circle fill="#f0c02c" cx="12" cy="9.4" r="5.6"/>
-    <path fill="none" stroke="#8f6d0f" stroke-width="1.1" d="M8 5.5c2.4 1.7 5.6 1.7 8 0M8 13.3c2.4-1.7 5.6-1.7 8 0"/>
-    <path fill="#fff3c4" d="m12 6.4.8 1.7 1.9.3-1.4 1.3.4 1.9L12 10.7l-1.7.9.4-1.9-1.4-1.3 1.9-.3z"/>
-    <path fill="#f0c02c" d="M9.4 15.8h5.2l.5 2.7h1.4l.5 2.5H7l.5-2.5H9z"/>
-    <path fill="#c99a18" d="M8.1 21.2h7.8l.3.8H7.8z"/>
+    <circle fill="#f0c02c" cx="12" cy="8.6" r="5.4"/>
+    <path fill="none" stroke="#8f6d0f" stroke-width="1.05" d="M8.2 4.8c2.3 1.7 5.3 1.7 7.6 0M8.2 12.4c2.3-1.7 5.3-1.7 7.6 0"/>
+    <path fill="#fff3c4" d="m12 5.7.8 1.7 1.9.3-1.4 1.3.3 1.9-1.6-.9-1.6.9.3-1.9L9.3 7.7l1.9-.3z"/>
+    <path fill="#f0c02c" d="M9.4 15.2h5.2l.5 2.8h1.5l.5 2.6H6.9l.5-2.6H9z"/>
+    <path fill="#c99a18" d="M8 20.8h8l.3 1.2H7.7z"/>
   </svg>`,
 };
 
-const NATIONAL_TROPHY_KEYS = new Set(["worlds", "olympics", "euro", "continental"]);
-const INDIVIDUAL_TROPHY_KEYS = new Set(["ihf-player", "top-scorer", "all-star", "best-defender"]);
+// Cada honor a su trofeo. Los que no están acá caen en la copa nacional.
+const TROPHY_BY_KEY = {
+  champions: "champions", "european-league": "cup",
+  worlds: "worlds", olympics: "olympics",
+  euro: "euro", continental: "euro", panamericano: "euro", "asian-clubs": "euro",
+  league: "league", "nacional-clubes": "league",
+  cup: "cup", super8: "cup",
+  "ihf-player": "individual", "top-scorer": "individual",
+  "all-star": "individual", "best-defender": "individual",
+};
 
-function trophyCategory(key) {
-  if (INDIVIDUAL_TROPHY_KEYS.has(key)) return "individual";
-  if (NATIONAL_TROPHY_KEYS.has(key)) return "national";
-  return "club";
-}
 
 // Competiciones con emblema oficial bajado (ver data/competition-logos.json).
 // El resto muestra el trofeo dorado: el juego nunca queda sin ícono.
@@ -867,28 +907,14 @@ const COMPETITION_LOGOS = new Set([
   "por-andebol-1", "sui-qhl", "swe-handbollsligan",
 ]);
 
-/** Nombre de liga -> id, para saber de qué liga es un título ganado. */
-let leagueIdByName = null;
-function leagueId(name) {
-  if (!leagueIdByName) {
-    leagueIdByName = new Map();
-    for (const league of universeLeagues()) leagueIdByName.set(league.name, league.id);
-  }
-  return leagueIdByName.get(name);
+/** Emblema oficial de una liga, si lo tenemos bajado. */
+function competitionLogo(id) {
+  return id && COMPETITION_LOGOS.has(id) ? `assets/competitions/${id}.png` : null;
 }
 
-/** El emblema real de la competición, si lo tenemos. */
-function honourLogo(honour) {
-  const key = honour.key === "league" ? leagueId(honour.params?.league) : honour.key;
-  return key && COMPETITION_LOGOS.has(key) ? `assets/competitions/${key}.png` : null;
-}
-
-/** Ícono de un título: emblema oficial, o el trofeo dorado de respaldo. */
+/** La vitrina muestra trofeos: uno distinto según qué ganaste. */
 function honourBadge(honour) {
-  const logo = honourLogo(honour);
-  return logo
-    ? `<img class="comp-logo" src="${logo}" alt="" loading="lazy">`
-    : TROPHY_SVG[trophyCategory(honour.key)];
+  return TROPHY_SVG[TROPHY_BY_KEY[honour.key] || "cup"];
 }
 
 /** La tira de trofeos del HUD: se llena a medida que ganás. */
