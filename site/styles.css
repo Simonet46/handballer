@@ -381,28 +381,33 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
 .decision h2 { font-size: clamp(22px, 6vw, 28px); margin: 8px 0 10px; }
 .decision-body { color: var(--muted); }
 
-/* Foto del evento: cine arriba, decisión abajo. Se funde con el fondo. */
+/* Foto del evento: banner panorámico, no pantalla completa — la decisión
+   tiene que entrar sin scrollear. */
 .decision-photo {
-  width: 100%; aspect-ratio: 16 / 9; object-fit: cover;
-  border-radius: var(--radius); margin-bottom: 16px; display: block;
+  width: 100%; aspect-ratio: 21 / 9; max-height: 190px; object-fit: cover;
+  border-radius: var(--radius); margin-bottom: 14px; display: block;
   -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent);
   mask-image: linear-gradient(to bottom, #000 78%, transparent);
 }
 
-.options { display: grid; gap: 10px; margin-top: 18px; }
-/* Opciones grandes: la decisión es el corazón del juego, tiene que pesar. */
+/* Como Copero: dos opciones arriba, una abajo — la decisión entera entra en
+   pantalla sin scrollear. Las tarjetas son verticales para caber en columna. */
+.options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
 .option {
   background: var(--ink-2); border: 1px solid var(--faint); border-radius: 14px;
-  padding: 18px 16px; display: flex; align-items: center; gap: 14px; text-align: left;
+  padding: 14px 12px; display: flex; flex-direction: column; align-items: center;
+  justify-content: flex-start; gap: 8px; text-align: center;
   transition: transform .12s, border-color .15s, background .15s;
 }
+/* La opción impar que cierra la lista (la 3ª, o una sola) va a lo ancho. */
+.option:nth-child(odd):last-child { grid-column: 1 / -1; }
 .option:hover { border-color: rgba(244, 241, 234, .34); transform: translateY(-1px); }
 .option:active { transform: scale(.99); }
-.option-club { border-left: 4px solid var(--club, var(--accent)); }
-.option-crest { width: 58px; height: 64px; object-fit: contain; flex: 0 0 auto; }
-.option-text { display: grid; gap: 4px; flex: 1; min-width: 0; }
-.option-text strong { font-size: 18px; }
-.option-text span { color: var(--muted); font-size: 14px; }
+.option-club { border-top: 4px solid var(--club, var(--accent)); }
+.option-crest { width: 52px; height: 58px; object-fit: contain; flex: 0 0 auto; }
+.option-text { display: grid; gap: 3px; min-width: 0; }
+.option-text strong { font-size: 16px; }
+.option-text span { color: var(--muted); font-size: 13px; }
 .option-role {
   font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
   background: var(--faint); border-radius: 999px; padding: 4px 9px; white-space: nowrap;
