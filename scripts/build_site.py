@@ -19,6 +19,8 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE = os.path.join(ROOT, "site", "index.template.html")
 LOCALES = ["es", "fr", "de"]
+SITE_DOMAIN = "handboludo.com"
+SITE_URL = f"https://{SITE_DOMAIN}/"
 
 DISCLAIMER = {
     "es": "Juego no oficial y gratuito. Sin relación con la IHF, la EHF ni con los clubes mencionados.",
@@ -127,6 +129,8 @@ def build():
             "L_BOARD_NOTE": s["boardNote"],
             "DISCLAIMER": DISCLAIMER[locale],
             "CAFECITO": CAFECITO[locale],
+            "OG_URL": SITE_URL if locale == "es" else f"{SITE_URL}{locale}/",
+            "OG_IMAGE": f"{SITE_URL}assets/og.png",
         }
         for key, value in values.items():
             page = page.replace("{{%s}}" % key, str(value))
@@ -143,7 +147,10 @@ def build():
 
     # GitHub Pages no sirve rutas que empiecen con _ sin esto.
     open(os.path.join(ROOT, ".nojekyll"), "w").close()
-    print("  -> .nojekyll, styles.css")
+    # El dominio propio: si este archivo desaparece, handboludo.com se
+    # desconecta en el próximo deploy. El build lo garantiza.
+    open(os.path.join(ROOT, "CNAME"), "w").write(SITE_DOMAIN + "\n")
+    print("  -> .nojekyll, CNAME, styles.css")
 
 
 if __name__ == "__main__":
