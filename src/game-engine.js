@@ -182,11 +182,19 @@ function candidatePool(state, { minStrength, maxStrength }) {
   const scope = marketScope(state);
   const regions = REGION_BY_CONFEDERATION[home.confederation] || ["EHF"];
 
+  // Un europeo no ficha en Sudamérica. Allá el handball es amateur (Argentina)
+  // o semipro (Brasil): nadie cruza el Atlántico para bajar de categoría.
+  // La regla vale toda la carrera, también cuando el mercado ya es global —
+  // que es justo donde antes se colaban ofertas de clubes argentinos.
+  const allowed = (club) =>
+    !(home.confederation === "EHF" && club.confederation === "PATHF");
+
   for (let widen = 0; widen <= 4; widen += 1) {
     const low = clamp(minStrength - widen, 1, 5);
     const high = clamp(maxStrength + widen, 1, 5);
     const pool = CLUBS.filter((club) => {
       if (club.id === state.club.id) return false;
+      if (!allowed(club)) return false;
       if (club.strength < low || club.strength > high) return false;
       if (scope === "domestic") return club.country === home.code;
       if (scope === "regional") return regions.includes(club.confederation);
@@ -194,7 +202,7 @@ function candidatePool(state, { minStrength, maxStrength }) {
     });
     if (pool.length >= 4) return pool;
   }
-  return CLUBS.filter((club) => club.id !== state.club.id);
+  return CLUBS.filter((club) => club.id !== state.club.id && allowed(club));
 }
 
 export function transferOffers(state, rng, count = 2, farewell = false) {
