@@ -179,17 +179,22 @@ function marketScope(state) {
   return MARKET_STEPS.find((step) => state.age <= step.maxAge).scope;
 }
 
+/**
+ * Un europeo no ficha en Sudamérica. Allá el handball es amateur (Argentina)
+ * o semipro (Brasil): nadie cruza el Atlántico para bajar de categoría. Vale
+ * para toda la carrera y para TODOS los caminos que ofrecen un club, no sólo
+ * el mercado: las inferiores, la cesión y la vuelta a casa incluidas.
+ */
+function reachable(state, club) {
+  const home = countryOf(state.player.country);
+  return !(home.confederation === "EHF" && club.confederation === "PATHF");
+}
+
 function candidatePool(state, { minStrength, maxStrength }) {
   const home = countryOf(state.player.country);
   const scope = marketScope(state);
   const regions = REGION_BY_CONFEDERATION[home.confederation] || ["EHF"];
-
-  // Un europeo no ficha en Sudamérica. Allá el handball es amateur (Argentina)
-  // o semipro (Brasil): nadie cruza el Atlántico para bajar de categoría.
-  // La regla vale toda la carrera, también cuando el mercado ya es global —
-  // que es justo donde antes se colaban ofertas de clubes argentinos.
-  const allowed = (club) =>
-    !(home.confederation === "EHF" && club.confederation === "PATHF");
+  const allowed = (club) => reachable(state, club);
 
   for (let widen = 0; widen <= 4; widen += 1) {
     const low = clamp(minStrength - widen, 1, 5);
@@ -782,8 +787,19 @@ export function createCareer(profile, rng = Math.random) {
 
 function academyOffers(state, rng) {
   const home = countryOf(state.player.country);
-  const pool = CLUBS.filter((club) => club.country === home.code && club.strength <= 3);
-  const offers = sampleUnique(pool.length >= 3 ? pool : CLUBS.filter((c) => c.strength <= 2), 3, rng);
+  // Se busca de lo más cercano a lo más lejano, y siempre dentro de lo que
+  // ese jugador puede alcanzar: sin el filtro una francesa arrancaba en la
+  // Liga de Honor argentina, y filtrando de más se quedaba sin ninguna oferta
+  // (en el femenino varias ligas europeas son de una sola división).
+  const alcanzables = CLUBS.filter((club) => reachable(state, club));
+  const escalera = [
+    CLUBS.filter((club) => club.country === home.code && club.strength <= 3),
+    alcanzables.filter((club) => club.confederation === home.confederation && club.strength <= 2),
+    alcanzables.filter((club) => club.confederation === home.confederation && club.strength <= 3),
+    [...alcanzables].sort((a, b) => (a.strength ?? 5) - (b.strength ?? 5)).slice(0, 40),
+  ];
+  const pool = escalera.find((lista) => lista.length >= 3) || alcanzables;
+  const offers = sampleUnique(pool, 3, rng);
   return {
     id: "inferiores",
     kind: "club-offer",
@@ -888,10 +904,16 @@ function finalCycleEvent(state, rng) {
 }
 
 function loanDestination(state, rng) {
-  const pool = CLUBS.filter((club) => club.id !== state.club.id && club.strength < state.club.strength);
+  const pool = CLUBS.filter((club) => club.id !== state.club.id
+    && club.strength < state.club.strength && reachable(state, club));
   const home = countryOf(state.player.country);
   const domestic = pool.filter((club) => club.country === home.code);
-  return pick(domestic.length ? domestic : pool.length ? pool : CLUBS, rng);
+  // El último respaldo también respeta la regla: sin esto una francesa
+  // terminaba cedida a un club argentino cuando no había nada más chico.
+  const alcanzables = CLUBS.filter((club) => reachable(state, club));
+  return pick(domestic.length ? domestic
+    : pool.length ? pool
+    : alcanzables.length ? alcanzables : CLUBS, rng);
 }
 
 function chooseSpecialEvent(state, rng) {
