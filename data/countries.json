@@ -232,7 +232,7 @@
   "name": "Brasil",
   "flag": "🇧🇷",
   "confederation": "PATHF",
-  "startable": false,
+  "startable": true,
   "domestic_cup": "Copa Brasil",
   "pyramid": [
    "bra-liga-nacional"

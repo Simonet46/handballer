@@ -1,0 +1,148 @@
+{
+ "source": "restcbhb.bigmidia.com (API pública de la CBHb)",
+ "branch": "F",
+ "events": [
+  {
+   "id": 3156,
+   "name": "LIGA NACIONAL FEMININA FASE DE GRUPOS"
+  },
+  {
+   "id": 2904,
+   "name": "LIGA NACIONAL DE HANDEBOL FEMININA 2024 FASE DE GRUPOS"
+  },
+  {
+   "id": 2715,
+   "name": "LIGA NACIONAL FEMININA - FINAL FOUR"
+  }
+ ],
+ "clubs": [
+  {
+   "cbhb_id": 127,
+   "name": "ACRIHF",
+   "raw_name": "ACRIHF",
+   "sigla": "ACRIHF/UNESC/FME CRICIÚMA",
+   "crest_url": "https://sge.cbhb.org.br/_uploads/estabelecimento/logo/116b27eb45fb80410637d3307645d8e0.png",
+   "crest": "assets/crests/cbhb-127.png"
+  },
+  {
+   "cbhb_id": 1337,
+   "name": "Campo Bom",
+   "raw_name": "ASSOCIAÇÃO ESPORTIVA DE CAMPO BOM - AECB",
+   "sigla": "AECB",
+   "crest_url": "https://sge.cbhb.org.br/_uploads/estabelecimento/logo/noLogo.png",
+   "crest": "assets/crests/cbhb-1337.png"
+  },
+  {
+   "cbhb_id": 338,
+   "name": "Cascavel Handebol",
+   "raw_name": "ASSOCIAÇÃO CASCAVELENSE DE HANDEBOL",
+   "sigla": "ACH / CASCAVEL",
+   "crest_url": "https://sge.cbhb.org.br/_uploads/estabelecimento/logo/9ed7494a3aca452e4e44c25d82582765.jpg",
+   "crest": "assets/crests/cbhb-338.jpg"
+  },
+  {
+   "cbhb_id": 1475,
+   "name": "Concórdia",
+   "raw_name": "AAU CONCORDIA",
+   "sigla": "AAU CONCORDIA",
+   "crest_url": "https://sge.cbhb.org.br/_uploads/estabelecimento/logo/cbb3f78ec59beb139d7e36180a15ccad.png",
+   "crest": "assets/crests/cbhb-1475.png"
+  },
+  {
+   "cbhb_id": 1439,
+   "name": "EC Pinheiros",
+   "raw_name": "ESPORTE CLUBE PINHEIROS",
+   "sigla": "E.C.  PINHEIROS",
+   "crest_url": "https://sge.cbhb.org.br/_uploads/estabelecimento/logo/9ba43c60c77e3189c05985e950334dae.jpg",
+   "crest": "assets/crests/cbhb-1439.jpg"
+  },
+  {
+   "cbhb_id": 799,
+   "name": "Esporte Solidário",
+   "raw_name": "ONG-ESPORTE SOLIDÁRIO",
+   "sigla": "ONG-ESPORTE SOLIDÁRI",
+   "crest_url": "https://sge.cbhb.org.br/_uploads/estabelecimento/logo/noLogo.png",
+   "crest": "assets/crests/cbhb-799.png"
+  },
+  {
+   "cbhb_id": 736,
+   "name": "HCM",
+   "raw_name": "HCM",
+   "sigla": "HCM/MANAUARA",
+   "crest_url": "https://sge.cbhb.org.br/_uploads/estabelecimento/logo/bb141cde839a4a5f02175774f4b41efa.png",
+   "crest": "assets/crests/cbhb-736.png"
+  },
+  {
+   "cbhb_id": 1634,
+   "name": "Hand Torres",
+   "raw_name": "ATHB/HAND-TORRES",
+   "sigla": "ATHB/HAND-TORRES",
+   "crest_url": "https://sge.cbhb.org.br/_uploads/estabelecimento/logo/noLogo.png",
+   "crest": "assets/crests/cbhb-1634.png"
+  },
+  {
+   "cbhb_id": 437,
+   "name": "Jaboatão dos Guararapes",
+   "raw_name": "ASS. DESP. JABOATÃO DOS GUARARAPES/SPORT CLUB DO RECIFE-JAGUAR/IPC/INST, TODOS",
+   "sigla": "SPORT CLUB DO RECIFE",
+   "crest_url": "https://sge.cbhb.org.br/_uploads/estabelecimento/logo/f427cd0204e6cad4d6ae2e746955e31c.jpg",
+   "crest": "assets/crests/cbhb-437.jpg"
+  },
+  {
+   "cbhb_id": 1469,
+   "name": "Maringá Handebol",
+   "raw_name": "ASSOCIACAO MARINGAENSE DE HANDEBOL",
+   "sigla": "AMH Maringá",
+   "crest_url": "https://sge.cbhb.org.br/_uploads/estabelecimento/logo/a7ae08d43f30bcf6891bc8ba09079d01.jpeg",
+   "crest": "assets/crests/cbhb-1469.jpeg"
+  },
+  {
+   "cbhb_id": 713,
+   "name": "Nacional HC",
+   "raw_name": "SOCIEDADE ESPORTIVA CULTURAL E SOCIAL NACIONAL",
+   "sigla": "NHC",
+   "crest_url": "https://sge.cbhb.org.br/_uploads/estabelecimento/logo/feddd345cdfb239a33f49883d7e48b1f.jpg",
+   "crest": "assets/crests/cbhb-713.jpg"
+  },
+  {
+   "cbhb_id": 830,
+   "name": "Português do Recife",
+   "raw_name": "CLUBE PORTUGUÊS DO RECIFE",
+   "sigla": "PORTUGUÊS/FMO",
+   "crest_url": "https://sge.cbhb.org.br/_uploads/estabelecimento/logo/1523c34f2f03faff9dc7a2c96dc73735.png",
+   "crest": "assets/crests/cbhb-830.png"
+  },
+  {
+   "cbhb_id": 455,
+   "name": "RIO Negro",
+   "raw_name": "RIO NEGRO",
+   "sigla": "ARNC",
+   "crest_url": "https://sge.cbhb.org.br/_uploads/estabelecimento/logo/bc771ca7d23fc306cbe1407dabfe7a78.jpg",
+   "crest": "assets/crests/cbhb-455.jpg"
+  },
+  {
+   "cbhb_id": 2478,
+   "name": "Sacramento",
+   "raw_name": "CLUBE ALAGOANO DE HANDEBOL/Sacramento",
+   "sigla": "CAHAN",
+   "crest_url": "https://sge.cbhb.org.br/_uploads/estabelecimento/logo/82309c8beab6568b9a4616ed55f8c773.png",
+   "crest": "assets/crests/cbhb-2478.png"
+  },
+  {
+   "cbhb_id": 2284,
+   "name": "Sorocaba",
+   "raw_name": "SER/UNIMED/SOROCABA ",
+   "sigla": "SER/UNIMED/SOROCABA ",
+   "crest_url": "https://sge.cbhb.org.br/_uploads/estabelecimento/logo/8f51d9e358bda8617cb3b39bdaa6d771.jpg",
+   "crest": "assets/crests/cbhb-2284.jpg"
+  },
+  {
+   "cbhb_id": 2623,
+   "name": "São Carlos",
+   "raw_name": "H7 Esportes La Salle São Carlos",
+   "sigla": "H7 Esportes La Salle São Carlos",
+   "crest_url": "https://sge.cbhb.org.br/_uploads/estabelecimento/logo/d9b77df8aa6f502d6d78fc5c739bc19b.png",
+   "crest": "assets/crests/cbhb-2623.png"
+  }
+ ]
+}

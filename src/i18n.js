@@ -294,6 +294,10 @@ const es = {
     },
   },
   events: {
+    "emigrar-bra": {
+      eyebrow: "Fin de mes en São Paulo", title: "En Brasil se cobra, pero poco",
+      body: "La Liga Nacional paga: unos pocos cientos de euros que alcanzan justo. Para vivir del handball de verdad hay que cruzar el Atlántico, y la ventana es ahora.",
+    },
     "doble-turno": {
       eyebrow: "Gimnasio", title: "El preparador te ofrece doble turno",
       body: "Podés ganar el kilo de músculo que te falta para aguantar el contacto en seis metros, o llegar fundido al fin de semana.",
@@ -436,7 +440,7 @@ const es = {
     },
     emigrar: {
       eyebrow: "La decisión", title: "En Argentina no vas a poder vivir de esto",
-      body: "Acá se juega gratis: entrenás a la noche, después del laburo, y el club te paga los viáticos si hay. Todos los que llegaron se fueron antes de los 23. Estas son las dos puertas que hay.",
+      body: "Acá se juega gratis: entrenás a la noche, después del laburo, y el club te paga los viáticos si hay. Todos los que llegaron se fueron antes de los 23. Estas son las puertas que hay.",
       choices: {
         filial: { label: "Filial de un club grande", detail: "Entrenás con los mejores · jugás con los suplentes" },
         "liga-chica": { label: "Liga chica de Europa", detail: "Jugás los 60 minutos · no te ve nadie" },
@@ -866,6 +870,10 @@ const fr = {
     },
   },
   events: {
+    "emigrar-bra": {
+      eyebrow: "Fin de mois à São Paulo", title: "Au Brésil on est payé, mais peu",
+      body: "La Liga Nacional paie : quelques centaines d'euros, juste de quoi tenir. Pour vivre vraiment du handball il faut traverser l'Atlantique, et la fenêtre est maintenant.",
+    },
     "doble-turno": {
       eyebrow: "Salle de muscu", title: "Le préparateur te propose un double entraînement",
       body: "Tu peux gagner les kilos de muscle qui te manquent pour tenir le contact à six mètres, ou arriver cramé le week-end.",
@@ -1008,7 +1016,7 @@ const fr = {
     },
     emigrar: {
       eyebrow: "La décision", title: "En Argentine tu ne pourras pas en vivre",
-      body: "Ici on joue gratuitement : entraînement le soir, après le travail, et le club rembourse les trajets quand il peut. Tous ceux qui sont arrivés sont partis avant 23 ans. Voilà les deux portes qui existent.",
+      body: "Ici on joue gratuitement : entraînement le soir, après le travail, et le club rembourse les trajets quand il peut. Tous ceux qui sont arrivés sont partis avant 23 ans. Voilà les portes qui existent.",
       choices: {
         filial: { label: "Équipe réserve d'un grand club", detail: "Tu t'entraînes avec les meilleurs · tu joues avec les remplaçants" },
         "liga-chica": { label: "Petit championnat européen", detail: "Tu joues les 60 minutes · personne ne te voit" },
@@ -1438,6 +1446,10 @@ const de = {
     },
   },
   events: {
+    "emigrar-bra": {
+      eyebrow: "Monatsende in São Paulo", title: "In Brasilien wird gezahlt — aber wenig",
+      body: "Die Liga Nacional zahlt: ein paar hundert Euro, gerade genug. Wer wirklich vom Handball leben will, muss über den Atlantik, und das Fenster ist jetzt.",
+    },
     "doble-turno": {
       eyebrow: "Kraftraum", title: "Der Athletiktrainer bietet dir eine Doppelschicht an",
       body: "Du kannst das Kilo Muskelmasse holen, das dir am Kreis fehlt — oder ausgelaugt ins Wochenende gehen.",
@@ -1580,7 +1592,7 @@ const de = {
     },
     emigrar: {
       eyebrow: "Die Entscheidung", title: "In Argentinien kannst du davon nicht leben",
-      body: "Hier spielt man umsonst: Training abends, nach der Arbeit, und der Verein zahlt die Fahrt, wenn Geld da ist. Alle, die es geschafft haben, sind vor 23 gegangen. Das sind die zwei Türen, die es gibt.",
+      body: "Hier spielt man umsonst: Training abends, nach der Arbeit, und der Verein zahlt die Fahrt, wenn Geld da ist. Alle, die es geschafft haben, sind vor 23 gegangen. Das sind die Türen, die es gibt.",
       choices: {
         filial: { label: "Zweite Mannschaft eines Großen", detail: "Du trainierst mit den Besten · du spielst mit den Reservisten" },
         "liga-chica": { label: "Kleine europäische Liga", detail: "Du spielst die vollen 60 Minuten · niemand sieht dich" },

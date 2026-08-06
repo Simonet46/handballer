@@ -56,7 +56,8 @@ COUNTRIES = {
     "QAT": dict(name="Qatar", flag="\U0001F1F6\U0001F1E6", conf="AHF", cup="Emir Cup"),
     "EGY": dict(name="Egipto", flag="\U0001F1EA\U0001F1EC", conf="CAHB", cup="Copa de Egipto"),
     "TUN": dict(name="Túnez", flag="\U0001F1F9\U0001F1F3", conf="CAHB", cup="Coupe de Tunisie"),
-    "BRA": dict(name="Brasil", flag="\U0001F1E7\U0001F1F7", conf="PATHF", cup="Copa Brasil"),
+    "BRA": dict(name="Brasil", flag="\U0001F1E7\U0001F1F7", conf="PATHF", startable=True,
+                cup="Copa Brasil"),
     "JPN": dict(name="Japón", flag="\U0001F1EF\U0001F1F5", conf="AHF", cup="All Japan Handball Championship"),
 }
 

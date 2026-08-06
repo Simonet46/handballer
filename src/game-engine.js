@@ -149,6 +149,8 @@ export function loadUniverse({ leagues, countries }) {
       confederation: league.confederation,
       countryName: league.country_name,
       amateur: Boolean(league.amateur),
+      // Semipro: se cobra poco (Brasil). Ni amateur ni profesional pleno.
+      semipro: Boolean(league.semipro),
       prestige: league.prestige ?? 3,
       // Filial de un club grande: el "B" o "II". Es la puerta de entrada
       // típica del sudamericano que llega a Europa sin nombre.
@@ -264,6 +266,12 @@ export function projectSquadRole(state, club = state.club) {
 export function estimateSalary(state, roleKey = state.squadRole) {
   const club = state.club;
   if (!club || club.freeAgent || club.amateur) return 0;
+  // Brasil es semipro: se cobra, pero poco. Un titular de la Liga Nacional
+  // ronda los 500-1.500 €/mes, lejísimos de cualquier liga europea.
+  if (club.semipro) {
+    const role = { juvenil: 0.4, rotacion: 0.7, titular: 1, franquicia: 1.4 }[roleKey] || 0.7;
+    return Math.round(((club.strength >= 3 ? 900 : 500) * role) / 50) * 50;
+  }
   const strength = club.strength ?? 2;
   const prestige = club.prestige ?? 3;
   const base = [0, 1500, 3000, 5500, 10000, 14500][strength];
@@ -967,6 +975,22 @@ function emigrationEvent(state, rng) {
   );
 
   const choices = [];
+
+  // La puerta brasileña: la Liga Nacional es semipro, apenas mejor que
+  // Argentina, así que sólo los dos grandes justifican cruzar la frontera —
+  // y sólo mientras sos joven. No siempre está: aparece cuando aparece.
+  if (home.code === "ARG" && state.age <= 20 && rng() < 0.45) {
+    const brasil = CLUBS.filter((club) => club.country === "BRA" && club.strength >= 3);
+    const destino = pick(brasil, rng);
+    if (destino) {
+      choices.push({
+        ...clubChoice(state, destino, "firmar", choices.length),
+        id: "brasil",
+        effects: { potential: 2, rating: 1, form: 1, loyalty: -1 }
+      });
+    }
+  }
+
   const filial = pick(reserves.length ? reserves : abroad.filter((c) => c.strength <= 2), rng);
   if (filial) {
     choices.push({
@@ -989,7 +1013,10 @@ function emigrationEvent(state, rng) {
     effects: { loyalty: 5, form: 2, fitness: 3 }
   });
 
-  return { id: "emigrar", kind: "career-event", choices };
+  // Cada país cuenta su propia versión: en Argentina no se cobra nada, en
+  // Brasil se cobra poco. No es la misma decisión.
+  return { id: state.club.semipro ? "emigrar-bra" : "emigrar",
+           kind: "career-event", choices };
 }
 
 function chooseNextEvent(state, rng) {
@@ -1010,7 +1037,10 @@ function chooseNextEvent(state, rng) {
     return contractExpiryEvent(state, rng);
   }
   // El salto a Europa se ofrece una vez, en la ventana en que de verdad pasa.
-  if (state.club.amateur && state.age >= 19 && !state.emigrationOffered) {
+  // Vale para el amateur argentino y también para el semipro brasileño, que
+  // paga poco: en los dos casos, quedarse tiene techo.
+  if ((state.club.amateur || state.club.semipro) && state.age >= 19 &&
+      !state.emigrationOffered) {
     state.emigrationOffered = true;
     return emigrationEvent(state, rng);
   }

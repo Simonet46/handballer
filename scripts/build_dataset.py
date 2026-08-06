@@ -57,6 +57,33 @@ ARG_ELITE = {
 }
 RESERVE_TEAM = re.compile(r"\s+[BCD]$")
 
+# La Liga Nacional brasileña es semipro: apenas mejor que Argentina. Sólo los
+# dos grandes están un escalón arriba — y son los únicos que pueden llamar a
+# un juvenil argentino (ver la ruta de emigración en game-engine.js).
+BRA_GRANDES = {"EC Pinheiros", "Handebol Taubaté"}
+
+
+def cbhb_league(rama="M"):
+    """La Liga Nacional de Handebol desde el padrón oficial de la CBHb."""
+    name = "cbhb.json" if rama == "M" else "cbhb-f.json"
+    path = os.path.join(DATA, name)
+    if not os.path.exists(path):
+        return None
+    payload = json.load(open(path, encoding="utf8"))
+    crests, teams = {}, []
+    for club in sorted(payload["clubs"], key=lambda c: c["name"]):
+        if not club.get("crest"):
+            continue                      # sin escudo no entra: mismo estándar
+        # 3 para los dos grandes (nivel de un club chico europeo), 2 el resto.
+        strength = 3 if club["name"] in BRA_GRANDES else 2
+        teams.append((club["name"], strength, None))
+        crests[club["name"]] = club["crest"]
+    if len(teams) < 6:
+        return None
+    entry = dict(id="bra-liga-nacional", name="Liga Nacional de Handebol",
+                 country="BRA", tier=1, teams=teams, verified=True)
+    return entry, crests
+
 
 def femebal_leagues():
     """Reemplaza las ligas argentinas por el padrón real de data/femebal.json."""
@@ -103,6 +130,8 @@ PRESTIGE = {
     "fra-proligue": 2, "ger-2hbl": 2, "esp-plata": 2,
     "ger-3liga": 1, "esp-primera": 1,
     "arg-liga-honor": 1, "arg-liga-honor-plata": 1, "arg-primera": 1,
+    # Semipro: se cobra poco pero se cobra, y se juega el Panamericano.
+    "bra-liga-nacional": 2,
 }
 DEFAULT_PRESTIGE = 3
 
@@ -126,6 +155,13 @@ def build():
         sources = [entry for entry in sources if entry["country"] != "ARG"] + replacements
         print(f"FeMeBal {season['name']}: {len(replacements)} divisiones, "
               f"{sum(len(r['teams']) for r in replacements)} clubes (padrón oficial)")
+
+    brasil = cbhb_league("M")
+    if brasil:
+        entrada, escudos = brasil
+        sources = [e for e in sources if e["country"] != "BRA"] + [entrada]
+        femebal_crests.update(escudos)
+        print(f"CBHb: Liga Nacional con {len(entrada['teams'])} clubes (padrón oficial)")
 
     for entry in sources:
         country = COUNTRIES[entry["country"]]
@@ -161,7 +197,9 @@ def build():
             "domestic_cup": country.get("cup"),
             "super_cup": country.get("supercup"),
             # En Argentina el handball es amateur: no hay contrato ni sueldo.
+            # Brasil es semipro: se cobra poco, pero se cobra.
             "amateur": entry["country"] == "ARG",
+            "semipro": entry["country"] == "BRA",
             "verified": entry["verified"],
             "teams": teams,
         })
