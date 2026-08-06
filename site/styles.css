@@ -401,9 +401,12 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
 
 /* Foto del evento: banner panorámico, no pantalla completa — la decisión
    tiene que entrar sin scrollear. */
+/* Sin recorte: la foto se muestra entera, con su forma original. Antes se
+   forzaba a 21:9 con object-fit: cover y se comía media imagen. */
 .decision-photo {
-  width: 100%; aspect-ratio: 21 / 9; max-height: 190px; object-fit: cover;
-  border-radius: var(--radius); margin-bottom: 14px; display: block;
+  max-width: 100%; max-height: 230px; width: auto; height: auto;
+  object-fit: contain; margin: 0 auto 14px; display: block;
+  border-radius: var(--radius);
   -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent);
   mask-image: linear-gradient(to bottom, #000 78%, transparent);
 }

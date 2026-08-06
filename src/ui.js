@@ -1211,7 +1211,9 @@ let worldCache = {};
 // solo femenino y solo Argentina. Todos salen de la función top_runs.
 const WORLD_FILTERS = [
   { id: "all" },
-  { id: "today", daily: true },
+  // "Hoy" es todo lo jugado hoy; el desafío es sólo el de la semilla del día.
+  { id: "today", today: true },
+  { id: "daily", daily: true },
   { id: "week", days: 7 },
   { id: "fem", rama: "F" },
   { id: "arg", country: "ARG" },
@@ -1274,6 +1276,7 @@ async function fetchWorld(filter) {
       p_country: filter.country ?? null,
       p_days: filter.days ?? null,
       p_daily: filter.daily ?? false,
+      p_today: filter.today ?? false,
     }),
   }).then((r) => r.json());
   return { rows: Array.isArray(rows) ? rows : [], stats: null };
@@ -1300,7 +1303,9 @@ async function renderWorldBoard() {
     return;
   }
   if (!rows.length) {
-    box.innerHTML = `<li class="board-empty">${t(filter.id === "today" ? "board.todayEmpty" : "board.worldEmpty")}</li>`;
+    const vacio = filter.id === "daily" ? "board.dailyEmpty"
+      : filter.id === "today" ? "board.todayEmpty" : "board.worldEmpty";
+    box.innerHTML = `<li class="board-empty">${t(vacio)}</li>`;
     el("board-note").textContent = "";
     return;
   }
