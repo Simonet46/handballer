@@ -120,6 +120,9 @@ button { font: inherit; color: inherit; cursor: pointer; }
 /* La banda negra alemana cae justo donde va el apellido: se sube por encima. */
 .jersey[data-country="GER"] .jersey-name { top: 11%; }
 .jersey[data-country="ESP"] .jersey-name { color: #fff; }
+/* Canarinha: verde sobre amarillo, como la de verdad. */
+.jersey[data-country="BRA"] .jersey-name,
+.jersey[data-country="BRA"] .jersey-number { color: #0d6b34; }
 .jersey[data-country="ESP"] .jersey-number { color: #ffc400; }
 /* Como en una camiseta de verdad: el apellido arriba de todo, bien grande,
    y el dorsal enorme en el medio de la espalda. */
