@@ -68,6 +68,7 @@ for (const season of sample.timeline) {
   const line = `  ${season.year} ${String(season.age).padStart(2)}a  ${season.club.padEnd(30)} ` +
     `${season.league?.padEnd(24) ?? "".padEnd(24)} VAL ${season.rating}  ` +
     `${season.matches}pj ${season.goals}g`;
-  console.log(season.honours.length ? `${line}   🏆 ${season.honours.join(", ")}` : line);
+  // Cada honour es {key, params, name}: el name viene sin traducir, alcanza acá.
+  console.log(season.honours.length ? `${line}   🏆 ${season.honours.map((h) => h.name).join(", ")}` : line);
 }
 console.log(`\n${shareText(sample)}`);
