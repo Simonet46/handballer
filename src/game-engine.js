@@ -286,6 +286,9 @@ export function estimateSalary(state, roleKey = state.squadRole) {
   let salary = base * league * role * level;
   // España paga poco... salvo el Barcelona, que aun así ronda los 20.000.
   if (club.country === "ESP") salary *= strength === 5 ? 0.65 : 0.4;
+  // Los Balcanes pagan como España: poco, salvo el grande de turno (Zagreb,
+  // Celje, Vardar), que aun así queda un escalón abajo del Barcelona.
+  if (["CRO", "SLO", "MKD"].includes(club.country)) salary *= 0.4;
   return Math.min(30000, Math.round(salary / 500) * 500);
 }
 

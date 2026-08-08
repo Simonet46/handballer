@@ -144,7 +144,7 @@
   "name": "Croacia",
   "flag": "🇭🇷",
   "confederation": "EHF",
-  "startable": false,
+  "startable": true,
   "domestic_cup": "Hrvatski kup",
   "pyramid": [
    "cro-premijer-liga"

@@ -138,6 +138,9 @@ button { font: inherit; color: inherit; cursor: pointer; }
 /* Canarinha: verde sobre amarillo, como la de verdad. */
 .jersey[data-country="BRA"] .jersey-name,
 .jersey[data-country="BRA"] .jersey-number { color: #0d6b34; }
+/* El rojo del ajedrezado croata, sobre la espalda blanca. */
+.jersey[data-country="CRO"] .jersey-name,
+.jersey[data-country="CRO"] .jersey-number { color: #c8102e; }
 .jersey[data-country="ESP"] .jersey-number { color: #ffc400; }
 /* Como en una camiseta de verdad: el apellido arriba de todo, bien grande,
    y el dorsal enorme en el medio de la espalda. */

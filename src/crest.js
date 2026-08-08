@@ -64,7 +64,7 @@ export function monogramCrest(club, size = 96) {
  * propio club le dio. Para apagar todos de golpe, dejá el set vacío: el juego
  * sigue funcionando con monogramas. Ver docs/LICENCIAS.md.
  */
-export const ALLOWED_CREST_SOURCES = new Set(["league", "femebal", "cbhb", "ehf", "wikipedia"]);
+export const ALLOWED_CREST_SOURCES = new Set(["league", "femebal", "cbhb", "hrs", "ehf", "wikipedia"]);
 
 /** Ruta del escudo del club, con monograma de reserva. */
 export function crestSrc(club) {

@@ -1,0 +1,136 @@
+{
+ "source": "api.hrs.hr (Hrvatski rukometni savez, widget de livescore)",
+ "branch": "M",
+ "competition": "Paket24 Premijer liga",
+ "season": "2025/26",
+ "clubs": [
+  {
+   "hrs_id": 1607,
+   "name": "RK Zagreb",
+   "raw_name": "Zagreb",
+   "rank": 1,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1607.png",
+   "crest": "assets/crests/hrs-1607.png"
+  },
+  {
+   "hrs_id": 1405,
+   "name": "MRK Sesvete",
+   "raw_name": "Sesvete Triglav Osiguranje",
+   "rank": 2,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1405.png",
+   "crest": "assets/crests/hrs-1405.png"
+  },
+  {
+   "hrs_id": 1514,
+   "name": "RK Nexe",
+   "raw_name": "Nexe",
+   "rank": 3,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1514.png",
+   "crest": "assets/crests/hrs-1514.png"
+  },
+  {
+   "hrs_id": 1390,
+   "name": "HRK Gorica",
+   "raw_name": "Gorica",
+   "rank": 4,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1390.png",
+   "crest": "assets/crests/hrs-1390.png"
+  },
+  {
+   "hrs_id": 1407,
+   "name": "MRK Trogir",
+   "raw_name": "Trogir",
+   "rank": 5,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1407.png",
+   "crest": "assets/crests/hrs-1407.png"
+  },
+  {
+   "hrs_id": 1398,
+   "name": "MRK Dugo Selo",
+   "raw_name": "Dugo Selo",
+   "rank": 6,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1398.png",
+   "crest": "assets/crests/hrs-1398.png"
+  },
+  {
+   "hrs_id": 1540,
+   "name": "RK Poreč",
+   "raw_name": "Poreč",
+   "rank": 7,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1540.png",
+   "crest": "assets/crests/hrs-1540.png"
+  },
+  {
+   "hrs_id": 1397,
+   "name": "MRK Čakovec",
+   "raw_name": "Čakovec",
+   "rank": 8,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1397.png",
+   "crest": "assets/crests/hrs-1397.png"
+  },
+  {
+   "hrs_id": 1550,
+   "name": "RK Rudar",
+   "raw_name": "Rudar",
+   "rank": 9,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1550.png",
+   "crest": "assets/crests/hrs-1550.png"
+  },
+  {
+   "hrs_id": 1502,
+   "name": "RK Metković",
+   "raw_name": "Metković-Zalmo",
+   "rank": 10,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1502.png",
+   "crest": "assets/crests/hrs-1502.png"
+  },
+  {
+   "hrs_id": 1528,
+   "name": "RK Osijek",
+   "raw_name": "Osijek",
+   "rank": 11,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1528.png",
+   "crest": "assets/crests/hrs-1528.png"
+  },
+  {
+   "hrs_id": 1569,
+   "name": "RK Spačva Vinkovci",
+   "raw_name": "Bjelin Spačva Vinkovci",
+   "rank": 12,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1569.png",
+   "crest": "assets/crests/hrs-1569.png"
+  },
+  {
+   "hrs_id": 1608,
+   "name": "RK Zamet",
+   "raw_name": "Zamet",
+   "rank": 13,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1608.png",
+   "crest": "assets/crests/hrs-1608.png"
+  },
+  {
+   "hrs_id": 1511,
+   "name": "RK Moslavina",
+   "raw_name": "Moslavina",
+   "rank": 14,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1511.png",
+   "crest": "assets/crests/hrs-1511.png"
+  },
+  {
+   "hrs_id": 1388,
+   "name": "GRK Varaždin 1930",
+   "raw_name": "Varaždin 1930",
+   "rank": 15,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1388.png",
+   "crest": "assets/crests/hrs-1388.png"
+  },
+  {
+   "hrs_id": 1584,
+   "name": "RK Umag",
+   "raw_name": "Umag",
+   "rank": 16,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1584.png",
+   "crest": "assets/crests/hrs-1584.png"
+  }
+ ]
+}

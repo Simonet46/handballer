@@ -1,0 +1,120 @@
+{
+ "source": "api.hrs.hr (Hrvatski rukometni savez, widget de livescore)",
+ "branch": "F",
+ "competition": "1. HRL Žene",
+ "season": "2025/26",
+ "clubs": [
+  {
+   "hrs_id": 1537,
+   "name": "RK Podravka",
+   "raw_name": "Podravka",
+   "rank": 1,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1537.png",
+   "crest": "assets/crests/hrs-1537.png"
+  },
+  {
+   "hrs_id": 1491,
+   "name": "RK Lokomotiva Zagreb",
+   "raw_name": "Lokomotiva Zagreb",
+   "rank": 2,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1491.png",
+   "crest": "assets/crests/hrs-1491.png"
+  },
+  {
+   "hrs_id": 1732,
+   "name": "ŽRK Zrinski Čakovec",
+   "raw_name": "Zrinski",
+   "rank": 3,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1732.png",
+   "crest": "assets/crests/hrs-1732.png"
+  },
+  {
+   "hrs_id": 1643,
+   "name": "ŽRK Bjelovar",
+   "raw_name": "Bjelovar",
+   "rank": 4,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1643.png",
+   "crest": "assets/crests/hrs-1643.png"
+  },
+  {
+   "hrs_id": 1434,
+   "name": "ŽRK Dalmatinka Ploče",
+   "raw_name": "Dalmatinka",
+   "rank": 5,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1434.png",
+   "crest": "assets/crests/hrs-1434.png"
+  },
+  {
+   "hrs_id": 1706,
+   "name": "ŽRK Rudar Labin",
+   "raw_name": "Rudar",
+   "rank": 6,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1706.png",
+   "crest": "assets/crests/hrs-1706.png"
+  },
+  {
+   "hrs_id": 1673,
+   "name": "ŽRK Koka Varaždin",
+   "raw_name": "Koka",
+   "rank": 7,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1673.png",
+   "crest": "assets/crests/hrs-1673.png"
+  },
+  {
+   "hrs_id": 1714,
+   "name": "ŽRK Split 2010",
+   "raw_name": "Split 2010",
+   "rank": 8,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1714.png",
+   "crest": "assets/crests/hrs-1714.png"
+  },
+  {
+   "hrs_id": 1730,
+   "name": "ŽRK Zamet",
+   "raw_name": "Zamet",
+   "rank": 9,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1730.png",
+   "crest": "assets/crests/hrs-1730.png"
+  },
+  {
+   "hrs_id": 1694,
+   "name": "ŽRK Osijek",
+   "raw_name": "Osijek",
+   "rank": 10,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1694.png",
+   "crest": "assets/crests/hrs-1694.png"
+  },
+  {
+   "hrs_id": 1710,
+   "name": "ŽRK Sinj",
+   "raw_name": "Sinj",
+   "rank": 11,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1710.png",
+   "crest": "assets/crests/hrs-1710.png"
+  },
+  {
+   "hrs_id": 1557,
+   "name": "ŽRK Sesvete",
+   "raw_name": "Sesvete",
+   "rank": 12,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1557.png",
+   "crest": "assets/crests/hrs-1557.png"
+  },
+  {
+   "hrs_id": 1644,
+   "name": "RK Brod",
+   "raw_name": "Brod",
+   "rank": 13,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1644.png",
+   "crest": "assets/crests/hrs-1644.png"
+  },
+  {
+   "hrs_id": 1655,
+   "name": "ŽRK Dugo Selo '55",
+   "raw_name": "Dugo Selo '55",
+   "rank": 14,
+   "crest_url": "https://www.sportinfocentar2.com/coman/logo/1655.png",
+   "crest": "assets/crests/hrs-1655.png"
+  }
+ ]
+}

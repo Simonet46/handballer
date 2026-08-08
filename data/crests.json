@@ -294,11 +294,6 @@
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jaS9MaBEkDF2DcNevMOoSSq7N5MtwFbJ_A7g4eWf8gg5w",
   "ehf_name": "HC Alkaloid"
  },
- "rk-bjelovar": {
-  "file": "assets/crests/ehf-rk-bjelovar.png",
-  "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oLXnQlAhsnXTPCq4jpZ9idGnn6Gva8s_LniMZRPyUNyFA",
-  "ehf_name": "RK Bjelovar"
- },
  "rk-gorenje-velenje": {
   "file": "assets/crests/ehf-rk-gorenje-velenje.png",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYCfkMWwdQKAlWtzMlr2ZTeypQklCHRENrzIOOlOvxxiw",
@@ -313,11 +308,6 @@
   "file": "assets/crests/ehf-rk-trimo-trebnje.png",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYbaAqrbg-fP3Z90I3pokuXwTttUVHECIQURHccdT788Q",
   "ehf_name": "RK Trimo Trebnje"
- },
- "rk-zagreb": {
-  "file": "assets/crests/ehf-rk-zagreb.png",
-  "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbR9hOj4eUbe5QU0rfZqoNYMZkiPOMe-8V_PZEHp9Xfrw",
-  "ehf_name": "HC Zagreb"
  },
  "rtv-1879-basel": {
   "file": "assets/crests/rtv-1879-basel.svg",
@@ -540,11 +530,6 @@
  "qatar-sc": {
   "file": "assets/crests/qatar-sc.svg",
   "source": "https://upload.wikimedia.org/wikipedia/commons/6/65/Flag_of_Qatar.svg"
- },
- "rk-nexe-nasice": {
-  "file": "assets/crests/ehf-rk-nexe-nasice.png",
-  "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jZbH444KTee97XjGHu3KBP32DIaWui_BvOF3XbOxoFXzg",
-  "ehf_name": "RK Nexe"
  },
  "runar-sandefjord": {
   "file": "assets/crests/ehf-runar-sandefjord.png",
@@ -1071,21 +1056,6 @@
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jaOYH9osLjkBd9oNw2R0o0geO8t-o_Goakh5X93sfcj6w",
   "ehf_name": "RK Maribor Branik"
  },
- "rk-dubrava": {
-  "file": "assets/crests/ehf-rk-dubrava.png",
-  "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jZSmg36DF7q5_H03blUNG1k2aMCk84MdaJ5h5SgrK3N9A",
-  "ehf_name": "RK Dubrava"
- },
- "rk-porec": {
-  "file": "assets/crests/ehf-rk-porec.png",
-  "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jaMDhLa-Jz4_lyvHBf6gjmUvRSEr-IsRkniqezDnmFbSQ",
-  "ehf_name": "RK Porec"
- },
- "rk-metkovic": {
-  "file": "assets/crests/ehf-rk-metkovic.png",
-  "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUfbwH0S_Wfq4HAw_W0mWbJMicjebGLgwTfyGap8ux76AZ6G9Tc-56oIVFTgVpIRKdQ",
-  "ehf_name": "RK Metkovic"
- },
  "rk-vardar-1961": {
   "file": "assets/crests/ehf-rk-vardar-1961.png",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYjPdpR1owytQ09MwBBTNl9wgxFcAiGoqYUeaq9qTi-Gg",
@@ -1379,16 +1349,6 @@
  "rk-slovenj-gradec": {
   "file": "assets/crests/ehf-rk-slovenj-gradec.png",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jZL6V6zTMpgeVh6e9uRYL61Z7tW6U4F0hHLKD0fVoY7Dw",
-  "origin": "EHF (relleno de división baja)"
- },
- "grk-varazdin-1930": {
-  "file": "assets/crests/ehf-grk-varazdin-1930.png",
-  "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oKU1WUOB7HtTv7AxdNS61ieVAJD7O0xT-ZlBEjyQMVG_g",
-  "origin": "EHF (relleno de división baja)"
- },
- "r-k-kastela-adriachem": {
-  "file": "assets/crests/ehf-r-k-kastela-adriachem.png",
-  "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oKT6iAGm_mWK-tIVnmVDFd8po2Ill_H0O-pzNauKJLcVQ",
   "origin": "EHF (relleno de división baja)"
  },
  "hit-medalp-tirol": {
