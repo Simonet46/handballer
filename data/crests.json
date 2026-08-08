@@ -1,9 +1,4 @@
 {
- "1-vfl-potsdam": {
-  "file": "assets/crests/1-vfl-potsdam.png",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/6/63/Logo_vfl_potsdam.gif",
-  "bytes": 161618
- },
  "abc-braga": {
   "file": "assets/crests/ehf-abc-braga.png",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbkTo7LdWhMpVvMDZiWg1tHSfUDxEehIMmcVwEG8Q3KQg",
@@ -30,15 +25,6 @@
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYvOKPVK_4M-98zqdV-cYgPHBkebUFcKjFt9axap1Md6A",
   "ehf_name": "Alingsås HK"
  },
- "argentinos-juniors": {
-  "file": "assets/crests/argentinos-juniors.png",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/7/75/EscudoAAAJ.png"
- },
- "asv-hamm-westfalen": {
-  "file": "assets/crests/asv-hamm-westfalen.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Logo_ASV_Hamm-Westfalen.svg",
-  "bytes": 2043
- },
  "baekkelagets-sk": {
   "file": "assets/crests/ehf-baekkelagets-sk.png",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbegSll69XjgT5p3CUFlGMdmOcprugVfxdlk_36A6OMWQ",
@@ -48,49 +34,6 @@
   "file": "assets/crests/ehf-bsv-bern.png",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jZFYg5jP3E023zOCoVYNbGH1zNt0GdAkcoZjGYOrXQ26g",
   "ehf_name": "BSV Bern"
- },
- "cesson-rennes-metropole-hb": {
-  "file": "assets/crests/cesson-rennes-metropole-hb.png",
-  "source": "https://upload.wikimedia.org/wikipedia/fr/e/e4/Logo_du_Cesson-Rennes_M%C3%A9tropole_HB.png",
-  "bytes": 41596
- },
- "chacarita-juniors": {
-  "file": "assets/crests/chacarita-juniors.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Escudo_del_Club_Atl%C3%A9tico_Chacarita_Juniors.svg"
- },
- "chambery-savoie-mont-blanc": {
-  "file": "assets/crests/chambery-savoie-mont-blanc.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/fr/e/e4/Chamb%C3%A9ry_Savoie_Mont-Blanc_handball_logo.svg",
-  "bytes": 22260
- },
- "club-atletico-all-boys": {
-  "file": "assets/crests/club-atletico-all-boys.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Escudo_del_Club_Atl%C3%A9tico_All_Boys.svg"
- },
- "club-atletico-atlanta": {
-  "file": "assets/crests/club-atletico-atlanta.png",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/8/87/Escudoatlanta.png"
- },
- "club-atletico-huracan": {
-  "file": "assets/crests/club-atletico-huracan.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Emblema_oficial_del_Club_Atl%C3%A9tico_Hurac%C3%A1n.svg"
- },
- "club-atletico-lanus": {
-  "file": "assets/crests/club-atletico-lanus.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Escudo_de_Lan%C3%BAs_%28sin_estrellas%29.svg"
- },
- "comunicaciones": {
-  "file": "assets/crests/comunicaciones.png",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Club_comunicaciones_ba_logo.png"
- },
- "defensa-y-justicia": {
-  "file": "assets/crests/defensa-y-justicia.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/7/70/Escudo_del_Club_Social_y_Deportivo_Defensa_y_Justicia.svg"
- },
- "dijon-metropole-handball": {
-  "file": "assets/crests/dijon-metropole-handball.png",
-  "source": "https://upload.wikimedia.org/wikipedia/fr/5/52/Dijon_M%C3%A9tropole_handball_logo.png",
-  "bytes": 133429
  },
  "dinamo-bucuresti": {
   "file": "assets/crests/ehf-dinamo-bucuresti.png",
@@ -102,10 +45,6 @@
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jboyWEtz_enhGVDqkPi5n_5vkx1uaj0pefvVlg51zfpOQ",
   "ehf_name": "Drammen HK"
  },
- "ec-pinheiros": {
-  "file": "assets/crests/ec-pinheiros.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Esporte_Clube_Pinheiros.svg"
- },
  "ehv-aue": {
   "file": "assets/crests/ehv-aue.png",
   "source": "https://upload.wikimedia.org/wikipedia/de/b/b3/EHV_Aue_Logo.jpg",
@@ -116,56 +55,20 @@
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYp8CqPCNSWSVE0m-oUU3KCTwdmdFLZ59ekyXyWbZf49Q",
   "ehf_name": "Elverum Håndball"
  },
- "etoile-du-sahel": {
-  "file": "assets/crests/etoile-du-sahel.png",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Etoile_du_Sahel.png"
- },
  "fc-porto": {
   "file": "assets/crests/ehf-fc-porto.png",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jZARhsqDTt6j0ehAipvabHMBa28_ewfFl206OX8wY8YYw",
   "ehf_name": "FC Porto"
- },
- "ferro-carril-oeste": {
-  "file": "assets/crests/ferro-carril-oeste.png",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Escudo-oficial-fco.png"
- },
- "fh-hafnarfjordur": {
-  "file": "assets/crests/fh-hafnarfjordur.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/4/49/Logo_FH_Hafnarfj%C3%B6rdur.svg"
  },
  "fram-reykjavik": {
   "file": "assets/crests/ehf-fram-reykjavik.png",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbN12s4CAfrYP6nbYRBm3oxOvWV401jpkRzkl5kbbitrg",
   "ehf_name": "Knattspyrnufélagið Fram"
  },
- "frisch-auf-goppingen": {
-  "file": "assets/crests/frisch-auf-goppingen.png",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Logo_FAG_rund_HKS64.jpg",
-  "bytes": 359482
- },
- "fuchse-berlin": {
-  "file": "assets/crests/fuchse-berlin.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/f/f6/F%C3%BCchse_Berlin_Reinickendorf_Logo.svg",
-  "bytes": 8133
- },
  "gc-amicitia-zurich": {
   "file": "assets/crests/ehf-gc-amicitia-zurich.png",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYyGvt4F9yLzzuckQhmHz1sKd57X4UljstaX3ohxU2Cxg",
   "ehf_name": "GC Amicitia Zürich"
- },
- "grand-besancon-doubs-handball": {
-  "file": "assets/crests/grand-besancon-doubs-handball.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/4/40/Logo_du_GBDH.svg",
-  "bytes": 17245
- },
- "grand-nancy-metropole-handball": {
-  "file": "assets/crests/grand-nancy-metropole-handball.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/fr/1/1c/Logo_du_Nancy_Handball.svg"
- },
- "gwd-minden": {
-  "file": "assets/crests/gwd-minden.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/b/be/GWD_Minden_Logo_01.svg",
-  "bytes": 1818
  },
  "handball-west-wien": {
   "file": "assets/crests/ehf-handball-west-wien.png",
@@ -175,11 +78,6 @@
  "hc-empor-rostock": {
   "file": "assets/crests/hc-empor-rostock.svg",
   "source": "https://upload.wikimedia.org/wikipedia/commons/2/2b/670d166715e02b1693a78d03_empor-logo-svg.svg"
- },
- "hc-erlangen": {
-  "file": "assets/crests/hc-erlangen.png",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/0/0a/HC_Erlangen_Logo.png",
-  "bytes": 414590
  },
  "hc-linz-ag": {
   "file": "assets/crests/ehf-hc-linz-ag.png",
@@ -202,16 +100,6 @@
  "hsg-krefeld-niederrhein": {
   "file": "assets/crests/hsg-krefeld-niederrhein.png",
   "source": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Logo_HSG_Krefeld_Niederrhein.png"
- },
- "hsg-nordhorn-lingen": {
-  "file": "assets/crests/hsg-nordhorn-lingen.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/de/f/f3/HSG_Nordhorn-Lingen_Logo.svg",
-  "bytes": 11464
- },
- "hsg-wetzlar": {
-  "file": "assets/crests/hsg-wetzlar.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/de/6/68/HSG_Wetzlar_Logo_01.svg",
-  "bytes": 39861
  },
  "hsv-hamburg": {
   "file": "assets/crests/ehf-hsv-hamburg.png",
@@ -238,38 +126,14 @@
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYFQ-oNOxQyT11bnjCATRlT9urRVw3B1PyiqkW9OnX3mQ",
   "ehf_name": "Kadetten Schaffhausen"
  },
- "limoges-handball": {
-  "file": "assets/crests/limoges-handball.png",
-  "source": "https://upload.wikimedia.org/wikipedia/fr/e/ea/Logo_Limoges_Handball.png",
-  "bytes": 27286
- },
- "massy-essonne-handball": {
-  "file": "assets/crests/massy-essonne-handball.png",
-  "source": "https://upload.wikimedia.org/wikipedia/fr/4/40/Massy_Essonne_Handball_logo.png",
-  "bytes": 247205
- },
- "mulhouse-handball-sud-alsace": {
-  "file": "assets/crests/mulhouse-handball-sud-alsace.png",
-  "source": "https://upload.wikimedia.org/wikipedia/fr/3/36/Logo_Mulhouse_Handball_Sud_Alsace.jpg",
-  "bytes": 87260
- },
  "oranienburger-hc": {
   "file": "assets/crests/oranienburger-hc.png",
   "source": "https://upload.wikimedia.org/wikipedia/de/3/3e/OHC_Wappen.png"
- },
- "orlen-wisla-plock": {
-  "file": "assets/crests/orlen-wisla-plock.png",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Kit_shorts_jomafootballwhitelogo.png"
  },
  "ov-helsingborg": {
   "file": "assets/crests/ov-helsingborg.svg",
   "source": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Handbollsligan_logo.svg",
   "bytes": 13183
- },
- "paris-saint-germain-handball": {
-  "file": "assets/crests/paris-saint-germain-handball.png",
-  "source": "https://upload.wikimedia.org/wikipedia/fr/c/c9/Paris_Saint-Germain_Handball_logo.png",
-  "bytes": 31857
  },
  "pfadi-winterthur": {
   "file": "assets/crests/ehf-pfadi-winterthur.png",
@@ -280,10 +144,6 @@
   "file": "assets/crests/ehf-pler-budapest.png",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbsfncb0cW8BxPLERRm68GaAXMXHbLJLV9aAHk1Af4Q0Q",
   "ehf_name": "PLER-Budapest"
- },
- "racing-club": {
-  "file": "assets/crests/racing-club.png",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/4/4d/EscudosRacing.png"
  },
  "redbergslids-ik": {
   "file": "assets/crests/redbergslids-ik.png",
@@ -313,38 +173,6 @@
   "file": "assets/crests/rtv-1879-basel.svg",
   "source": "https://upload.wikimedia.org/wikipedia/commons/4/41/RTV_1879_Basel_Logo.svg"
  },
- "sag-villa-ballester": {
-  "file": "assets/crests/sag-villa-ballester.png",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/1/15/LOGO_SAGVB_NORMAL_PNG.png"
- },
- "san-lorenzo-de-almagro": {
-  "file": "assets/crests/san-lorenzo-de-almagro.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/7/77/Escudo_del_Club_Atl%C3%A9tico_San_Lorenzo_de_Almagro.svg"
- },
- "sc-dhfk-leipzig": {
-  "file": "assets/crests/sc-dhfk-leipzig.png",
-  "source": "https://upload.wikimedia.org/wikipedia/de/6/6e/SC_DHfK_Handball_Logo.png",
-  "bytes": 278970
- },
- "sc-magdeburg": {
-  "file": "assets/crests/sc-magdeburg.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/de/9/90/SC_Magdeburg_Handball_Wappen.svg",
-  "bytes": 23011
- },
- "sg-bbm-bietigheim": {
-  "file": "assets/crests/sg-bbm-bietigheim.png",
-  "source": "https://upload.wikimedia.org/wikipedia/de/6/66/SG_BBM_Bietigheim_Logo.jpg",
-  "bytes": 85551
- },
- "sg-flensburg-handewitt": {
-  "file": "assets/crests/sg-flensburg-handewitt.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/de/b/bb/SG_Flensburg-Handewitt.svg",
-  "bytes": 15867
- },
- "slask-wroclaw": {
-  "file": "assets/crests/slask-wroclaw.png",
-  "source": "https://upload.wikimedia.org/wikipedia/en/3/3f/%C5%9Al%C4%85sk_Wroc%C5%82aw_handball_crest.png"
- },
  "steaua-bucuresti": {
   "file": "assets/crests/ehf-steaua-bucuresti.png",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbL0Hi-QkhQ5tH5PUYb81VYur8JsCboApc1bnZH1ynlAw",
@@ -360,29 +188,9 @@
   "source": "https://upload.wikimedia.org/wikipedia/de/f/fd/Stralsunder_HV_Logo.gif",
   "bytes": 4999
  },
- "tbv-lemgo-lippe": {
-  "file": "assets/crests/tbv-lemgo-lippe.png",
-  "source": "https://upload.wikimedia.org/wikipedia/de/1/11/TBV_JubiLogo_10RZ_4c.jpg",
-  "bytes": 80722
- },
  "telekom-veszprem": {
   "file": "assets/crests/telekom-veszprem.svg",
   "source": "https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg"
- },
- "thsv-eisenach": {
-  "file": "assets/crests/thsv-eisenach.png",
-  "source": "https://upload.wikimedia.org/wikipedia/de/7/76/ThSV_Eisenach_Logo.gif",
-  "bytes": 44288
- },
- "thw-kiel": {
-  "file": "assets/crests/thw-kiel.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/1/11/THW-Kiel_Logo_schwarz.svg",
-  "bytes": 54828
- },
- "tremblay-en-france-handball": {
-  "file": "assets/crests/tremblay-en-france-handball.png",
-  "source": "https://upload.wikimedia.org/wikipedia/fr/b/bc/Logo_du_Tremblay_Handball.png",
-  "bytes": 357622
  },
  "tsv-altenholz": {
   "file": "assets/crests/tsv-altenholz.svg",
@@ -393,58 +201,19 @@
   "source": "https://upload.wikimedia.org/wikipedia/commons/9/90/TSV-Anderten-Wappen.jpg",
   "bytes": 532307
  },
- "tsv-bayer-dormagen": {
-  "file": "assets/crests/tsv-bayer-dormagen.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/9/94/Logo_TSV_Bayer_Dormagen.svg",
-  "bytes": 4979
- },
  "tsv-st-otmar-st-gallen": {
   "file": "assets/crests/ehf-tsv-st-otmar-st-gallen.png",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jY3N8X6M9EiSSSgXtfRkP5Axeq_r6JjL7ov7zBKgb51Xw",
   "ehf_name": "TSV St. Otmar St. Gallen"
- },
- "tusem-essen": {
-  "file": "assets/crests/tusem-essen.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/1/14/TUSEM_Essen_Logo_01.svg",
-  "bytes": 20373
- },
- "tv-emsdetten": {
-  "file": "assets/crests/tv-emsdetten.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/7/76/TV_Emsdetten_logo.svg",
-  "bytes": 29776
- },
- "tv-grosswallstadt": {
-  "file": "assets/crests/tv-grosswallstadt.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/c/c1/TV_Grosswallstadt_Logo_01.svg",
-  "bytes": 5228
  },
  "tv-huttenberg": {
   "file": "assets/crests/tv-huttenberg.png",
   "source": "https://upload.wikimedia.org/wikipedia/de/e/ee/TV_H%C3%BCttenberg_Logo.gif",
   "bytes": 35418
  },
- "us-creteil-handball": {
-  "file": "assets/crests/us-creteil-handball.png",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/5/5b/1er_logo_de_l%27USCHB.png",
-  "bytes": 391044
- },
- "usam-nimes-gard": {
-  "file": "assets/crests/usam-nimes-gard.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/fr/5/5c/USAM_N%C3%AEmes_Gard_logo.svg",
-  "bytes": 6047
- },
- "velez-sarsfield": {
-  "file": "assets/crests/velez-sarsfield.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/2/21/Escudo_del_Club_Atl%C3%A9tico_V%C3%A9lez_Sarsfield.svg"
- },
  "vfl-fredenbeck": {
   "file": "assets/crests/vfl-fredenbeck.svg",
   "source": "https://upload.wikimedia.org/wikipedia/commons/5/5b/DHB_3.Liga_logo.svg"
- },
- "vfl-gummersbach": {
-  "file": "assets/crests/vfl-gummersbach.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/2/25/Logo-vfl-gummersbach-heller-hintergrund-nk.svg",
-  "bytes": 11666
  },
  "wacker-thun": {
   "file": "assets/crests/ehf-wacker-thun.png",
@@ -454,10 +223,6 @@
  "wilhelmshavener-hv": {
   "file": "assets/crests/wilhelmshavener-hv.svg",
   "source": "https://upload.wikimedia.org/wikipedia/de/f/fa/Wilhelmshavener_HV_Logo.svg"
- },
- "al-ahly-sc": {
-  "file": "assets/crests/al-ahly-sc.png",
-  "source": "https://upload.wikimedia.org/wikipedia/fr/a/a1/Al_Ahly_%28club_of_the_century%29_logo.png"
  },
  "al-wakrah-sc": {
   "file": "assets/crests/al-wakrah-sc.svg",
@@ -477,11 +242,6 @@
   "file": "assets/crests/fjellhammer-il.svg",
   "source": "https://upload.wikimedia.org/wikipedia/commons/1/19/Fjellhammer_Idrettslag.svg"
  },
- "general-lamadrid": {
-  "file": "assets/crests/general-lamadrid.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Club_Atl%C3%A9tico_General_Lamadrid.svg",
-  "bytes": 5994
- },
  "halden-topphandball": {
   "file": "assets/crests/ehf-halden-topphandball.png",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbG4oPOGrtNSzeebLwx7oK_n60drWR86ypseiB-H0WcLA",
@@ -496,11 +256,6 @@
   "file": "assets/crests/ehf-ibv-vestmannaeyjar.png",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jaoRkddd0zkD3gCW4B4XTlJCrbU1fiiwC5kPX1I8lyxjQ",
   "ehf_name": "IBV Vestmannaeyjar"
- },
- "istres-provence-handball": {
-  "file": "assets/crests/istres-provence-handball.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/fr/7/71/Istres_Provence_handball.svg",
-  "bytes": 24071
  },
  "lugi-hf": {
   "file": "assets/crests/ehf-lugi-hf.png",
@@ -522,11 +277,6 @@
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYH_M9YjIIQ4PWfAyWb3w5fgf_KIPhr8FSfR3MGV0c0qw",
   "ehf_name": "OTP Bank - PICK Szeged"
  },
- "pontault-combault-handball": {
-  "file": "assets/crests/pontault-combault-handball.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/fr/0/0d/Pontault-Combault_handball.svg",
-  "bytes": 87440
- },
  "qatar-sc": {
   "file": "assets/crests/qatar-sc.svg",
   "source": "https://upload.wikimedia.org/wikipedia/commons/6/65/Flag_of_Qatar.svg"
@@ -536,34 +286,15 @@
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jar3i5mLLgKUER7JceWOQvWovwONbtop7z3Kvh8LnljsA",
   "ehf_name": "Runar Sandefjord"
  },
- "stade-tunisien": {
-  "file": "assets/crests/stade-tunisien.png",
-  "source": "https://upload.wikimedia.org/wikipedia/de/0/09/Stade_Tunisien.png"
- },
  "stal-mielec": {
   "file": "assets/crests/ehf-stal-mielec.png",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oLrsUi63JHKLfaMCDL1AIOQb6Nu8m8sICM0z-98leE8Qw",
   "ehf_name": "Tauron Stal Mielec"
  },
- "us-saintes-handball": {
-  "file": "assets/crests/us-saintes-handball.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/fr/b/bd/US_Saintes_Handball.svg",
-  "bytes": 100219
- },
- "valence-handball": {
-  "file": "assets/crests/valence-handball.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/fr/3/37/ValenceDr%C3%B4meHandball.svg",
-  "bytes": 199514
- },
  "ystads-if": {
   "file": "assets/crests/ehf-ystads-if.png",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jZOnPqQLIE0wm8wZbrdTKy0Qjekt4i10cUgXP-HkUR91g",
   "ehf_name": "Ystads IF HF"
- },
- "barca": {
-  "file": "assets/crests/barca.png",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/0/03/Kit_body_barcelona2627h.png",
-  "bytes": 803
  },
  "fh-hafnarfjor-ur": {
   "file": "assets/crests/ehf-fh-hafnarfjor-ur.png",

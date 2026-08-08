@@ -661,13 +661,13 @@
      "femebal_id": "00000361",
      "name": "Beata Handball",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/3/7/c/37c43053863392e5.jpg",
-     "crest": "assets/crests/femebal-00000361.png"
+     "crest": "assets/crests/femebal-00000361.jpg"
     },
     {
      "femebal_id": "00000359",
      "name": "C.A. Atlanta",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/3/6/d/36d1fdf306541c08.jpg",
-     "crest": "assets/crests/femebal-00000359.png"
+     "crest": "assets/crests/femebal-00000359.jpg"
     },
     {
      "femebal_id": "00000360",
@@ -679,7 +679,7 @@
      "femebal_id": "00000381",
      "name": "C.A. Defensores de Moreno",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/2/9/f/29f0907796be4c51.jpg",
-     "crest": "assets/crests/femebal-00000381.png"
+     "crest": "assets/crests/femebal-00000381.jpg"
     },
     {
      "femebal_id": "00000366",
@@ -691,7 +691,7 @@
      "femebal_id": "00000617",
      "name": "C.A. Monte Grande",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/6/b/b/6bb43315324a367b.jpg",
-     "crest": "assets/crests/femebal-00000617.png"
+     "crest": "assets/crests/femebal-00000617.jpg"
     },
     {
      "femebal_id": "00000419",
@@ -709,7 +709,7 @@
      "femebal_id": "00000429",
      "name": "C.A. y S. Villa Calzada",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/e/2/d/e2d2cddd58b9962a.jpg",
-     "crest": "assets/crests/femebal-00000429.png"
+     "crest": "assets/crests/femebal-00000429.jpg"
     },
     {
      "femebal_id": "00000394",
@@ -751,7 +751,7 @@
      "femebal_id": "00000384",
      "name": "Club Deportivo Morón",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/d/3/f/d3fb09be3dd00425.jpg",
-     "crest": "assets/crests/femebal-00000384.png"
+     "crest": "assets/crests/femebal-00000384.jpg"
     },
     {
      "femebal_id": "00000519",
@@ -769,7 +769,7 @@
      "femebal_id": "00000393",
      "name": "Instituto Manuel Belgrano",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/f/2/5/f25059fa594ae72c.jpg",
-     "crest": "assets/crests/femebal-00000393.png"
+     "crest": "assets/crests/femebal-00000393.jpg"
     },
     {
      "femebal_id": "00000342",
@@ -781,7 +781,7 @@
      "femebal_id": "00000397",
      "name": "Municipalidad de Avellaneda",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/4/0/8/408895785431e12e.jpg",
-     "crest": "assets/crests/femebal-00000397.png"
+     "crest": "assets/crests/femebal-00000397.jpg"
     },
     {
      "femebal_id": "00000403",
@@ -835,7 +835,7 @@
      "femebal_id": "00000426",
      "name": "UNSAM",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/2/1/6/216291b3834cefe4.jpg",
-     "crest": "assets/crests/femebal-00000426.png"
+     "crest": "assets/crests/femebal-00000426.jpg"
     }
    ]
   },
@@ -921,7 +921,7 @@
      "femebal_id": "00000408",
      "name": "C.A. Nueva Chicago",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/9/e/7/9e727708def566cd.jpg",
-     "crest": "assets/crests/femebal-00000408.png"
+     "crest": "assets/crests/femebal-00000408.jpg"
     },
     {
      "femebal_id": "00000410",
@@ -945,13 +945,13 @@
      "femebal_id": "00000583",
      "name": "C.D. Villa Elisa",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/b/d/3/bd3102d872802b29.jpg",
-     "crest": "assets/crests/femebal-00000583.png"
+     "crest": "assets/crests/femebal-00000583.jpg"
     },
     {
      "femebal_id": "00000383",
      "name": "C.S. Deportivo Merlo",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/1/e/e/1eeb24a9612ef3f6.jpg",
-     "crest": "assets/crests/femebal-00000383.png"
+     "crest": "assets/crests/femebal-00000383.jpg"
     },
     {
      "femebal_id": "00000382",
@@ -981,7 +981,7 @@
      "femebal_id": "00000385",
      "name": "El Portugués",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/1/b/b/1bb0fea8c526ed5f.jpg",
-     "crest": "assets/crests/femebal-00000385.png"
+     "crest": "assets/crests/femebal-00000385.jpg"
     },
     {
      "femebal_id": "00000592",
@@ -993,7 +993,7 @@
      "femebal_id": "00000618",
      "name": "FEINCO",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/c/f/6/cf664e1c29c1ac69.jpg",
-     "crest": "assets/crests/femebal-00000618.png"
+     "crest": "assets/crests/femebal-00000618.jpg"
     },
     {
      "femebal_id": "00000660",
@@ -1029,7 +1029,7 @@
      "femebal_id": "00000616",
      "name": "Municipalidad de San Martín (Ce.M.E.F)",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/2/e/c/2ec2cc46dba08ef7.jpg",
-     "crest": "assets/crests/femebal-00000616.png"
+     "crest": "assets/crests/femebal-00000616.jpg"
     },
     {
      "femebal_id": "00000391",
@@ -1065,7 +1065,7 @@
      "femebal_id": "00000587",
      "name": "S.F.C. y D. Querandí",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/8/2/2/822668374c1e2663.jpg",
-     "crest": "assets/crests/femebal-00000587.png"
+     "crest": "assets/crests/femebal-00000587.jpg"
     },
     {
      "femebal_id": "00000422",
@@ -1077,7 +1077,7 @@
      "femebal_id": "00000427",
      "name": "VHC Juana Manso",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/1/7/6/176b340d798a2059.jpg",
-     "crest": "assets/crests/femebal-00000427.png"
+     "crest": "assets/crests/femebal-00000427.jpg"
     }
    ]
   },
@@ -1125,13 +1125,13 @@
      "femebal_id": "00000628",
      "name": "C.D. y F. Las Mandarinas",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/a/4/4/a4408ed33a2aff6a.gif",
-     "crest": "assets/crests/femebal-00000628.png"
+     "crest": "assets/crests/femebal-00000628.jpg"
     },
     {
      "femebal_id": "00000383",
      "name": "C.S. Deportivo Merlo B",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/1/e/e/1eeb24a9612ef3f6.jpg",
-     "crest": "assets/crests/femebal-00000383.png"
+     "crest": "assets/crests/femebal-00000383.jpg"
     },
     {
      "femebal_id": "00000396",
@@ -1143,7 +1143,7 @@
      "femebal_id": "00000662",
      "name": "Club Municipal Ducilo",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/2/a/d/2adeb584a4024cd9.jpg",
-     "crest": "assets/crests/femebal-00000662.png"
+     "crest": "assets/crests/femebal-00000662.jpg"
     },
     {
      "femebal_id": "00000519",
@@ -1161,13 +1161,13 @@
      "femebal_id": "00000618",
      "name": "FEINCO B",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/c/f/6/cf664e1c29c1ac69.jpg",
-     "crest": "assets/crests/femebal-00000618.png"
+     "crest": "assets/crests/femebal-00000618.jpg"
     },
     {
      "femebal_id": "00000616",
      "name": "Municipalidad de San Martín (Ce.M.E.F) B",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/2/e/c/2ec2cc46dba08ef7.jpg",
-     "crest": "assets/crests/femebal-00000616.png"
+     "crest": "assets/crests/femebal-00000616.jpg"
     }
    ]
   },

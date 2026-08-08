@@ -23,7 +23,7 @@
     "league": "fra-lbe",
     "tier": 1,
     "strength": 5,
-    "crest": "assets/crests/ehfw-brest-bretagne-handball.png",
+    "crest": "assets/crests/ehfw-brest-bretagne-handball.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -79,7 +79,7 @@
     "league": "fra-lbe",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehfw-fleury-loiret-handball.png",
+    "crest": "assets/crests/ehfw-fleury-loiret-handball.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -93,7 +93,7 @@
     "league": "fra-lbe",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehfw-paris-92.png",
+    "crest": "assets/crests/ehfw-paris-92.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -135,7 +135,7 @@
     "league": "fra-lbe",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehfw-es-besancon-feminin.png",
+    "crest": "assets/crests/ehfw-es-besancon-feminin.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -221,7 +221,7 @@
     "league": "hun-nb1-noi",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehfw-alba-fehervar-kc.png",
+    "crest": "assets/crests/ehfw-alba-fehervar-kc.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -249,7 +249,7 @@
     "league": "hun-nb1-noi",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehfw-mtk-budapest.png",
+    "crest": "assets/crests/ehfw-mtk-budapest.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -349,7 +349,7 @@
     "league": "den-damehandboldligaen",
     "tier": 1,
     "strength": 5,
-    "crest": "assets/crests/ehfw-odense-handbold.png",
+    "crest": "assets/crests/ehfw-odense-handbold.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -405,7 +405,7 @@
     "league": "den-damehandboldligaen",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehfw-viborg-hk.png",
+    "crest": "assets/crests/ehfw-viborg-hk.jpg",
     "crest_source": "ehf",
     "wiki": null
    }
@@ -449,7 +449,7 @@
     "league": "nor-rema1000",
     "tier": 1,
     "strength": 5,
-    "crest": "assets/crests/ehfw-storhamar-handball-elite.png",
+    "crest": "assets/crests/ehfw-storhamar-handball-elite.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -463,7 +463,7 @@
     "league": "nor-rema1000",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehfw-fredrikstad-ballklubb.png",
+    "crest": "assets/crests/ehfw-fredrikstad-ballklubb.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -477,7 +477,7 @@
     "league": "nor-rema1000",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehfw-byasen-handball-elite.png",
+    "crest": "assets/crests/ehfw-byasen-handball-elite.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -563,7 +563,7 @@
     "league": "rou-liga-florilor",
     "tier": 1,
     "strength": 5,
-    "crest": "assets/crests/ehfw-csm-bucuresti.png",
+    "crest": "assets/crests/ehfw-csm-bucuresti.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -577,7 +577,7 @@
     "league": "rou-liga-florilor",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehfw-csm-corona-brasov.png",
+    "crest": "assets/crests/ehfw-csm-corona-brasov.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -591,7 +591,7 @@
     "league": "rou-liga-florilor",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehfw-h-c-dunarea-braila.png",
+    "crest": "assets/crests/ehfw-h-c-dunarea-braila.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -605,7 +605,7 @@
     "league": "rou-liga-florilor",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehfw-cs-rapid-bucuresti.png",
+    "crest": "assets/crests/ehfw-cs-rapid-bucuresti.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -619,7 +619,7 @@
     "league": "rou-liga-florilor",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehfw-cs-magura-cisnadie.png",
+    "crest": "assets/crests/ehfw-cs-magura-cisnadie.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -647,7 +647,7 @@
     "league": "rou-liga-florilor",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehfw-scm-ramnicu-valcea.png",
+    "crest": "assets/crests/ehfw-scm-ramnicu-valcea.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -733,7 +733,7 @@
     "league": "ger-hbf",
     "tier": 1,
     "strength": 5,
-    "crest": "assets/crests/ehfw-bv-borussia-dortmund.png",
+    "crest": "assets/crests/ehfw-bv-borussia-dortmund.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -747,7 +747,7 @@
     "league": "ger-hbf",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehfw-buxtehuder-sv.png",
+    "crest": "assets/crests/ehfw-buxtehuder-sv.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -761,7 +761,7 @@
     "league": "ger-hbf",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehfw-vfl-oldenburg.png",
+    "crest": "assets/crests/ehfw-vfl-oldenburg.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -775,7 +775,7 @@
     "league": "ger-hbf",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehfw-tussies-metzingen.png",
+    "crest": "assets/crests/ehfw-tussies-metzingen.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -833,7 +833,7 @@
     "league": "esp-lgi",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehfw-club-balonman-atletico-guardes.png",
+    "crest": "assets/crests/ehfw-club-balonman-atletico-guardes.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -847,7 +847,7 @@
     "league": "esp-lgi",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehfw-super-amara-bera-bera.png",
+    "crest": "assets/crests/ehfw-super-amara-bera-bera.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -875,7 +875,7 @@
     "league": "esp-lgi",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehfw-kh-7-bm-granollers.png",
+    "crest": "assets/crests/ehfw-kh-7-bm-granollers.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -889,7 +889,7 @@
     "league": "esp-lgi",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehfw-caja-rural-aula-valladolid.png",
+    "crest": "assets/crests/ehfw-caja-rural-aula-valladolid.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -903,7 +903,7 @@
     "league": "esp-lgi",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehfw-malaga-costa-del-sol.png",
+    "crest": "assets/crests/ehfw-malaga-costa-del-sol.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -917,7 +917,7 @@
     "league": "esp-lgi",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehfw-atticgo-bm-elche.png",
+    "crest": "assets/crests/ehfw-atticgo-bm-elche.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -931,7 +931,7 @@
     "league": "esp-lgi",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehfw-motive-co-gijon.png",
+    "crest": "assets/crests/ehfw-motive-co-gijon.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -945,7 +945,7 @@
     "league": "esp-lgi",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehfw-conservas-orbe-zendal-bm-porrino.png",
+    "crest": "assets/crests/ehfw-conservas-orbe-zendal-bm-porrino.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -1003,7 +1003,7 @@
     "league": "pol-superliga-kobiet",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehfw-pge-mks-el-volt-lublin.png",
+    "crest": "assets/crests/ehfw-pge-mks-el-volt-lublin.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -1017,7 +1017,7 @@
     "league": "pol-superliga-kobiet",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehfw-kghm-mks-zaglebie-lubin.png",
+    "crest": "assets/crests/ehfw-kghm-mks-zaglebie-lubin.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -1073,7 +1073,7 @@
     "league": "pol-superliga-kobiet",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehfw-mks-urbis-gniezno.png",
+    "crest": "assets/crests/ehfw-mks-urbis-gniezno.jpg",
     "crest_source": "ehf",
     "wiki": null
    }
@@ -1103,7 +1103,7 @@
     "league": "swe-handbollsligan-dam",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehfw-onnereds-hk.png",
+    "crest": "assets/crests/ehfw-onnereds-hk.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -1117,7 +1117,7 @@
     "league": "swe-handbollsligan-dam",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehfw-boden-handboll-if.png",
+    "crest": "assets/crests/ehfw-boden-handboll-if.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -1159,7 +1159,7 @@
     "league": "swe-handbollsligan-dam",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehfw-skara-hf.png",
+    "crest": "assets/crests/ehfw-skara-hf.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -1173,7 +1173,7 @@
     "league": "swe-handbollsligan-dam",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehfw-lugi.png",
+    "crest": "assets/crests/ehfw-lugi.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -1217,7 +1217,7 @@
     "league": "aut-wha",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehfw-mga-fivers.png",
+    "crest": "assets/crests/ehfw-mga-fivers.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -1245,7 +1245,7 @@
     "league": "aut-wha",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehfw-madx-wat-atzgersdorf.png",
+    "crest": "assets/crests/ehfw-madx-wat-atzgersdorf.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -1287,7 +1287,7 @@
     "league": "aut-wha",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehfw-uhc-mullner-bau-stockerau.png",
+    "crest": "assets/crests/ehfw-uhc-mullner-bau-stockerau.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -1301,7 +1301,7 @@
     "league": "aut-wha",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehfw-bt-fuchse-powersports.png",
+    "crest": "assets/crests/ehfw-bt-fuchse-powersports.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -1345,7 +1345,7 @@
     "league": "sui-spl1",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehfw-yellow-winterthur.png",
+    "crest": "assets/crests/ehfw-yellow-winterthur.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -1387,7 +1387,7 @@
     "league": "sui-spl1",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehfw-hsc-kreuzlingen.png",
+    "crest": "assets/crests/ehfw-hsc-kreuzlingen.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -1401,7 +1401,7 @@
     "league": "sui-spl1",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehfw-lk-zug-handball.png",
+    "crest": "assets/crests/ehfw-lk-zug-handball.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -1429,7 +1429,7 @@
     "league": "sui-spl1",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehfw-lc-bruhl-handball.png",
+    "crest": "assets/crests/ehfw-lc-bruhl-handball.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -1443,7 +1443,7 @@
     "league": "sui-spl1",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehfw-hv-herzogenbuchsee.png",
+    "crest": "assets/crests/ehfw-hv-herzogenbuchsee.jpg",
     "crest_source": "ehf",
     "wiki": null
    }
@@ -1501,7 +1501,7 @@
     "league": "por-1-divisao-f",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehfw-colegio-gaia-colgaia-toyota.png",
+    "crest": "assets/crests/ehfw-colegio-gaia-colgaia-toyota.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -1515,7 +1515,7 @@
     "league": "por-1-divisao-f",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehfw-alavarium-love-tiles.png",
+    "crest": "assets/crests/ehfw-alavarium-love-tiles.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -1529,7 +1529,7 @@
     "league": "por-1-divisao-f",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehfw-a-r-c-alpendorada.png",
+    "crest": "assets/crests/ehfw-a-r-c-alpendorada.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -1557,7 +1557,7 @@
     "league": "por-1-divisao-f",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehfw-adaa-sao-pedro-do-sul.png",
+    "crest": "assets/crests/ehfw-adaa-sao-pedro-do-sul.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -1939,7 +1939,7 @@
     "league": "argf-lhd",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/femebal-00000335.jpeg",
+    "crest": "assets/crests/femebal-00000335.jpg",
     "crest_source": "femebal",
     "wiki": null
    },
@@ -2363,7 +2363,7 @@
     "league": "argf-primera",
     "tier": 3,
     "strength": 1,
-    "crest": "assets/crests/femebal-00000413.jpg",
+    "crest": "assets/crests/femebal-00000413.png",
     "crest_source": "femebal",
     "wiki": null
    },
@@ -2629,7 +2629,7 @@
     "league": "argf-primera",
     "tier": 3,
     "strength": 1,
-    "crest": "assets/crests/femebal-00000342.jpeg",
+    "crest": "assets/crests/femebal-00000342.jpg",
     "crest_source": "femebal",
     "wiki": null
    },
@@ -2842,7 +2842,7 @@
     "league": "bra-liga-nacional",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/cbhb-1469.jpeg",
+    "crest": "assets/crests/cbhb-1469.jpg",
     "crest_source": "cbhb",
     "wiki": null
    },
@@ -2870,7 +2870,7 @@
     "league": "bra-liga-nacional",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/cbhb-830.png",
+    "crest": "assets/crests/cbhb-830.jpg",
     "crest_source": "cbhb",
     "wiki": null
    },

@@ -87,7 +87,7 @@
      "femebal_id": "00000335",
      "name": "Ferro Carril Oeste",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/6/3/a/63a30e39a9f48ef0.jpeg",
-     "crest": "assets/crests/femebal-00000335.jpeg"
+     "crest": "assets/crests/femebal-00000335.jpg"
     },
     {
      "femebal_id": "00000387",
@@ -213,7 +213,7 @@
      "femebal_id": "00000335",
      "name": "Ferro Carril Oeste B",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/6/3/a/63a30e39a9f48ef0.jpeg",
-     "crest": "assets/crests/femebal-00000335.jpeg"
+     "crest": "assets/crests/femebal-00000335.jpg"
     },
     {
      "femebal_id": "00000398",
@@ -321,7 +321,7 @@
      "femebal_id": "00000335",
      "name": "Ferro Carril Oeste C",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/6/3/a/63a30e39a9f48ef0.jpeg",
-     "crest": "assets/crests/femebal-00000335.jpeg"
+     "crest": "assets/crests/femebal-00000335.jpg"
     },
     {
      "femebal_id": "00000345",
@@ -357,7 +357,7 @@
      "femebal_id": "00000413",
      "name": "S.E.C.L.A.",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/c/d/8/cd853cc21c94b318.jpg",
-     "crest": "assets/crests/femebal-00000413.jpg"
+     "crest": "assets/crests/femebal-00000413.png"
     },
     {
      "femebal_id": "00000425",
@@ -557,7 +557,7 @@
      "femebal_id": "00000342",
      "name": "Larre Handball",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/0/7/6/07677e4578b4c744.jpeg",
-     "crest": "assets/crests/femebal-00000342.jpeg"
+     "crest": "assets/crests/femebal-00000342.jpg"
     },
     {
      "femebal_id": "00000397",
@@ -721,7 +721,7 @@
      "femebal_id": "00000396",
      "name": "C.S. y D. Isidro Casanova",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/d/7/a/d7a7e42929cabdfd.jpg",
-     "crest": "assets/crests/femebal-00000396.jpg"
+     "crest": "assets/crests/femebal-00000396.png"
     },
     {
      "femebal_id": "00000374",
@@ -763,7 +763,7 @@
      "femebal_id": "00000593",
      "name": "G.E.I.",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/8/a/7/8a7484132b825539.jpg",
-     "crest": "assets/crests/femebal-00000593.jpg"
+     "crest": "assets/crests/femebal-00000593.png"
     },
     {
      "femebal_id": "00000387",
@@ -1011,7 +1011,7 @@
      "femebal_id": "00000342",
      "name": "Larre Handball B",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/0/7/6/07677e4578b4c744.jpeg",
-     "crest": "assets/crests/femebal-00000342.jpeg"
+     "crest": "assets/crests/femebal-00000342.jpg"
     },
     {
      "femebal_id": "00000403",
@@ -1053,7 +1053,7 @@
      "femebal_id": "00000413",
      "name": "S.E.C.L.A. B",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/c/d/8/cd853cc21c94b318.jpg",
-     "crest": "assets/crests/femebal-00000413.jpg"
+     "crest": "assets/crests/femebal-00000413.png"
     },
     {
      "femebal_id": "00000631",
@@ -1154,7 +1154,7 @@
      "femebal_id": "00000628",
      "name": "C.D. y F. Las Mandarinas",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/a/4/4/a4408ed33a2aff6a.gif",
-     "crest": "assets/crests/femebal-00000628.png"
+     "crest": "assets/crests/femebal-00000628.jpg"
     },
     {
      "femebal_id": "00000383",
@@ -1270,7 +1270,7 @@
      "femebal_id": "00000413",
      "name": "S.E.C.L.A.",
      "crest_url": "https://djfhz848yeeat.cloudfront.net/images/federacion/c/d/8/cd853cc21c94b318.jpg",
-     "crest": "assets/crests/femebal-00000413.jpg"
+     "crest": "assets/crests/femebal-00000413.png"
     }
    ]
   }

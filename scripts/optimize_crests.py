@@ -8,7 +8,14 @@ a 160 px de lado es la diferencia entre que el juego cargue al instante en un
 celular con datos o que la gente se vaya antes de jugar.
 
 Los SVG no se tocan: ya pesan poco y escalan solos.
+
+Cuando un escudo cambia de extensión (.png→.jpg o viceversa), el script
+reescribe él mismo las rutas en todos los json de data/. Antes sugería
+`build_dataset.py`, que reconstruye desde la semilla y pisa los escudos que
+asignan los pasos posteriores — una vez rompió 80 rutas de un saque.
 """
+import glob
+import json
 import os
 import sys
 
@@ -16,12 +23,43 @@ from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CRESTS = os.path.join(ROOT, "assets", "crests")
+DATA = os.path.join(ROOT, "data")
 MAX_SIDE = 160
+
+
+def rewrite_paths(renames):
+    """Reescribe assets/crests/... en cada json de data/ según los renombres."""
+    if not renames:
+        return
+    for path in sorted(glob.glob(os.path.join(DATA, "*.json"))):
+        payload = json.load(open(path, encoding="utf8"))
+        count = 0
+
+        def fix(node):
+            nonlocal count
+            if isinstance(node, dict):
+                for key, value in node.items():
+                    if isinstance(value, str) and value in renames:
+                        node[key] = renames[value]
+                        count += 1
+                    else:
+                        fix(value)
+            elif isinstance(node, list):
+                for item in node:
+                    fix(item)
+
+        fix(payload)
+        if count:
+            with open(path, "w", encoding="utf8") as handle:
+                json.dump(payload, handle, ensure_ascii=False, indent=1)
+                handle.write("\n")
+            print(f"  ↳ {os.path.relpath(path, ROOT)}: {count} rutas reescritas")
 
 
 def optimize():
     before = after = 0
     touched = 0
+    renames = {}
 
     for name in sorted(os.listdir(CRESTS)):
         path = os.path.join(CRESTS, name)
@@ -64,14 +102,16 @@ def optimize():
             continue
         if target != path:
             os.remove(path)
+            renames[f"assets/crests/{name}"] = f"assets/crests/{os.path.basename(target)}"
         after += os.path.getsize(target)
         touched += 1
 
     print(f"optimizados {touched} escudos")
     print(f"  antes: {before / 1_048_576:.1f} MB   después: {after / 1_048_576:.1f} MB "
           f"({100 - after * 100 // max(before, 1)} % menos)")
-    print("  ojo: los que cambiaron de extensión necesitan "
-          "`python3 scripts/build_dataset.py` para reescribir las rutas")
+    if renames:
+        print(f"  {len(renames)} cambiaron de extensión, reescribiendo data/:")
+        rewrite_paths(renames)
 
 
 if __name__ == "__main__":
