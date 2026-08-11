@@ -59,6 +59,7 @@ async function boot() {
   await loadRama(form.rama);
   renderSetup();
   el("app").dataset.ready = "1";
+  renderWorldCounter();
 }
 
 // ---------------------------------------------------------------------------
@@ -1076,6 +1077,37 @@ function backendHeaders() {
     apikey: BACKEND.key,
     Authorization: `Bearer ${BACKEND.key}`,
   };
+}
+
+/**
+ * El contador de la portada: cuántas partidas jugó el mundo y cuántos partidos
+ * suman todas esas carreras.
+ *
+ * Los números salen de la vista `stats`, que suma del lado del servidor: para
+ * el rol anónimo `runs` es de sólo inserción, así que el navegador no puede
+ * contar las filas por su cuenta.
+ *
+ * Se llama sin await desde boot(): si el backend tarda o no contesta, el juego
+ * arranca igual y el contador se queda escondido. Es un adorno, no el juego.
+ */
+async function renderWorldCounter() {
+  const node = el("world-counter");
+  if (!node) return;
+  try {
+    const rows = await fetch(`${BACKEND.url}/rest/v1/stats?select=total_runs,total_matches`, {
+      headers: backendHeaders(),
+    }).then((r) => r.json());
+    const stats = Array.isArray(rows) ? rows[0] : null;
+    if (!stats || !stats.total_runs) return;
+    const nf = EURO_LOCALE[locale] || "es-AR";
+    node.textContent = t("ui.counter", {
+      partidas: Number(stats.total_runs).toLocaleString(nf),
+      partidos: Number(stats.total_matches || 0).toLocaleString(nf),
+    });
+    node.hidden = false;
+  } catch (error) {
+    // Nada: mejor sin contador que con la portada rota.
+  }
 }
 
 /** Id anónimo y estable por navegador: sirve para métricas, nunca identifica. */

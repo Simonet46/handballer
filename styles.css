@@ -113,6 +113,13 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 .tagline { font-size: clamp(16px, 4.4vw, 19px); font-weight: 600; margin-top: 10px; }
 .intro { color: var(--muted); font-size: 15px; margin-top: 10px; }
+/* Cuántas partidas lleva el mundo: prueba social, pero dicha en voz baja.
+   Gris y chiquito a propósito, para que no le compita al botón de empezar. */
+.world-counter {
+  color: var(--muted); opacity: .6;
+  font-size: 12px; margin-top: 12px;
+  font-variant-numeric: tabular-nums;
+}
 
 .setup-grid { display: grid; gap: 20px; }
 
