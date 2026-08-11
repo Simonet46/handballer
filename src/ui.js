@@ -637,7 +637,8 @@ function showTransition(before, done) {
     done();
   };
   box.addEventListener("click", finish);
-  transitionTimer = setTimeout(finish, 1400 + beats.length * 420);
+  // Diez segundos para leer con calma qué pasó; un tap lo salta cuando quieras.
+  transitionTimer = setTimeout(finish, 10_000);
 }
 
 function choose(choiceId) {
