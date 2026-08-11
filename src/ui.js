@@ -1139,10 +1139,9 @@ function track(event, extra = {}) {
 }
 
 /**
- * El contador de la portada: cuántas partidas jugó el mundo y cuántos partidos
- * suman todas esas carreras.
+ * El contador de la portada: cuántas partidas jugó el mundo.
  *
- * Los números salen de la vista `stats`, que suma del lado del servidor: para
+ * El número sale de la vista `stats`, que cuenta del lado del servidor: para
  * el rol anónimo `runs` es de sólo inserción, así que el navegador no puede
  * contar las filas por su cuenta.
  *
@@ -1153,15 +1152,13 @@ async function renderWorldCounter() {
   const node = el("world-counter");
   if (!node) return;
   try {
-    const rows = await fetch(`${BACKEND.url}/rest/v1/stats?select=total_runs,total_matches`, {
+    const rows = await fetch(`${BACKEND.url}/rest/v1/stats?select=total_runs`, {
       headers: backendHeaders(),
     }).then((r) => r.json());
     const stats = Array.isArray(rows) ? rows[0] : null;
     if (!stats || !stats.total_runs) return;
-    const nf = EURO_LOCALE[locale] || "es-AR";
     node.textContent = t("ui.counter", {
-      partidas: Number(stats.total_runs).toLocaleString(nf),
-      partidos: Number(stats.total_matches || 0).toLocaleString(nf),
+      partidas: Number(stats.total_runs).toLocaleString(EURO_LOCALE[locale] || "es-AR"),
     });
     node.hidden = false;
   } catch (error) {
