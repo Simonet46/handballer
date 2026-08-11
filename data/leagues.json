@@ -232,7 +232,7 @@
     "league": "fra-starligue",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-pauc-handball.png",
+    "crest": "assets/crests/ehf-pauc-handball.jpg",
     "crest_source": "ehf",
     "wiki": null
    }
@@ -600,7 +600,7 @@
     "league": "ger-hbl",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-hsv-hamburg.png",
+    "crest": "assets/crests/ehf-hsv-hamburg.jpg",
     "crest_source": "ehf",
     "wiki": "de:Handball Sport Verein Hamburg"
    },
@@ -1094,8 +1094,8 @@
     "league": "ger-3liga",
     "tier": 3,
     "strength": 1,
-    "crest": "assets/crests/vfl-fredenbeck.svg",
-    "crest_source": "wikipedia",
+    "crest": null,
+    "crest_source": null,
     "wiki": "de:VfL Fredenbeck"
    },
    {
@@ -1150,7 +1150,7 @@
     "league": "ger-3liga",
     "tier": 3,
     "strength": 2,
-    "crest": "assets/crests/ehf-sc-magdeburg-ii.png",
+    "crest": "assets/crests/ehf-sc-magdeburg-ii.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -1164,7 +1164,7 @@
     "league": "ger-3liga",
     "tier": 3,
     "strength": 2,
-    "crest": "assets/crests/ehf-fuchse-berlin-reinickendorf-ii.png",
+    "crest": "assets/crests/ehf-fuchse-berlin-reinickendorf-ii.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -1504,7 +1504,7 @@
     "league": "esp-plata",
     "tier": 2,
     "strength": 2,
-    "crest": "assets/crests/ehf-bada-huesca.png",
+    "crest": "assets/crests/ehf-bada-huesca.jpg",
     "crest_source": "ehf",
     "wiki": "es:Club Balonmano Huesca"
    },
@@ -1518,7 +1518,7 @@
     "league": "esp-plata",
     "tier": 2,
     "strength": 2,
-    "crest": "assets/crests/ehf-bm-benidorm.png",
+    "crest": "assets/crests/ehf-bm-benidorm.jpg",
     "crest_source": "ehf",
     "wiki": "es:Club Balonmano Benidorm"
    },
@@ -1532,7 +1532,7 @@
     "league": "esp-plata",
     "tier": 2,
     "strength": 2,
-    "crest": "assets/crests/ehf-helvetia-anaitasuna.png",
+    "crest": "assets/crests/ehf-helvetia-anaitasuna.jpg",
     "crest_source": "ehf",
     "wiki": "es:Club Deportivo Anaitasuna"
    },
@@ -1560,7 +1560,7 @@
     "league": "esp-plata",
     "tier": 2,
     "strength": 1,
-    "crest": "assets/crests/ehf-bm-aragon.png",
+    "crest": "assets/crests/ehf-bm-aragon.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -1574,7 +1574,7 @@
     "league": "esp-plata",
     "tier": 2,
     "strength": 1,
-    "crest": "assets/crests/ehf-j-d-arrate.png",
+    "crest": "assets/crests/ehf-j-d-arrate.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -1588,7 +1588,7 @@
     "league": "esp-plata",
     "tier": 2,
     "strength": 1,
-    "crest": "assets/crests/ehf-amaya-sport-san-antonio.png",
+    "crest": "assets/crests/ehf-amaya-sport-san-antonio.jpg",
     "crest_source": "ehf",
     "wiki": null
    }
@@ -1618,7 +1618,7 @@
     "league": "esp-primera",
     "tier": 3,
     "strength": 2,
-    "crest": "assets/crests/ehf-barca-b.png",
+    "crest": "assets/crests/ehf-barca-b.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -1646,7 +1646,7 @@
     "league": "esp-primera",
     "tier": 3,
     "strength": 1,
-    "crest": "assets/crests/ehf-granollers-b.png",
+    "crest": "assets/crests/ehf-granollers-b.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -1688,7 +1688,7 @@
     "league": "esp-primera",
     "tier": 3,
     "strength": 1,
-    "crest": "assets/crests/ehf-torrelavega-b.png",
+    "crest": "assets/crests/ehf-torrelavega-b.jpg",
     "crest_source": "ehf",
     "wiki": null
    }
@@ -1718,7 +1718,7 @@
     "league": "den-handboldligaen",
     "tier": 1,
     "strength": 5,
-    "crest": "assets/crests/ehf-aalborg-handbold.png",
+    "crest": "assets/crests/ehf-aalborg-handbold.jpg",
     "crest_source": "ehf",
     "wiki": "en:Aalborg Håndbold"
    },
@@ -1732,7 +1732,7 @@
     "league": "den-handboldligaen",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehf-gog.png",
+    "crest": "assets/crests/ehf-gog.jpg",
     "crest_source": "ehf",
     "wiki": "en:GOG Håndbold"
    },
@@ -1746,7 +1746,7 @@
     "league": "den-handboldligaen",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehf-bjerringbro-silkeborg.png",
+    "crest": "assets/crests/ehf-bjerringbro-silkeborg.jpg",
     "crest_source": "ehf",
     "wiki": "en:Bjerringbro-Silkeborg Håndbold"
    },
@@ -1760,7 +1760,7 @@
     "league": "den-handboldligaen",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehf-skjern-handbold.png",
+    "crest": "assets/crests/ehf-skjern-handbold.jpg",
     "crest_source": "ehf",
     "wiki": "en:Skjern Håndbold"
    },
@@ -1774,7 +1774,7 @@
     "league": "den-handboldligaen",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-fredericia-hk.png",
+    "crest": "assets/crests/ehf-fredericia-hk.jpg",
     "crest_source": "ehf",
     "wiki": "en:Fredericia HK"
    },
@@ -1788,7 +1788,7 @@
     "league": "den-handboldligaen",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-mors-thy-handbold.png",
+    "crest": "assets/crests/ehf-mors-thy-handbold.jpg",
     "crest_source": "ehf",
     "wiki": "en:Mors-Thy Håndbold"
    },
@@ -1802,7 +1802,7 @@
     "league": "den-handboldligaen",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-nordsjaelland-handbold.png",
+    "crest": "assets/crests/ehf-nordsjaelland-handbold.jpg",
     "crest_source": "ehf",
     "wiki": "en:Nordsjælland Håndbold"
    },
@@ -1816,7 +1816,7 @@
     "league": "den-handboldligaen",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-ribe-esbjerg-hh.png",
+    "crest": "assets/crests/ehf-ribe-esbjerg-hh.jpg",
     "crest_source": "ehf",
     "wiki": "en:Ribe-Esbjerg HH"
    },
@@ -1830,7 +1830,7 @@
     "league": "den-handboldligaen",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-tth-holstebro.png",
+    "crest": "assets/crests/ehf-tth-holstebro.jpg",
     "crest_source": "ehf",
     "wiki": "en:TTH Holstebro"
    },
@@ -1844,7 +1844,7 @@
     "league": "den-handboldligaen",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-kif-kolding.png",
+    "crest": "assets/crests/ehf-kif-kolding.jpg",
     "crest_source": "ehf",
     "wiki": "en:KIF Kolding"
    },
@@ -1858,7 +1858,7 @@
     "league": "den-handboldligaen",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-sonderjyske-handbold.png",
+    "crest": "assets/crests/ehf-sonderjyske-handbold.jpg",
     "crest_source": "ehf",
     "wiki": "en:SønderjyskE Håndbold"
    },
@@ -1872,7 +1872,7 @@
     "league": "den-handboldligaen",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-aab-handball.png",
+    "crest": "assets/crests/ehf-aab-handball.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -1886,7 +1886,7 @@
     "league": "den-handboldligaen",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-ag-kobenhavn.png",
+    "crest": "assets/crests/ehf-ag-kobenhavn.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -1900,7 +1900,7 @@
     "league": "den-handboldligaen",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-aarhus-haandbold.png",
+    "crest": "assets/crests/ehf-aarhus-haandbold.jpg",
     "crest_source": "ehf",
     "wiki": null
    }
@@ -1930,8 +1930,8 @@
     "league": "hun-nbi",
     "tier": 1,
     "strength": 5,
-    "crest": "assets/crests/telekom-veszprem.svg",
-    "crest_source": "wikipedia",
+    "crest": "assets/crests/ehf-telekom-veszprem.jpg",
+    "crest_source": "ehf",
     "wiki": "en:Veszprém KC"
    },
    {
@@ -1944,7 +1944,7 @@
     "league": "hun-nbi",
     "tier": 1,
     "strength": 5,
-    "crest": "assets/crests/ehf-pick-szeged.png",
+    "crest": "assets/crests/ehf-pick-szeged.jpg",
     "crest_source": "ehf",
     "wiki": "en:SC Pick Szeged"
    },
@@ -1958,7 +1958,7 @@
     "league": "hun-nbi",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehf-tatabanya-kc.png",
+    "crest": "assets/crests/ehf-tatabanya-kc.jpg",
     "crest_source": "ehf",
     "wiki": "en:Tatabánya KC"
    },
@@ -1972,7 +1972,7 @@
     "league": "hun-nbi",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-ferencvarosi-tc.png",
+    "crest": "assets/crests/ehf-ferencvarosi-tc.jpg",
     "crest_source": "ehf",
     "wiki": "en:Ferencvárosi TC (handball)"
    },
@@ -1986,7 +1986,7 @@
     "league": "hun-nbi",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-csurgoi-kk.png",
+    "crest": "assets/crests/ehf-csurgoi-kk.jpg",
     "crest_source": "ehf",
     "wiki": "en:Csurgói KK"
    },
@@ -2000,7 +2000,7 @@
     "league": "hun-nbi",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-balatonfuredi-kse.png",
+    "crest": "assets/crests/ehf-balatonfuredi-kse.jpg",
     "crest_source": "ehf",
     "wiki": "en:Balatonfüredi KSE"
    },
@@ -2014,7 +2014,7 @@
     "league": "hun-nbi",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-komloi-bsk.png",
+    "crest": "assets/crests/ehf-komloi-bsk.jpg",
     "crest_source": "ehf",
     "wiki": "en:Komlói BSK"
    },
@@ -2028,7 +2028,7 @@
     "league": "hun-nbi",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-budakalasz-fkc.png",
+    "crest": "assets/crests/ehf-budakalasz-fkc.jpg",
     "crest_source": "ehf",
     "wiki": "en:Budakalász FKC"
    },
@@ -2042,7 +2042,7 @@
     "league": "hun-nbi",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-pler-budapest.png",
+    "crest": "assets/crests/ehf-pler-budapest.jpg",
     "crest_source": "ehf",
     "wiki": "en:PLER KC"
    },
@@ -2056,7 +2056,7 @@
     "league": "hun-nbi",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-gyongyosi-kk.png",
+    "crest": "assets/crests/ehf-gyongyosi-kk.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -2070,7 +2070,7 @@
     "league": "hun-nbi",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-dunaferr-se.png",
+    "crest": "assets/crests/ehf-dunaferr-se.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -2084,7 +2084,7 @@
     "league": "hun-nbi",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-dkse-airport-debrecen.png",
+    "crest": "assets/crests/ehf-dkse-airport-debrecen.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -2098,7 +2098,7 @@
     "league": "hun-nbi",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-ftc-green-collect.png",
+    "crest": "assets/crests/ehf-ftc-green-collect.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -2112,7 +2112,7 @@
     "league": "hun-nbi",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-sport36-komlo.png",
+    "crest": "assets/crests/ehf-sport36-komlo.jpg",
     "crest_source": "ehf",
     "wiki": null
    }
@@ -2142,7 +2142,7 @@
     "league": "pol-superliga",
     "tier": 1,
     "strength": 5,
-    "crest": "assets/crests/ehf-industria-kielce.png",
+    "crest": "assets/crests/ehf-industria-kielce.jpg",
     "crest_source": "ehf",
     "wiki": "en:Vive Kielce"
    },
@@ -2156,7 +2156,7 @@
     "league": "pol-superliga",
     "tier": 1,
     "strength": 5,
-    "crest": "assets/crests/ehf-orlen-wis-a-p-ock.png",
+    "crest": "assets/crests/ehf-orlen-wis-a-p-ock.jpg",
     "crest_source": "ehf",
     "wiki": "en:Wisła Płock (handball)"
    },
@@ -2170,7 +2170,7 @@
     "league": "pol-superliga",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-azoty-pulawy.png",
+    "crest": "assets/crests/ehf-azoty-pulawy.jpg",
     "crest_source": "ehf",
     "wiki": "en:Azoty-Puławy"
    },
@@ -2184,7 +2184,7 @@
     "league": "pol-superliga",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-chrobry-g-ogow.png",
+    "crest": "assets/crests/ehf-chrobry-g-ogow.jpg",
     "crest_source": "ehf",
     "wiki": "en:Chrobry Głogów (handball)"
    },
@@ -2198,7 +2198,7 @@
     "league": "pol-superliga",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-stal-mielec.png",
+    "crest": "assets/crests/ehf-stal-mielec.jpg",
     "crest_source": "ehf",
     "wiki": "en:Stal Mielec (handball)"
    },
@@ -2212,7 +2212,7 @@
     "league": "pol-superliga",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-wybrzeze-gdansk.png",
+    "crest": "assets/crests/ehf-wybrzeze-gdansk.jpg",
     "crest_source": "ehf",
     "wiki": "en:Wybrzeże Gdańsk"
    },
@@ -2226,7 +2226,7 @@
     "league": "pol-superliga",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-mmts-kwidzyn.png",
+    "crest": "assets/crests/ehf-mmts-kwidzyn.jpg",
     "crest_source": "ehf",
     "wiki": "en:MMTS Kwidzyn"
    },
@@ -2240,7 +2240,7 @@
     "league": "pol-superliga",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-arged-kpr-ostrovia-ostrow.png",
+    "crest": "assets/crests/ehf-arged-kpr-ostrovia-ostrow.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -2254,7 +2254,7 @@
     "league": "pol-superliga",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-zag-ebie-lubin.png",
+    "crest": "assets/crests/ehf-zag-ebie-lubin.jpg",
     "crest_source": "ehf",
     "wiki": "en:Zagłębie Lubin (handball)"
    },
@@ -2268,7 +2268,7 @@
     "league": "pol-superliga",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-gornik-zabrze.png",
+    "crest": "assets/crests/ehf-gornik-zabrze.jpg",
     "crest_source": "ehf",
     "wiki": "en:Górnik Zabrze (handball)"
    },
@@ -2296,7 +2296,7 @@
     "league": "pol-superliga",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-kpr-gwardia-opole.png",
+    "crest": "assets/crests/ehf-kpr-gwardia-opole.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -2310,7 +2310,7 @@
     "league": "pol-superliga",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-spr-pogon-szczecin.png",
+    "crest": "assets/crests/ehf-spr-pogon-szczecin.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -2324,7 +2324,7 @@
     "league": "pol-superliga",
     "tier": 1,
     "strength": 1,
-    "crest": "assets/crests/ehf-grupa-azoty-unia-tarnow.png",
+    "crest": "assets/crests/ehf-grupa-azoty-unia-tarnow.jpg",
     "crest_source": "ehf",
     "wiki": null
    }
@@ -2354,7 +2354,7 @@
     "league": "por-andebol-1",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehf-sporting-cp.png",
+    "crest": "assets/crests/ehf-sporting-cp.jpg",
     "crest_source": "ehf",
     "wiki": "en:Sporting CP (handball)"
    },
@@ -2368,7 +2368,7 @@
     "league": "por-andebol-1",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehf-fc-porto.png",
+    "crest": "assets/crests/ehf-fc-porto.jpg",
     "crest_source": "ehf",
     "wiki": "en:FC Porto (handball)"
    },
@@ -2382,7 +2382,7 @@
     "league": "por-andebol-1",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehf-sl-benfica.png",
+    "crest": "assets/crests/ehf-sl-benfica.jpg",
     "crest_source": "ehf",
     "wiki": "en:S.L. Benfica (handball)"
    },
@@ -2396,7 +2396,7 @@
     "league": "por-andebol-1",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-abc-braga.png",
+    "crest": "assets/crests/ehf-abc-braga.jpg",
     "crest_source": "ehf",
     "wiki": "en:ABC Braga"
    },
@@ -2410,7 +2410,7 @@
     "league": "por-andebol-1",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-aguas-santas-milaneza.png",
+    "crest": "assets/crests/ehf-aguas-santas-milaneza.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -2424,7 +2424,7 @@
     "league": "por-andebol-1",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-madeira-sad.png",
+    "crest": "assets/crests/ehf-madeira-sad.jpg",
     "crest_source": "ehf",
     "wiki": "en:Madeira Andebol SAD"
    },
@@ -2438,7 +2438,7 @@
     "league": "por-andebol-1",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-belenenses.png",
+    "crest": "assets/crests/ehf-belenenses.jpg",
     "crest_source": "ehf",
     "wiki": "en:C.F. Os Belenenses (handball)"
    },
@@ -2452,7 +2452,7 @@
     "league": "por-andebol-1",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-xico-andebol.png",
+    "crest": "assets/crests/ehf-xico-andebol.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -2466,7 +2466,7 @@
     "league": "por-andebol-1",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-liberty-s-bernardo.png",
+    "crest": "assets/crests/ehf-liberty-s-bernardo.jpg",
     "crest_source": "ehf",
     "wiki": null
    }
@@ -2496,7 +2496,7 @@
     "league": "swe-handbollsligan",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehf-ystads-if.png",
+    "crest": "assets/crests/ehf-ystads-if.jpg",
     "crest_source": "ehf",
     "wiki": "en:Ystads IF"
    },
@@ -2510,7 +2510,7 @@
     "league": "swe-handbollsligan",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehf-ifk-kristianstad.png",
+    "crest": "assets/crests/ehf-ifk-kristianstad.jpg",
     "crest_source": "ehf",
     "wiki": "en:IFK Kristianstad"
    },
@@ -2524,7 +2524,7 @@
     "league": "swe-handbollsligan",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehf-ik-savehof.png",
+    "crest": "assets/crests/ehf-ik-savehof.jpg",
     "crest_source": "ehf",
     "wiki": "en:IK Sävehof"
    },
@@ -2538,7 +2538,7 @@
     "league": "swe-handbollsligan",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-alingsas-hk.png",
+    "crest": "assets/crests/ehf-alingsas-hk.jpg",
     "crest_source": "ehf",
     "wiki": "en:Alingsås HK"
    },
@@ -2552,8 +2552,8 @@
     "league": "swe-handbollsligan",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/redbergslids-ik.png",
-    "crest_source": "wikipedia",
+    "crest": null,
+    "crest_source": null,
     "wiki": "en:Redbergslids IK"
    },
    {
@@ -2566,7 +2566,7 @@
     "league": "swe-handbollsligan",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-lugi-hf.png",
+    "crest": "assets/crests/ehf-lugi-hf.jpg",
     "crest_source": "ehf",
     "wiki": "en:Lugi HF"
    },
@@ -2580,7 +2580,7 @@
     "league": "swe-handbollsligan",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-ifk-skovde.png",
+    "crest": "assets/crests/ehf-ifk-skovde.jpg",
     "crest_source": "ehf",
     "wiki": "en:IFK Skövde"
    },
@@ -2594,7 +2594,7 @@
     "league": "swe-handbollsligan",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-hammarby-if.png",
+    "crest": "assets/crests/ehf-hammarby-if.jpg",
     "crest_source": "ehf",
     "wiki": "en:Hammarby IF HF"
    },
@@ -2608,7 +2608,7 @@
     "league": "swe-handbollsligan",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-hk-malmo.png",
+    "crest": "assets/crests/ehf-hk-malmo.jpg",
     "crest_source": "ehf",
     "wiki": "en:HK Malmö"
    },
@@ -2622,7 +2622,7 @@
     "league": "swe-handbollsligan",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-eskilstuna-guif.png",
+    "crest": "assets/crests/ehf-eskilstuna-guif.jpg",
     "crest_source": "ehf",
     "wiki": "en:Eskilstuna Guif"
    },
@@ -2636,8 +2636,8 @@
     "league": "swe-handbollsligan",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ov-helsingborg.svg",
-    "crest_source": "wikipedia",
+    "crest": null,
+    "crest_source": null,
     "wiki": "en:OV Helsingborg"
    },
    {
@@ -2650,7 +2650,7 @@
     "league": "swe-handbollsligan",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-hif-karlskrona.png",
+    "crest": "assets/crests/ehf-hif-karlskrona.jpg",
     "crest_source": "ehf",
     "wiki": "en:HIF Karlskrona"
    },
@@ -2664,7 +2664,7 @@
     "league": "swe-handbollsligan",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-hk-drott-halmstad.png",
+    "crest": "assets/crests/ehf-hk-drott-halmstad.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -2678,7 +2678,7 @@
     "league": "swe-handbollsligan",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-h43-lund.png",
+    "crest": "assets/crests/ehf-h43-lund.jpg",
     "crest_source": "ehf",
     "wiki": null
    }
@@ -2708,7 +2708,7 @@
     "league": "nor-ligaen",
     "tier": 1,
     "strength": 5,
-    "crest": "assets/crests/ehf-kolstad-handball.png",
+    "crest": "assets/crests/ehf-kolstad-handball.jpg",
     "crest_source": "ehf",
     "wiki": "en:Kolstad Håndball"
    },
@@ -2722,7 +2722,7 @@
     "league": "nor-ligaen",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehf-elverum-handball.png",
+    "crest": "assets/crests/ehf-elverum-handball.jpg",
     "crest_source": "ehf",
     "wiki": "en:Elverum Håndball"
    },
@@ -2736,7 +2736,7 @@
     "league": "nor-ligaen",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-oif-arendal.png",
+    "crest": "assets/crests/ehf-oif-arendal.jpg",
     "crest_source": "ehf",
     "wiki": "en:ØIF Arendal"
    },
@@ -2750,7 +2750,7 @@
     "league": "nor-ligaen",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-naerbo-il.png",
+    "crest": "assets/crests/ehf-naerbo-il.jpg",
     "crest_source": "ehf",
     "wiki": "en:Nærbø IL"
    },
@@ -2764,7 +2764,7 @@
     "league": "nor-ligaen",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-halden-topphandball.png",
+    "crest": "assets/crests/ehf-halden-topphandball.jpg",
     "crest_source": "ehf",
     "wiki": "en:Halden Topphåndball"
    },
@@ -2778,7 +2778,7 @@
     "league": "nor-ligaen",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-baekkelagets-sk.png",
+    "crest": "assets/crests/ehf-baekkelagets-sk.jpg",
     "crest_source": "ehf",
     "wiki": "en:Bækkelagets SK"
    },
@@ -2792,7 +2792,7 @@
     "league": "nor-ligaen",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-haslum-hk.png",
+    "crest": "assets/crests/ehf-haslum-hk.jpg",
     "crest_source": "ehf",
     "wiki": "en:Haslum HK"
    },
@@ -2806,7 +2806,7 @@
     "league": "nor-ligaen",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-drammen-hk.png",
+    "crest": "assets/crests/ehf-drammen-hk.jpg",
     "crest_source": "ehf",
     "wiki": "en:Drammen HK"
    },
@@ -2820,7 +2820,7 @@
     "league": "nor-ligaen",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-runar-sandefjord.png",
+    "crest": "assets/crests/ehf-runar-sandefjord.jpg",
     "crest_source": "ehf",
     "wiki": "en:Runar Sandefjord"
    },
@@ -2848,7 +2848,7 @@
     "league": "nor-ligaen",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-sandefjord-tif.png",
+    "crest": "assets/crests/ehf-sandefjord-tif.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -2862,7 +2862,7 @@
     "league": "nor-ligaen",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-bodo-hk.png",
+    "crest": "assets/crests/ehf-bodo-hk.jpg",
     "crest_source": "ehf",
     "wiki": null
    }
@@ -2892,7 +2892,7 @@
     "league": "rou-liga-nationala",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehf-dinamo-bucuresti.png",
+    "crest": "assets/crests/ehf-dinamo-bucuresti.jpg",
     "crest_source": "ehf",
     "wiki": "en:CS Dinamo București (handball)"
    },
@@ -2906,7 +2906,7 @@
     "league": "rou-liga-nationala",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-csm-constanta.png",
+    "crest": "assets/crests/ehf-csm-constanta.jpg",
     "crest_source": "ehf",
     "wiki": "en:HC Dobrogea Sud Constanța"
    },
@@ -2920,7 +2920,7 @@
     "league": "rou-liga-nationala",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-minaur-baia-mare.png",
+    "crest": "assets/crests/ehf-minaur-baia-mare.jpg",
     "crest_source": "ehf",
     "wiki": "en:CS Minaur Baia Mare (handball)"
    },
@@ -2934,7 +2934,7 @@
     "league": "rou-liga-nationala",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-steaua-bucuresti.png",
+    "crest": "assets/crests/ehf-steaua-bucuresti.jpg",
     "crest_source": "ehf",
     "wiki": "en:CSA Steaua București (handball)"
    },
@@ -2948,7 +2948,7 @@
     "league": "rou-liga-nationala",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-politehnica-timisoara.png",
+    "crest": "assets/crests/ehf-politehnica-timisoara.jpg",
     "crest_source": "ehf",
     "wiki": "en:SCM Politehnica Timișoara (handball)"
    },
@@ -2962,7 +2962,7 @@
     "league": "rou-liga-nationala",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-csm-bucuresti.png",
+    "crest": "assets/crests/ehf-csm-bucuresti.jpg",
     "crest_source": "ehf",
     "wiki": "en:CSM București (men's handball)"
    },
@@ -2976,7 +2976,7 @@
     "league": "rou-liga-nationala",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-csm-focsani.png",
+    "crest": "assets/crests/ehf-csm-focsani.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -2990,7 +2990,7 @@
     "league": "rou-liga-nationala",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-potaissa-turda.png",
+    "crest": "assets/crests/ehf-potaissa-turda.jpg",
     "crest_source": "ehf",
     "wiki": "en:CS Potaissa Turda"
    },
@@ -3004,7 +3004,7 @@
     "league": "rou-liga-nationala",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-handbal-club-odorhei.png",
+    "crest": "assets/crests/ehf-handbal-club-odorhei.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -3018,7 +3018,7 @@
     "league": "rou-liga-nationala",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-stiinta-municipal-dedeman-bacau.png",
+    "crest": "assets/crests/ehf-stiinta-municipal-dedeman-bacau.jpg",
     "crest_source": "ehf",
     "wiki": null
    }
@@ -3048,7 +3048,7 @@
     "league": "slo-liga-nlb",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehf-celje-pivovarna-lasko.png",
+    "crest": "assets/crests/ehf-celje-pivovarna-lasko.jpg",
     "crest_source": "ehf",
     "wiki": "en:RK Celje"
    },
@@ -3062,7 +3062,7 @@
     "league": "slo-liga-nlb",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-rk-gorenje-velenje.png",
+    "crest": "assets/crests/ehf-rk-gorenje-velenje.jpg",
     "crest_source": "ehf",
     "wiki": "en:RK Gorenje Velenje"
    },
@@ -3076,7 +3076,7 @@
     "league": "slo-liga-nlb",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-rk-trimo-trebnje.png",
+    "crest": "assets/crests/ehf-rk-trimo-trebnje.jpg",
     "crest_source": "ehf",
     "wiki": "en:RK Trimo Trebnje"
    },
@@ -3090,7 +3090,7 @@
     "league": "slo-liga-nlb",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-rk-maribor-branik.png",
+    "crest": "assets/crests/ehf-rk-maribor-branik.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -3104,7 +3104,7 @@
     "league": "slo-liga-nlb",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-rk-krka.png",
+    "crest": "assets/crests/ehf-rk-krka.jpg",
     "crest_source": "ehf",
     "wiki": "en:RK Krka"
    },
@@ -3118,7 +3118,7 @@
     "league": "slo-liga-nlb",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-rk-ribnica.png",
+    "crest": "assets/crests/ehf-rk-ribnica.jpg",
     "crest_source": "ehf",
     "wiki": "en:RK Ribnica"
    },
@@ -3132,7 +3132,7 @@
     "league": "slo-liga-nlb",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-rk-koper.png",
+    "crest": "assets/crests/ehf-rk-koper.jpg",
     "crest_source": "ehf",
     "wiki": "en:RK Koper"
    },
@@ -3146,7 +3146,7 @@
     "league": "slo-liga-nlb",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-rk-slovenj-gradec.png",
+    "crest": "assets/crests/ehf-rk-slovenj-gradec.jpg",
     "crest_source": "ehf",
     "wiki": null
    }
@@ -3416,7 +3416,7 @@
     "league": "mkd-super-liga",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehf-rk-vardar-1961.png",
+    "crest": "assets/crests/ehf-rk-vardar-1961.jpg",
     "crest_source": "ehf",
     "wiki": "en:RK Vardar"
    },
@@ -3430,7 +3430,7 @@
     "league": "mkd-super-liga",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehf-eurofarm-pelister.png",
+    "crest": "assets/crests/ehf-eurofarm-pelister.jpg",
     "crest_source": "ehf",
     "wiki": "en:RK Pelister"
    },
@@ -3444,7 +3444,7 @@
     "league": "mkd-super-liga",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-rk-metalurg-skopje.png",
+    "crest": "assets/crests/ehf-rk-metalurg-skopje.jpg",
     "crest_source": "ehf",
     "wiki": "en:RK Metalurg Skopje"
    },
@@ -3458,7 +3458,7 @@
     "league": "mkd-super-liga",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-rk-alkaloid.png",
+    "crest": "assets/crests/ehf-rk-alkaloid.jpg",
     "crest_source": "ehf",
     "wiki": "en:RK Alkaloid"
    },
@@ -3472,7 +3472,7 @@
     "league": "mkd-super-liga",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-rk-butel-skopje.png",
+    "crest": "assets/crests/ehf-rk-butel-skopje.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -3486,7 +3486,7 @@
     "league": "mkd-super-liga",
     "tier": 1,
     "strength": 1,
-    "crest": "assets/crests/ehf-rk-ohrid.png",
+    "crest": "assets/crests/ehf-rk-ohrid.jpg",
     "crest_source": "ehf",
     "wiki": null
    }
@@ -3516,7 +3516,7 @@
     "league": "sui-qhl",
     "tier": 1,
     "strength": 4,
-    "crest": "assets/crests/ehf-kadetten-schaffhausen.png",
+    "crest": "assets/crests/ehf-kadetten-schaffhausen.jpg",
     "crest_source": "ehf",
     "wiki": "de:Kadetten Schaffhausen"
    },
@@ -3530,7 +3530,7 @@
     "league": "sui-qhl",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-pfadi-winterthur.png",
+    "crest": "assets/crests/ehf-pfadi-winterthur.jpg",
     "crest_source": "ehf",
     "wiki": "de:Pfadi Winterthur"
    },
@@ -3544,7 +3544,7 @@
     "league": "sui-qhl",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-hc-kriens-luzern.png",
+    "crest": "assets/crests/ehf-hc-kriens-luzern.jpg",
     "crest_source": "ehf",
     "wiki": "de:HC Kriens-Luzern"
    },
@@ -3558,7 +3558,7 @@
     "league": "sui-qhl",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-wacker-thun.png",
+    "crest": "assets/crests/ehf-wacker-thun.jpg",
     "crest_source": "ehf",
     "wiki": "de:Wacker Thun"
    },
@@ -3572,7 +3572,7 @@
     "league": "sui-qhl",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-bsv-bern.png",
+    "crest": "assets/crests/ehf-bsv-bern.jpg",
     "crest_source": "ehf",
     "wiki": "de:BSV Bern"
    },
@@ -3586,7 +3586,7 @@
     "league": "sui-qhl",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-tsv-st-otmar-st-gallen.png",
+    "crest": "assets/crests/ehf-tsv-st-otmar-st-gallen.jpg",
     "crest_source": "ehf",
     "wiki": "de:TSV St. Otmar St. Gallen"
    },
@@ -3600,7 +3600,7 @@
     "league": "sui-qhl",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-gc-amicitia-zurich.png",
+    "crest": "assets/crests/ehf-gc-amicitia-zurich.jpg",
     "crest_source": "ehf",
     "wiki": "de:Grasshopper Club Zürich (Handball)"
    },
@@ -3614,7 +3614,7 @@
     "league": "sui-qhl",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-hsc-suhr-aarau.png",
+    "crest": "assets/crests/ehf-hsc-suhr-aarau.jpg",
     "crest_source": "ehf",
     "wiki": "de:HSC Suhr Aarau"
    },
@@ -3658,7 +3658,7 @@
     "league": "aut-hla",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-fivers-margareten.png",
+    "crest": "assets/crests/ehf-fivers-margareten.jpg",
     "crest_source": "ehf",
     "wiki": "de:Handballclub Fivers Margareten"
    },
@@ -3672,7 +3672,7 @@
     "league": "aut-hla",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-hc-linz-ag.png",
+    "crest": "assets/crests/ehf-hc-linz-ag.jpg",
     "crest_source": "ehf",
     "wiki": "de:HC Linz AG"
    },
@@ -3686,7 +3686,7 @@
     "league": "aut-hla",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-alpla-hc-hard.png",
+    "crest": "assets/crests/ehf-alpla-hc-hard.jpg",
     "crest_source": "ehf",
     "wiki": "de:Alpla HC Hard"
    },
@@ -3700,7 +3700,7 @@
     "league": "aut-hla",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-bregenz-handball.png",
+    "crest": "assets/crests/ehf-bregenz-handball.jpg",
     "crest_source": "ehf",
     "wiki": "de:Bregenz Handball"
    },
@@ -3714,7 +3714,7 @@
     "league": "aut-hla",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-handball-west-wien.png",
+    "crest": "assets/crests/ehf-handball-west-wien.jpg",
     "crest_source": "ehf",
     "wiki": "de:Handball West Wien"
    },
@@ -3728,7 +3728,7 @@
     "league": "aut-hla",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-sparkasse-schwaz-handball-tirol.png",
+    "crest": "assets/crests/ehf-sparkasse-schwaz-handball-tirol.jpg",
     "crest_source": "ehf",
     "wiki": "de:Sparkasse Schwaz Handball Tirol"
    },
@@ -3742,7 +3742,7 @@
     "league": "aut-hla",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-sg-insignis-handball-west-wien.png",
+    "crest": "assets/crests/ehf-sg-insignis-handball-west-wien.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -3756,7 +3756,7 @@
     "league": "aut-hla",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-uhk-krems.png",
+    "crest": "assets/crests/ehf-uhk-krems.jpg",
     "crest_source": "ehf",
     "wiki": "de:UHK Krems"
    },
@@ -3770,7 +3770,7 @@
     "league": "aut-hla",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-hit-medalp-tirol.png",
+    "crest": "assets/crests/ehf-hit-medalp-tirol.jpg",
     "crest_source": "ehf",
     "wiki": null
    },
@@ -3784,7 +3784,7 @@
     "league": "aut-hla",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-uhc-goldmann-druck-tulln.png",
+    "crest": "assets/crests/ehf-uhc-goldmann-druck-tulln.jpg",
     "crest_source": "ehf",
     "wiki": null
    }
@@ -3814,7 +3814,7 @@
     "league": "isl-urvalsdeild",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-valur.png",
+    "crest": "assets/crests/ehf-valur.jpg",
     "crest_source": "ehf",
     "wiki": "en:Valur (handball)"
    },
@@ -3828,7 +3828,7 @@
     "league": "isl-urvalsdeild",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-fh-hafnarfjor-ur.png",
+    "crest": "assets/crests/ehf-fh-hafnarfjor-ur.jpg",
     "crest_source": "ehf",
     "wiki": "en:FH Hafnarfjörður"
    },
@@ -3842,7 +3842,7 @@
     "league": "isl-urvalsdeild",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/ehf-ka-akureyri.png",
+    "crest": "assets/crests/ehf-ka-akureyri.jpg",
     "crest_source": "ehf",
     "wiki": "en:KA (sports club)"
    },
@@ -3856,7 +3856,7 @@
     "league": "isl-urvalsdeild",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-haukar.png",
+    "crest": "assets/crests/ehf-haukar.jpg",
     "crest_source": "ehf",
     "wiki": "en:Haukar"
    },
@@ -3870,7 +3870,7 @@
     "league": "isl-urvalsdeild",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-stjarnan.png",
+    "crest": "assets/crests/ehf-stjarnan.jpg",
     "crest_source": "ehf",
     "wiki": "en:Stjarnan"
    },
@@ -3884,7 +3884,7 @@
     "league": "isl-urvalsdeild",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-ibv-vestmannaeyjar.png",
+    "crest": "assets/crests/ehf-ibv-vestmannaeyjar.jpg",
     "crest_source": "ehf",
     "wiki": "en:ÍBV"
    },
@@ -3898,7 +3898,7 @@
     "league": "isl-urvalsdeild",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-afturelding.png",
+    "crest": "assets/crests/ehf-afturelding.jpg",
     "crest_source": "ehf",
     "wiki": "en:Afturelding"
    },
@@ -3912,7 +3912,7 @@
     "league": "isl-urvalsdeild",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-selfoss.png",
+    "crest": "assets/crests/ehf-selfoss.jpg",
     "crest_source": "ehf",
     "wiki": "en:Selfoss (handball)"
    },
@@ -3926,7 +3926,7 @@
     "league": "isl-urvalsdeild",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/ehf-fram-reykjavik.png",
+    "crest": "assets/crests/ehf-fram-reykjavik.jpg",
     "crest_source": "ehf",
     "wiki": "en:Knattspyrnufélagið Fram"
    },
@@ -3940,7 +3940,7 @@
     "league": "isl-urvalsdeild",
     "tier": 1,
     "strength": 1,
-    "crest": "assets/crests/ehf-hk-kopavogur.png",
+    "crest": "assets/crests/ehf-hk-kopavogur.jpg",
     "crest_source": "ehf",
     "wiki": null
    }
@@ -3984,8 +3984,8 @@
     "league": "qat-league",
     "tier": 1,
     "strength": 3,
-    "crest": "assets/crests/al-arabi-sc.svg",
-    "crest_source": "wikipedia",
+    "crest": null,
+    "crest_source": null,
     "wiki": "en:Al-Arabi SC (Qatar)"
    },
    {
@@ -4040,8 +4040,8 @@
     "league": "qat-league",
     "tier": 1,
     "strength": 2,
-    "crest": "assets/crests/al-gharafa-sc.svg",
-    "crest_source": "wikipedia",
+    "crest": null,
+    "crest_source": null,
     "wiki": "en:Al-Gharafa SC"
    }
   ],

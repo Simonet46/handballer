@@ -1,16 +1,8 @@
 {
  "abc-braga": {
-  "file": "assets/crests/ehf-abc-braga.png",
+  "file": "assets/crests/ehf-abc-braga.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbkTo7LdWhMpVvMDZiWg1tHSfUDxEehIMmcVwEG8Q3KQg",
   "ehf_name": "ABC de Braga Lusíadas Saúde"
- },
- "al-arabi-sc": {
-  "file": "assets/crests/al-arabi-sc.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Flag_of_Saudi_Arabia.svg"
- },
- "al-gharafa-sc": {
-  "file": "assets/crests/al-gharafa-sc.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Emblem_of_the_United_Nations_%28blue%29.svg"
  },
  "al-rayyan-sc": {
   "file": "assets/crests/al-rayyan-sc.png",
@@ -21,27 +13,27 @@
   "source": "https://upload.wikimedia.org/wikipedia/en/c/c1/Al_Sadd_SC_logo.svg"
  },
  "alingsas-hk": {
-  "file": "assets/crests/ehf-alingsas-hk.png",
+  "file": "assets/crests/ehf-alingsas-hk.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYvOKPVK_4M-98zqdV-cYgPHBkebUFcKjFt9axap1Md6A",
   "ehf_name": "Alingsås HK"
  },
  "baekkelagets-sk": {
-  "file": "assets/crests/ehf-baekkelagets-sk.png",
+  "file": "assets/crests/ehf-baekkelagets-sk.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbegSll69XjgT5p3CUFlGMdmOcprugVfxdlk_36A6OMWQ",
   "ehf_name": "Baekkelaget Handball Elite"
  },
  "bsv-bern": {
-  "file": "assets/crests/ehf-bsv-bern.png",
+  "file": "assets/crests/ehf-bsv-bern.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jZFYg5jP3E023zOCoVYNbGH1zNt0GdAkcoZjGYOrXQ26g",
   "ehf_name": "BSV Bern"
  },
  "dinamo-bucuresti": {
-  "file": "assets/crests/ehf-dinamo-bucuresti.png",
+  "file": "assets/crests/ehf-dinamo-bucuresti.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jawDioZ9o3CMW5shUNvXvXCY4B31J8W29f_9MgOmVWAfg",
   "ehf_name": "CS Dinamo Bucuresti"
  },
  "drammen-hk": {
-  "file": "assets/crests/ehf-drammen-hk.png",
+  "file": "assets/crests/ehf-drammen-hk.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jboyWEtz_enhGVDqkPi5n_5vkx1uaj0pefvVlg51zfpOQ",
   "ehf_name": "Drammen HK"
  },
@@ -51,27 +43,27 @@
   "bytes": 32759
  },
  "elverum-handball": {
-  "file": "assets/crests/ehf-elverum-handball.png",
+  "file": "assets/crests/ehf-elverum-handball.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYp8CqPCNSWSVE0m-oUU3KCTwdmdFLZ59ekyXyWbZf49Q",
   "ehf_name": "Elverum Håndball"
  },
  "fc-porto": {
-  "file": "assets/crests/ehf-fc-porto.png",
+  "file": "assets/crests/ehf-fc-porto.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jZARhsqDTt6j0ehAipvabHMBa28_ewfFl206OX8wY8YYw",
   "ehf_name": "FC Porto"
  },
  "fram-reykjavik": {
-  "file": "assets/crests/ehf-fram-reykjavik.png",
+  "file": "assets/crests/ehf-fram-reykjavik.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbN12s4CAfrYP6nbYRBm3oxOvWV401jpkRzkl5kbbitrg",
   "ehf_name": "Knattspyrnufélagið Fram"
  },
  "gc-amicitia-zurich": {
-  "file": "assets/crests/ehf-gc-amicitia-zurich.png",
+  "file": "assets/crests/ehf-gc-amicitia-zurich.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYyGvt4F9yLzzuckQhmHz1sKd57X4UljstaX3ohxU2Cxg",
   "ehf_name": "GC Amicitia Zürich"
  },
  "handball-west-wien": {
-  "file": "assets/crests/ehf-handball-west-wien.png",
+  "file": "assets/crests/ehf-handball-west-wien.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jawQx1amNF6vcRopWmSnaSOGVnye4OjuqhH1wy5CsGw8A",
   "ehf_name": "Handball WEST WIEN"
  },
@@ -80,7 +72,7 @@
   "source": "https://upload.wikimedia.org/wikipedia/commons/2/2b/670d166715e02b1693a78d03_empor-logo-svg.svg"
  },
  "hc-linz-ag": {
-  "file": "assets/crests/ehf-hc-linz-ag.png",
+  "file": "assets/crests/ehf-hc-linz-ag.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYqCPIthL0V-IM2_-n4kqJ28_BL1UzAfa_NZOBr2JziXw",
   "ehf_name": "HC Linz AG"
  },
@@ -89,7 +81,7 @@
   "source": "https://upload.wikimedia.org/wikipedia/commons/c/c6/HC_Oppenweiler-Backnang_Logo.svg"
  },
  "hk-malmo": {
-  "file": "assets/crests/ehf-hk-malmo.png",
+  "file": "assets/crests/ehf-hk-malmo.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jb1kjF9MjF_VK1_CV2kgMMk8F1I5j-xZl1YKly6GDb_Xw",
   "ehf_name": "HK Malmö"
  },
@@ -102,27 +94,27 @@
   "source": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Logo_HSG_Krefeld_Niederrhein.png"
  },
  "hsv-hamburg": {
-  "file": "assets/crests/ehf-hsv-hamburg.png",
+  "file": "assets/crests/ehf-hsv-hamburg.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oIUcNZdNf4rKiOlyLkIOa3hwMDADwTjdvmRZSBq3TSXLw",
   "ehf_name": "HSV Hamburg"
  },
  "ifk-kristianstad": {
-  "file": "assets/crests/ehf-ifk-kristianstad.png",
+  "file": "assets/crests/ehf-ifk-kristianstad.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jZpLjpou58wjxIeIwmf7hHzFhsT9SuNX48RYeiA0zx_Gw",
   "ehf_name": "IFK Kristianstad"
  },
  "ifk-skovde": {
-  "file": "assets/crests/ehf-ifk-skovde.png",
+  "file": "assets/crests/ehf-ifk-skovde.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jZh8p25nSWFPIT30GETQTWpWvkkOeKw-JoSNCrm0zXk9g",
   "ehf_name": "IFK Skövde HK"
  },
  "ik-savehof": {
-  "file": "assets/crests/ehf-ik-savehof.png",
+  "file": "assets/crests/ehf-ik-savehof.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbo6YI2Dlv9bgR3i_jQfRtV6nx3BVGXFbSIbiM5k6Krtw",
   "ehf_name": "IK Sävehof"
  },
  "kadetten-schaffhausen": {
-  "file": "assets/crests/ehf-kadetten-schaffhausen.png",
+  "file": "assets/crests/ehf-kadetten-schaffhausen.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYFQ-oNOxQyT11bnjCATRlT9urRVw3B1PyiqkW9OnX3mQ",
   "ehf_name": "Kadetten Schaffhausen"
  },
@@ -130,42 +122,33 @@
   "file": "assets/crests/oranienburger-hc.png",
   "source": "https://upload.wikimedia.org/wikipedia/de/3/3e/OHC_Wappen.png"
  },
- "ov-helsingborg": {
-  "file": "assets/crests/ov-helsingborg.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Handbollsligan_logo.svg",
-  "bytes": 13183
- },
  "pfadi-winterthur": {
-  "file": "assets/crests/ehf-pfadi-winterthur.png",
+  "file": "assets/crests/ehf-pfadi-winterthur.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYe5SGTFbzc041EnRWpSpqvd92XDr03Vk8dykoMjtdslA",
   "ehf_name": "Pfadi Winterthur"
  },
  "pler-budapest": {
-  "file": "assets/crests/ehf-pler-budapest.png",
+  "file": "assets/crests/ehf-pler-budapest.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbsfncb0cW8BxPLERRm68GaAXMXHbLJLV9aAHk1Af4Q0Q",
   "ehf_name": "PLER-Budapest"
  },
- "redbergslids-ik": {
-  "file": "assets/crests/redbergslids-ik.png",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/6/66/SAL_LOGO_PAYOFF_BLK_NOBOX.png"
- },
  "rk-alkaloid": {
-  "file": "assets/crests/ehf-rk-alkaloid.png",
+  "file": "assets/crests/ehf-rk-alkaloid.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jaS9MaBEkDF2DcNevMOoSSq7N5MtwFbJ_A7g4eWf8gg5w",
   "ehf_name": "HC Alkaloid"
  },
  "rk-gorenje-velenje": {
-  "file": "assets/crests/ehf-rk-gorenje-velenje.png",
+  "file": "assets/crests/ehf-rk-gorenje-velenje.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYCfkMWwdQKAlWtzMlr2ZTeypQklCHRENrzIOOlOvxxiw",
   "ehf_name": "RK Gorenje Velenje"
  },
  "rk-koper": {
-  "file": "assets/crests/ehf-rk-koper.png",
+  "file": "assets/crests/ehf-rk-koper.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oKzsQLXRt700dvd7UkXylDQ_IFm51dD2Paakgv2ymSU-Q",
   "ehf_name": "RD Koper"
  },
  "rk-trimo-trebnje": {
-  "file": "assets/crests/ehf-rk-trimo-trebnje.png",
+  "file": "assets/crests/ehf-rk-trimo-trebnje.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYbaAqrbg-fP3Z90I3pokuXwTttUVHECIQURHccdT788Q",
   "ehf_name": "RK Trimo Trebnje"
  },
@@ -174,12 +157,12 @@
   "source": "https://upload.wikimedia.org/wikipedia/commons/4/41/RTV_1879_Basel_Logo.svg"
  },
  "steaua-bucuresti": {
-  "file": "assets/crests/ehf-steaua-bucuresti.png",
+  "file": "assets/crests/ehf-steaua-bucuresti.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbL0Hi-QkhQ5tH5PUYb81VYur8JsCboApc1bnZH1ynlAw",
   "ehf_name": "CSA Steaua Bucuresti"
  },
  "stjarnan": {
-  "file": "assets/crests/ehf-stjarnan.png",
+  "file": "assets/crests/ehf-stjarnan.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbxO_2eeGJX72GZpsZM7iSJbSw6CClo10gAlSddWWBKPg",
   "ehf_name": "Stjarnan"
  },
@@ -187,10 +170,6 @@
   "file": "assets/crests/stralsunder-hv.png",
   "source": "https://upload.wikimedia.org/wikipedia/de/f/fd/Stralsunder_HV_Logo.gif",
   "bytes": 4999
- },
- "telekom-veszprem": {
-  "file": "assets/crests/telekom-veszprem.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg"
  },
  "tsv-altenholz": {
   "file": "assets/crests/tsv-altenholz.svg",
@@ -202,7 +181,7 @@
   "bytes": 532307
  },
  "tsv-st-otmar-st-gallen": {
-  "file": "assets/crests/ehf-tsv-st-otmar-st-gallen.png",
+  "file": "assets/crests/ehf-tsv-st-otmar-st-gallen.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jY3N8X6M9EiSSSgXtfRkP5Axeq_r6JjL7ov7zBKgb51Xw",
   "ehf_name": "TSV St. Otmar St. Gallen"
  },
@@ -211,12 +190,8 @@
   "source": "https://upload.wikimedia.org/wikipedia/de/e/ee/TV_H%C3%BCttenberg_Logo.gif",
   "bytes": 35418
  },
- "vfl-fredenbeck": {
-  "file": "assets/crests/vfl-fredenbeck.svg",
-  "source": "https://upload.wikimedia.org/wikipedia/commons/5/5b/DHB_3.Liga_logo.svg"
- },
  "wacker-thun": {
-  "file": "assets/crests/ehf-wacker-thun.png",
+  "file": "assets/crests/ehf-wacker-thun.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jZf6dMrk5x9PN0z0BDIgKajfqrMH2Uu8j2gmcPZE_G0jQ",
   "ehf_name": "Wacker Thun"
  },
@@ -229,12 +204,12 @@
   "source": "https://upload.wikimedia.org/wikipedia/fr/1/1a/Logo_Al-Wakrah_SC.svg"
  },
  "celje-pivovarna-lasko": {
-  "file": "assets/crests/ehf-celje-pivovarna-lasko.png",
+  "file": "assets/crests/ehf-celje-pivovarna-lasko.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6javZB5epSIIkg6mp2C5RZQijnmKRHMpjXwY0_va6_r9UA",
   "ehf_name": "RK Celje Pivovarna Laško"
  },
  "eskilstuna-guif": {
-  "file": "assets/crests/ehf-eskilstuna-guif.png",
+  "file": "assets/crests/ehf-eskilstuna-guif.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oLZ1_mfgR4mP9f02aOiFeQgwE_0PWRO1gmr8d74P83Clw",
   "ehf_name": "Eskilstuna Guif"
  },
@@ -243,37 +218,37 @@
   "source": "https://upload.wikimedia.org/wikipedia/commons/1/19/Fjellhammer_Idrettslag.svg"
  },
  "halden-topphandball": {
-  "file": "assets/crests/ehf-halden-topphandball.png",
+  "file": "assets/crests/ehf-halden-topphandball.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbG4oPOGrtNSzeebLwx7oK_n60drWR86ypseiB-H0WcLA",
   "ehf_name": "Halden Topphandball"
  },
  "haukar": {
-  "file": "assets/crests/ehf-haukar.png",
+  "file": "assets/crests/ehf-haukar.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYTPa-6xN3crqUDVtPif82SDoGOR1gFPvKNF7O-UVREDQ",
   "ehf_name": "Haukar"
  },
  "ibv-vestmannaeyjar": {
-  "file": "assets/crests/ehf-ibv-vestmannaeyjar.png",
+  "file": "assets/crests/ehf-ibv-vestmannaeyjar.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jaoRkddd0zkD3gCW4B4XTlJCrbU1fiiwC5kPX1I8lyxjQ",
   "ehf_name": "IBV Vestmannaeyjar"
  },
  "lugi-hf": {
-  "file": "assets/crests/ehf-lugi-hf.png",
+  "file": "assets/crests/ehf-lugi-hf.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oLWD91WflfFr5ooVN04Ful3B6mVX9bCdGqC6p8DnpvxUQ",
   "ehf_name": "Lugi HF"
  },
  "mmts-kwidzyn": {
-  "file": "assets/crests/ehf-mmts-kwidzyn.png",
+  "file": "assets/crests/ehf-mmts-kwidzyn.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbMNJJylIucv4ycOBIsyqrp910jihlfXLO8PrNFH95dHQ",
   "ehf_name": "MMTS Kwidzyn"
  },
  "oif-arendal": {
-  "file": "assets/crests/ehf-oif-arendal.png",
+  "file": "assets/crests/ehf-oif-arendal.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jb18qQZyoeMAcCHK_OUiGiOb-HR_axuwKZYkO_Gy0tyew",
   "ehf_name": "ØIF Arendal"
  },
  "pick-szeged": {
-  "file": "assets/crests/ehf-pick-szeged.png",
+  "file": "assets/crests/ehf-pick-szeged.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYH_M9YjIIQ4PWfAyWb3w5fgf_KIPhr8FSfR3MGV0c0qw",
   "ehf_name": "OTP Bank - PICK Szeged"
  },
@@ -282,27 +257,27 @@
   "source": "https://upload.wikimedia.org/wikipedia/commons/6/65/Flag_of_Qatar.svg"
  },
  "runar-sandefjord": {
-  "file": "assets/crests/ehf-runar-sandefjord.png",
+  "file": "assets/crests/ehf-runar-sandefjord.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jar3i5mLLgKUER7JceWOQvWovwONbtop7z3Kvh8LnljsA",
   "ehf_name": "Runar Sandefjord"
  },
  "stal-mielec": {
-  "file": "assets/crests/ehf-stal-mielec.png",
+  "file": "assets/crests/ehf-stal-mielec.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oLrsUi63JHKLfaMCDL1AIOQb6Nu8m8sICM0z-98leE8Qw",
   "ehf_name": "Tauron Stal Mielec"
  },
  "ystads-if": {
-  "file": "assets/crests/ehf-ystads-if.png",
+  "file": "assets/crests/ehf-ystads-if.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jZOnPqQLIE0wm8wZbrdTKy0Qjekt4i10cUgXP-HkUR91g",
   "ehf_name": "Ystads IF HF"
  },
  "fh-hafnarfjor-ur": {
-  "file": "assets/crests/ehf-fh-hafnarfjor-ur.png",
+  "file": "assets/crests/ehf-fh-hafnarfjor-ur.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbJLSo40-pru1A-A-Xfp2Mil69uZMuxEw5eRogZrZB4rw",
   "ehf_name": "FH Hafnarfjordur"
  },
  "orlen-wis-a-p-ock": {
-  "file": "assets/crests/ehf-orlen-wis-a-p-ock.png",
+  "file": "assets/crests/ehf-orlen-wis-a-p-ock.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jar3i5mLLgKUER7JceWOQvW8cPryXJGeMvGaMxAxpvFrQ",
   "ehf_name": "Orlen Wisla Plock"
  },
@@ -593,272 +568,272 @@
   "matched": "Balonmano Cuenca"
  },
  "bada-huesca": {
-  "file": "assets/crests/ehf-bada-huesca.png",
+  "file": "assets/crests/ehf-bada-huesca.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oLN_eFWzH8KrBgk6ReaLGTolyEtz818orEWDDzs4UigNQ",
   "ehf_name": "Bada Huesca"
  },
  "bm-benidorm": {
-  "file": "assets/crests/ehf-bm-benidorm.png",
+  "file": "assets/crests/ehf-bm-benidorm.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYfD0M6iVivZQmGHPDEFVfjB0ALCNnnNXPF40HUa8aE4g",
   "ehf_name": "TM Benidorm"
  },
  "helvetia-anaitasuna": {
-  "file": "assets/crests/ehf-helvetia-anaitasuna.png",
+  "file": "assets/crests/ehf-helvetia-anaitasuna.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oKOg16Xd--o-8bTvVpNddocwU2IWZkJovcZ9mskimgvnQ",
   "ehf_name": "Helvetia Anaitasuna"
  },
  "granollers-b": {
-  "file": "assets/crests/ehf-granollers-b.png",
+  "file": "assets/crests/ehf-granollers-b.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbwDjIahDgQ05wZJ-dOr1-3q2YOmc1mrob0a50gszy-Mw",
   "ehf_name": "Fraikin BM. Granollers"
  },
  "torrelavega-b": {
-  "file": "assets/crests/ehf-torrelavega-b.png",
+  "file": "assets/crests/ehf-torrelavega-b.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbHlazZiGgJGsibpsdaK3kB_6SkNHd6bmWVGq59O4CDWw",
   "ehf_name": "Bathco Bm. Torrelavega"
  },
  "aalborg-handbold": {
-  "file": "assets/crests/ehf-aalborg-handbold.png",
+  "file": "assets/crests/ehf-aalborg-handbold.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oKPgyTck12fUhK8mVcLHhmMLICgU30XhUpo2QV4AAwm6Q",
   "ehf_name": "AaB Handball"
  },
  "gog": {
-  "file": "assets/crests/ehf-gog.png",
-  "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYWncY43ZhO6MtwXHVeD7m_R-zPrJqX-F955u8oFW19Eg",
+  "file": "assets/crests/ehf-gog.jpg",
+  "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbR9hOj4eUbe5QU0rfZqoNYw_28zKNKjmBqcszx0pTGLQ",
   "ehf_name": "GOG"
  },
  "bjerringbro-silkeborg": {
-  "file": "assets/crests/ehf-bjerringbro-silkeborg.png",
+  "file": "assets/crests/ehf-bjerringbro-silkeborg.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jZPhcsnVJuIRDrFPETH0tWjyTfQrWs6XXypk2fb3fEpUQ",
   "ehf_name": "Bjerringbro-Silkeborg"
  },
  "skjern-handbold": {
-  "file": "assets/crests/ehf-skjern-handbold.png",
+  "file": "assets/crests/ehf-skjern-handbold.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jZuPYhN_i_UTNVj6vb9zr36SnNTaWjUUjmYHOuCRVbXyA",
   "ehf_name": "Skjern Handbold"
  },
  "fredericia-hk": {
-  "file": "assets/crests/ehf-fredericia-hk.png",
+  "file": "assets/crests/ehf-fredericia-hk.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jb1OXaERjoIe5jvXdAP5g5VUJwbHKWuJSEacUKP3WrE3w",
   "ehf_name": "Fredericia Håndboldklub"
  },
  "mors-thy-handbold": {
-  "file": "assets/crests/ehf-mors-thy-handbold.png",
-  "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYxz6zF5utb8nTiZIzTiVT15cr2bR9X-FI4QqF3egX8vQ",
+  "file": "assets/crests/ehf-mors-thy-handbold.jpg",
+  "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYvP-VwMPHUkdD-HyI-DXt4yS0CEeF4CkxxWA1tBMzGag",
   "ehf_name": "Mors-Thy Håndbold"
  },
  "nordsjaelland-handbold": {
-  "file": "assets/crests/ehf-nordsjaelland-handbold.png",
+  "file": "assets/crests/ehf-nordsjaelland-handbold.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oKDcI4IFjzTu201w8kb1yESt4a54M54UR4gawcRX9a4BQ",
   "ehf_name": "Nordsjaelland Handbold"
  },
  "ribe-esbjerg-hh": {
-  "file": "assets/crests/ehf-ribe-esbjerg-hh.png",
+  "file": "assets/crests/ehf-ribe-esbjerg-hh.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oJpIZ9AfTMYIpXWWh_s0dByUboadcBqPDbzwZR1guB10Q",
   "ehf_name": "Ribe-Esbjerg HH"
  },
  "tth-holstebro": {
-  "file": "assets/crests/ehf-tth-holstebro.png",
+  "file": "assets/crests/ehf-tth-holstebro.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbYwOxt_pil5p-viHXu-R-XNgZZFAeciL4A5RenqvK6nQ",
   "ehf_name": "TTH Holstebro"
  },
  "kif-kolding": {
-  "file": "assets/crests/ehf-kif-kolding.png",
+  "file": "assets/crests/ehf-kif-kolding.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oIchIm_f7B-p4BmOWOJKTlbS3RH1QHTUwnRB9Qriq1gUQ",
   "ehf_name": "KIF Kolding Kobenhavn"
  },
  "sonderjyske-handbold": {
-  "file": "assets/crests/ehf-sonderjyske-handbold.png",
+  "file": "assets/crests/ehf-sonderjyske-handbold.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oLN_eFWzH8KrBgk6ReaLGToegnOlwkiOgdn7Yi34hkYmA",
   "ehf_name": "SonderjyskE Herrehandbold A/S"
  },
  "tatabanya-kc": {
-  "file": "assets/crests/ehf-tatabanya-kc.png",
+  "file": "assets/crests/ehf-tatabanya-kc.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jabluIBFZRTgSWcGl_mzVJM8ptGMqYsZSN-GuFbkw2A2g",
   "ehf_name": "MOL Tatabanya KC"
  },
  "csurgoi-kk": {
-  "file": "assets/crests/ehf-csurgoi-kk.png",
+  "file": "assets/crests/ehf-csurgoi-kk.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYcnuufp3mJui5rF-jWpH0VVxXjURkwhHu-nNcrki5mpQ",
   "ehf_name": "Csurgói KK"
  },
  "balatonfuredi-kse": {
-  "file": "assets/crests/ehf-balatonfuredi-kse.png",
+  "file": "assets/crests/ehf-balatonfuredi-kse.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYJ6x-IoijTOaroAwGNhwrpXjSQFTxnmVndn-0nctoMwg",
   "ehf_name": "Balatonfüredi KSE"
  },
  "industria-kielce": {
-  "file": "assets/crests/ehf-industria-kielce.png",
+  "file": "assets/crests/ehf-industria-kielce.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jaHrk3H4rdCXloixp5PynltjfBbRMTBdYgu9HQVveWbeg",
   "ehf_name": "Industria Kielce"
  },
  "azoty-pulawy": {
-  "file": "assets/crests/ehf-azoty-pulawy.png",
+  "file": "assets/crests/ehf-azoty-pulawy.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYSecVLIamAU2yV6xCuP6BJWMM7gPMDOBuYyZYN1S7QgQ",
   "ehf_name": "KS Azoty-Pulawy SA"
  },
  "chrobry-g-ogow": {
-  "file": "assets/crests/ehf-chrobry-g-ogow.png",
+  "file": "assets/crests/ehf-chrobry-g-ogow.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYMiXhJ_lVWRdXBJySPsGCigjr3NvJ9sw4gj1a_6az0TA",
   "ehf_name": "KGHM Chrobry Glogow"
  },
  "zag-ebie-lubin": {
-  "file": "assets/crests/ehf-zag-ebie-lubin.png",
+  "file": "assets/crests/ehf-zag-ebie-lubin.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUfbwH0S_Wfq4HAw_W0mWbJM3-shCNxmq0Ywg4iO-WgPap3zBYSW8i27c9sLmuoVzJw",
   "ehf_name": "MKS \"Zaglebie\" Lubin"
  },
  "gornik-zabrze": {
-  "file": "assets/crests/ehf-gornik-zabrze.png",
+  "file": "assets/crests/ehf-gornik-zabrze.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbm3ak3K5iYXB3FDi_XedQlU7pOgE4182_RGMmKEqTtzw",
   "ehf_name": "Górnik Zabrze"
  },
  "aguas-santas-milaneza": {
-  "file": "assets/crests/ehf-aguas-santas-milaneza.png",
+  "file": "assets/crests/ehf-aguas-santas-milaneza.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jZ2AtzKf2a6B44HiWIdOZAPOrjG0NhIYAEDatEmuLTN0g",
   "ehf_name": "Aguas Santas Milaneza"
  },
  "madeira-sad": {
-  "file": "assets/crests/ehf-madeira-sad.png",
+  "file": "assets/crests/ehf-madeira-sad.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jZ_6-CPRvHWl7iyJY4jtIFhVcnC8oFrCkKGoAvEc0q7VQ",
   "ehf_name": "AM Madeira Andebol SAD"
  },
  "belenenses": {
-  "file": "assets/crests/ehf-belenenses.png",
+  "file": "assets/crests/ehf-belenenses.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbgBYz0LComvN0j-YqAjC9HCOCsqm3_v9GygTn2xTfd_w",
   "ehf_name": "Belenenses"
  },
  "hammarby-if": {
-  "file": "assets/crests/ehf-hammarby-if.png",
+  "file": "assets/crests/ehf-hammarby-if.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jabj1fpTGRuweVPYWcqTK5EqqbXTziriMvEjCySsWT2jQ",
   "ehf_name": "Hammarby Handboll"
  },
  "kolstad-handball": {
-  "file": "assets/crests/ehf-kolstad-handball.png",
+  "file": "assets/crests/ehf-kolstad-handball.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYforv721_4rFgLMHeHTIwHpzBl-DB0J0AlicFw9EsqgA",
   "ehf_name": "Kolstad Håndball"
  },
  "naerbo-il": {
-  "file": "assets/crests/ehf-naerbo-il.png",
+  "file": "assets/crests/ehf-naerbo-il.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jba0eU4ZhQCGwq2jQLUVFG4tI0VTUqLMlYBIUuQGHutCg",
   "ehf_name": "Nærbø IL"
  },
  "haslum-hk": {
-  "file": "assets/crests/ehf-haslum-hk.png",
+  "file": "assets/crests/ehf-haslum-hk.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYZJCqoHm2pWskifygaJO5QRZdS3V3btFuUqayG_R0h9A",
   "ehf_name": "Haslum Handballklubb"
  },
  "sandefjord-tif": {
-  "file": "assets/crests/ehf-sandefjord-tif.png",
+  "file": "assets/crests/ehf-sandefjord-tif.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUfbwH0S_Wfq4HAw_W0mWbJOKijCh4w61Cm63BwxH3LAz5D1Xyv3w2zm-KDoOlHeDzA",
   "ehf_name": "Sandefjord TIF"
  },
  "csm-constanta": {
-  "file": "assets/crests/ehf-csm-constanta.png",
+  "file": "assets/crests/ehf-csm-constanta.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jamDfSWsZTmFw3uqJv0nkbtNLBzDkYIB4dKotUjTC5lxA",
   "ehf_name": "CSM Constanta"
  },
  "minaur-baia-mare": {
-  "file": "assets/crests/ehf-minaur-baia-mare.png",
+  "file": "assets/crests/ehf-minaur-baia-mare.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jba0eU4ZhQCGwq2jQLUVFG4vKTHGJyUP_YDyCoWfjOeNg",
   "ehf_name": "CS Minaur Baia Mare"
  },
  "politehnica-timisoara": {
-  "file": "assets/crests/ehf-politehnica-timisoara.png",
+  "file": "assets/crests/ehf-politehnica-timisoara.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jblFiPJpZwDYGpOQe4-RFBpeKu4-Ho9_Uc17szuo9fJ9w",
   "ehf_name": "SCM Politehnica Timisoara"
  },
  "csm-bucuresti": {
-  "file": "assets/crests/ehf-csm-bucuresti.png",
+  "file": "assets/crests/ehf-csm-bucuresti.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jaoEKM4n5PdEq680kmI4UB68LRgGM7u8FNnKolPThpF9Q",
   "ehf_name": "CSM Bucuresti"
  },
  "csm-focsani": {
-  "file": "assets/crests/ehf-csm-focsani.png",
+  "file": "assets/crests/ehf-csm-focsani.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbXUtuLCy59NSI1rPNl4wHWEiNDz-FWFNJkuOwKBFf86w",
   "ehf_name": "CSM Focsani 2007"
  },
  "potaissa-turda": {
-  "file": "assets/crests/ehf-potaissa-turda.png",
+  "file": "assets/crests/ehf-potaissa-turda.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYC3JcDpMCzG_1MLV3Kkn6Dm1yXU-5raN-ZY39kOfs9zg",
   "ehf_name": "AHC Potaissa Turda"
  },
  "rk-maribor-branik": {
-  "file": "assets/crests/ehf-rk-maribor-branik.png",
+  "file": "assets/crests/ehf-rk-maribor-branik.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jaOYH9osLjkBd9oNw2R0o0geO8t-o_Goakh5X93sfcj6w",
   "ehf_name": "RK Maribor Branik"
  },
  "rk-vardar-1961": {
-  "file": "assets/crests/ehf-rk-vardar-1961.png",
+  "file": "assets/crests/ehf-rk-vardar-1961.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYjPdpR1owytQ09MwBBTNl9wgxFcAiGoqYUeaq9qTi-Gg",
   "ehf_name": "HC Vardar 1961"
  },
  "eurofarm-pelister": {
-  "file": "assets/crests/ehf-eurofarm-pelister.png",
-  "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jY48sLd7hTu7qklCiJ22M0g-4UvtesWv_EWDqFXSCZtlA",
+  "file": "assets/crests/ehf-eurofarm-pelister.jpg",
+  "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jaRZfNycqhEQ8hf0mid9X-tSdTQK0y95Ij1fYINsKqNuw",
   "ehf_name": "HC Eurofarm Pelister"
  },
  "rk-metalurg-skopje": {
-  "file": "assets/crests/ehf-rk-metalurg-skopje.png",
+  "file": "assets/crests/ehf-rk-metalurg-skopje.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jZQmi9s1kMmPfRdrPgAAyNUi6x2cRt2EqGNRNfI4GbQtg",
   "ehf_name": "HC Metalurg"
  },
  "rk-butel-skopje": {
-  "file": "assets/crests/ehf-rk-butel-skopje.png",
+  "file": "assets/crests/ehf-rk-butel-skopje.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbyEFbXfQxUCoOO0rpeIER5BsR36iZU1g01QIZgTgsM4A",
   "ehf_name": "HC Butel Skopje"
  },
  "hc-kriens-luzern": {
-  "file": "assets/crests/ehf-hc-kriens-luzern.png",
+  "file": "assets/crests/ehf-hc-kriens-luzern.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYzdVJ5z0pyIW1MtkD3ChwBkTTIkXtLuvveHDxx0bnJrA",
   "ehf_name": "HC Kriens-Luzern"
  },
  "hsc-suhr-aarau": {
-  "file": "assets/crests/ehf-hsc-suhr-aarau.png",
+  "file": "assets/crests/ehf-hsc-suhr-aarau.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jaGJhzTJJerf1nG0CeObaaQU6xgJkTHqt3V4cvbzL0D4w",
   "ehf_name": "HSC Suhr Aarau"
  },
  "fivers-margareten": {
-  "file": "assets/crests/ehf-fivers-margareten.png",
+  "file": "assets/crests/ehf-fivers-margareten.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jZnCekndAeHFXFZJOuv7dTUYih0HHDiSrh-v17f88tJWg",
   "ehf_name": "HC Fivers WAT Margareten"
  },
  "alpla-hc-hard": {
-  "file": "assets/crests/ehf-alpla-hc-hard.png",
+  "file": "assets/crests/ehf-alpla-hc-hard.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jZ7tBJjnuhnprm_orjgD47nkmkwTk-B6FaxWjQG3j2cIg",
   "ehf_name": "Alpla HC Hard"
  },
  "bregenz-handball": {
-  "file": "assets/crests/ehf-bregenz-handball.png",
+  "file": "assets/crests/ehf-bregenz-handball.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYllB5p6LNRyPld9vlHEJTYVpuJSish6GtDzm-VNnI5tg",
   "ehf_name": "Bregenz Handball"
  },
  "sparkasse-schwaz-handball-tirol": {
-  "file": "assets/crests/ehf-sparkasse-schwaz-handball-tirol.png",
+  "file": "assets/crests/ehf-sparkasse-schwaz-handball-tirol.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jaX_uC-YiKqHo8dY25CKzU_0pJ40Cn1U2nI8KMqkdMQfA",
   "ehf_name": "Sparkasse Schwaz Handball Tirol"
  },
  "sg-insignis-handball-west-wien": {
-  "file": "assets/crests/ehf-sg-insignis-handball-west-wien.png",
+  "file": "assets/crests/ehf-sg-insignis-handball-west-wien.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jawQx1amNF6vcRopWmSnaSOGVnye4OjuqhH1wy5CsGw8A",
   "ehf_name": "Handball WEST WIEN"
  },
  "uhk-krems": {
-  "file": "assets/crests/ehf-uhk-krems.png",
+  "file": "assets/crests/ehf-uhk-krems.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jabj1fpTGRuweVPYWcqTK5ENzY4DwwjyvRlxcKGuDEzNg",
   "ehf_name": "Förthof UHK Krems"
  },
  "valur": {
-  "file": "assets/crests/ehf-valur.png",
+  "file": "assets/crests/ehf-valur.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jZUBqqj18Y1XLzBTk1XW-wQnHdLG7ejXykem5OwCJn36w",
   "ehf_name": "Valur"
  },
  "afturelding": {
-  "file": "assets/crests/ehf-afturelding.png",
+  "file": "assets/crests/ehf-afturelding.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jaXLGr5I_st6tv42muuAjDZ7UzUsb8T0uUaX59D_eBkEA",
   "ehf_name": "Afturelding"
  },
  "selfoss": {
-  "file": "assets/crests/ehf-selfoss.png",
+  "file": "assets/crests/ehf-selfoss.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYZIt9i2Yi7lbXIemabnFpL2lH9PBZWfNZTdLopapAFEw",
   "ehf_name": "Selfoss"
  },
@@ -893,208 +868,213 @@
   "matched": "HBW Balingen-Weilstetten"
  },
  "sc-magdeburg-ii": {
-  "file": "assets/crests/ehf-sc-magdeburg-ii.png",
-  "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jZtcUhoXnygVKTvTwJITq_XlxkNS0ipe1eh83rlFBU5Ww",
+  "file": "assets/crests/ehf-sc-magdeburg-ii.jpg",
+  "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbRmh_2LGyuShf_iKyQQtvItoMDLDfVfG93kW-9bClw8Q",
   "ehf_name": "SC Magdeburg"
  },
  "fuchse-berlin-reinickendorf-ii": {
-  "file": "assets/crests/ehf-fuchse-berlin-reinickendorf-ii.png",
-  "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbfiQGvKnbYWaRPwmKGqW1cIlck4GnpQVQgjEjqf7GNvg",
+  "file": "assets/crests/ehf-fuchse-berlin-reinickendorf-ii.jpg",
+  "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbJLSo40-pru1A-A-Xfp2MiL4B5iyzR89CY7odw9gh9lA",
   "ehf_name": "Füchse Berlin"
  },
  "barca-b": {
-  "file": "assets/crests/ehf-barca-b.png",
-  "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYWncY43ZhO6MtwXHVeD7m_-S7LfHdLqtnY7NTg8grsbQ",
+  "file": "assets/crests/ehf-barca-b.jpg",
+  "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbR9hOj4eUbe5QU0rfZqoNYl2Y2_P6eWI-pfzvENIGCLA",
   "ehf_name": "Barça"
  },
  "ferencvarosi-tc": {
-  "file": "assets/crests/ehf-ferencvarosi-tc.png",
+  "file": "assets/crests/ehf-ferencvarosi-tc.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jabdvXdiBrmT61BEKdmNdoGfzYkRBXSSbK8Ml8ETPa6yQ",
   "ehf_name": "FTC-Green Collect"
  },
  "komloi-bsk": {
-  "file": "assets/crests/ehf-komloi-bsk.png",
+  "file": "assets/crests/ehf-komloi-bsk.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oKa5Fc8AIn698fo_00FKqfQ3X4JaL8O5Ta-uRoxhaP9Rg",
   "ehf_name": "Sport36 - Komló"
  },
  "budakalasz-fkc": {
-  "file": "assets/crests/ehf-budakalasz-fkc.png",
+  "file": "assets/crests/ehf-budakalasz-fkc.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oJUfcbh01ppXwtKuybOm5NdH8fPuu2_Cw1tEp4S62fpGg",
   "ehf_name": "CYEB Budakalasz"
  },
  "gyongyosi-kk": {
-  "file": "assets/crests/ehf-gyongyosi-kk.png",
+  "file": "assets/crests/ehf-gyongyosi-kk.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYt59vlflJlbP0Pt44CY_cylXGM9PyN_zDIgT_fZAYwPw",
   "ehf_name": "HEDO-B. Braun Gyöngyös"
  },
  "wybrzeze-gdansk": {
-  "file": "assets/crests/ehf-wybrzeze-gdansk.png",
+  "file": "assets/crests/ehf-wybrzeze-gdansk.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oLRtidoAQEhpJ71DH6iITnHDLcsE7DOpNo1DIA2zJq5lA",
   "ehf_name": "SPR Pogon Szczecin"
  },
  "arged-kpr-ostrovia-ostrow": {
-  "file": "assets/crests/ehf-arged-kpr-ostrovia-ostrow.png",
+  "file": "assets/crests/ehf-arged-kpr-ostrovia-ostrow.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jZNrHos6qgGJaMPFlu-P2NgGyqanT12HdP8W6zjqUzW0A",
   "ehf_name": "Rebud KPR Ostrovia Ostrow Wlkp"
  },
  "sporting-cp": {
-  "file": "assets/crests/ehf-sporting-cp.png",
+  "file": "assets/crests/ehf-sporting-cp.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYSvgdZ7kQ2NdyUQJNUTgXpi12mLXlYk98N-dtGsk9EmA",
   "ehf_name": "Sporting Clube de Portugal"
  },
  "sl-benfica": {
-  "file": "assets/crests/ehf-sl-benfica.png",
-  "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbkTo7LdWhMpVvMDZiWg1tHRLfoigHFoKiDTpBGisxXEw",
+  "file": "assets/crests/ehf-sl-benfica.jpg",
+  "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jZARhsqDTt6j0ehAipvabHMk0hCrDxGHXfmtYnB0erdsQ",
   "ehf_name": "Sport Lisboa e Benfica"
  },
  "hif-karlskrona": {
-  "file": "assets/crests/ehf-hif-karlskrona.png",
+  "file": "assets/crests/ehf-hif-karlskrona.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jafR9FxWlmJWd_V0GJ7xFNaKe992AVmLtCZiYVi_3CQ9Q",
   "ehf_name": "HF Karlskrona"
  },
  "rk-krka": {
-  "file": "assets/crests/ehf-rk-krka.png",
+  "file": "assets/crests/ehf-rk-krka.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jaCD9VGOzQNIHUiwPb4gAA-YRUSajwpaWPDbH9LiQK0tg",
   "ehf_name": "MRK Krka"
  },
  "rk-ribnica": {
-  "file": "assets/crests/ehf-rk-ribnica.png",
+  "file": "assets/crests/ehf-rk-ribnica.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jYs9wD2qXd5x0eeQRI-a5d0XeTv09gruf4hZcEBLFYCnw",
   "ehf_name": "RD Riko Ribnica"
  },
  "rk-ohrid": {
-  "file": "assets/crests/ehf-rk-ohrid.png",
+  "file": "assets/crests/ehf-rk-ohrid.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jbdbdj4k0E35dMCD9T-RkDztDlopsmtM5ky91Ct6LzcNQ",
   "ehf_name": "GRK Ohrid"
  },
  "ka-akureyri": {
-  "file": "assets/crests/ehf-ka-akureyri.png",
+  "file": "assets/crests/ehf-ka-akureyri.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jZ8m0XQY2j4lYF_rKgoHOhKTkclY6cmwshleJvlpSiNfw",
   "ehf_name": "KA"
  },
  "pauc-handball": {
-  "file": "assets/crests/ehf-pauc-handball.png",
+  "file": "assets/crests/ehf-pauc-handball.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jabXEvSGcAcGUZwMdiv0rq1xdzEyQYX_brFKl3P0bb4nw",
-  "origin": "EHF (relleno de división baja)"
+  "ehf_name": "PAUC Handball"
  },
  "bm-aragon": {
-  "file": "assets/crests/ehf-bm-aragon.png",
+  "file": "assets/crests/ehf-bm-aragon.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oJOlRpRH0GG0kNxPXBSKXL-Vr5tyaykixyF37Ahp1LCFw",
-  "origin": "EHF (relleno de división baja)"
+  "ehf_name": "BM Aragon"
  },
  "j-d-arrate": {
-  "file": "assets/crests/ehf-j-d-arrate.png",
+  "file": "assets/crests/ehf-j-d-arrate.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUfbwH0S_Wfq4HAw_W0mWbJPqIZk4mSoiVnZKQfT_jMoTReDCh_MN4YmgU9xDMQGZGw",
-  "origin": "EHF (relleno de división baja)"
+  "ehf_name": "J.D. Arrate"
  },
  "amaya-sport-san-antonio": {
-  "file": "assets/crests/ehf-amaya-sport-san-antonio.png",
+  "file": "assets/crests/ehf-amaya-sport-san-antonio.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oLKg1IYR8rBp6BhBU4C454tNm1z-43g2UoRH6CElVo_cA",
-  "origin": "EHF (relleno de división baja)"
+  "ehf_name": "Amaya Sport San Antonio"
  },
  "aab-handball": {
-  "file": "assets/crests/ehf-aab-handball.png",
+  "file": "assets/crests/ehf-aab-handball.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oKPgyTck12fUhK8mVcLHhmMLICgU30XhUpo2QV4AAwm6Q",
-  "origin": "EHF (relleno de división baja)"
+  "ehf_name": "AaB Handball"
  },
  "ag-kobenhavn": {
-  "file": "assets/crests/ehf-ag-kobenhavn.png",
+  "file": "assets/crests/ehf-ag-kobenhavn.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oI_rkXTpk_rdw3XVjOLB04lUZBAaELvChWFi7GOsNRIag",
-  "origin": "EHF (relleno de división baja)"
+  "ehf_name": "AG Kobenhavn"
  },
  "aarhus-haandbold": {
-  "file": "assets/crests/ehf-aarhus-haandbold.png",
+  "file": "assets/crests/ehf-aarhus-haandbold.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oJGmpm4ah8n929M7dO8hXrqT54e2OgcJ8fCWh2h4HkXRA",
-  "origin": "EHF (relleno de división baja)"
+  "ehf_name": "Aarhus Haandbold"
  },
  "dunaferr-se": {
-  "file": "assets/crests/ehf-dunaferr-se.png",
+  "file": "assets/crests/ehf-dunaferr-se.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oJU_7VMX7fEVmkuLem7k1Q1t-s1YrVZNJ2mhtpfhsM1hg",
-  "origin": "EHF (relleno de división baja)"
+  "ehf_name": "Dunaferr SE"
  },
  "dkse-airport-debrecen": {
-  "file": "assets/crests/ehf-dkse-airport-debrecen.png",
+  "file": "assets/crests/ehf-dkse-airport-debrecen.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUfbwH0S_Wfq4HAw_W0mWbJPVpx9ORlXT-CHKeEAHdYMF75JiJnEADoqmmvbWQiYKWQ",
-  "origin": "EHF (relleno de división baja)"
+  "ehf_name": "DKSE-Airport Debrecen"
  },
  "ftc-green-collect": {
-  "file": "assets/crests/ehf-ftc-green-collect.png",
+  "file": "assets/crests/ehf-ftc-green-collect.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jabdvXdiBrmT61BEKdmNdoGfzYkRBXSSbK8Ml8ETPa6yQ",
-  "origin": "EHF (relleno de división baja)"
+  "ehf_name": "FTC-Green Collect"
  },
  "sport36-komlo": {
-  "file": "assets/crests/ehf-sport36-komlo.png",
+  "file": "assets/crests/ehf-sport36-komlo.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oKa5Fc8AIn698fo_00FKqfQ3X4JaL8O5Ta-uRoxhaP9Rg",
-  "origin": "EHF (relleno de división baja)"
+  "ehf_name": "Sport36 - Komló"
  },
  "kpr-gwardia-opole": {
-  "file": "assets/crests/ehf-kpr-gwardia-opole.png",
+  "file": "assets/crests/ehf-kpr-gwardia-opole.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6ja0gzOn_P3TPPo9A8RgBm3rsnQNln2PuPhxBowhpPELxQ",
-  "origin": "EHF (relleno de división baja)"
+  "ehf_name": "KPR Gwardia Opole"
  },
  "spr-pogon-szczecin": {
-  "file": "assets/crests/ehf-spr-pogon-szczecin.png",
+  "file": "assets/crests/ehf-spr-pogon-szczecin.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oLRtidoAQEhpJ71DH6iITnHDLcsE7DOpNo1DIA2zJq5lA",
-  "origin": "EHF (relleno de división baja)"
+  "ehf_name": "SPR Pogon Szczecin"
  },
  "grupa-azoty-unia-tarnow": {
-  "file": "assets/crests/ehf-grupa-azoty-unia-tarnow.png",
+  "file": "assets/crests/ehf-grupa-azoty-unia-tarnow.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jZNjI0CSX8m7iWmFGkgbp87aYwfcDCRzouXUpsd2ozMZQ",
-  "origin": "EHF (relleno de división baja)"
+  "ehf_name": "Grupa Azoty Unia Tarnów"
  },
  "xico-andebol": {
-  "file": "assets/crests/ehf-xico-andebol.png",
+  "file": "assets/crests/ehf-xico-andebol.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oI3xkt7UzkUibxwKQXGsEgwnoNUgPKZosQL4-uMb15SlA",
-  "origin": "EHF (relleno de división baja)"
+  "ehf_name": "Xico Andebol"
  },
  "liberty-s-bernardo": {
-  "file": "assets/crests/ehf-liberty-s-bernardo.png",
+  "file": "assets/crests/ehf-liberty-s-bernardo.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUfbwH0S_Wfq4HAw_W0mWbJOXCAhFD5HWMMyQ3bnIL84ycdt881wdQ6RbdtYBVhlLzQ",
-  "origin": "EHF (relleno de división baja)"
+  "ehf_name": "Liberty S. Bernardo"
  },
  "hk-drott-halmstad": {
-  "file": "assets/crests/ehf-hk-drott-halmstad.png",
+  "file": "assets/crests/ehf-hk-drott-halmstad.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oLaoRMKkkwOZJvwa626NwPHKX8z1Itsab9as-3ZrfyzLQ",
-  "origin": "EHF (relleno de división baja)"
+  "ehf_name": "HK DROTT Halmstad"
  },
  "h43-lund": {
-  "file": "assets/crests/ehf-h43-lund.png",
+  "file": "assets/crests/ehf-h43-lund.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUfbwH0S_Wfq4HAw_W0mWbJPpbs_WgYXk_saPppKb6IOfDl39jegEEWTMCxo8stGq2g",
-  "origin": "EHF (relleno de división baja)"
+  "ehf_name": "H43 Lund"
  },
  "bodo-hk": {
-  "file": "assets/crests/ehf-bodo-hk.png",
+  "file": "assets/crests/ehf-bodo-hk.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oJJ1SzlscFZBVnPniuWia2783Ck1GfjooFPg62L2QL5Pg",
-  "origin": "EHF (relleno de división baja)"
+  "ehf_name": "Bodö HK"
  },
  "handbal-club-odorhei": {
-  "file": "assets/crests/ehf-handbal-club-odorhei.png",
+  "file": "assets/crests/ehf-handbal-club-odorhei.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oJrMjn66lg3MI-PjFZC_ZJddToJ4cQGrip-6SKL5JRJCg",
-  "origin": "EHF (relleno de división baja)"
+  "ehf_name": "Handbal club Odorhei"
  },
  "stiinta-municipal-dedeman-bacau": {
-  "file": "assets/crests/ehf-stiinta-municipal-dedeman-bacau.png",
+  "file": "assets/crests/ehf-stiinta-municipal-dedeman-bacau.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oJrGlo2OwGrxqRELK27Yw4Ywu1QPYOfoWv_2tXX7fNQyA",
-  "origin": "EHF (relleno de división baja)"
+  "ehf_name": "Stiinta Municipal Dedeman Bacau"
  },
  "rk-slovenj-gradec": {
-  "file": "assets/crests/ehf-rk-slovenj-gradec.png",
+  "file": "assets/crests/ehf-rk-slovenj-gradec.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jZL6V6zTMpgeVh6e9uRYL61Z7tW6U4F0hHLKD0fVoY7Dw",
-  "origin": "EHF (relleno de división baja)"
+  "ehf_name": "RK Slovenj Gradec"
  },
  "hit-medalp-tirol": {
-  "file": "assets/crests/ehf-hit-medalp-tirol.png",
+  "file": "assets/crests/ehf-hit-medalp-tirol.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oJZ1RwraH5D-MyXqd26b6rxYuebYA7hPLih88OaZ-NZew",
-  "origin": "EHF (relleno de división baja)"
+  "ehf_name": "HIT medalp Tirol"
  },
  "uhc-goldmann-druck-tulln": {
-  "file": "assets/crests/ehf-uhc-goldmann-druck-tulln.png",
+  "file": "assets/crests/ehf-uhc-goldmann-druck-tulln.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUfbwH0S_Wfq4HAw_W0mWbJMCpDr484KwL-Nz2-wYqTqHnaIi04Eh9DzVWw4Hht-jqw",
-  "origin": "EHF (relleno de división baja)"
+  "ehf_name": "UHC Goldmann Druck Tulln"
  },
  "hk-kopavogur": {
-  "file": "assets/crests/ehf-hk-kopavogur.png",
+  "file": "assets/crests/ehf-hk-kopavogur.jpg",
   "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUYI21VTPFjDVVVuL-T4r1oLIjTo7CyfqwNGEUmOK8kET5y8_YVquwKv5wauWaEBRZA",
-  "origin": "EHF (relleno de división baja)"
+  "ehf_name": "HK Kopavogur"
+ },
+ "telekom-veszprem": {
+  "file": "assets/crests/ehf-telekom-veszprem.jpg",
+  "source": "https://res.ehf.eu/doxtore/TLCEQLGQDD/e1GDx4hAd4m3OP2MUjZsUblI3hAS2CVXmCLcWXth6jZUBqqj18Y1XLzBTk1XW-wQwZetvcr5JlyDGVmbEqOGCg",
+  "ehf_name": "One Veszprém HC"
  }
 }

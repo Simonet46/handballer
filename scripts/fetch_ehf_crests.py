@@ -48,7 +48,7 @@ ALIASES = {
     "Barça B": "FC Barcelona",
     "TVB Stuttgart": "TVB 1898 Stuttgart",
     "HSV Hamburg": "Handball Sport Verein Hamburg",
-    "Telekom Veszprém": "Veszprém HC",
+    "Telekom Veszprém": "One Veszprém HC",
     "Pick Szeged": "OTP Bank - PICK Szeged",
     "Industria Kielce": "Industria Kielce",
     "Orlen Wisła Płock": "Orlen Wisla Plock",
@@ -113,7 +113,7 @@ ALIASES = {
 
 
 # Cuanto más alto, más confiable: no lo pisa una fuente peor.
-CREST_PRIORITY = {"league": 4, "femebal": 4, "ehf": 3, "wikipedia": 1, None: 0}
+CREST_PRIORITY = {"league": 4, "femebal": 4, "hrs": 4, "cbhb": 4, "ehf": 3, "wikipedia": 1, None: 0}
 
 
 def better_than(new_source, team):
