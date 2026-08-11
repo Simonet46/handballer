@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>HANDBOLUDO · Analítica</title>
+<style>
+  :root {
+    --ink: #0b0f14; --ink-2: #141b23; --paper: #f4f1ea;
+    --muted: rgba(244,241,234,.58); --faint: rgba(244,241,234,.12);
+    --accent: #e8552f; --gold: #f0c02c; --ok: #25d366;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--ink); color: var(--paper);
+    font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    padding: 24px 16px 60px;
+  }
+  main { max-width: 760px; margin: 0 auto; display: grid; gap: 28px; }
+  h1 { font-size: 26px; letter-spacing: -.02em; margin: 0; }
+  h1 small { color: var(--muted); font-weight: 500; font-size: 14px; display: block; margin-top: 4px; }
+  h2 { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
+  section { background: var(--ink-2); border: 1px solid var(--faint); border-radius: 16px; padding: 18px; }
+
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+  .kpi { background: var(--ink-2); border: 1px solid var(--faint); border-radius: 16px; padding: 14px 16px; }
+  .kpi b { display: block; font-size: 30px; font-variant-numeric: tabular-nums; }
+  .kpi span { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+
+  .step { display: grid; grid-template-columns: 150px 1fr 90px; gap: 10px; align-items: center; margin: 8px 0; }
+  .step .label { font-size: 13px; color: var(--muted); }
+  .bar { height: 26px; border-radius: 6px; background: var(--faint); overflow: hidden; }
+  .bar i { display: block; height: 100%; background: var(--accent); border-radius: 6px; min-width: 2px; }
+  .step .n { text-align: right; font-variant-numeric: tabular-nums; }
+  .step .n small { color: var(--muted); display: block; font-size: 11px; }
+
+  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  th, td { text-align: right; padding: 6px 8px; border-bottom: 1px solid var(--faint); }
+  th:first-child, td:first-child { text-align: left; }
+  th { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
+
+  .days { display: flex; gap: 3px; align-items: flex-end; height: 120px; }
+  .day { flex: 1; display: grid; align-content: end; gap: 4px; }
+  .day i { display: block; background: var(--accent); border-radius: 3px 3px 0 0; min-height: 2px; }
+  .day span { font-size: 9px; color: var(--muted); text-align: center; }
+  .empty { color: var(--muted); }
+  footer { color: var(--muted); font-size: 12px; text-align: center; }
+</style>
+</head>
+<body>
+<main>
+  <h1>HANDBOLUDO · Analítica
+    <small>Embudo en vivo — sólo agregados, sin datos personales. Actualizado al recargar.</small>
+  </h1>
+
+  <div class="kpis" id="kpis"></div>
+
+  <section>
+    <h2>Embudo</h2>
+    <div id="funnel" class="empty">Cargando…</div>
+  </section>
+
+  <section>
+    <h2>Por país de origen</h2>
+    <div id="countries" class="empty">Cargando…</div>
+  </section>
+
+  <section>
+    <h2>Carreras empezadas por día (hora argentina, últimos 30 días)</h2>
+    <div id="daily" class="empty">Cargando…</div>
+  </section>
+
+  <footer>La tabla de eventos es de sólo inserción: este tablero lee vistas agregadas.</footer>
+</main>
+
+<script type="module">
+const URL_ = "https://lerbzwnnmqpjjfuhgxfl.supabase.co";
+const KEY = "sb_publishable_3C0by73ZRB_zjt2XnnvaMg_y4bJduY_";
+const HEADERS = { apikey: KEY, Authorization: `Bearer ${KEY}` };
+const NF = new Intl.NumberFormat("es-AR");
+
+const STEPS = [
+  ["setup", "Abrieron el juego"],
+  ["career_started", "Empezaron carrera"],
+  ["first_decision", "Primera decisión"],
+  ["career_finished", "Terminaron"],
+];
+const SHARES = [["share", "Compartir (imagen)"], ["share_wa", "Compartir (WhatsApp)"]];
+
+async function view(name) {
+  const rows = await fetch(`${URL_}/rest/v1/${name}?select=*`, { headers: HEADERS }).then((r) => r.json());
+  return Array.isArray(rows) ? rows : [];
+}
+
+function pct(part, whole) { return whole ? `${Math.round(part * 100 / whole)} %` : "—"; }
+
+const [funnel, byCountry, daily] = await Promise.all([
+  view("funnel"), view("funnel_by_country"), view("funnel_daily"),
+]);
+const count = (rows, event) => Number(rows.find((r) => r.event === event)?.n || 0);
+
+// --- KPIs ------------------------------------------------------------------
+const setup = count(funnel, "setup");
+const finished = count(funnel, "career_finished");
+const shares = count(funnel, "share") + count(funnel, "share_wa");
+const today = new Date().toLocaleDateString("en-CA", { timeZone: "America/Argentina/Buenos_Aires" });
+const startedToday = daily.filter((r) => r.day === today && r.event === "career_started")
+  .reduce((s, r) => s + Number(r.n), 0);
+document.getElementById("kpis").innerHTML = [
+  [NF.format(setup), "Visitas al juego"],
+  [NF.format(finished), "Carreras terminadas"],
+  [pct(finished, setup), "Visita → final"],
+  [NF.format(shares), "Compartidas"],
+  [NF.format(startedToday), "Empezadas hoy"],
+].map(([v, l]) => `<div class="kpi"><b>${v}</b><span>${l}</span></div>`).join("");
+
+// --- Embudo ----------------------------------------------------------------
+const max = Math.max(1, ...STEPS.map(([k]) => count(funnel, k)));
+let prev = null;
+document.getElementById("funnel").innerHTML = [...STEPS, ...SHARES].map(([key, label]) => {
+  const n = count(funnel, key);
+  const isStep = STEPS.some(([k]) => k === key);
+  const rel = isStep && prev !== null ? pct(n, prev) : (isStep ? "" : pct(n, finished));
+  if (isStep) prev = n;
+  return `<div class="step">
+    <span class="label">${label}</span>
+    <span class="bar"><i style="width:${Math.round(n * 100 / max)}%"></i></span>
+    <span class="n">${NF.format(n)}<small>${rel}</small></span>
+  </div>`;
+}).join("") || '<p class="empty">Todavía no hay eventos.</p>';
+
+// --- Por país --------------------------------------------------------------
+const FLAGS = { FRA: "🇫🇷", GER: "🇩🇪", ARG: "🇦🇷", ESP: "🇪🇸", CRO: "🇭🇷", BRA: "🇧🇷" };
+const countries = {};
+for (const row of byCountry) {
+  const slot = (countries[row.country] ??= {});
+  slot[row.event] = Number(row.n);
+}
+const rows = Object.entries(countries)
+  .map(([c, ev]) => [c, ev.career_started || 0, ev.career_finished || 0])
+  .filter(([, started]) => started > 0)
+  .sort((a, b) => b[1] - a[1]);
+document.getElementById("countries").innerHTML = rows.length
+  ? `<table><tr><th>País</th><th>Empezadas</th><th>Terminadas</th><th>Conversión</th></tr>` +
+    rows.map(([c, started, fin]) =>
+      `<tr><td>${FLAGS[c] || ""} ${c}</td><td>${NF.format(started)}</td><td>${NF.format(fin)}</td><td>${pct(fin, started)}</td></tr>`
+    ).join("") + "</table>"
+  : '<p class="empty">Todavía no hay carreras.</p>';
+
+// --- Serie diaria ----------------------------------------------------------
+const byDay = new Map();
+for (const row of daily) {
+  if (row.event === "career_started") byDay.set(row.day, Number(row.n));
+}
+const days = [...byDay.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+const dmax = Math.max(1, ...days.map(([, n]) => n));
+document.getElementById("daily").innerHTML = days.length
+  ? `<div class="days">` + days.map(([day, n]) =>
+      `<div class="day" title="${day}: ${n}"><i style="height:${Math.max(2, Math.round(n * 110 / dmax))}px"></i><span>${day.slice(8)}</span></div>`
+    ).join("") + "</div>"
+  : '<p class="empty">Todavía no hay días con carreras.</p>';
+</script>
+</body>
+</html>

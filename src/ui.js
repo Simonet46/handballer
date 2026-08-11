@@ -13,7 +13,7 @@ import {
 } from "./game-engine.js";
 import { attachCrestFallback, clubColor, crestSrc } from "./crest.js";
 import { createTranslator, honourName } from "./i18n.js";
-import { drawShareCard, shareCareer } from "./share.js";
+import { drawShareCard, shareCareer, whatsappShareUrl } from "./share.js";
 
 const locale = document.documentElement.lang || "es";
 const t = createTranslator(locale);
@@ -60,6 +60,7 @@ async function boot() {
   renderSetup();
   el("app").dataset.ready = "1";
   renderWorldCounter();
+  track("setup");
 }
 
 // ---------------------------------------------------------------------------
@@ -291,6 +292,7 @@ async function startCareer() {
   rng = createRng(daily ? dailySeed() : Date.now() ^ Math.floor(Math.random() * 1e9));
   career = createCareer({ ...form, lastName: form.lastName || t("ui.lastNamePlaceholder") }, rng);
   career.daily = daily;
+  track("career_started");
   advanceCareer(career, null, rng);
   show("career");
   renderCareer();
@@ -648,11 +650,18 @@ function choose(choiceId) {
   if (busy || !career || career.ended) return;
   busy = true;
   const before = snapshot();
+  // La primera decisión es el escalón del embudo que importa: quien la toma,
+  // casi siempre termina la carrera. Las demás no se cuentan.
+  if (!career.trackedFirstDecision) {
+    career.trackedFirstDecision = true;
+    track("first_decision");
+  }
   advanceCareer(career, choiceId, rng);
 
   showTransition(before, () => {
     busy = false;
     if (career.ended) {
+      track("career_finished", { score: career.score });
       show("result");
       window.scrollTo({ top: 0, behavior: "smooth" });
       renderResult();
@@ -736,6 +745,12 @@ function storyAngles(stints) {
   return angles.filter(([weight]) => weight > 0).sort((a, b) => b[0] - a[0]);
 }
 
+// Ángulos que no pueden convivir en la misma crónica: "se quedó una década
+// en un club" y "fue de todos lados y de ningún lado" eran verdad a la vez
+// (9 años en un club + 6 camisetas), pero contadas juntas se contradicen.
+// Gana el de más peso; el otro se calla.
+const STORY_CONFLICTS = { oneClub: ["wanderer"], wanderer: ["oneClub"] };
+
 function buildStory() {
   const stints = buildStints();
   const verdict = career.verdict.key;
@@ -743,7 +758,12 @@ function buildStory() {
 
   // Dos o tres ángulos: los suficientes para que se sienta escrita, los
   // pocos para que no sea un inventario.
-  const chosen = storyAngles(stints).slice(0, 3 + (storyHash() % 2));
+  const chosen = [];
+  for (const angle of storyAngles(stints)) {
+    if (chosen.length >= 3 + (storyHash() % 2)) break;
+    const banned = chosen.flatMap(([, key]) => STORY_CONFLICTS[key] || []);
+    if (!banned.includes(angle[1])) chosen.push(angle);
+  }
   chosen.forEach(([, key, params], index) => {
     parts.push(storyPick(`story.angle.${key}`, params, index + 1));
   });
@@ -824,7 +844,20 @@ function renderResult() {
   initBoardTabs(saveRun());
 
   drawShareCard(el("share-canvas"), career, t, story);
-  el("share").onclick = () => shareCareer(career, t, el("share-canvas"), el("share-feedback"));
+  el("share").onclick = () => {
+    track("share");
+    shareCareer(career, t, el("share-canvas"), el("share-feedback"));
+  };
+  // WhatsApp abre con el resumen ya escrito: puntaje, sueldo pico, clubes,
+  // títulos y la dirección al final. Es el canal que más carreras trae.
+  const wa = el("share-wa");
+  if (wa) {
+    wa.textContent = t("ui.shareWa");
+    wa.onclick = () => {
+      track("share_wa");
+      window.open(whatsappShareUrl(career, t), "_blank", "noopener");
+    };
+  }
   el("play-again").onclick = () => { show("setup"); window.scrollTo({ top: 0 }); };
 }
 
@@ -1077,6 +1110,32 @@ function backendHeaders() {
     apikey: BACKEND.key,
     Authorization: `Bearer ${BACKEND.key}`,
   };
+}
+
+/**
+ * El embudo, con lo mínimo: qué pantalla se alcanzó y desde dónde. Se manda
+ * y se sigue jugando; si el backend no está, acá no se entera nadie. La tabla
+ * `events` es de sólo inserción para el rol anónimo y el tablero
+ * (analytics.html) lee únicamente vistas agregadas.
+ */
+function track(event, extra = {}) {
+  try {
+    fetch(`${BACKEND.url}/rest/v1/events`, {
+      method: "POST",
+      headers: { ...backendHeaders(), Prefer: "return=minimal" },
+      keepalive: true,
+      body: JSON.stringify({
+        event,
+        country: form.country,
+        rama: form.rama,
+        mode: form.mode,
+        locale,
+        ...extra,
+      }),
+    }).catch(() => {});
+  } catch {
+    // Analítica jamás rompe el juego.
+  }
 }
 
 /**

@@ -171,6 +171,9 @@
 
     <div class="actions">
       <button id="share" class="cta" type="button">{{L_SHARE}}</button>
+      <!-- El texto lo pone ui.js con el idioma cargado: así el template no
+           necesita un token nuevo por cada botón. -->
+      <button id="share-wa" class="ghost share-wa" type="button"></button>
       <button id="play-again" class="ghost" type="button">{{L_AGAIN}}</button>
       <p class="feedback" id="share-feedback" hidden></p>
     </div>
