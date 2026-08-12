@@ -3,6 +3,7 @@
  * imagen linda para pegar en una historia, nadie comparte nada.
  */
 import { MAJOR_TROPHIES } from "./game-engine.js";
+import { crestSrc } from "./crest.js";
 import { honourName } from "./i18n.js";
 
 const W = 1080;
@@ -24,21 +25,27 @@ const JERSEY_INK = {
 };
 const JERSEY_NUMBER_INK = { ...JERSEY_INK, ESP: "#ffc400" };
 
-/** El recorrido de clubes, condensado como en la tarjeta: 3 primeros … 2 últimos. */
+/**
+ * El recorrido de clubes, condensado: 3 primeros … 2 últimos. Cada parada
+ * lleva el id además del nombre, que es lo que permite buscarle el escudo.
+ */
 function clubRoute(career) {
   const clubs = [];
   for (const season of career.timeline) {
-    if (clubs.at(-1) !== season.club) clubs.push(season.club);
+    if (clubs.at(-1)?.name !== season.club) clubs.push({ name: season.club, id: season.clubId });
   }
-  return clubs.length > 6 ? [...clubs.slice(0, 3), "…", ...clubs.slice(-2)] : clubs;
+  return clubs.length > 6
+    ? [...clubs.slice(0, 3), { name: "…" }, ...clubs.slice(-2)]
+    : clubs;
 }
 
 /** La vitrina condensada: los títulos más pesados primero, con su multiplicador. */
-function topHonours(career, t, max = 3) {
+function topHonours(career, t, max = 4) {
   const honours = new Map();
   for (const item of [...career.trophies, ...career.awards]) {
     const name = honourName(t, item);
-    const entry = honours.get(name) || { count: 0, weight: item.weight || 0 };
+    // Guardamos la clave del primero: es la que elige qué trofeo se dibuja.
+    const entry = honours.get(name) || { count: 0, weight: item.weight || 0, key: item.key };
     entry.count += 1;
     honours.set(name, entry);
   }
@@ -63,7 +70,7 @@ export function shareLines(career, t) {
     `${career.player.flag} ${career.player.lastName} — ${t(`verdicts.${career.verdict.key}.title`)}`,
     `🎯 ${t("ui.score")}: ${career.score}`,
     ...(career.maxSalary > 0 ? [`💰 ${t("share.salary")}: ${money(career.maxSalary, t)}`] : []),
-    `🤾 ${t("ui.clubs")}: ${clubRoute(career).join(" › ")}`,
+    `🤾 ${t("ui.clubs")}: ${clubRoute(career).map((stop) => stop.name).join(" › ")}`,
     honours.length
       ? `🏆 ${t("ui.honours")}: ${honours.join(" · ")}`
       : `🏆 ${t("share.noTitles")}`,
@@ -97,21 +104,53 @@ function loadImage(src) {
   });
 }
 
-export async function drawShareCard(canvas, career, t, story = "") {
+/** Como loadImage, pero un archivo que falta devuelve null en vez de romper. */
+async function loadImageSafe(src) {
+  if (!src) return null;
+  try {
+    return await loadImage(src);
+  } catch {
+    return null;
+  }
+}
+
+/** Dibuja la imagen dentro de un cuadrado sin deformarla. */
+function drawContain(ctx, image, x, y, box) {
+  const scale = Math.min(box / image.width, box / image.height);
+  const w = image.width * scale;
+  const h = image.height * scale;
+  ctx.drawImage(image, x + (box - w) / 2, y + (box - h) / 2, w, h);
+}
+
+/** Recorta con puntos suspensivos si no entra en el ancho dado. */
+function ellipsize(ctx, text, maxWidth) {
+  let out = String(text);
+  if (ctx.measureText(out).width <= maxWidth) return out;
+  while (out.length > 1 && ctx.measureText(`${out}…`).width > maxWidth) out = out.slice(0, -1);
+  return `${out}…`;
+}
+
+export async function drawShareCard(canvas, career, t, story = "", extras = {}) {
+  const { clubById = new Map(), trophySrc = null } = extras;
   canvas.width = W;
   canvas.height = H;
   const ctx = canvas.getContext("2d");
   const keeper = career.player.position === "GK";
   const totals = career.totals;
 
-  // La camiseta personalizada se carga primero: si el archivo faltara, la
-  // tarjeta sale igual, sólo que sin ella.
-  let jersey = null;
-  try {
-    jersey = await loadImage(`assets/jerseys/${career.player.country}.png`);
-  } catch {
-    jersey = null;
-  }
+  const route = clubRoute(career);
+  const honours = topHonours(career, t);
+
+  // Todo lo que se dibuja como imagen se baja antes de pintar nada: así el
+  // orden del dibujo no depende de la red y la tarjeta nunca sale a medias.
+  // Lo que falte vuelve null y esa parte simplemente no se dibuja.
+  const [jersey, crests, trophies] = await Promise.all([
+    loadImageSafe(`assets/jerseys/${career.player.country}.png`),
+    Promise.all(route.map((stop) => (stop.id
+      ? loadImageSafe(crestSrc(clubById.get(stop.id) || { id: stop.id, name: stop.name }))
+      : null))),
+    Promise.all(honours.map(([, info]) => loadImageSafe(trophySrc?.(info)))),
+  ]);
 
   ctx.fillStyle = INK;
   ctx.fillRect(0, 0, W, H);
@@ -154,11 +193,15 @@ export async function drawShareCard(canvas, career, t, story = "") {
   // La camiseta del jugador a la derecha, debajo del puntaje, con su apellido
   // y su dorsal puestos igual que en la vista previa del setup.
   let jerseyBottom = 300;
+  let jerseyLeft = W - 72;
   if (jersey) {
-    const jw = 280;
+    // Más chica y más arriba que antes: el alto que se libera acá es
+    // exactamente el que gana la crónica, que ahora tiene que entrar entera.
+    const jw = 210;
     const jh = jw * (jersey.height / jersey.width);
     const jx = W - 72 - jw;
-    const jy = 262;
+    const jy = 232;
+    jerseyLeft = jx;
     ctx.save();
     ctx.shadowColor = "rgba(0,0,0,.55)";
     ctx.shadowBlur = 26;
@@ -179,10 +222,20 @@ export async function drawShareCard(canvas, career, t, story = "") {
     jerseyBottom = jy + jh;
   }
 
-  // La crónica del periodista, con su hilo naranja al costado. Si hay
-  // camiseta, el texto se angosta para no pisarla.
-  const storyWidth = jersey ? W - 190 - 320 : W - 190;
-  const storyEnd = story ? drawStory(ctx, story, storyWidth) : 320;
+  // De acá para abajo el orden se piensa al revés: se mide primero lo que va
+  // anclado al pie y lo que sobra es de la crónica. Antes la crónica empujaba
+  // a los trofeos fuera de la tarjeta y directamente desaparecían.
+  //
+  // El recorrido de clubes puede ocupar una fila o dos según cuántos sean y
+  // qué largo tengan los nombres, así que se mide en vez de suponerlo.
+  const CONTENT_BOTTOM = H - 110;          // debajo sólo va la dirección
+  const routeHeight = drawClubRoute(ctx, route, crests, 72, 0, W - 144, true);
+  const vitrinaBlock = honours.length ? 168 : 0;
+  const STATS_TOP = CONTENT_BOTTOM - vitrinaBlock - routeHeight - 16 - 196;
+
+  // La crónica del periodista, entera, esquivando la camiseta en sus primeras
+  // líneas y con su hilo naranja al costado.
+  const storyEnd = story ? drawStory(ctx, story, 322, STATS_TOP - 34, jerseyLeft, jerseyBottom) : 322;
 
   // Cuadro de estadísticas: partidos, producción, sueldo pico y pico de VAL.
   const stats = [
@@ -193,48 +246,40 @@ export async function drawShareCard(canvas, career, t, story = "") {
       : keeper ? [totals.caps, t("ui.caps")] : [totals.assists, t("ui.assists")],
     [Math.round(career.maxRating), t("ui.peak")],
   ];
-  const boxY = Math.max(storyEnd, jerseyBottom + 6) + 34;
+  // Si la crónica salió corta, todo el bloque sube y no queda un hueco en el
+  // medio; si salió larga, se frena en el tope reservado.
+  const boxY = Math.min(Math.max(storyEnd, jerseyBottom + 6) + 34, STATS_TOP);
   ctx.fillStyle = "rgba(244,241,234,.06)";
-  roundRect(ctx, 72, boxY, W - 144, 160, 24);
+  roundRect(ctx, 72, boxY, W - 144, 150, 24);
   ctx.fill();
   stats.forEach(([value, label], index) => {
     const x = 72 + (W - 144) * (index + 0.5) / stats.length;
     ctx.textAlign = "center";
     ctx.fillStyle = PAPER;
-    ctx.font = "800 52px system-ui, sans-serif";
-    ctx.fillText(String(value), x, boxY + 76);
+    ctx.font = "800 50px system-ui, sans-serif";
+    ctx.fillText(String(value), x, boxY + 72);
     ctx.fillStyle = "rgba(244,241,234,.5)";
-    ctx.font = "600 24px system-ui, sans-serif";
-    ctx.fillText(label.toUpperCase(), x, boxY + 118);
+    ctx.font = "600 23px system-ui, sans-serif";
+    ctx.fillText(label.toUpperCase(), x, boxY + 112);
   });
 
-  // Recorrido: primeros y últimos clubes
+  // Recorrido: cada club con su escudo delante.
   ctx.textAlign = "left";
-  const shown = clubRoute(career);
-  const clubsY = boxY + 226;
+  const clubsY = boxY + 196;
   ctx.fillStyle = "rgba(244,241,234,.5)";
   ctx.font = "600 26px system-ui, sans-serif";
   ctx.fillText(t("ui.clubs").toUpperCase(), 72, clubsY);
-  ctx.fillStyle = PAPER;
-  ctx.font = "500 33px system-ui, sans-serif";
-  wrap(ctx, shown.join("  ›  "), 72, clubsY + 46, W - 144, 46, 2);
+  // El alto ya se midió arriba; acá sólo se dibuja.
+  drawClubRoute(ctx, route, crests, 72, clubsY + 16, W - 144);
 
-  // Vitrina: lo más pesado primero
-  const top = topHonours(career, t);
-  if (top.length) {
-    const vitY = clubsY + 150;
+  // Vitrina: los trofeos que ganó, con su imagen y cuántos de cada uno.
+  if (honours.length) {
+    const vitY = clubsY + 16 + routeHeight + 40;
+    ctx.textAlign = "left";
     ctx.fillStyle = "rgba(244,241,234,.5)";
     ctx.font = "600 26px system-ui, sans-serif";
     ctx.fillText(t("ui.honours").toUpperCase(), 72, vitY);
-    ctx.font = "500 32px system-ui, sans-serif";
-    // Solo las filas que entran arriba del pie: nada se pisa con nada.
-    const rows = Math.max(0, Math.min(top.length, Math.floor((H - 110 - (vitY + 50)) / 44) + 1));
-    top.slice(0, rows).forEach(([name, { count }], index) => {
-      ctx.fillStyle = "#f0c02c";
-      ctx.fillText("🏆", 72, vitY + 50 + index * 44);
-      ctx.fillStyle = PAPER;
-      ctx.fillText(`${count}× ${name}`.slice(0, 46), 122, vitY + 50 + index * 44);
-    });
+    drawTrophies(ctx, honours, trophies, 72, vitY + 18, W - 144);
   }
 
   // La dirección, bien legible: es el llamado a jugar.
@@ -244,43 +289,128 @@ export async function drawShareCard(canvas, career, t, story = "") {
   ctx.fillText(SITE, W - 72, H - 44);
 }
 
-/** La crónica en la tarjeta: itálica angosta si comparte fila con la camiseta. */
-function drawStory(ctx, story, maxWidth) {
-  const top = 316;
-  const lineHeight = 46;
-  ctx.textAlign = "left";
-  ctx.fillStyle = "rgba(244,241,234,.85)";
-  ctx.font = "italic 500 32px system-ui, sans-serif";
-  const lines = wrap(ctx, story, 104, top + 40, maxWidth, lineHeight, 7);
-  const height = 24 + lines * lineHeight + 30;
-  ctx.fillStyle = ACCENT;
-  ctx.fillRect(72, top, 6, height);
-  return top + height;
-}
-
-function wrap(ctx, text, x, y, maxWidth, lineHeight, maxLines = 3) {
-  const words = String(text).split(" ");
+/**
+ * Parte el texto en líneas. El ancho no es fijo: se pregunta a cada altura,
+ * que es lo que permite esquivar la camiseta en las primeras líneas y usar
+ * todo el ancho más abajo.
+ */
+function layoutStory(ctx, text, top, lineHeight, widthAt) {
+  const words = String(text).split(/\s+/).filter(Boolean);
+  const lines = [];
   let line = "";
-  let lines = 0;
   for (const word of words) {
+    const max = widthAt(top + lines.length * lineHeight);
     const candidate = line ? `${line} ${word}` : word;
-    if (ctx.measureText(candidate).width > maxWidth && line) {
-      ctx.fillText(line, x, y + lines * lineHeight);
-      lines += 1;
+    if (ctx.measureText(candidate).width > max && line) {
+      lines.push(line);
       line = word;
-      if (lines >= maxLines) {
-        ctx.fillText(`${line}…`.slice(0, 60), x, y + lines * lineHeight);
-        return lines + 1;
-      }
     } else {
       line = candidate;
     }
   }
-  if (line) {
-    ctx.fillText(line, x, y + lines * lineHeight);
-    lines += 1;
-  }
+  if (line) lines.push(line);
   return lines;
+}
+
+/**
+ * La crónica en la tarjeta, con su hilo naranja al costado.
+ *
+ * Se dibuja entera. En vez de cortar con puntos suspensivos como antes, va
+ * probando cuerpos de letra cada vez más chicos hasta que el texto completo
+ * entra en el alto disponible; el resumen del periodista es media gracia de
+ * la tarjeta y cortado no se entiende.
+ */
+function drawStory(ctx, story, top, bottom, jerseyLeft, jerseyBottom) {
+  const x = 104;
+  const wide = W - 72 - x;
+  const narrow = Math.max(300, jerseyLeft - 30 - x);
+  const available = bottom - top;
+  const widthAt = (y) => (y < jerseyBottom + 8 ? narrow : wide);
+
+  let fit = null;
+  for (const size of [32, 30, 28, 26, 24, 22, 20]) {
+    ctx.font = `italic 500 ${size}px system-ui, sans-serif`;
+    const lineHeight = Math.round(size * 1.36);
+    fit = { size, lineHeight, lines: layoutStory(ctx, story, top, lineHeight, widthAt) };
+    if (fit.lines.length * lineHeight <= available) break;
+  }
+
+  // Sólo si ni con la letra más chica entra (una crónica larguísima) se corta.
+  const maxLines = Math.max(1, Math.floor(available / fit.lineHeight));
+  const lines = fit.lines.slice(0, maxLines);
+  if (lines.length < fit.lines.length) lines[lines.length - 1] += "…";
+
+  ctx.font = `italic 500 ${fit.size}px system-ui, sans-serif`;
+  ctx.textAlign = "left";
+  ctx.fillStyle = "rgba(244,241,234,.85)";
+  lines.forEach((line, index) => ctx.fillText(line, x, top + index * fit.lineHeight));
+
+  const height = lines.length * fit.lineHeight;
+  ctx.fillStyle = ACCENT;
+  ctx.fillRect(72, top - 26, 6, height + 10);
+  return top + height;
+}
+
+/**
+ * El recorrido, con el escudo delante de cada club y flechitas entre medio.
+ * Devuelve el alto que ocupó. Con `measureOnly` sólo mide, que es como el
+ * dibujo de arriba sabe cuánto lugar le queda a la crónica.
+ */
+function drawClubRoute(ctx, route, crests, x, y, maxWidth, measureOnly = false) {
+  const size = 44;
+  const gap = 12;
+  const sep = 24;
+  ctx.font = "500 31px system-ui, sans-serif";
+  ctx.textBaseline = "middle";
+  let cx = x;
+  let cy = y;
+  let rows = 1;
+  route.forEach((stop, index) => {
+    const crest = crests[index];
+    const name = ellipsize(ctx, stop.name, maxWidth - (crest ? size + gap : 0));
+    const width = (crest ? size + gap : 0) + ctx.measureText(name).width;
+    // Si no entra en la fila, sigue en la de abajo.
+    if (cx > x && cx + width > x + maxWidth) { cx = x; cy += size + 14; rows += 1; }
+    if (crest) {
+      if (!measureOnly) drawContain(ctx, crest, cx, cy, size);
+      cx += size + gap;
+    }
+    if (!measureOnly) {
+      ctx.fillStyle = PAPER;
+      ctx.fillText(name, cx, cy + size / 2);
+    }
+    cx += ctx.measureText(name).width;
+    if (index < route.length - 1) {
+      if (!measureOnly) {
+        ctx.fillStyle = "rgba(244,241,234,.35)";
+        ctx.fillText("›", cx + sep / 2 - 4, cy + size / 2);
+      }
+      cx += sep;
+    }
+  });
+  ctx.textBaseline = "alphabetic";
+  return rows * size + (rows - 1) * 14;
+}
+
+/** La vitrina: el trofeo dibujado, cuántos ganó y cómo se llama. */
+function drawTrophies(ctx, honours, images, x, y, maxWidth) {
+  const columns = Math.min(honours.length, 4);
+  const cellWidth = maxWidth / columns;
+  honours.slice(0, columns).forEach(([name, info], index) => {
+    const center = x + cellWidth * index + cellWidth / 2;
+    const image = images[index];
+    if (image) drawContain(ctx, image, center - 34, y, 68);
+    ctx.textAlign = "center";
+    if (info.count > 1) {
+      ctx.fillStyle = "#f0c02c";
+      ctx.font = "800 27px system-ui, sans-serif";
+      ctx.fillText(`×${info.count}`, center + 52, y + 46);
+    }
+    ctx.fillStyle = PAPER;
+    ctx.font = "600 21px system-ui, sans-serif";
+    ctx.fillText(ellipsize(ctx, name, cellWidth - 14), center, y + 100);
+  });
+  ctx.textAlign = "left";
 }
 
 export async function shareCareer(career, t, canvas, feedback) {
@@ -306,6 +436,32 @@ export async function shareCareer(career, t, canvas, feedback) {
   } catch {
     download(blob);
   }
+}
+
+/**
+ * WhatsApp con la tarjeta, no sólo con el texto.
+ *
+ * A un enlace wa.me no se le puede adjuntar una imagen: el único camino es la
+ * hoja de compartir del sistema, donde el usuario toca WhatsApp y la foto
+ * viaja de verdad. En un escritorio, que no tiene esa hoja, bajamos la tarjeta
+ * y abrimos WhatsApp con el resumen escrito para adjuntarla a mano.
+ */
+export async function shareCareerToWhatsapp(career, t, canvas, feedback) {
+  const blob = await new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
+  const file = blob ? new File([blob], "handboludo.png", { type: "image/png" }) : null;
+
+  if (file && navigator.canShare?.({ files: [file] })) {
+    try {
+      await navigator.share({ files: [file] });
+    } catch {
+      // Canceló: no le abrimos WhatsApp por atrás.
+    }
+    return;
+  }
+
+  download(blob);
+  flash(feedback, t("ui.waImage"));
+  window.open(whatsappShareUrl(career, t), "_blank", "noopener");
 }
 
 export function downloadCard(canvas) {

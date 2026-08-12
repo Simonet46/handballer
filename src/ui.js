@@ -13,7 +13,7 @@ import {
 } from "./game-engine.js";
 import { attachCrestFallback, clubColor, crestSrc } from "./crest.js";
 import { createTranslator, honourName } from "./i18n.js";
-import { drawShareCard, shareCareer, whatsappShareUrl } from "./share.js";
+import { drawShareCard, shareCareer, shareCareerToWhatsapp } from "./share.js";
 
 const locale = document.documentElement.lang || "es";
 const t = createTranslator(locale);
@@ -843,19 +843,25 @@ function renderResult() {
   submitGlobalRun();
   initBoardTabs(saveRun());
 
-  drawShareCard(el("share-canvas"), career, t, story);
+  // La tarjeta necesita dos cosas que sólo esta capa conoce: el índice de
+  // clubes, para ponerle el escudo a cada uno, y a qué trofeo corresponde
+  // cada honor.
+  drawShareCard(el("share-canvas"), career, t, story, {
+    clubById: clubIndex(),
+    trophySrc: (honour) => TROPHY_IMG[TROPHY_BY_KEY[honour.key] || "cup"],
+  });
   el("share").onclick = () => {
     track("share");
     shareCareer(career, t, el("share-canvas"), el("share-feedback"));
   };
-  // WhatsApp abre con el resumen ya escrito: puntaje, sueldo pico, clubes,
-  // títulos y la dirección al final. Es el canal que más carreras trae.
+  // WhatsApp manda la tarjeta, igual que Instagram: por la hoja de compartir
+  // del sistema, que es la única forma de que viaje la imagen y no sólo texto.
   const wa = el("share-wa");
   if (wa) {
     wa.textContent = t("ui.shareWa");
     wa.onclick = () => {
       track("share_wa");
-      window.open(whatsappShareUrl(career, t), "_blank", "noopener");
+      shareCareerToWhatsapp(career, t, el("share-canvas"), el("share-feedback"));
     };
   }
   el("play-again").onclick = () => { show("setup"); window.scrollTo({ top: 0 }); };
