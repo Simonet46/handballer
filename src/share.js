@@ -85,11 +85,6 @@ export function shareLines(career, t) {
   ];
 }
 
-/** El mismo resumen, listo para abrir WhatsApp con el texto ya escrito. */
-export function whatsappShareUrl(career, t) {
-  return `https://wa.me/?text=${encodeURIComponent(shareLines(career, t).join("\n"))}`;
-}
-
 
 function roundRect(ctx, x, y, w, h, r) {
   ctx.beginPath();
@@ -288,11 +283,12 @@ export async function drawShareCard(canvas, career, t, story = "", extras = {}) 
     drawTrophies(ctx, honours, trophies, 72, vitY + 18, W - 144);
   }
 
-  // La dirección, bien legible: es el llamado a jugar.
-  ctx.textAlign = "right";
+  // La dirección, centrada y bien grande: por WhatsApp la tarjeta viaja sin
+  // ningún texto que la acompañe, así que esto es el único llamado a jugar.
+  ctx.textAlign = "center";
   ctx.fillStyle = ACCENT;
-  ctx.font = "700 34px system-ui, sans-serif";
-  ctx.fillText(SITE, W - 72, H - 44);
+  ctx.font = "800 40px system-ui, sans-serif";
+  ctx.fillText(SITE, W / 2, H - 40);
 }
 
 /**
@@ -458,18 +454,23 @@ export async function shareCareer(career, t, canvas, feedback) {
 }
 
 /**
- * WhatsApp: el resumen escrito y el enlace, sin adjuntar archivo.
+ * WhatsApp: la tarjeta, y nada más que la tarjeta.
  *
- * Se probó mandar la tarjeta por la hoja de compartir y no se puede tener las
- * tres cosas: en iOS, cualquier texto que acompañe al archivo hace que
- * WhatsApp adjunte la imagen dos veces. Así, en cambio, llega un solo mensaje
- * con una vista previa, el resumen de la carrera y el enlace tocable, que es
- * lo que hace que el que lo recibe entre a jugar.
+ * La dirección viaja impresa en la imagen misma, abajo a la derecha. No va
+ * como texto aparte porque en iOS cualquier texto que acompañe al archivo
+ * hace que WhatsApp adjunte la imagen dos veces; ya se tropezó dos veces con
+ * eso y no se vuelve a intentar sin probarlo antes en un teléfono de verdad.
  *
- * Para Instagram sigue yendo la tarjeta: ahí la imagen es el mensaje.
+ * En un escritorio, que no tiene hoja de compartir, se baja la tarjeta y se
+ * abre WhatsApp con el enlace solo, para adjuntarla a mano.
  */
-export function shareCareerToWhatsapp(career, t) {
-  window.open(whatsappShareUrl(career, t), "_blank", "noopener");
+export async function shareCareerToWhatsapp(career, t, canvas, feedback) {
+  const { blob, file } = await tarjetaComoArchivo(canvas);
+  if (await compartirTarjeta(file)) return;
+
+  download(blob);
+  flash(feedback, t("ui.waImage"));
+  window.open(`https://wa.me/?text=${encodeURIComponent(SITE_URL)}`, "_blank", "noopener");
 }
 
 export function downloadCard(canvas) {

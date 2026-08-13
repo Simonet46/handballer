@@ -878,15 +878,14 @@ function renderResult() {
     track("share");
     shareCareer(career, t, el("share-canvas"), el("share-feedback"));
   };
-  // WhatsApp va por texto: el resumen de la carrera y el enlace, que llegan
-  // como un solo mensaje con vista previa. Adjuntar la tarjeta además del
-  // texto hace que iOS la mande dos veces; ver shareCareerToWhatsapp.
+  // WhatsApp manda la tarjeta sola, con la dirección impresa en la imagen.
+  // Adjuntarle texto hace que iOS la mande dos veces; ver shareCareerToWhatsapp.
   const wa = el("share-wa");
   if (wa) {
     wa.textContent = t("ui.shareWa");
     wa.onclick = () => {
       track("share_wa");
-      shareCareerToWhatsapp(career, t);
+      shareCareerToWhatsapp(career, t, el("share-canvas"), el("share-feedback"));
     };
   }
   el("play-again").onclick = () => { show("setup"); window.scrollTo({ top: 0 }); };
