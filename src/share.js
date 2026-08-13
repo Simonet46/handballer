@@ -436,24 +436,18 @@ async function tarjetaComoArchivo(canvas) {
 }
 
 /**
- * Manda la tarjeta por la hoja de compartir del sistema, con el pie de foto
- * pegado. Devuelve true si ese camino existía, aunque el usuario cancele.
+ * Manda la tarjeta por la hoja de compartir del sistema. Devuelve true si ese
+ * camino existía, aunque el usuario cancele.
  *
- * Va `files` + `text`, nunca `url`: el problema viejo de Safari, que adjuntaba
- * la tarjeta dos veces y pegaba la ruta temporal del archivo, lo causaba el
- * tercer campo. Si algún navegador igual rechaza la mezcla, cae a mandar sólo
- * la imagen antes que no mandar nada.
+ * SOLO la imagen, y esto no se toca sin probarlo antes en un teléfono de
+ * verdad. Ya se intentó dos veces mandar texto junto al archivo —una con
+ * `url`, otra sólo con `text`— y las dos veces WhatsApp terminó mostrando dos
+ * imágenes en vez de una. La dirección va impresa dentro de la tarjeta.
  */
 async function compartirTarjeta(file, texto) {
-  if (!file || !navigator.canShare) return false;
-  const conTexto = { files: [file], text: texto };
-  const soloImagen = { files: [file] };
-  const carga = navigator.canShare(conTexto) ? conTexto
-    : navigator.canShare(soloImagen) ? soloImagen
-    : null;
-  if (!carga) return false;
+  if (!file || !navigator.canShare?.({ files: [file] })) return false;
   try {
-    await navigator.share(carga);
+    await navigator.share({ files: [file] });
   } catch {
     // Canceló. El camino existía igual: no abrimos nada por atrás.
   }
