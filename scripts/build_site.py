@@ -18,7 +18,7 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE = os.path.join(ROOT, "site", "index.template.html")
-LOCALES = ["es", "fr", "de"]
+LOCALES = ["es", "fr", "de", "en"]
 SITE_DOMAIN = "handboludo.com"
 SITE_URL = f"https://{SITE_DOMAIN}/"
 
@@ -26,12 +26,14 @@ DISCLAIMER = {
     "es": "Juego no oficial y gratuito. Sin relación con la IHF, la EHF ni con los clubes mencionados.",
     "fr": "Jeu non officiel et gratuit. Sans lien avec l'IHF, l'EHF ni les clubs mentionnés.",
     "de": "Inoffizielles, kostenloses Spiel. Ohne Verbindung zur IHF, EHF oder den genannten Vereinen.",
+    "en": "Unofficial, free game. Not affiliated with the IHF, the EHF or any club mentioned.",
 }
 
 CAFECITO = {
     "es": "Ayudanos con un Cafecito para que creemos más juegos de handball",
     "fr": "Offre-nous un Cafecito pour qu'on crée plus de jeux de handball",
     "de": "Spendier uns einen Cafecito, damit wir mehr Handballspiele bauen",
+    "en": "Buy us a Cafecito so we can build more handball games",
 }
 
 # El otro camino: Cafecito cobra en pesos, PayPal es para el que aporta desde
@@ -40,6 +42,7 @@ PAYPAL = {
     "es": "Aportar con PayPal",
     "fr": "Soutenir avec PayPal",
     "de": "Mit PayPal unterstützen",
+    "en": "Support with PayPal",
 }
 
 # El cuadro que se abre al tocar PayPal. Los importes son fijos y en euros
@@ -69,6 +72,14 @@ DONAR = {
         "otro": "Lieber einen anderen Betrag",
         "nota": "PayPal öffnet sich in einem neuen Tab",
         "cerrar": "Jetzt nicht",
+    },
+    "en": {
+        "titulo": "To build more handball games",
+        "texto": "HANDBOLUDO is free and has no ads. Whatever you give goes entirely "
+                 "into making more handball games like this one.",
+        "otro": "I'd rather give another amount",
+        "nota": "PayPal opens in a new tab",
+        "cerrar": "Not now",
     },
 }
 
@@ -106,7 +117,7 @@ def node():
 
 
 def locale_links(current):
-    names = {"es": "ES", "fr": "FR", "de": "DE"}
+    names = {"es": "ES", "fr": "FR", "de": "DE", "en": "EN"}
     parts = []
     for locale in LOCALES:
         href = "./" if locale == "es" else f"{locale}/"

@@ -1,17 +1,17 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<base href="./">
-<title>HANDBOLUDO.COM · Simulá tu carrera de handball</title>
-<meta name="description" content="Creá un handbolista, tomá las decisiones difíciles y mirá hasta dónde llega. Una carrera entera en dos minutos. Gratis, sin registro.">
+<base href="../">
+<title>HANDBOLUDO.COM · Simulate your handball career</title>
+<meta name="description" content="Create a handball player, make the hard calls and see how far they go. A whole career in two minutes. Free, no sign-up.">
 <meta name="theme-color" content="#0b0f14">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23e8552f'/%3E%3Cpath d='M16 2v28M2 16h28M6 6l20 20M26 6L6 26' stroke='%230b0f14' stroke-width='2'/%3E%3C/svg%3E">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://handboludo.com/">
-<meta property="og:title" content="HANDBOLUDO.COM · Simulá tu carrera de handball">
-<meta property="og:description" content="Creá un handbolista, tomá las decisiones difíciles y mirá hasta dónde llega. Una carrera entera en dos minutos. Gratis, sin registro.">
+<meta property="og:url" content="https://handboludo.com/en/">
+<meta property="og:title" content="HANDBOLUDO.COM · Simulate your handball career">
+<meta property="og:description" content="Create a handball player, make the hard calls and see how far they go. A whole career in two minutes. Free, no sign-up.">
 <!-- Absoluta: WhatsApp y Twitter no resuelven rutas relativas. -->
 <meta property="og:image" content="https://handboludo.com/assets/og.png">
 <!-- Con las medidas declaradas, WhatsApp arma la tarjeta grande de una y no
@@ -30,14 +30,14 @@
 <body>
 <div id="app">
 
-  <nav class="locales"><a href="./" hreflang="es" aria-current="page">ES</a><a href="fr/" hreflang="fr">FR</a><a href="de/" hreflang="de">DE</a><a href="en/" hreflang="en">EN</a></nav>
+  <nav class="locales"><a href="./" hreflang="es">ES</a><a href="fr/" hreflang="fr">FR</a><a href="de/" hreflang="de">DE</a><a href="en/" hreflang="en" aria-current="page">EN</a></nav>
 
   <!-- ------------------------------------------------ 1. crear jugador -->
   <section id="setup">
     <header class="hero">
       <h1>HANDBOLUDO<span class="tld">.COM</span></h1>
-      <p class="tagline">Una carrera de handball entera en dos minutos</p>
-      <p class="intro">Elegí de dónde salís, tomá cada decisión y descubrí si terminás siendo leyenda de tu club o trotamundos.</p>
+      <p class="tagline">A whole handball career in two minutes</p>
+      <p class="intro">Pick where you start, make every call and find out whether you end up a club legend or a globetrotter.</p>
       <!-- Cuántas partidas lleva jugadas el mundo. Lo rellena ui.js con datos
            en vivo; si el backend no contesta, se queda oculto y no molesta. -->
       <p class="world-counter" id="world-counter" hidden></p>
@@ -59,32 +59,32 @@
       <form class="setup-form" autocomplete="off" onsubmit="return false">
         <div class="field-row">
           <label class="field">
-            <span>Apellido</span>
-            <input id="lastName" type="text" maxlength="16" placeholder="TU APELLIDO" inputmode="text">
+            <span>Last name</span>
+            <input id="lastName" type="text" maxlength="16" placeholder="YOUR NAME" inputmode="text">
           </label>
           <label class="field field-narrow">
-            <span>Dorsal</span>
+            <span>Number</span>
             <input id="number" type="number" min="1" max="99" value="7" inputmode="numeric">
           </label>
         </div>
 
-        <fieldset><legend>Rama</legend><div class="chips" data-group="rama" id="rama-options"></div></fieldset>
-        <fieldset><legend>Mano hábil</legend><div class="chips" data-group="hand" id="hand-options"></div></fieldset>
-        <fieldset><legend>País</legend><div class="chips" data-group="country" id="country-options"></div></fieldset>
+        <fieldset><legend>Branch</legend><div class="chips" data-group="rama" id="rama-options"></div></fieldset>
+        <fieldset><legend>Strong hand</legend><div class="chips" data-group="hand" id="hand-options"></div></fieldset>
+        <fieldset><legend>Country</legend><div class="chips" data-group="country" id="country-options"></div></fieldset>
 
         <fieldset>
-          <legend>Puesto</legend>
+          <legend>Position</legend>
           <!-- media pista de balonmano: elegís tu puesto tocando dónde jugás -->
           <div class="court" data-group="position" id="position-court"></div>
           <p class="court-pick" id="position-pick"></p>
         </fieldset>
 
-        <fieldset><legend>Ritmo</legend><div class="chips chips-stack" data-group="pace" id="pace-options"></div></fieldset>
+        <fieldset><legend>Pace</legend><div class="chips chips-stack" data-group="pace" id="pace-options"></div></fieldset>
 
         <!-- Libre, o el desafío del día: la misma suerte para todo el mundo. -->
-        <fieldset><legend>Modo</legend><div class="chips chips-stack" data-group="mode" id="mode-options"></div></fieldset>
+        <fieldset><legend>Mode</legend><div class="chips chips-stack" data-group="mode" id="mode-options"></div></fieldset>
 
-        <button id="start" class="cta" type="button">Empezar la carrera</button>
+        <button id="start" class="cta" type="button">Start your career</button>
       </form>
     </div>
   </section>
@@ -105,9 +105,9 @@
         <p class="hud-league" id="hud-league"></p>
       </div>
       <dl class="hud-stats">
-        <div><dt>Edad</dt><dd id="hud-age"></dd></div>
-        <div><dt>VAL</dt><dd id="hud-rating"></dd></div>
-        <div><dt>Rol</dt><dd id="hud-role"></dd></div>
+        <div><dt>Age</dt><dd id="hud-age"></dd></div>
+        <div><dt>RTG</dt><dd id="hud-rating"></dd></div>
+        <div><dt>Role</dt><dd id="hud-role"></dd></div>
         <div><dt id="hud-stat-1-label"></dt><dd id="hud-stat-1"></dd></div>
         <div><dt id="hud-stat-2-label"></dt><dd id="hud-stat-2"></dd></div>
         <div><dt id="hud-stat-3-label"></dt><dd id="hud-stat-3"></dd></div>
@@ -131,7 +131,7 @@
 
     <!-- Los clubes por los que vas pasando, al costado en pantalla grande. -->
     <aside class="career-side">
-      <h3>Tu carrera</h3>
+      <h3>Your career</h3>
       <ol class="timeline" id="career-timeline"></ol>
     </aside>
   </section>
@@ -147,7 +147,7 @@
 
     <!-- El puntaje primero: es el número que se compara y se comparte. -->
     <div class="result-score">
-      <span>Puntaje</span>
+      <span>Score</span>
       <strong id="result-score"></strong>
     </div>
 
@@ -156,38 +156,38 @@
 
     <div class="result-climb" id="result-climb" hidden></div>
 
-    <h3>Vitrina</h3>
+    <h3>Trophy cabinet</h3>
     <ul class="honours" id="honours"></ul>
 
     <div class="result-stats" id="result-stats"></div>
 
-    <h3>Tu carrera</h3>
+    <h3>Your career</h3>
     <ol class="timeline" id="timeline"></ol>
 
     <div class="board-head">
-      <h3>Tabla de posiciones</h3>
+      <h3>Leaderboard</h3>
       <!-- Tu teléfono contra el mundo entero. -->
       <div class="board-tabs">
-        <button type="button" class="board-tab" id="board-tab-local" aria-pressed="true">Este teléfono</button>
-        <button type="button" class="board-tab" id="board-tab-world" aria-pressed="false">Mundial</button>
+        <button type="button" class="board-tab" id="board-tab-local" aria-pressed="true">This phone</button>
+        <button type="button" class="board-tab" id="board-tab-world" aria-pressed="false">World</button>
       </div>
-      <button type="button" class="board-clear" id="board-clear">Borrar</button>
+      <button type="button" class="board-clear" id="board-clear">Clear</button>
     </div>
     <!-- Recortes del mundial: histórico · hoy · semana · femenino · Argentina -->
     <div class="board-filters" id="board-filters" hidden></div>
     <ol class="board" id="board"></ol>
-    <p class="board-note" id="board-note">Las carreras se guardan en este dispositivo. Pasá el teléfono y jueguen todos en la misma tabla.</p>
+    <p class="board-note" id="board-note">Careers are saved on this device. Pass the phone around and play on the same board.</p>
 
     <div class="actions">
-      <button id="share" class="cta" type="button">Compartir en Instagram</button>
+      <button id="share" class="cta" type="button">Share on Instagram</button>
       <!-- El texto lo pone ui.js con el idioma cargado: así el template no
            necesita un token nuevo por cada botón. -->
       <button id="share-wa" class="ghost share-wa" type="button"></button>
-      <button id="play-again" class="ghost" type="button">Jugar de nuevo</button>
+      <button id="play-again" class="ghost" type="button">Play again</button>
       <p class="feedback" id="share-feedback" hidden></p>
     </div>
 
-    <canvas id="share-canvas" class="share-canvas" aria-label="Compartir en Instagram"></canvas>
+    <canvas id="share-canvas" class="share-canvas" aria-label="Share on Instagram"></canvas>
   </section>
 
   <footer class="disclaimer">
@@ -202,7 +202,7 @@
           <path d="M7.5 3.5c0 1-.9 1.4-.9 2.4 0 .7.5 1.1.5 1.1M11 3.5c0 1-.9 1.4-.9 2.4 0 .7.5 1.1.5 1.1"/>
           <path d="M3 22h15"/>
         </svg>
-        <span>Ayudanos con un Cafecito para que creemos más juegos de handball</span>
+        <span>Buy us a Cafecito so we can build more handball games</span>
       </a>
       <!-- Corazón propio en vez del logo de PayPal: nombrarlos para decir por
            dónde entra la plata es legítimo, copiarles la marca no hace falta.
@@ -213,10 +213,10 @@
              stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 20.5S3.5 15 3.5 9.2A4.7 4.7 0 0 1 12 6.4a4.7 4.7 0 0 1 8.5 2.8c0 5.8-8.5 11.3-8.5 11.3z"/>
         </svg>
-        <span>Aportar con PayPal</span>
+        <span>Support with PayPal</span>
       </a>
     </div>
-    <p>Juego no oficial y gratuito. Sin relación con la IHF, la EHF ni con los clubes mencionados.</p>
+    <p>Unofficial, free game. Not affiliated with the IHF, the EHF or any club mentioned.</p>
   </footer>
 
   <!-- El selector de importe. Cada botón es un enlace a PayPal con el monto ya
@@ -233,16 +233,16 @@
           <path d="M12 20.5S3.5 15 3.5 9.2A4.7 4.7 0 0 1 12 6.4a4.7 4.7 0 0 1 8.5 2.8c0 5.8-8.5 11.3-8.5 11.3z"/>
         </svg>
       </span>
-      <h3>Para hacer más juegos de handball</h3>
-      <p class="donar-texto">HANDBOLUDO es gratis y no tiene publicidad. Lo que pongas se va entero en crear más juegos de handball como este.</p>
+      <h3>To build more handball games</h3>
+      <p class="donar-texto">HANDBOLUDO is free and has no ads. Whatever you give goes entirely into making more handball games like this one.</p>
       <div class="donar-montos">
         <a href="https://paypal.me/DS4Games/3EUR" target="_blank" rel="noopener">3 €</a>
         <a href="https://paypal.me/DS4Games/5EUR" target="_blank" rel="noopener">5 €</a>
         <a href="https://paypal.me/DS4Games/10EUR" target="_blank" rel="noopener">10 €</a>
       </div>
-      <a class="donar-otro" href="https://paypal.me/DS4Games" target="_blank" rel="noopener">Prefiero poner otro importe</a>
-      <p class="donar-nota">Se abre PayPal en otra pestaña</p>
-      <button type="button" class="donar-cerrar" id="donar-cerrar">Ahora no</button>
+      <a class="donar-otro" href="https://paypal.me/DS4Games" target="_blank" rel="noopener">I'd rather give another amount</a>
+      <p class="donar-nota">PayPal opens in a new tab</p>
+      <button type="button" class="donar-cerrar" id="donar-cerrar">Not now</button>
     </div>
   </dialog>
 </div>

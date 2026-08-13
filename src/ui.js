@@ -20,7 +20,7 @@ const t = createTranslator(locale);
 
 const el = (id) => document.getElementById(id);
 
-const EURO_LOCALE = { es: "es-AR", fr: "fr-FR", de: "de-DE" };
+const EURO_LOCALE = { es: "es-AR", fr: "fr-FR", de: "de-DE", en: "en-GB" };
 function formatEuros(amount) {
   return `${amount.toLocaleString(EURO_LOCALE[locale] || "es-AR")} €`;
 }
