@@ -666,6 +666,32 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
 .paypal svg { flex-shrink: 0; }
 .paypal span { text-align: left; line-height: 1.3; }
 
+/* El selector de importe. Ojo con el display: un <dialog> cerrado se apoya en
+   el display:none del navegador, así que sólo se cambia cuando está [open]. */
+.donar {
+  border: var(--glass-edge); border-radius: var(--radius);
+  background: var(--ink-2); color: var(--paper);
+  padding: 26px; width: calc(100% - 32px); max-width: 380px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .6);
+  text-align: center;
+}
+.donar[open] { display: grid; gap: 14px; }
+.donar::backdrop { background: rgba(5, 8, 12, .74); }
+.donar h3 { font-size: 20px; }
+.donar > p { color: var(--muted); font-size: 14px; line-height: 1.45; }
+.donar-montos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.donar-montos a {
+  padding: 14px 0; border-radius: 12px; text-decoration: none;
+  background: #003087; color: #fff; font-size: 19px; font-weight: 800;
+  transition: transform .12s, background .12s;
+}
+.donar-montos a:hover { transform: translateY(-2px); background: #0041b4; }
+.donar-otro { color: var(--paper); font-size: 14px; font-weight: 600; }
+.donar-cerrar {
+  background: none; border: 0; color: var(--muted);
+  font-size: 13px; padding: 4px; text-decoration: underline;
+}
+
 .cafecito {
   display: inline-flex; align-items: center; gap: 10px;
   margin: 0 auto 18px; padding: 12px 20px;

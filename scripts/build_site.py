@@ -42,6 +42,30 @@ PAYPAL = {
     "de": "Mit PayPal unterstützen",
 }
 
+# El cuadro que se abre al tocar PayPal. Los importes son fijos y en euros
+# porque la cuenta cobra en euros; el que quiera otra moneda la cambia en la
+# propia página de PayPal.
+DONAR = {
+    "es": {
+        "titulo": "Bancá los próximos juegos",
+        "texto": "HANDBOLUDO es gratis y no tiene publicidad. Si te hizo pasar un buen rato, poné lo que quieras.",
+        "otro": "Prefiero poner otro importe",
+        "cerrar": "Ahora no",
+    },
+    "fr": {
+        "titulo": "Finance les prochains jeux",
+        "texto": "HANDBOLUDO est gratuit et sans publicité. Si tu as passé un bon moment, mets ce que tu veux.",
+        "otro": "Je préfère choisir le montant",
+        "cerrar": "Pas maintenant",
+    },
+    "de": {
+        "titulo": "Finanzier die nächsten Spiele",
+        "texto": "HANDBOLUDO ist gratis und werbefrei. Wenn du Spaß hattest, gib was du magst.",
+        "otro": "Lieber einen anderen Betrag",
+        "cerrar": "Jetzt nicht",
+    },
+}
+
 
 def strings_for(locale):
     """Lee los textos directamente de src/i18n.js con node, sin duplicarlos acá."""
@@ -138,6 +162,10 @@ def build():
             "DISCLAIMER": DISCLAIMER[locale],
             "CAFECITO": CAFECITO[locale],
             "PAYPAL": PAYPAL[locale],
+            "DONAR_TITULO": DONAR[locale]["titulo"],
+            "DONAR_TEXTO": DONAR[locale]["texto"],
+            "DONAR_OTRO": DONAR[locale]["otro"],
+            "DONAR_CERRAR": DONAR[locale]["cerrar"],
             "OG_URL": SITE_URL if locale == "es" else f"{SITE_URL}{locale}/",
             "OG_IMAGE": f"{SITE_URL}assets/og.png",
         }

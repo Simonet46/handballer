@@ -60,7 +60,31 @@ async function boot() {
   renderSetup();
   el("app").dataset.ready = "1";
   renderWorldCounter();
+  initDonar();
   track("setup");
+}
+
+/**
+ * El botón de PayPal abre el selector de importe en vez de ir directo.
+ *
+ * Es una mejora sobre un enlace que ya funciona: si el navegador no tiene
+ * <dialog> o si algo falla acá, el click sigue su camino natural y lleva a
+ * PayPal sin importe cargado. Nadie se queda sin poder aportar.
+ */
+function initDonar() {
+  const dialogo = el("donar");
+  const boton = el("paypal");
+  if (!dialogo || !boton || typeof dialogo.showModal !== "function") return;
+
+  boton.addEventListener("click", (event) => {
+    event.preventDefault();
+    dialogo.showModal();
+  });
+  el("donar-cerrar")?.addEventListener("click", () => dialogo.close());
+  // Tocar fuera del cuadro también cierra: en el teléfono es lo que uno hace.
+  dialogo.addEventListener("click", (event) => {
+    if (event.target === dialogo) dialogo.close();
+  });
 }
 
 // ---------------------------------------------------------------------------

@@ -196,8 +196,10 @@
         <span>{{CAFECITO}}</span>
       </a>
       <!-- Corazón propio en vez del logo de PayPal: nombrarlos para decir por
-           dónde entra la plata es legítimo, copiarles la marca no hace falta. -->
-      <a class="paypal" href="https://paypal.me/DS4Games" target="_blank" rel="noopener">
+           dónde entra la plata es legítimo, copiarles la marca no hace falta.
+           Sigue siendo un enlace de verdad: si el diálogo no abre, lleva igual
+           a PayPal, sólo que sin importe cargado. -->
+      <a class="paypal" id="paypal" href="https://paypal.me/DS4Games" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none"
              stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 20.5S3.5 15 3.5 9.2A4.7 4.7 0 0 1 12 6.4a4.7 4.7 0 0 1 8.5 2.8c0 5.8-8.5 11.3-8.5 11.3z"/>
@@ -207,6 +209,21 @@
     </div>
     <p>{{DISCLAIMER}}</p>
   </footer>
+
+  <!-- El selector de importe. Cada botón es un enlace a PayPal con el monto ya
+       cargado (paypal.me acepta el importe en la propia dirección), así que no
+       hace falta ningún botón alojado ni tocar la cuenta. -->
+  <dialog class="donar" id="donar">
+    <h3>{{DONAR_TITULO}}</h3>
+    <p>{{DONAR_TEXTO}}</p>
+    <div class="donar-montos">
+      <a href="https://paypal.me/DS4Games/3EUR" target="_blank" rel="noopener">3 €</a>
+      <a href="https://paypal.me/DS4Games/5EUR" target="_blank" rel="noopener">5 €</a>
+      <a href="https://paypal.me/DS4Games/10EUR" target="_blank" rel="noopener">10 €</a>
+    </div>
+    <a class="donar-otro" href="https://paypal.me/DS4Games" target="_blank" rel="noopener">{{DONAR_OTRO}}</a>
+    <button type="button" class="donar-cerrar" id="donar-cerrar">{{DONAR_CERRAR}}</button>
+  </dialog>
 </div>
 
 <script type="module" src="src/ui.js"></script>
