@@ -47,21 +47,27 @@ PAYPAL = {
 # propia página de PayPal.
 DONAR = {
     "es": {
-        "titulo": "Bancá los próximos juegos",
-        "texto": "HANDBOLUDO es gratis y no tiene publicidad. Si te hizo pasar un buen rato, poné lo que quieras.",
+        "titulo": "Para hacer más juegos de handball",
+        "texto": "HANDBOLUDO es gratis y no tiene publicidad. Lo que pongas se va entero "
+                 "en crear más juegos de handball como este.",
         "otro": "Prefiero poner otro importe",
+        "nota": "Se abre PayPal en otra pestaña",
         "cerrar": "Ahora no",
     },
     "fr": {
-        "titulo": "Finance les prochains jeux",
-        "texto": "HANDBOLUDO est gratuit et sans publicité. Si tu as passé un bon moment, mets ce que tu veux.",
+        "titulo": "Pour créer plus de jeux de handball",
+        "texto": "HANDBOLUDO est gratuit et sans publicité. Ce que tu donnes sert "
+                 "entièrement à créer plus de jeux de handball comme celui-ci.",
         "otro": "Je préfère choisir le montant",
+        "nota": "PayPal s'ouvre dans un autre onglet",
         "cerrar": "Pas maintenant",
     },
     "de": {
-        "titulo": "Finanzier die nächsten Spiele",
-        "texto": "HANDBOLUDO ist gratis und werbefrei. Wenn du Spaß hattest, gib was du magst.",
+        "titulo": "Für mehr Handballspiele",
+        "texto": "HANDBOLUDO ist gratis und werbefrei. Dein Beitrag fließt komplett "
+                 "in weitere Handballspiele wie dieses.",
         "otro": "Lieber einen anderen Betrag",
+        "nota": "PayPal öffnet sich in einem neuen Tab",
         "cerrar": "Jetzt nicht",
     },
 }
@@ -165,6 +171,7 @@ def build():
             "DONAR_TITULO": DONAR[locale]["titulo"],
             "DONAR_TEXTO": DONAR[locale]["texto"],
             "DONAR_OTRO": DONAR[locale]["otro"],
+            "DONAR_NOTA": DONAR[locale]["nota"],
             "DONAR_CERRAR": DONAR[locale]["cerrar"],
             "OG_URL": SITE_URL if locale == "es" else f"{SITE_URL}{locale}/",
             "OG_IMAGE": f"{SITE_URL}assets/og.png",
