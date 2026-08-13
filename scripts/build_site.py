@@ -34,6 +34,14 @@ CAFECITO = {
     "de": "Spendier uns einen Cafecito, damit wir mehr Handballspiele bauen",
 }
 
+# El otro camino: Cafecito cobra en pesos, PayPal es para el que aporta desde
+# afuera. Corto a propósito, que va al lado del de Cafecito.
+PAYPAL = {
+    "es": "Aportar con PayPal",
+    "fr": "Soutenir avec PayPal",
+    "de": "Mit PayPal unterstützen",
+}
+
 
 def strings_for(locale):
     """Lee los textos directamente de src/i18n.js con node, sin duplicarlos acá."""
@@ -129,6 +137,7 @@ def build():
             "L_BOARD_NOTE": s["boardNote"],
             "DISCLAIMER": DISCLAIMER[locale],
             "CAFECITO": CAFECITO[locale],
+            "PAYPAL": PAYPAL[locale],
             "OG_URL": SITE_URL if locale == "es" else f"{SITE_URL}{locale}/",
             "OG_IMAGE": f"{SITE_URL}assets/og.png",
         }

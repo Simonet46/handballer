@@ -642,6 +642,30 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
 }
 
 /* El cafecito: azul de cafecito.app, tacita y gracias. */
+/* Los botones de apoyo van uno al lado del otro; en pantalla angosta se
+   acomodan solos uno debajo del otro. */
+.apoyo {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  align-items: stretch; justify-content: center; margin: 0 auto 18px;
+}
+.apoyo .cafecito { margin: 0; }
+
+.paypal {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 20px;
+  background: #003087; color: #fff; text-decoration: none;
+  border-radius: 999px; font-size: 14px; font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0, 48, 135, .4);
+  transition: transform .15s, box-shadow .15s;
+  max-width: 100%;
+}
+.paypal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 48, 135, .55);
+}
+.paypal svg { flex-shrink: 0; }
+.paypal span { text-align: left; line-height: 1.3; }
+
 .cafecito {
   display: inline-flex; align-items: center; gap: 10px;
   margin: 0 auto 18px; padding: 12px 20px;
