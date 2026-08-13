@@ -16,6 +16,11 @@ const ACCENT = "#e8552f";
 // de ver la historia de otro.
 const SITE = "www.handboludo.com";
 
+// La misma dirección, pero como enlace de verdad. WhatsApp sólo arma la vista
+// previa —la imagen, el título y la bajada— si el mensaje trae la URL entera
+// con https adelante; con "www." pelado la deja como texto y no muestra nada.
+const SITE_URL = "https://handboludo.com";
+
 // Los mismos colores que usa la vista previa de la camiseta en el setup:
 // sobre las blancas el texto va oscuro, sobre las oscuras va claro.
 const JERSEY_INK = {
@@ -76,7 +81,7 @@ export function shareLines(career, t) {
     "",
     // De qué va esto, para el que recibe el mensaje y nunca oyó del juego.
     `${t("ui.tagline")}. ${t("share.line")}`,
-    SITE,
+    SITE_URL,
   ];
 }
 

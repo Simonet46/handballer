@@ -14,6 +14,11 @@
 <meta property="og:description" content="{{DESCRIPTION}}">
 <!-- Absoluta: WhatsApp y Twitter no resuelven rutas relativas. -->
 <meta property="og:image" content="{{OG_IMAGE}}">
+<!-- Con las medidas declaradas, WhatsApp arma la tarjeta grande de una y no
+     tiene que bajarse la imagen para averiguar si le entra. -->
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
 <meta name="twitter:card" content="summary_large_image">
 {{ALTERNATES}}
 <link rel="stylesheet" href="styles.css">
