@@ -18,7 +18,12 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: false
+  # En true a propósito, al revés de lo que sugiere la plantilla de GitHub.
+  # Con false, un run que se cuelga esperando el entorno retiene el candado y
+  # todo lo que viene detrás hace fila: nos dejó el sitio dos días sirviendo
+  # una versión vieja hasta que lo cancelamos a mano. Cancelar un despliegue
+  # en curso no cuesta nada acá, porque el siguiente publica el sitio entero.
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -28,6 +33,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # MANO A MANO sale a producción solo si la variable del repo
+      # FEATURE_MANO_A_MANO vale "true" (Settings → Secrets and variables →
+      # Actions → Variables). Apagada, se podan los directorios antes de
+      # subir el artefacto y /mano-a-mano da un 404 de verdad.
+      - name: Podar mano a mano (flag apagado)
+        if: vars.FEATURE_MANO_A_MANO != 'true'
+        run: rm -rf mano-a-mano fr/mano-a-mano de/mano-a-mano mam.css assets/og-mano-a-mano.png
       - uses: actions/configure-pages@v5
       # El sitio es estático puro: se sube el repo tal cual, con su .nojekyll
       # y su CNAME.

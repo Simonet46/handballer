@@ -2,7 +2,6 @@
  * Tarjeta de resultado. Es la pieza que hace que el juego circule: sin una
  * imagen linda para pegar en una historia, nadie comparte nada.
  */
-import { MAJOR_TROPHIES } from "./game-engine.js";
 import { crestSrc } from "./crest.js";
 import { honourName } from "./i18n.js";
 
@@ -75,7 +74,8 @@ export function shareLines(career, t) {
       ? `🏆 ${t("ui.honours")}: ${honours.join(" · ")}`
       : `🏆 ${t("share.noTitles")}`,
     "",
-    t("share.line"),
+    // De qué va esto, para el que recibe el mensaje y nunca oyó del juego.
+    `${t("ui.tagline")}. ${t("share.line")}`,
     SITE,
   ];
 }
@@ -83,6 +83,22 @@ export function shareLines(career, t) {
 /** El mismo resumen, listo para abrir WhatsApp con el texto ya escrito. */
 export function whatsappShareUrl(career, t) {
   return `https://wa.me/?text=${encodeURIComponent(shareLines(career, t).join("\n"))}`;
+}
+
+/**
+ * El pie de foto que viaja pegado a la tarjeta.
+ *
+ * Corto a propósito: al lado de una imagen, WhatsApp recorta los textos largos
+ * y el enlace queda escondido detrás de un "ver más". Tres renglones: quién
+ * sos, de qué va esto y adónde entrar. La bajada sale de la misma cadena que
+ * usa la portada, así que ya está traducida.
+ */
+export function shareCaption(career, t) {
+  return [
+    `🤾 ${career.player.flag} ${career.player.lastName} — ${t(`verdicts.${career.verdict.key}.title`)} · ${t("ui.score")}: ${career.score}`,
+    `${t("ui.tagline")}. ${t("share.line")}`,
+    SITE,
+  ].join("\n");
 }
 
 function roundRect(ctx, x, y, w, h, r) {
@@ -413,25 +429,44 @@ function drawTrophies(ctx, honours, images, x, y, maxWidth) {
   ctx.textAlign = "left";
 }
 
-export async function shareCareer(career, t, canvas, feedback) {
-  const text = shareLines(career, t).join("\n");
+/** La tarjeta como archivo, más el blob por si hay que bajarla. */
+async function tarjetaComoArchivo(canvas) {
   const blob = await new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
-  const file = blob ? new File([blob], "handboludo.png", { type: "image/png" }) : null;
+  return { blob, file: blob ? new File([blob], "handboludo.png", { type: "image/png" }) : null };
+}
 
-  if (file && navigator.canShare?.({ files: [file] })) {
-    try {
-      // SOLO la imagen: mezclar files + text + url hacía que Safari/WhatsApp
-      // adjuntara la tarjeta dos veces y pegara la ruta temporal del archivo.
-      // La tarjeta ya lleva adentro el puntaje, la crónica y la URL.
-      await navigator.share({ files: [file] });
-      return;
-    } catch {
-      // El usuario canceló: seguimos con las alternativas.
-    }
-  }
+/**
+ * Manda la tarjeta por la hoja de compartir del sistema, con el pie de foto
+ * pegado. Devuelve true si ese camino existía, aunque el usuario cancele.
+ *
+ * Va `files` + `text`, nunca `url`: el problema viejo de Safari, que adjuntaba
+ * la tarjeta dos veces y pegaba la ruta temporal del archivo, lo causaba el
+ * tercer campo. Si algún navegador igual rechaza la mezcla, cae a mandar sólo
+ * la imagen antes que no mandar nada.
+ */
+async function compartirTarjeta(file, texto) {
+  if (!file || !navigator.canShare) return false;
+  const conTexto = { files: [file], text: texto };
+  const soloImagen = { files: [file] };
+  const carga = navigator.canShare(conTexto) ? conTexto
+    : navigator.canShare(soloImagen) ? soloImagen
+    : null;
+  if (!carga) return false;
   try {
-    // El texto ya termina con la dirección: no hace falta pegarla de nuevo.
-    await navigator.clipboard.writeText(text);
+    await navigator.share(carga);
+  } catch {
+    // Canceló. El camino existía igual: no abrimos nada por atrás.
+  }
+  return true;
+}
+
+export async function shareCareer(career, t, canvas, feedback) {
+  const { blob, file } = await tarjetaComoArchivo(canvas);
+  if (await compartirTarjeta(file, shareCaption(career, t))) return;
+  try {
+    // Sin hoja de compartir, al portapapeles va el resumen largo: es lo único
+    // que va a viajar, así que conviene que cuente toda la carrera.
+    await navigator.clipboard.writeText(shareLines(career, t).join("\n"));
     flash(feedback, t("ui.copied"));
   } catch {
     download(blob);
@@ -447,17 +482,8 @@ export async function shareCareer(career, t, canvas, feedback) {
  * y abrimos WhatsApp con el resumen escrito para adjuntarla a mano.
  */
 export async function shareCareerToWhatsapp(career, t, canvas, feedback) {
-  const blob = await new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
-  const file = blob ? new File([blob], "handboludo.png", { type: "image/png" }) : null;
-
-  if (file && navigator.canShare?.({ files: [file] })) {
-    try {
-      await navigator.share({ files: [file] });
-    } catch {
-      // Canceló: no le abrimos WhatsApp por atrás.
-    }
-    return;
-  }
+  const { blob, file } = await tarjetaComoArchivo(canvas);
+  if (await compartirTarjeta(file, shareCaption(career, t))) return;
 
   download(blob);
   flash(feedback, t("ui.waImage"));
