@@ -85,21 +85,6 @@ export function whatsappShareUrl(career, t) {
   return `https://wa.me/?text=${encodeURIComponent(shareLines(career, t).join("\n"))}`;
 }
 
-/**
- * El pie de foto que viaja pegado a la tarjeta.
- *
- * Corto a propósito: al lado de una imagen, WhatsApp recorta los textos largos
- * y el enlace queda escondido detrás de un "ver más". Tres renglones: quién
- * sos, de qué va esto y adónde entrar. La bajada sale de la misma cadena que
- * usa la portada, así que ya está traducida.
- */
-export function shareCaption(career, t) {
-  return [
-    `🤾 ${career.player.flag} ${career.player.lastName} — ${t(`verdicts.${career.verdict.key}.title`)} · ${t("ui.score")}: ${career.score}`,
-    `${t("ui.tagline")}. ${t("share.line")}`,
-    SITE,
-  ].join("\n");
-}
 
 function roundRect(ctx, x, y, w, h, r) {
   ctx.beginPath();
@@ -444,7 +429,7 @@ async function tarjetaComoArchivo(canvas) {
  * `url`, otra sólo con `text`— y las dos veces WhatsApp terminó mostrando dos
  * imágenes en vez de una. La dirección va impresa dentro de la tarjeta.
  */
-async function compartirTarjeta(file, texto) {
+async function compartirTarjeta(file) {
   if (!file || !navigator.canShare?.({ files: [file] })) return false;
   try {
     await navigator.share({ files: [file] });
@@ -456,7 +441,7 @@ async function compartirTarjeta(file, texto) {
 
 export async function shareCareer(career, t, canvas, feedback) {
   const { blob, file } = await tarjetaComoArchivo(canvas);
-  if (await compartirTarjeta(file, shareCaption(career, t))) return;
+  if (await compartirTarjeta(file)) return;
   try {
     // Sin hoja de compartir, al portapapeles va el resumen largo: es lo único
     // que va a viajar, así que conviene que cuente toda la carrera.
@@ -468,19 +453,17 @@ export async function shareCareer(career, t, canvas, feedback) {
 }
 
 /**
- * WhatsApp con la tarjeta, no sólo con el texto.
+ * WhatsApp: el resumen escrito y el enlace, sin adjuntar archivo.
  *
- * A un enlace wa.me no se le puede adjuntar una imagen: el único camino es la
- * hoja de compartir del sistema, donde el usuario toca WhatsApp y la foto
- * viaja de verdad. En un escritorio, que no tiene esa hoja, bajamos la tarjeta
- * y abrimos WhatsApp con el resumen escrito para adjuntarla a mano.
+ * Se probó mandar la tarjeta por la hoja de compartir y no se puede tener las
+ * tres cosas: en iOS, cualquier texto que acompañe al archivo hace que
+ * WhatsApp adjunte la imagen dos veces. Así, en cambio, llega un solo mensaje
+ * con una vista previa, el resumen de la carrera y el enlace tocable, que es
+ * lo que hace que el que lo recibe entre a jugar.
+ *
+ * Para Instagram sigue yendo la tarjeta: ahí la imagen es el mensaje.
  */
-export async function shareCareerToWhatsapp(career, t, canvas, feedback) {
-  const { blob, file } = await tarjetaComoArchivo(canvas);
-  if (await compartirTarjeta(file, shareCaption(career, t))) return;
-
-  download(blob);
-  flash(feedback, t("ui.waImage"));
+export function shareCareerToWhatsapp(career, t) {
   window.open(whatsappShareUrl(career, t), "_blank", "noopener");
 }
 

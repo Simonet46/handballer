@@ -878,14 +878,15 @@ function renderResult() {
     track("share");
     shareCareer(career, t, el("share-canvas"), el("share-feedback"));
   };
-  // WhatsApp manda la tarjeta, igual que Instagram: por la hoja de compartir
-  // del sistema, que es la única forma de que viaje la imagen y no sólo texto.
+  // WhatsApp va por texto: el resumen de la carrera y el enlace, que llegan
+  // como un solo mensaje con vista previa. Adjuntar la tarjeta además del
+  // texto hace que iOS la mande dos veces; ver shareCareerToWhatsapp.
   const wa = el("share-wa");
   if (wa) {
     wa.textContent = t("ui.shareWa");
     wa.onclick = () => {
       track("share_wa");
-      shareCareerToWhatsapp(career, t, el("share-canvas"), el("share-feedback"));
+      shareCareerToWhatsapp(career, t);
     };
   }
   el("play-again").onclick = () => { show("setup"); window.scrollTo({ top: 0 }); };
