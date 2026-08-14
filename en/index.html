@@ -85,6 +85,10 @@
         <fieldset><legend>Mode</legend><div class="chips chips-stack" data-group="mode" id="mode-options"></div></fieldset>
 
         <button id="start" class="cta" type="button">Start your career</button>
+        <!-- Espiar el ranking mundial sin jugar: nombres, países y puntajes.
+             El texto lo pone ui.js con el idioma cargado; sin JS no hay
+             ranking que mostrar, así que arranca escondido. -->
+        <button id="world-peek" class="board-peek" type="button" hidden></button>
       </form>
     </div>
   </section>
@@ -222,6 +226,18 @@
   <!-- El selector de importe. Cada botón es un enlace a PayPal con el monto ya
        cargado (paypal.me acepta el importe en la propia dirección), así que no
        hace falta ningún botón alojado ni tocar la cuenta. -->
+  <!-- El ranking mundial, espiado desde la portada. Reusa las clases del
+       board del final: misma fila, mismos filtros, mismo aspecto. -->
+  <dialog class="mundial" id="mundial">
+    <div class="mundial-cuerpo">
+      <h3 id="mundial-titulo"></h3>
+      <div class="board-filters" id="mundial-filters"></div>
+      <ol class="board" id="mundial-board"></ol>
+      <p class="board-note" id="mundial-note"></p>
+      <button type="button" class="donar-cerrar" id="mundial-cerrar"></button>
+    </div>
+  </dialog>
+
   <dialog class="donar" id="donar">
     <!-- La grilla vive acá adentro y no en el <dialog>. Cuando la grilla era
          el propio diálogo, el alto sobrante se repartía entre las filas y los

@@ -61,6 +61,7 @@ async function boot() {
   el("app").dataset.ready = "1";
   renderWorldCounter();
   initDonar();
+  initMundial();
   track("setup");
 }
 
@@ -1422,13 +1423,17 @@ async function renderWorldBoard() {
     return;
   }
   if (!rows.length) {
-    const vacio = filter.id === "daily" ? "board.dailyEmpty"
-      : filter.id === "today" ? "board.todayEmpty" : "board.worldEmpty";
-    box.innerHTML = `<li class="board-empty">${t(vacio)}</li>`;
+    box.innerHTML = `<li class="board-empty">${t(worldEmptyKey(filter.id))}</li>`;
     el("board-note").textContent = "";
     return;
   }
-  box.innerHTML = rows.slice(0, 20).map((entry, index) => {
+  box.innerHTML = worldRowsHtml(rows);
+  el("board-note").textContent = worldNote(stats);
+}
+
+/** Las filas del mundial: medalla, bandera, nombre y puntaje. */
+function worldRowsHtml(rows) {
+  return rows.slice(0, 20).map((entry, index) => {
     const medal = ["🥇", "🥈", "🥉"][index] || index + 1;
     return `<li class="board-row">
       <span class="board-rank">${medal}</span>
@@ -1439,10 +1444,79 @@ async function renderWorldBoard() {
       <span class="board-score">${entry.score}</span>
     </li>`;
   }).join("");
-  el("board-note").textContent = stats
+}
+
+function worldEmptyKey(filterId) {
+  return filterId === "daily" ? "board.dailyEmpty"
+    : filterId === "today" ? "board.todayEmpty" : "board.worldEmpty";
+}
+
+function worldNote(stats) {
+  return stats
     ? t(stats.total_runs === 1 ? "board.worldOne" : "board.world",
         { n: stats.total_runs.toLocaleString(EURO_LOCALE[locale] || "es-AR"), avg: stats.avg_score })
     : "";
+}
+
+/**
+ * El mundial espiado desde la portada: el botoncito bajo "Empezar la carrera"
+ * abre el mismo top 20 que se ve al terminar, con sus filtros. La gracia es
+ * que el que llega por un link ajeno vea puntajes con nombre y bandera antes
+ * de jugar: la vara pica más que cualquier instrucción.
+ */
+function initMundial() {
+  const dialogo = el("mundial");
+  const boton = el("world-peek");
+  if (!dialogo || !boton || typeof dialogo.showModal !== "function") return;
+
+  boton.textContent = `🌍 ${t("board.peek")}`;
+  boton.hidden = false;
+  el("mundial-titulo").textContent = t("board.peek");
+  el("mundial-cerrar").textContent = t("board.close");
+
+  let filtro = "all";
+  const filtros = el("mundial-filters");
+  filtros.innerHTML = WORLD_FILTERS.map((f) =>
+    `<button type="button" class="board-tab" data-filter="${f.id}"
+       aria-pressed="${String(f.id === filtro)}">${t(`board.f_${f.id}`)}</button>`).join("");
+
+  const pintar = async () => {
+    for (const b of filtros.querySelectorAll("button")) {
+      b.setAttribute("aria-pressed", String(b.dataset.filter === filtro));
+    }
+    const box = el("mundial-board");
+    const filter = WORLD_FILTERS.find((f) => f.id === filtro) || WORLD_FILTERS[0];
+    if (!worldCache[filter.id]) {
+      box.innerHTML = `<li class="board-empty">…</li>`;
+      try {
+        worldCache[filter.id] = await fetchWorld(filter);
+      } catch {
+        worldCache[filter.id] = { rows: null, stats: null };
+      }
+    }
+    if (filter.id !== filtro) return;   // cambiaron de filtro mientras cargaba
+    const { rows, stats } = worldCache[filter.id];
+    if (!rows) {
+      box.innerHTML = `<li class="board-empty">${t("board.worldError")}</li>`;
+      el("mundial-note").textContent = "";
+      return;
+    }
+    box.innerHTML = rows.length ? worldRowsHtml(rows)
+      : `<li class="board-empty">${t(worldEmptyKey(filter.id))}</li>`;
+    el("mundial-note").textContent = rows.length ? worldNote(stats) : "";
+  };
+
+  boton.addEventListener("click", () => { dialogo.showModal(); pintar(); });
+  filtros.addEventListener("click", (event) => {
+    const b = event.target.closest("button[data-filter]");
+    if (!b) return;
+    filtro = b.dataset.filter;
+    pintar();
+  });
+  el("mundial-cerrar").addEventListener("click", () => dialogo.close());
+  dialogo.addEventListener("click", (event) => {
+    if (event.target === dialogo) dialogo.close();
+  });
 }
 
 function universeLeagues() {
